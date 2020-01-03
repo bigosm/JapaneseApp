@@ -12,7 +12,6 @@ public class QuestionView: UIView {
     
     public var prompLabel = UILabel()
     public var answerLabel = UILabel()
-    
     public var correctButton = UIButton()
     public var correctLabel = UILabel()
     public var incorrectButton = UIButton()
