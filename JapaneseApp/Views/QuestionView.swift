@@ -11,6 +11,7 @@ import UIKit
 public class QuestionView: UIView {
     
     public var prompLabel = UILabel()
+    public var hintLabel = UILabel()
     public var answerLabel = UILabel()
     public var correctButton = UIButton()
     public var correctLabel = UILabel()
@@ -23,6 +24,9 @@ public class QuestionView: UIView {
         self.prompLabel.textAlignment = .center
         self.prompLabel.numberOfLines = 0
         self.prompLabel.font = .preferredFont(forTextStyle: .largeTitle)
+        self.hintLabel.textAlignment = .center
+        self.hintLabel.numberOfLines = 0
+        self.hintLabel.font = .preferredFont(forTextStyle: .body)
         self.answerLabel.textAlignment = .center
         self.answerLabel.numberOfLines = 0
         self.answerLabel.font = .preferredFont(forTextStyle: .headline)
@@ -46,10 +50,19 @@ public class QuestionView: UIView {
             self.prompLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
         
+        self.addSubview(self.hintLabel)
+        self.hintLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.hintLabel.topAnchor.constraint(equalTo: self.prompLabel.bottomAnchor),
+            self.hintLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.hintLabel.heightAnchor.constraint(equalToConstant: 40),
+            self.hintLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+        
         self.addSubview(self.answerLabel)
         self.answerLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.answerLabel.topAnchor.constraint(equalTo: self.prompLabel.bottomAnchor),
+            self.answerLabel.topAnchor.constraint(equalTo: self.hintLabel.bottomAnchor),
             self.answerLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.answerLabel.heightAnchor.constraint(equalToConstant: 50),
             self.answerLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor)
