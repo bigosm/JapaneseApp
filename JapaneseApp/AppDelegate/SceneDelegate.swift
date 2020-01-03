@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         self.window?.windowScene = windowScene
-        self.window?.rootViewController = ViewController()
+        self.window?.rootViewController = QuestionViewController()
         self.window?.makeKeyAndVisible()
         
     }

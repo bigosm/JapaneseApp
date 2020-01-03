@@ -1,6 +1,6 @@
 //
-//  JapaneseAppTests.swift
-//  JapaneseAppTests
+//  QuestionViewControllerTests.swift
+//  JapaneseApp
 //
 //  Created by Michal Bigos on 03/01/2020.
 //  Copyright © 2020 Example. All rights reserved.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import JapaneseApp
 
-class JapaneseAppTests: XCTestCase {
+class QuestionViewControllerTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
