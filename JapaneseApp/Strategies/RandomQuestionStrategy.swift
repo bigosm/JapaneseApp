@@ -12,6 +12,7 @@ import GameplayKit.GKRandomSource
 public class RandomQuestionStrategy: QuestionStrategy {
     
     //MARK: - Properties
+    
     public var title: String {
         return self.questionGroup.title
     }
@@ -24,6 +25,7 @@ public class RandomQuestionStrategy: QuestionStrategy {
     private let questions: [Question]
     
     // MARK: - Object Lifecycle
+    
     public init(questionGroup: QuestionGroup) {
         self.questionGroup = questionGroup
         
@@ -32,6 +34,7 @@ public class RandomQuestionStrategy: QuestionStrategy {
     }
     
     // MARK: - QuestionStrategy
+    
     public func advanceToNextQuestion() -> Bool {
         guard self.questionIndex < self.questions.count - 1 else {
             return false
