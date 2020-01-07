@@ -12,6 +12,8 @@ public class SelectQuestionGroupViewController: UIViewController{
     
     // MARK: - Instance Properties
     
+    private let appSettings = AppSettings.shared
+    
     var tableView = UITableView()
     var questionGroupCellId = "QuestionGroupCell"
     
@@ -19,7 +21,7 @@ public class SelectQuestionGroupViewController: UIViewController{
     private var selectedQuestionGroup: QuestionGroup!
     
     // MARK: - View Lifecycle
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,11 +40,29 @@ public class SelectQuestionGroupViewController: UIViewController{
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "outline_more_horiz_black_36pt"),
+            style: .plain,
+            target: self,
+            action: #selector(self.handleSettingsButton(_:)))
+    }
+    
+    //MARK: - Instance Methods
+    
+    @objc func handleSettingsButton(_ sender: Any) {
+        let vc = AppSettingsViewController()
+        vc.delegate = self
+        self.navigationController?.present(
+            UINavigationController(rootViewController: vc),
+            animated: true,
+            completion: nil)
     }
     
 }
 
 // MARK: - UITableViewDataSource
+
 extension SelectQuestionGroupViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,6 +81,7 @@ extension SelectQuestionGroupViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
+
 extension SelectQuestionGroupViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -73,20 +94,33 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
         
         let vc = QuestionViewController()
         vc.delegate = self
-        vc.questionStrategy = RandomQuestionStrategy(questionGroup: self.selectedQuestionGroup)
+        vc.questionStrategy = self.appSettings.questionStrategy(for: self.selectedQuestionGroup)
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
 
+// MARK: - QuestionViewControllerDelegate
+
 extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
+    
     public func questionViewController(_ controller: QuestionViewController, didCancel questionStrategy: QuestionStrategy) {
         self.navigationController?.popToViewController(self, animated: true)
     }
     
     public func questionViewController(_ controller: QuestionViewController, didComplete questionStrategy: QuestionStrategy) {
         self.navigationController?.popToViewController(self, animated: true)
+    }
+
+}
+
+// MARK: - QuestionViewControllerDelegate
+
+extension SelectQuestionGroupViewController: AppSettingsViewControllerDelegate {
+
+    public func appSettingsViewControllerDidFinish(_ controller: AppSettingsViewController) {
+        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
 
 }

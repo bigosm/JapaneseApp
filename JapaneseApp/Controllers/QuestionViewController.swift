@@ -9,6 +9,7 @@
 import UIKit
 
 // MARK: - QuestionViewControllerDelegate
+
 public protocol QuestionViewControllerDelegate: AnyObject {
     
     func questionViewController(
@@ -37,7 +38,6 @@ public class QuestionViewController: UIViewController {
     
     private lazy var questionIndexItem: UIBarButtonItem = {
         let item = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        item.tintColor = UIColor(named: "primaryColor")
         self.navigationItem.rightBarButtonItem = item
         return item
     }()
@@ -63,7 +63,10 @@ public class QuestionViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.toggleAnsweLabel(_:)))
         self.view.addGestureRecognizer(tapGesture)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.handleCancelButton(_:)))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .cancel,
+            target: self,
+            action: #selector(self.handleCancelButton(_:)))
         
         self.showQuestion()
     }
@@ -94,7 +97,7 @@ public class QuestionViewController: UIViewController {
         
         let question = self.questionStrategy.currentQuestion()
         
-        self.questionIndexItem.title = self.questionStrategy.title
+        self.questionIndexItem.title = self.questionStrategy.questionIndexTitle()
     
         self.questionView.prompLabel.text = question.prompt
         self.questionView.hintLabel.text = question.hint

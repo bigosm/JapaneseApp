@@ -11,6 +11,7 @@ import Foundation
 public class SequentionalQuestionStrategy: QuestionStrategy {
     
     // MARK: - Properties
+    
     public var title: String {
         return self.questionGroup.title
     }
@@ -22,11 +23,13 @@ public class SequentionalQuestionStrategy: QuestionStrategy {
     private var questionIndex = 0
     
     // MARK: - Object Lifecycle
+    
     public init(questionGroup: QuestionGroup) {
         self.questionGroup = questionGroup
     }
     
     // MARK: - QuestionStrategy
+    
     public func advanceToNextQuestion() -> Bool {
         guard self.questionIndex < self.questionGroup.questions.count - 1 else {
             return false
