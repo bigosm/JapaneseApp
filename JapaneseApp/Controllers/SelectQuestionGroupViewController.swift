@@ -11,6 +11,7 @@ import UIKit
 public class SelectQuestionGroupViewController: UIViewController{
     
     // MARK: - Instance Properties
+    
     private let appSettings = AppSettings.shared
     
     var tableView = UITableView()
@@ -61,6 +62,7 @@ public class SelectQuestionGroupViewController: UIViewController{
 }
 
 // MARK: - UITableViewDataSource
+
 extension SelectQuestionGroupViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,6 +81,7 @@ extension SelectQuestionGroupViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
+
 extension SelectQuestionGroupViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -99,6 +102,7 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
 }
 
 // MARK: - QuestionViewControllerDelegate
+
 extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
     
     public func questionViewController(_ controller: QuestionViewController, didCancel questionStrategy: QuestionStrategy) {
@@ -112,6 +116,7 @@ extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
 }
 
 // MARK: - QuestionViewControllerDelegate
+
 extension SelectQuestionGroupViewController: AppSettingsViewControllerDelegate {
 
     public func appSettingsViewControllerDidFinish(_ controller: AppSettingsViewController) {

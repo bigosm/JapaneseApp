@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: -
+// MARK: - AppSettingsViewControllerDelegate
 public protocol AppSettingsViewControllerDelegate: AnyObject {
     
     func appSettingsViewControllerDidFinish(
@@ -63,6 +63,7 @@ public class AppSettingsViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
+
 extension AppSettingsViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,6 +88,7 @@ extension AppSettingsViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
+
 extension AppSettingsViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

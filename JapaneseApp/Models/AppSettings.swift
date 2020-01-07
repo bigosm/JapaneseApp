@@ -45,6 +45,8 @@ public class AppSettings {
 
 }
 
+//MARK: - QuestionStrategyType
+
 public enum QuestionStrategyType: Int, CaseIterable {
     
     case random
