@@ -8,16 +8,16 @@
 
 import UIKit
 
+// MARK: - QuestionViewControllerDelegate
 public protocol QuestionViewControllerDelegate: AnyObject {
     
     func questionViewController(
         _ controller: QuestionViewController,
-        didCancel questionGroup: QuestionGroup,
-        at questionIndex: Int)
+        didCancel questionStrategy: QuestionStrategy)
     
     func questionViewController(
         _ controller: QuestionViewController,
-        didComplete questionGroup: QuestionGroup)
+        didComplete questionStrategy: QuestionStrategy)
     
 }
 
@@ -25,16 +25,12 @@ public class QuestionViewController: UIViewController {
     
     // MARK: - Instance Properties
     
-    public var questionGroup: QuestionGroup! {
+    public var questionStrategy: QuestionStrategy! {
         didSet {
-            self.navigationItem.title = self.questionGroup.title
+            self.navigationItem.title = self.questionStrategy.title
         }
     }
-    
-    public var questionIndex = 0
-    public var correctCount = 0
-    public var incorrectCount = 0
-    
+
     public var questionView = QuestionView()
     
     public weak var delegate: QuestionViewControllerDelegate?
@@ -75,11 +71,11 @@ public class QuestionViewController: UIViewController {
     // MARK: - Actions
     
     @objc func handleCorrect(_ sender: Any) {
-        self.correctCount += 1
+        self.questionStrategy.markQuestionCorrect(self.questionStrategy.currentQuestion())
         self.showNextQuestion()
     }
     @objc func handleIncorrect(_ sender: Any) {
-        self.incorrectCount += 1
+         self.questionStrategy.markQuestionIncorrect(self.questionStrategy.currentQuestion())
         self.showNextQuestion()
     }
     
@@ -89,31 +85,30 @@ public class QuestionViewController: UIViewController {
     }
     
     @objc func handleCancelButton(_ sender: Any) {
-        self.delegate?.questionViewController(self, didCancel: self.questionGroup, at: self.questionIndex)
+        self.delegate?.questionViewController(self, didCancel: self.questionStrategy)
     }
 
     // MARK: - Private
     
     private func showQuestion() {
         
-        self.questionIndexItem.title = "\(questionIndex + 1)/\(questionGroup.questions.count)"
+        let question = self.questionStrategy.currentQuestion()
         
-        let question = self.questionGroup.questions[questionIndex]
+        self.questionIndexItem.title = self.questionStrategy.title
+    
         self.questionView.prompLabel.text = question.prompt
         self.questionView.hintLabel.text = question.hint
         self.questionView.answerLabel.text = question.answer
-        self.questionView.correctLabel.text = "\(self.correctCount)"
-        self.questionView.incorrectLabel.text = "\(self.incorrectCount)"
+        self.questionView.correctLabel.text = "\(self.questionStrategy.correctCount)"
+        self.questionView.incorrectLabel.text = "\(self.questionStrategy.incorrectCount)"
         
         self.questionView.hintLabel.isHidden = true
         self.questionView.answerLabel.isHidden = true
     }
     
     private func showNextQuestion() {
-        self.questionIndex += 1
-        
-        guard self.questionIndex < self.questionGroup.questions.count else {
-            self.delegate?.questionViewController(self, didComplete: self.questionGroup)
+        guard self.questionStrategy.advanceToNextQuestion() else {
+            self.delegate?.questionViewController(self, didComplete: self.questionStrategy)
             return
         }
         
