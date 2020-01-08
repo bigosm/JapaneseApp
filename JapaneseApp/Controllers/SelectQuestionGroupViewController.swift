@@ -31,12 +31,6 @@ public class SelectQuestionGroupViewController: UIViewController{
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.questionGroups.forEach {
-            print("\($0.title): " +
-                "correctCount \($0.score.correctCount), " +
-                "incorrectCount \($0.score.incorrectCount)")
-        }
-        
         self.title = "Question Groups"
         
         self.tableView.dataSource = self
@@ -71,6 +65,16 @@ public class SelectQuestionGroupViewController: UIViewController{
             completion: nil)
     }
     
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.questionGroups.forEach {
+            print("\($0.title): " +
+                "correctCount \($0.score.correctCount), " +
+                "incorrectCount \($0.score.incorrectCount)")
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -87,6 +91,12 @@ extension SelectQuestionGroupViewController: UITableViewDataSource {
 
         cell.titleLabel.text = questionGroup.title
         
+        questionGroup.score.runningPercentage.addObserver(cell, options: [.initial, .new]) { [weak cell] percentage, _ in
+            DispatchQueue.main.async {
+                cell?.percentageLabel.text = String(format: "%.0f %%", round(100 * percentage))
+            }
+        }
+
         return cell
     }
     

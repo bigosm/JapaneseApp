@@ -77,6 +77,7 @@ public class QuestionViewController: UIViewController {
         self.questionStrategy.markQuestionCorrect(self.questionStrategy.currentQuestion())
         self.showNextQuestion()
     }
+    
     @objc func handleIncorrect(_ sender: Any) {
          self.questionStrategy.markQuestionIncorrect(self.questionStrategy.currentQuestion())
         self.showNextQuestion()
@@ -119,4 +120,3 @@ public class QuestionViewController: UIViewController {
     }
 
 }
-
