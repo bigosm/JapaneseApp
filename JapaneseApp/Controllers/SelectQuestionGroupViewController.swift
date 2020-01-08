@@ -17,13 +17,25 @@ public class SelectQuestionGroupViewController: UIViewController{
     var tableView = UITableView()
     var questionGroupCellId = "QuestionGroupCell"
     
-    var questionGroups = QuestionGroup.allGroups()
-    private var selectedQuestionGroup: QuestionGroup!
-    
+    private let questionGroupCaretaker = QuestionGroupCaretaker()
+    private var questionGroups: [QuestionGroup] {
+        return self.questionGroupCaretaker.questionGroups
+    }
+    private var selectedQuestionGroup: QuestionGroup! {
+        get { return self.questionGroupCaretaker.selectedQuestionGroup }
+        set { self.questionGroupCaretaker.selectedQuestionGroup = newValue }
+    }
+
     // MARK: - View Lifecycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.questionGroups.forEach {
+            print("\($0.title): " +
+                "correctCount \($0.score.correctCount), " +
+                "incorrectCount \($0.score.incorrectCount)")
+        }
         
         self.title = "Question Groups"
         
@@ -94,7 +106,7 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
         
         let vc = QuestionViewController()
         vc.delegate = self
-        vc.questionStrategy = self.appSettings.questionStrategy(for: self.selectedQuestionGroup)
+        vc.questionStrategy = self.appSettings.questionStrategy(for: self.questionGroupCaretaker)
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

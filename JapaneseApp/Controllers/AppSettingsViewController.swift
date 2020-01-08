@@ -16,7 +16,6 @@ public protocol AppSettingsViewControllerDelegate: AnyObject {
     
 }
 
-
 public class AppSettingsViewController: UIViewController {
     
     // MARK: - Instance Properties
