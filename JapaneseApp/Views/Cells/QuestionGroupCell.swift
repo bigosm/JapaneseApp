@@ -24,7 +24,7 @@ public class QuestionGroupCell: UITableViewCell {
             self.percentageLabel.topAnchor.constraint(equalTo: self.topAnchor),
             self.percentageLabel.widthAnchor.constraint(equalToConstant: 50),
             self.percentageLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            self.percentageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20)
+            self.percentageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
         
         self.addSubview(self.titleLabel)
