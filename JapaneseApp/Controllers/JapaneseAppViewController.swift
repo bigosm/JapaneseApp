@@ -1,5 +1,5 @@
 //
-//  SelectQuestionGroupViewController.swift
+//  JapaneseAppViewController.swift
 //  JapaneseApp
 //
 //  Created by Michal Bigos on 03/01/2020.
@@ -8,14 +8,24 @@
 
 import UIKit
 
-public class SelectQuestionGroupViewController: UIViewController{
+public class JapaneseAppViewController: UIViewController{
     
     // MARK: - Instance Properties
     
     private let appSettings = AppSettings.shared
     
-    public var tableView = UITableView()
-    private var questionGroupCellId = "QuestionGroupCell"
+    public var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private var basicCellIdentifier = "basicCellIdentifier"
+    private var questionGroupCellIdentifier = "QuestionGroupCell"
+
+    private let characterTablesCaretaker = CharacterTablesCaretaker()
+    private var characterTableList: [JACharacterTable] {
+        return self.characterTablesCaretaker.characterTableList
+    }
+    private var selectedCharacterTable: JACharacterTable! {
+        get { return self.characterTablesCaretaker.selectedCharacterTable }
+        set { self.characterTablesCaretaker.selectedCharacterTable = newValue }
+    }
     
     private let questionGroupCaretaker = QuestionGroupCaretaker()
     private var questionGroups: [QuestionGroup] {
@@ -25,18 +35,19 @@ public class SelectQuestionGroupViewController: UIViewController{
         get { return self.questionGroupCaretaker.selectedQuestionGroup }
         set { self.questionGroupCaretaker.selectedQuestionGroup = newValue }
     }
-
+    
     // MARK: - View Lifecycle
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Question Groups"
+        self.title = "Japanese App"
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        self.tableView.register(QuestionGroupCell.self, forCellReuseIdentifier: self.questionGroupCellId)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.basicCellIdentifier)
+        self.tableView.register(QuestionGroupCell.self, forCellReuseIdentifier: self.questionGroupCellIdentifier)
         
         self.view.addSubview(self.tableView)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,37 +89,67 @@ public class SelectQuestionGroupViewController: UIViewController{
             animated: true,
             completion: nil)
     }
-
+    
 }
 
 // MARK: - UITableViewDataSource
 
-extension SelectQuestionGroupViewController: UITableViewDataSource {
+extension JapaneseAppViewController: UITableViewDataSource {
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return questionGroups.count
+        switch section {
+        case 0: return self.characterTableList.count
+        case 1: return self.questionGroups.count
+        default:
+            fatalError()
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: self.questionGroupCellId, for: indexPath) as! QuestionGroupCell
-        let questionGroup = self.questionGroups[indexPath.row]
-
-        cell.titleLabel.text = questionGroup.title
-        
-        questionGroup.score.runningPercentage.addObserver(cell, options: [.initial, .new]) { [weak cell] percentage, _ in
-            DispatchQueue.main.async {
-                cell?.percentageLabel.text = String(format: "%.0f %%", round(100 * percentage))
+        switch indexPath.section {
+        case 0:
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: self.basicCellIdentifier, for: indexPath)
+            let characterTable = self.characterTableList[indexPath.row]
+            
+            cell.textLabel?.text = characterTable.title
+            
+            return cell
+        case 1:
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: self.questionGroupCellIdentifier, for: indexPath) as! QuestionGroupCell
+            let questionGroup = self.questionGroups[indexPath.row]
+            
+            cell.titleLabel.text = questionGroup.title
+            
+            questionGroup.score.runningPercentage.addObserver(cell, options: [.initial, .new]) { [weak cell] percentage, _ in
+                DispatchQueue.main.async {
+                    cell?.percentageLabel.text = String(format: "%.0f %%", round(100 * percentage))
+                }
             }
+            
+            return cell
+        default:
+            fatalError()
         }
-
-        return cell
+        
     }
     
 }
 
 // MARK: - UITableViewDelegate
 
-extension SelectQuestionGroupViewController: UITableViewDelegate {
+extension JapaneseAppViewController: UITableViewDelegate {
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: return "Character tables"
+        case 1: return "Question Groups"
+        default: return nil
+        }
+    }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
@@ -116,20 +157,32 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        self.selectedQuestionGroup = self.questionGroups[indexPath.row]
         
-        let vc = QuestionViewController()
-        vc.delegate = self
-        vc.questionStrategy = self.appSettings.questionStrategy(for: self.questionGroupCaretaker)
-        
-        self.navigationController?.pushViewController(vc, animated: true)
+        switch indexPath.section {
+        case 0:
+            self.selectedCharacterTable = self.characterTableList[indexPath.row]
+            self.selectedQuestionGroup = nil
+            let vc = CharacterTableViewController()
+            vc.delegate = self
+            vc.characterTable = self.selectedCharacterTable
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            self.selectedCharacterTable = nil
+            self.selectedQuestionGroup = self.questionGroups[indexPath.row]
+            let vc = QuestionViewController()
+            vc.delegate = self
+            vc.questionStrategy = self.appSettings.questionStrategy(for: self.questionGroupCaretaker)
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            fatalError()
+        }
     }
     
 }
 
 // MARK: - QuestionViewControllerDelegate
 
-extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
+extension JapaneseAppViewController: QuestionViewControllerDelegate {
     
     public func questionViewController(_ controller: QuestionViewController, didCancel questionStrategy: QuestionStrategy) {
         self.navigationController?.popToViewController(self, animated: true)
@@ -138,22 +191,22 @@ extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
     public func questionViewController(_ controller: QuestionViewController, didComplete questionStrategy: QuestionStrategy) {
         self.navigationController?.popToViewController(self, animated: true)
     }
-
+    
 }
 
 // MARK: - QuestionViewControllerDelegate
 
-extension SelectQuestionGroupViewController: AppSettingsViewControllerDelegate {
-
+extension JapaneseAppViewController: AppSettingsViewControllerDelegate {
+    
     public func appSettingsViewControllerDidFinish(_ controller: AppSettingsViewController) {
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
-
+    
 }
 
 // MARK: - CreateQuestionGroupViewControllerDelegate
 
-extension SelectQuestionGroupViewController :CreateQuestionGroupViewControllerDelegate {
+extension JapaneseAppViewController :CreateQuestionGroupViewControllerDelegate {
     
     public func createQuestionGroupViewControllerDidCancel(_ controller: CreateQuestionGroupViewController) {
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
@@ -165,6 +218,20 @@ extension SelectQuestionGroupViewController :CreateQuestionGroupViewControllerDe
         
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
         self.tableView.reloadData()
+    }
+    
+}
+
+// MARK: - CharacterTableViewControllerDelegate
+
+extension JapaneseAppViewController: CharacterTableViewControllerDelegate {
+    
+    public func characterTableViewController(_ controller: CharacterTableViewController, didCancel characterTable: JACharacterTable) {
+        self.navigationController?.popToViewController(self, animated: true)
+    }
+    
+    public func characterTableViewController(_ controller: CharacterTableViewController, didComplete characterTable: JACharacterTable) {
+        self.navigationController?.popToViewController(self, animated: true)
     }
 
 }
