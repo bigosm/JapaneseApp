@@ -1,0 +1,868 @@
+[
+  {
+    "tableType": "hiragana",
+    "characters": [
+      {
+        "character": "あ",
+        "phonetic": "a"
+      },
+      {
+        "character": "い",
+        "phonetic": "i"
+      },
+      {
+        "character": "う",
+        "phonetic": "u"
+      },
+      {
+        "character": "え",
+        "phonetic": "e"
+      },
+      {
+        "character": "お",
+        "phonetic": "o"
+      },
+      {
+        "character": "か",
+        "phonetic": "ka"
+      },
+      {
+        "character": "き",
+        "phonetic": "ki"
+      },
+      {
+        "character": "く",
+        "phonetic": "ku"
+      },
+      {
+        "character": "け",
+        "phonetic": "ke"
+      },
+      {
+        "character": "こ",
+        "phonetic": "ko"
+      },
+      {
+        "character": "きゃ",
+        "phonetic": "kya"
+      },
+      {
+        "character": "きゅ",
+        "phonetic": "kyu"
+      },
+      {
+        "character": "きょ",
+        "phonetic": "kyo"
+      },
+      {
+        "character": "さ",
+        "phonetic": "sa"
+      },
+      {
+        "character": "し",
+        "phonetic": "shi"
+      },
+      {
+        "character": "す",
+        "phonetic": "su"
+      },
+      {
+        "character": "せ",
+        "phonetic": "se"
+      },
+      {
+        "character": "そ",
+        "phonetic": "so"
+      },
+      {
+        "character": "しゃ",
+        "phonetic": "sha"
+      },
+      {
+        "character": "しゅ",
+        "phonetic": "shu"
+      },
+      {
+        "character": "しょ",
+        "phonetic": "sho"
+      },
+      {
+        "character": "た",
+        "phonetic": "ta"
+      },
+      {
+        "character": "ち",
+        "phonetic": "chi"
+      },
+      {
+        "character": "つ",
+        "phonetic": "tsu"
+      },
+      {
+        "character": "て",
+        "phonetic": "te"
+      },
+      {
+        "character": "と",
+        "phonetic": "to"
+      },
+      {
+        "character": "ちゃ",
+        "phonetic": "cha"
+      },
+      {
+        "character": "ちゅ",
+        "phonetic": "chu"
+      },
+      {
+        "character": "ちょ",
+        "phonetic": "cho"
+      },
+      {
+        "character": "な",
+        "phonetic": "na"
+      },
+      {
+        "character": "に",
+        "phonetic": "ni"
+      },
+      {
+        "character": "ぬ",
+        "phonetic": "nu"
+      },
+      {
+        "character": "ね",
+        "phonetic": "ne"
+      },
+      {
+        "character": "の",
+        "phonetic": "no"
+      },
+      {
+        "character": "にゃ",
+        "phonetic": "nya"
+      },
+      {
+        "character": "にゅ",
+        "phonetic": "nyu"
+      },
+      {
+        "character": "にょ",
+        "phonetic": "nyo"
+      },
+      {
+        "character": "は",
+        "phonetic": "ha"
+      },
+      {
+        "character": "ひ",
+        "phonetic": "hi"
+      },
+      {
+        "character": "ふ",
+        "phonetic": "fu"
+      },
+      {
+        "character": "へ",
+        "phonetic": "he"
+      },
+      {
+        "character": "ほ",
+        "phonetic": "ho"
+      },
+      {
+        "character": "ひゃ",
+        "phonetic": "hya"
+      },
+      {
+        "character": "ひゅ",
+        "phonetic": "hyu"
+      },
+      {
+        "character": "ひょ",
+        "phonetic": "hyo"
+      },
+      {
+        "character": "ま",
+        "phonetic": "ma"
+      },
+      {
+        "character": "み",
+        "phonetic": "mi"
+      },
+      {
+        "character": "む",
+        "phonetic": "mu"
+      },
+      {
+        "character": "め",
+        "phonetic": "me"
+      },
+      {
+        "character": "も",
+        "phonetic": "mo"
+      },
+      {
+        "character": "みゃ",
+        "phonetic": "mya"
+      },
+      {
+        "character": "みゅ",
+        "phonetic": "myu"
+      },
+      {
+        "character": "みょ",
+        "phonetic": "myo"
+      },
+      {
+        "character": "や",
+        "phonetic": "ya"
+      },
+      {
+        "character": "ゆ",
+        "phonetic": "yu"
+      },
+      {
+        "character": "よ",
+        "phonetic": "yo"
+      },
+      {
+        "character": "ら",
+        "phonetic": "ra"
+      },
+      {
+        "character": "り",
+        "phonetic": "ri"
+      },
+      {
+        "character": "る",
+        "phonetic": "ru"
+      },
+      {
+        "character": "れ",
+        "phonetic": "re"
+      },
+      {
+        "character": "ろ",
+        "phonetic": "ro"
+      },
+      {
+        "character": "りゃ",
+        "phonetic": "rya"
+      },
+      {
+        "character": "りゅ",
+        "phonetic": "ryu"
+      },
+      {
+        "character": "りょ",
+        "phonetic": "ryo"
+      },
+      {
+        "character": "わ",
+        "phonetic": "wa"
+      },
+      {
+        "character": "を",
+        "phonetic": "wo"
+      },
+      {
+        "character": "ん",
+        "phonetic": "n"
+      },
+      {
+        "character": "が",
+        "phonetic": "ga"
+      },
+      {
+        "character": "ぎ",
+        "phonetic": "gi"
+      },
+      {
+        "character": "ぐ",
+        "phonetic": "gu"
+      },
+      {
+        "character": "げ",
+        "phonetic": "ge"
+      },
+      {
+        "character": "ご",
+        "phonetic": "go"
+      },
+      {
+        "character": "ぎゃ",
+        "phonetic": "gya"
+      },
+      {
+        "character": "ぎゅ",
+        "phonetic": "gyu"
+      },
+      {
+        "character": "ぎょ",
+        "phonetic": "gyo"
+      },
+      {
+        "character": "ざ",
+        "phonetic": "za"
+      },
+      {
+        "character": "じ",
+        "phonetic": "ji"
+      },
+      {
+        "character": "ず",
+        "phonetic": "zu"
+      },
+      {
+        "character": "ぜ",
+        "phonetic": "ze"
+      },
+      {
+        "character": "ぞ",
+        "phonetic": "zo"
+      },
+      {
+        "character": "じゃ",
+        "phonetic": "ja"
+      },
+      {
+        "character": "じゅ",
+        "phonetic": "ju"
+      },
+      {
+        "character": "じょ",
+        "phonetic": "jo"
+      },
+      {
+        "character": "だ",
+        "phonetic": "da"
+      },
+      {
+        "character": "ぢ",
+        "phonetic": "ji"
+      },
+      {
+        "character": "づ",
+        "phonetic": "dzu"
+      },
+      {
+        "character": "で",
+        "phonetic": "de"
+      },
+      {
+        "character": "ど",
+        "phonetic": "do"
+      },
+      {
+        "character": "ぢゃ",
+        "phonetic": "ja"
+      },
+      {
+        "character": "ぢゅ",
+        "phonetic": "ju"
+      },
+      {
+        "character": "ぢょ",
+        "phonetic": "jo"
+      },
+      {
+        "character": "ば",
+        "phonetic": "ba"
+      },
+      {
+        "character": "び",
+        "phonetic": "bi"
+      },
+      {
+        "character": "ぶ",
+        "phonetic": "bu"
+      },
+      {
+        "character": "べ",
+        "phonetic": "be"
+      },
+      {
+        "character": "ぼ",
+        "phonetic": "bo"
+      },
+      {
+        "character": "びゃ",
+        "phonetic": "bya"
+      },
+      {
+        "character": "びゅ",
+        "phonetic": "byu"
+      },
+      {
+        "character": "びょ",
+        "phonetic": "byo"
+      },
+      {
+        "character": "ぱ",
+        "phonetic": "pa"
+      },
+      {
+        "character": "ぴ",
+        "phonetic": "pi"
+      },
+      {
+        "character": "ぷ",
+        "phonetic": "pu"
+      },
+      {
+        "character": "ぺ",
+        "phonetic": "pe"
+      },
+      {
+        "character": "ぽ",
+        "phonetic": "po"
+      },
+      {
+        "character": "ぴゃ",
+        "phonetic": "pya"
+      },
+      {
+        "character": "ぴゅ",
+        "phonetic": "pyu"
+      },
+      {
+        "character": "ぴょ",
+        "phonetic": "pyo"
+      }
+    ]
+  },
+  {
+    "tableType": "katakana",
+    "characters": [
+      {
+        "character": "ア",
+        "phonetic": "a"
+      },
+      {
+        "character": "イ",
+        "phonetic": "i"
+      },
+      {
+        "character": "ウ",
+        "phonetic": "u"
+      },
+      {
+        "character": "エ",
+        "phonetic": "e"
+      },
+      {
+        "character": "オ",
+        "phonetic": "o"
+      },
+      {
+        "character": "カ",
+        "phonetic": "ka"
+      },
+      {
+        "character": "キ",
+        "phonetic": "ki"
+      },
+      {
+        "character": "ク",
+        "phonetic": "ku"
+      },
+      {
+        "character": "ケ",
+        "phonetic": "ke"
+      },
+      {
+        "character": "コ",
+        "phonetic": "ko"
+      },
+      {
+        "character": "キャ",
+        "phonetic": "kya"
+      },
+      {
+        "character": "キュ",
+        "phonetic": "kyu"
+      },
+      {
+        "character": "キョ",
+        "phonetic": "kyo"
+      },
+      {
+        "character": "サ",
+        "phonetic": "sa"
+      },
+      {
+        "character": "シ",
+        "phonetic": "shi"
+      },
+      {
+        "character": "ス",
+        "phonetic": "su"
+      },
+      {
+        "character": "セ",
+        "phonetic": "se"
+      },
+      {
+        "character": "ソ",
+        "phonetic": "so"
+      },
+      {
+        "character": "シャ",
+        "phonetic": "sha"
+      },
+      {
+        "character": "シュ",
+        "phonetic": "shu"
+      },
+      {
+        "character": "ショ",
+        "phonetic": "sho"
+      },
+      {
+        "character": "タ",
+        "phonetic": "ta"
+      },
+      {
+        "character": "チ",
+        "phonetic": "chi"
+      },
+      {
+        "character": "ツ",
+        "phonetic": "tsu"
+      },
+      {
+        "character": "テ",
+        "phonetic": "te"
+      },
+      {
+        "character": "ト",
+        "phonetic": "to"
+      },
+      {
+        "character": "チャ",
+        "phonetic": "cha"
+      },
+      {
+        "character": "チュ",
+        "phonetic": "chu"
+      },
+      {
+        "character": "チョ",
+        "phonetic": "cho"
+      },
+      {
+        "character": "ナ",
+        "phonetic": "na"
+      },
+      {
+        "character": "ニ",
+        "phonetic": "ni"
+      },
+      {
+        "character": "ヌ",
+        "phonetic": "nu"
+      },
+      {
+        "character": "ネ",
+        "phonetic": "ne"
+      },
+      {
+        "character": "ノ",
+        "phonetic": "no"
+      },
+      {
+        "character": "ニャ",
+        "phonetic": "nya"
+      },
+      {
+        "character": "ニュ",
+        "phonetic": "nyu"
+      },
+      {
+        "character": "ニョ",
+        "phonetic": "nyo"
+      },
+      {
+        "character": "ハ",
+        "phonetic": "ha"
+      },
+      {
+        "character": "ヒ",
+        "phonetic": "hi"
+      },
+      {
+        "character": "フ",
+        "phonetic": "fu"
+      },
+      {
+        "character": "ヘ",
+        "phonetic": "he"
+      },
+      {
+        "character": "ホ",
+        "phonetic": "ho"
+      },
+      {
+        "character": "ヒャ",
+        "phonetic": "hya"
+      },
+      {
+        "character": "ヒュ",
+        "phonetic": "hyu"
+      },
+      {
+        "character": "ヒョ",
+        "phonetic": "hyo"
+      },
+      {
+        "character": "マ",
+        "phonetic": "ma"
+      },
+      {
+        "character": "ミ",
+        "phonetic": "mi"
+      },
+      {
+        "character": "ム",
+        "phonetic": "mu"
+      },
+      {
+        "character": "メ",
+        "phonetic": "me"
+      },
+      {
+        "character": "モ",
+        "phonetic": "mo"
+      },
+      {
+        "character": "ミャ",
+        "phonetic": "mya"
+      },
+      {
+        "character": "ミュ",
+        "phonetic": "myu"
+      },
+      {
+        "character": "ミョ",
+        "phonetic": "myo"
+      },
+      {
+        "character": "ヤ",
+        "phonetic": "ya"
+      },
+      {
+        "character": "ユ",
+        "phonetic": "yu"
+      },
+      {
+        "character": "ヨ",
+        "phonetic": "yo"
+      },
+      {
+        "character": "ラ",
+        "phonetic": "ra"
+      },
+      {
+        "character": "リ",
+        "phonetic": "ri"
+      },
+      {
+        "character": "ル",
+        "phonetic": "ru"
+      },
+      {
+        "character": "レ",
+        "phonetic": "re"
+      },
+      {
+        "character": "ロ",
+        "phonetic": "ro"
+      },
+      {
+        "character": "リャ",
+        "phonetic": "rya"
+      },
+      {
+        "character": "リュ",
+        "phonetic": "ryu"
+      },
+      {
+        "character": "リョ",
+        "phonetic": "ryo"
+      },
+      {
+        "character": "ワ",
+        "phonetic": "wa"
+      },
+      {
+        "character": "ヲ",
+        "phonetic": "wo"
+      },
+      {
+        "character": "ン",
+        "phonetic": "n"
+      },
+      {
+        "character": "ガ",
+        "phonetic": "ga"
+      },
+      {
+        "character": "ギ",
+        "phonetic": "gi"
+      },
+      {
+        "character": "グ",
+        "phonetic": "gu"
+      },
+      {
+        "character": "ゲ",
+        "phonetic": "ge"
+      },
+      {
+        "character": "ゴ",
+        "phonetic": "go"
+      },
+      {
+        "character": "ギャ",
+        "phonetic": "gya"
+      },
+      {
+        "character": "ギュ",
+        "phonetic": "gyu"
+      },
+      {
+        "character": "ギョ",
+        "phonetic": "gyo"
+      },
+      {
+        "character": "ザ",
+        "phonetic": "za"
+      },
+      {
+        "character": "ジ",
+        "phonetic": "ji"
+      },
+      {
+        "character": "ズ",
+        "phonetic": "zu"
+      },
+      {
+        "character": "ゼ",
+        "phonetic": "ze"
+      },
+      {
+        "character": "ゾ",
+        "phonetic": "zo"
+      },
+      {
+        "character": "ジャ",
+        "phonetic": "ja"
+      },
+      {
+        "character": "ジュ",
+        "phonetic": "ju"
+      },
+      {
+        "character": "ジョ",
+        "phonetic": "jo"
+      },
+      {
+        "character": "ダ",
+        "phonetic": "da"
+      },
+      {
+        "character": "ヂ",
+        "phonetic": "ji"
+      },
+      {
+        "character": "ヅ",
+        "phonetic": "dzu"
+      },
+      {
+        "character": "デ",
+        "phonetic": "de"
+      },
+      {
+        "character": "ド",
+        "phonetic": "do"
+      },
+      {
+        "character": "ヂャ",
+        "phonetic": "ja"
+      },
+      {
+        "character": "ヂュ",
+        "phonetic": "ju"
+      },
+      {
+        "character": "ヂョ",
+        "phonetic": "jo"
+      },
+      {
+        "character": "バ",
+        "phonetic": "ba"
+      },
+      {
+        "character": "ビ",
+        "phonetic": "bi"
+      },
+      {
+        "character": "ブ",
+        "phonetic": "bu"
+      },
+      {
+        "character": "ベ",
+        "phonetic": "be"
+      },
+      {
+        "character": "ボ",
+        "phonetic": "bo"
+      },
+      {
+        "character": "ビャ",
+        "phonetic": "bya"
+      },
+      {
+        "character": "ビュ",
+        "phonetic": "byu"
+      },
+      {
+        "character": "ビョ",
+        "phonetic": "byo"
+      },
+      {
+        "character": "パ",
+        "phonetic": "pa"
+      },
+      {
+        "character": "ピ",
+        "phonetic": "pi"
+      },
+      {
+        "character": "プ",
+        "phonetic": "pu"
+      },
+      {
+        "character": "ペ",
+        "phonetic": "pe"
+      },
+      {
+        "character": "ポ",
+        "phonetic": "po"
+      },
+      {
+        "character": "ピャ",
+        "phonetic": "pya"
+      },
+      {
+        "character": "ピュ",
+        "phonetic": "pyu"
+      },
+      {
+        "character": "ピョ",
+        "phonetic": "pyo"
+      }
+    ]
+  }
+]
