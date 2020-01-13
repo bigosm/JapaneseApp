@@ -14,8 +14,8 @@ public class SelectQuestionGroupViewController: UIViewController{
     
     private let appSettings = AppSettings.shared
     
-    var tableView = UITableView()
-    var questionGroupCellId = "QuestionGroupCell"
+    public var tableView = UITableView()
+    private var questionGroupCellId = "QuestionGroupCell"
     
     private let questionGroupCaretaker = QuestionGroupCaretaker()
     private var questionGroups: [QuestionGroup] {
@@ -52,9 +52,14 @@ public class SelectQuestionGroupViewController: UIViewController{
             style: .plain,
             target: self,
             action: #selector(self.handleSettingsButton(_:)))
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(self.handleAddQuestionButton(_:)))
     }
     
-    //MARK: - Instance Methods
+    // MARK: - Instance Methods
     
     @objc func handleSettingsButton(_ sender: Any) {
         let vc = AppSettingsViewController()
@@ -65,16 +70,15 @@ public class SelectQuestionGroupViewController: UIViewController{
             completion: nil)
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.questionGroups.forEach {
-            print("\($0.title): " +
-                "correctCount \($0.score.correctCount), " +
-                "incorrectCount \($0.score.incorrectCount)")
-        }
+    @objc func handleAddQuestionButton(_ sender: Any) {
+        let vc = CreateQuestionGroupViewController()
+        vc.delegate = self
+        self.navigationController?.present(
+            UINavigationController(rootViewController: vc),
+            animated: true,
+            completion: nil)
     }
-    
+
 }
 
 // MARK: - UITableViewDataSource
@@ -143,6 +147,24 @@ extension SelectQuestionGroupViewController: AppSettingsViewControllerDelegate {
 
     public func appSettingsViewControllerDidFinish(_ controller: AppSettingsViewController) {
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
+    }
+
+}
+
+// MARK: - CreateQuestionGroupViewControllerDelegate
+
+extension SelectQuestionGroupViewController :CreateQuestionGroupViewControllerDelegate {
+    
+    public func createQuestionGroupViewControllerDidCancel(_ controller: CreateQuestionGroupViewController) {
+        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    public func createQuestionGroupViewController(_ controller: CreateQuestionGroupViewController, created questionGroup: QuestionGroup) {
+        self.questionGroupCaretaker.questionGroups.append(questionGroup)
+        try? self.questionGroupCaretaker.save()
+        
+        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
+        self.tableView.reloadData()
     }
 
 }

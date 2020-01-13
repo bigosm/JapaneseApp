@@ -10,8 +10,12 @@ import Foundation
 
 public final class DiskCaretaker {
     
+    // MARK: - Instance Properties
+    
     public static let decoder = JSONDecoder()
     public static let encoder = JSONEncoder()
+    
+    // MARK: - Instance Methods
     
     public static func save<T: Codable>(_ object: T, to fileName: String) throws {
         do {

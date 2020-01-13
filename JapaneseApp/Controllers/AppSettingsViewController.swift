@@ -9,6 +9,7 @@
 import UIKit
 
 // MARK: - AppSettingsViewControllerDelegate
+
 public protocol AppSettingsViewControllerDelegate: AnyObject {
     
     func appSettingsViewControllerDidFinish(
@@ -19,13 +20,13 @@ public protocol AppSettingsViewControllerDelegate: AnyObject {
 public class AppSettingsViewController: UIViewController {
     
     // MARK: - Instance Properties
-    var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    
+    public var tableView = UITableView(frame: .zero, style: .insetGrouped)
     weak var delegate: AppSettingsViewControllerDelegate?
     
     public let appSettings = AppSettings.shared
     private let cellIdentifier = "basicCell"
     
-
     // MARK: - View Lifecycle
     
     public override func viewDidLoad() {

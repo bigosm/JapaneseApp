@@ -10,8 +10,12 @@ import UIKit
 
 public class QuestionGroupCell: UITableViewCell {
     
+    // MARK: - Instance Properties
+    
     public var titleLabel = UILabel()
     public var percentageLabel = UILabel()
+    
+    // MARK: - Object Lifecycle
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
