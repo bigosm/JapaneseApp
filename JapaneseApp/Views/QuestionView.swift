@@ -10,6 +10,8 @@ import UIKit
 
 public class QuestionView: UIView {
     
+    // MARK: - Instance Properties
+    
     public var prompLabel = UILabel()
     public var hintLabel = UILabel()
     public var answerLabel = UILabel()
@@ -17,6 +19,8 @@ public class QuestionView: UIView {
     public var correctLabel = UILabel()
     public var incorrectButton = UIButton()
     public var incorrectLabel = UILabel()
+    
+    // MARK: - Object Lifecycle
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

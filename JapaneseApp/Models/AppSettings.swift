@@ -20,7 +20,7 @@ public class AppSettings {
     
     public static let shared = AppSettings()
     
-    // MAK: - Instance Properties
+    // MARK: - Instance Properties
     
     public var questionStrategyType: QuestionStrategyType {
         get {

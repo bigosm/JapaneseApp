@@ -71,7 +71,7 @@ public class QuestionViewController: UIViewController {
         self.showQuestion()
     }
     
-    // MARK: - Actions
+    // MARK: - Instance Methods
     
     @objc func handleCorrect(_ sender: Any) {
         self.questionStrategy.markQuestionCorrect(self.questionStrategy.currentQuestion())
@@ -92,7 +92,7 @@ public class QuestionViewController: UIViewController {
         self.delegate?.questionViewController(self, didCancel: self.questionStrategy)
     }
 
-    // MARK: - Private
+    // MARK: - Private Methods
     
     private func showQuestion() {
         
