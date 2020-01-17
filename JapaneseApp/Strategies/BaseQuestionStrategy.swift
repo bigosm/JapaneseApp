@@ -15,15 +15,7 @@ public class BaseQuestionStrategy: QuestionStrategy {
     public var title: String {
         return self.questionGroup.title
     }
-    public var correctCount: Int {
-        get { return self.questionGroup.score.correctCount }
-        set { self.questionGroup.score.correctCount = newValue }
-    }
-    public var incorrectCount: Int {
-        get { return self.questionGroup.score.incorrectCount }
-        set { self.questionGroup.score.incorrectCount = newValue }
-    }
-    
+
     private var questionGroupCaretaker: QuestionGroupCaretaker
     private var questionGroup: QuestionGroup {
         return self.questionGroupCaretaker.selectedQuestionGroup
@@ -38,8 +30,6 @@ public class BaseQuestionStrategy: QuestionStrategy {
         
         self.questionGroupCaretaker = questionGroupCaretaker
         self.questions = questions
-        
-        self.questionGroupCaretaker.selectedQuestionGroup.score.reset()
     }
     
     // MARK: - QuestionStrategy
@@ -58,12 +48,22 @@ public class BaseQuestionStrategy: QuestionStrategy {
         return self.questions[self.questionIndex]
     }
     
+    public func getAnswersForCurrentQuestion(amount: Int) -> [String] {
+        let question = self.currentQuestion()
+        let correctAnswer = question.answer
+        let answersFeed = question.wrongAnswers?.shuffled().suffix(amount - 1) ?? []
+        
+        return ([correctAnswer] + answersFeed).shuffled()
+    }
+    
+    public func checkAnswer(selected answer: String) -> Bool {
+        return self.currentQuestion().answer == answer
+    }
+    
     public func markQuestionCorrect(_ question: Question) {
-        self.correctCount += 1
     }
     
     public func markQuestionIncorrect(_ question: Question) {
-        self.incorrectCount += 1
     }
     
     public func questionIndexTitle() -> String {

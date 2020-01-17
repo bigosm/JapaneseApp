@@ -42,6 +42,7 @@ public class QuestionGroupBuilder {
 
 public class QuestionBuilder {
     
+    public var wrongAnswers = [String]()
     public var answer = ""
     public var hint = ""
     public var prompt = ""
@@ -50,7 +51,7 @@ public class QuestionBuilder {
         guard !self.answer.isEmpty else { throw Error.missingAnswer }
         guard !self.prompt.isEmpty else { throw Error.missingPrompt }
         
-        return Question(answer: self.answer, hint: self.hint ,prompt: self.prompt)
+        return Question(answer: self.answer, hint: self.hint, prompt: self.prompt, wrongAnswers: [])
     }
     
     public enum Error: String, Swift.Error {
