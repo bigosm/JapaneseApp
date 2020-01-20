@@ -9,7 +9,7 @@
 import Foundation
 
 public class BaseQuestionStrategy: QuestionStrategy {
-    
+
     //MARK: - Properties
     
     public var title: String {
@@ -22,6 +22,7 @@ public class BaseQuestionStrategy: QuestionStrategy {
     }
     private var questionIndex = 0
     private let questions: [Question]
+    private var questionsScore: QuestionScore
     
     // MARK: - Object Lifecycle
     
@@ -30,6 +31,7 @@ public class BaseQuestionStrategy: QuestionStrategy {
         
         self.questionGroupCaretaker = questionGroupCaretaker
         self.questions = questions
+        self.questionsScore = QuestionScore(questionGroup: questionGroupCaretaker.selectedQuestionGroup)
     }
     
     // MARK: - QuestionStrategy
@@ -38,6 +40,17 @@ public class BaseQuestionStrategy: QuestionStrategy {
         try? self.questionGroupCaretaker.save()
         
         guard self.questionIndex < self.questions.count - 1 else {
+            self.questions.forEach {
+
+                let correctLabel = self.questionsScore.checkAnswerFor(question: $0)!
+                    ? "Correct!"
+                    : "Correct answer: \($0.answer)."
+                let questionAnswer = "Question: `\($0.prompt)`, "
+                    + "your answer: \(self.questionsScore.answerFor(question: $0)!), "
+                    + correctLabel
+                
+                print(questionAnswer)
+            }
             return false
         }
         self.questionIndex += 1
@@ -57,13 +70,7 @@ public class BaseQuestionStrategy: QuestionStrategy {
     }
     
     public func checkAnswer(selected answer: String) -> Bool {
-        return self.currentQuestion().answer == answer
-    }
-    
-    public func markQuestionCorrect(_ question: Question) {
-    }
-    
-    public func markQuestionIncorrect(_ question: Question) {
+        return self.questionsScore.answer(question: self.currentQuestion(), with: answer)
     }
     
     public func questionIndexTitle() -> String {
