@@ -11,6 +11,8 @@ import Foundation
 public class QuestionGroup: Codable {
     
     public let questions: [Question]
+    public let questionLevel: Int = 0
+    
     public let title: String
     
     public init (questions: [Question],

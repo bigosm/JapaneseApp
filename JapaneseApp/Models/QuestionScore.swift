@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class QuestionScore {
+public class QuestionScore: Codable {
     
-    public struct QuestionAnswer {
+    public struct QuestionAnswer: Codable {
         public var question: Question
         public var selectedAnswer: String
         

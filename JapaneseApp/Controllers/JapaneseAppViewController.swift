@@ -15,6 +15,7 @@ public class JapaneseAppViewController: UIViewController{
     private let appSettings = AppSettings.shared
     
     public var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    fileprivate var selecectedCell: QuestionGroupCell?
     private var basicCellIdentifier = "basicCellIdentifier"
     private var questionGroupCellIdentifier = "QuestionGroupCell"
 
@@ -45,6 +46,8 @@ public class JapaneseAppViewController: UIViewController{
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.basicCellIdentifier)
         self.tableView.register(QuestionGroupCell.self, forCellReuseIdentifier: self.questionGroupCellIdentifier)
@@ -123,6 +126,16 @@ extension JapaneseAppViewController: UITableViewDataSource {
             let questionGroup = self.questionGroups[indexPath.row]
             
             cell.titleLabel.text = questionGroup.title
+            cell.levelLabel.text = "Level \(questionGroup.questionLevel)"
+            cell.startButtonHandler = { [weak self] in
+                guard let self = self else { return }
+                self.selectedCharacterTable = nil
+                self.selectedQuestionGroup = self.questionGroups[indexPath.row]
+                let vc = QuestionViewController()
+                vc.delegate = self
+                vc.questionStrategy = self.appSettings.questionStrategy(for: self.questionGroupCaretaker)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             
             return cell
         default:
@@ -145,10 +158,6 @@ extension JapaneseAppViewController: UITableViewDelegate {
         }
     }
     
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
-    }
-    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
@@ -161,12 +170,20 @@ extension JapaneseAppViewController: UITableViewDelegate {
             vc.characterTable = self.selectedCharacterTable
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            self.selectedCharacterTable = nil
-            self.selectedQuestionGroup = self.questionGroups[indexPath.row]
-            let vc = QuestionViewController()
-            vc.delegate = self
-            vc.questionStrategy = self.appSettings.questionStrategy(for: self.questionGroupCaretaker)
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.selecectedCell?.toggleBody()
+            
+            if let cell = tableView.cellForRow(at: indexPath) as? QuestionGroupCell {
+                if self.selecectedCell == cell {
+                    self.selecectedCell = nil
+                } else {
+                    cell.toggleBody()
+                    self.selecectedCell = cell
+                }
+            }
+            
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        
         default:
             fatalError()
         }
