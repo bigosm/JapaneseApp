@@ -20,8 +20,6 @@ public class PromptViewController: UIViewController {
         super.viewDidLoad()
         
         self.promptLabel = UILabel()
-        self.promptLabel.text = "Test lable 123"
-        
         self.promptLabel.textAlignment = .left
         self.promptLabel.numberOfLines = 0
         self.promptLabel.font = .preferredFont(forTextStyle: .largeTitle)

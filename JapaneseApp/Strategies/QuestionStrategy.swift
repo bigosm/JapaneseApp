@@ -11,11 +11,15 @@ import Foundation
 public protocol QuestionStrategy: AnyObject {
     
     var title: String { get }
-
-    func advanceToNextQuestion() -> Bool
+    var numberOfQuestions: Int { get }
+    var currentQuestionAnswerObservable: Observable<String?> { get }
+    var currentQuestionIndex: Int { get }
+    
+    func advanceToNextQuestion(skip: Bool) -> Bool
+    func question(for index: Int) -> Question
     func currentQuestion() -> Question
-    func getAnswersForCurrentQuestion(amount: Int) -> [String]
-    func checkAnswer(selected: String) -> Bool
+    func feedAnswersFor(question: Question, amount: Int) -> [String]
+    func checkAnswer() -> Bool?
     func questionIndexTitle() -> String
     
 }

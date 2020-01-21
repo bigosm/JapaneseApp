@@ -15,13 +15,19 @@ public class BaseQuestionStrategy: QuestionStrategy {
     public var title: String {
         return self.questionGroup.title
     }
-
+    public var numberOfQuestions: Int {
+        return self.questions.count
+    }
+    public var currentQuestionAnswerObservable: Observable<String?> = Observable(nil)
+    public var currentQuestionIndex: Int {
+        return self.questionIndex
+    }
     private var questionGroupCaretaker: QuestionGroupCaretaker
     private var questionGroup: QuestionGroup {
         return self.questionGroupCaretaker.selectedQuestionGroup
     }
     private var questionIndex = 0
-    private let questions: [Question]
+    private var questions: [Question]
     private var questionsScore: QuestionScore
     
     // MARK: - Object Lifecycle
@@ -35,42 +41,58 @@ public class BaseQuestionStrategy: QuestionStrategy {
     }
     
     // MARK: - QuestionStrategy
-    
-    public func advanceToNextQuestion() -> Bool {
+
+    public func advanceToNextQuestion(skip: Bool = false) -> Bool {
         try? self.questionGroupCaretaker.save()
         
-        guard self.questionIndex < self.questions.count - 1 else {
+        guard (self.questionIndex < self.questions.count - 1) || skip else {
             self.questions.forEach {
 
-                let correctLabel = self.questionsScore.checkAnswerFor(question: $0)!
+                let correctLabel = self.questionsScore.checkAnswerFor(question: $0) == true
                     ? "Correct!"
                     : "Correct answer: \($0.answer)."
                 let questionAnswer = "Question: `\($0.prompt)`, "
-                    + "your answer: \(self.questionsScore.answerFor(question: $0)!), "
+                    + "your answer: \(self.questionsScore.answerFor(question: $0) ?? "--"), "
                     + correctLabel
                 
                 print(questionAnswer)
             }
             return false
         }
-        self.questionIndex += 1
+        
+        if skip {
+            let questionSkipped = self.questions.remove(at: self.questionIndex)
+            self.questions.append(questionSkipped)
+        } else {
+            self.questionIndex += 1
+        }
+        
+        self.currentQuestionAnswerObservable.value = nil
+        
         return true
+    }
+    
+    public func question(for index: Int) -> Question {
+        return self.questions[index]
     }
     
     public func currentQuestion() -> Question {
         return self.questions[self.questionIndex]
     }
     
-    public func getAnswersForCurrentQuestion(amount: Int) -> [String] {
-        let question = self.currentQuestion()
+    public func feedAnswersFor(question: Question, amount: Int) -> [String] {
         let correctAnswer = question.answer
         let answersFeed = question.wrongAnswers?.shuffled().suffix(amount - 1) ?? []
         
         return ([correctAnswer] + answersFeed).shuffled()
     }
     
-    public func checkAnswer(selected answer: String) -> Bool {
-        return self.questionsScore.answer(question: self.currentQuestion(), with: answer)
+    public func checkAnswer() -> Bool? {
+        guard let currentAnswer = self.currentQuestionAnswerObservable.value else {
+            return nil
+        }
+        
+        return self.questionsScore.answer(question: self.currentQuestion(), with: currentAnswer)
     }
     
     public func questionIndexTitle() -> String {
