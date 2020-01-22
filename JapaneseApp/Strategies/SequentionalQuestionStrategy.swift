@@ -12,11 +12,11 @@ public class SequentionalQuestionStrategy: BaseQuestionStrategy {
     
     // MARK: - Object Lifecycle
     
-    public convenience init(questionGroupCaretaker: QuestionGroupCaretaker) {
+    public convenience init(questionGroupHandler: QuestionGroupHandler) {
         
-        let questionGroup = questionGroupCaretaker.selectedQuestionGroup!
+        let questionGroup = questionGroupHandler.questionGroup
         let questions = questionGroup.questions
         
-        self.init(questionGroupCaretaker: questionGroupCaretaker, questions: questions)
+        self.init(questionGroupHandler: questionGroupHandler, questions: questions)
     }
 }

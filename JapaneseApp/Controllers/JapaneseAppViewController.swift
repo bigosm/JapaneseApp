@@ -28,14 +28,7 @@ public class JapaneseAppViewController: UIViewController{
         set { self.characterTablesCaretaker.selectedCharacterTable = newValue }
     }
     
-    private let questionGroupCaretaker = QuestionGroupCaretaker()
-    private var questionGroups: [QuestionGroup] {
-        return self.questionGroupCaretaker.questionGroups
-    }
-    private var selectedQuestionGroup: QuestionGroup! {
-        get { return self.questionGroupCaretaker.selectedQuestionGroup }
-        set { self.questionGroupCaretaker.selectedQuestionGroup = newValue }
-    }
+    private let questionRepository = QuestionRepository()
     
     // MARK: - View Lifecycle
     
@@ -106,7 +99,7 @@ extension JapaneseAppViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return self.characterTableList.count
-        case 1: return self.questionGroups.count
+        case 1: return self.questionRepository.numberOfQuestionGroups
         default:
             fatalError()
         }
@@ -123,18 +116,15 @@ extension JapaneseAppViewController: UITableViewDataSource {
             return cell
         case 1:
             let cell = self.tableView.dequeueReusableCell(withIdentifier: self.questionGroupCellIdentifier, for: indexPath) as! QuestionGroupCell
-            let questionGroup = self.questionGroups[indexPath.row]
-            
-            cell.titleLabel.text = questionGroup.title
-            cell.levelLabel.text = "Level \(questionGroup.questionLevel)"
+
+            cell.titleLabel.text = self.questionRepository.title(forQuestionGroupAt: indexPath.row)
+            let questionLevel = self.questionRepository.level(forQuestionGroupAt: indexPath.row)
+            cell.levelLabel.text = "Level \(questionLevel)"
             cell.startButtonHandler = { [weak self] in
-                guard let self = self else { return }
-                self.selectedCharacterTable = nil
-                self.selectedQuestionGroup = self.questionGroups[indexPath.row]
                 let vc = QuestionViewController()
                 vc.delegate = self
-                vc.questionStrategy = self.appSettings.questionStrategy(for: self.questionGroupCaretaker)
-                self.navigationController?.pushViewController(vc, animated: true)
+                vc.questionStrategy = self?.questionRepository.questionStrategy(forQuestionGroupAt: indexPath.row)
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
             
             return cell
@@ -164,7 +154,6 @@ extension JapaneseAppViewController: UITableViewDelegate {
         switch indexPath.section {
         case 0:
             self.selectedCharacterTable = self.characterTableList[indexPath.row]
-            self.selectedQuestionGroup = nil
             let vc = CharacterTableViewController()
             vc.delegate = self
             vc.characterTable = self.selectedCharacterTable
@@ -217,16 +206,14 @@ extension JapaneseAppViewController: AppSettingsViewControllerDelegate {
 
 // MARK: - CreateQuestionGroupViewControllerDelegate
 
-extension JapaneseAppViewController :CreateQuestionGroupViewControllerDelegate {
+extension JapaneseAppViewController: CreateQuestionGroupViewControllerDelegate {
     
     public func createQuestionGroupViewControllerDidCancel(_ controller: CreateQuestionGroupViewController) {
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     public func createQuestionGroupViewController(_ controller: CreateQuestionGroupViewController, created questionGroup: QuestionGroup) {
-        self.questionGroupCaretaker.questionGroups.append(questionGroup)
-        try? self.questionGroupCaretaker.save()
-        
+        self.questionRepository.addNewQuestionGroup(questionGroup)
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
         self.tableView.reloadData()
     }

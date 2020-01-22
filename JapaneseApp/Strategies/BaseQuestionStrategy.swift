@@ -22,41 +22,39 @@ public class BaseQuestionStrategy: QuestionStrategy {
     public var currentQuestionIndex: Int {
         return self.questionIndex
     }
-    private var questionGroupCaretaker: QuestionGroupCaretaker
+    public var didCompleteQuestionGroup: ((QuestionGroupHandler) -> Void)?
+    private var questionGroupHandler: QuestionGroupHandler
     private var questionGroup: QuestionGroup {
-        return self.questionGroupCaretaker.selectedQuestionGroup
+        return self.questionGroupHandler.questionGroup
     }
     private var questionIndex = 0
     private var questions: [Question]
-    private var questionsScore: QuestionScore
     
     // MARK: - Object Lifecycle
     
-    public init(questionGroupCaretaker: QuestionGroupCaretaker,
+    public init(questionGroupHandler: QuestionGroupHandler,
                 questions: [Question]) {
         
-        self.questionGroupCaretaker = questionGroupCaretaker
+        self.questionGroupHandler = questionGroupHandler
         self.questions = questions
-        self.questionsScore = QuestionScore(questionGroup: questionGroupCaretaker.selectedQuestionGroup)
     }
     
     // MARK: - QuestionStrategy
 
     public func advanceToNextQuestion(skip: Bool = false) -> Bool {
-        try? self.questionGroupCaretaker.save()
-        
         guard (self.questionIndex < self.questions.count - 1) || skip else {
             self.questions.forEach {
 
-                let correctLabel = self.questionsScore.checkAnswerFor(question: $0) == true
+                let correctLabel = self.questionGroupHandler.questionGroupAnswers.isAnswerCorrect(forQuestion: $0) == true
                     ? "Correct!"
                     : "Correct answer: \($0.answer)."
                 let questionAnswer = "Question: `\($0.prompt)`, "
-                    + "your answer: \(self.questionsScore.answerFor(question: $0) ?? "--"), "
+                    + "your answer: \(self.questionGroupHandler.questionGroupAnswers.answer(forQuestion: $0) ?? "--"), "
                     + correctLabel
                 
                 print(questionAnswer)
-            }
+            };
+            self.didCompleteQuestionGroup?(self.questionGroupHandler)
             return false
         }
         
@@ -92,7 +90,9 @@ public class BaseQuestionStrategy: QuestionStrategy {
             return nil
         }
         
-        return self.questionsScore.answer(question: self.currentQuestion(), with: currentAnswer)
+        return self.questionGroupHandler.questionGroupAnswers.answer(
+            question: self.currentQuestion(),
+            selectedAnswer: currentAnswer)
     }
     
     public func questionIndexTitle() -> String {

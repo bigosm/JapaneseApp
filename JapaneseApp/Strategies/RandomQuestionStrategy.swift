@@ -13,13 +13,13 @@ public class RandomQuestionStrategy: BaseQuestionStrategy {
 
     // MARK: - Object Lifecycle
     
-    public convenience init(questionGroupCaretaker: QuestionGroupCaretaker) {
+    public convenience init(questionGroupHandler: QuestionGroupHandler) {
         
-        let questionGroup = questionGroupCaretaker.selectedQuestionGroup!
+        let questionGroup = questionGroupHandler.questionGroup
         let randomSource = GKRandomSource.sharedRandom()
         let questions = randomSource.arrayByShufflingObjects(in: questionGroup.questions) as! [Question]
         
-        self.init(questionGroupCaretaker: questionGroupCaretaker, questions: questions)
+        self.init(questionGroupHandler: questionGroupHandler, questions: questions)
     }
 
 }

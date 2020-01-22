@@ -189,10 +189,9 @@ extension QuestionViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension QuestionViewController: UICollectionViewDelegate {
-    
-    
-}
+extension QuestionViewController: UICollectionViewDelegate {}
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension QuestionViewController: UICollectionViewDelegateFlowLayout {
     

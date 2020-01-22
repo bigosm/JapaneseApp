@@ -14,7 +14,6 @@ public final class QuestionGroupCaretaker {
     
     private let fileName = "QuestionGroupData"
     public var questionGroups: [QuestionGroup] = []
-    public var selectedQuestionGroup: QuestionGroup!
     
     // MARK: - Object Lifecycle
     

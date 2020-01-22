@@ -10,6 +10,8 @@ import Foundation
 
 public class Question: Codable {
     
+    // MARK: - Instance Properties
+    
     public let answer: String
     public let hint: String?
     public let prompt: String
