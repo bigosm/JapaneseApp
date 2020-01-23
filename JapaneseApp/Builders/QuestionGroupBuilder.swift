@@ -46,12 +46,13 @@ public class QuestionBuilder {
     public var answer = ""
     public var hint = ""
     public var prompt = ""
+    public var subject = ""
     
     public func build() throws -> Question {
         guard !self.answer.isEmpty else { throw Error.missingAnswer }
         guard !self.prompt.isEmpty else { throw Error.missingPrompt }
         
-        return Question(answer: self.answer, hint: self.hint, prompt: self.prompt, wrongAnswers: [])
+        return Question(answer: self.answer, hint: self.hint, prompt: self.prompt, wrongAnswers: [], subject: self.subject)
     }
     
     public enum Error: String, Swift.Error {

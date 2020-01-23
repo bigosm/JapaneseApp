@@ -14,6 +14,9 @@ public class QuestionGroupAnswersData: Codable {
     
     public var questionGroupId: String
     public var questionGroupAnswers: [QuestionGroupAnswers]
+    public var experienceEarned: Int {
+        return self.questionGroupAnswers.reduce(into: 0) { $0 += $1.experienceEarned }
+    }
     public var current: QuestionGroupAnswers?
     
     // MARK: - Object Lifecycle

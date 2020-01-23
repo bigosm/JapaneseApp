@@ -33,6 +33,7 @@ public class QuestionGroupCell: UITableViewCell {
     // MARK: Body
     
     public var bodyView = UIView()
+    public var experienceLabel = UILabel()
     public var historyButton = UIButton(type: .system)
     public var historyButtonHandler: (() -> Void)?
     public var startButton = UIButton(type: .system)
@@ -98,6 +99,7 @@ public class QuestionGroupCell: UITableViewCell {
         self.stackView.addArrangedSubview(self.bodyView)
         self.headerView.addSubview(self.levelLabel)
         self.headerView.addSubview(self.titleLabel)
+        self.bodyView.addSubview(self.experienceLabel)
         self.bodyView.addSubview(self.historyButton)
         self.bodyView.addSubview(self.startButton)
         
@@ -123,25 +125,34 @@ public class QuestionGroupCell: UITableViewCell {
             self.levelLabel.topAnchor.constraint(equalTo: self.headerView.topAnchor),
             self.levelLabel.widthAnchor.constraint(equalToConstant: 80),
             self.levelLabel.bottomAnchor.constraint(equalTo: self.headerView.bottomAnchor),
-            self.levelLabel.trailingAnchor.constraint(equalTo: self.headerView.trailingAnchor, constant: -20)
+            self.levelLabel.trailingAnchor.constraint(equalTo: self.headerView.trailingAnchor, constant: -10)
         ])
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.headerView.topAnchor),
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.headerView.leadingAnchor, constant: 20),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.headerView.leadingAnchor, constant: 10),
             self.titleLabel.bottomAnchor.constraint(equalTo: self.headerView.bottomAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.levelLabel.leadingAnchor)
         ])
         
         // MARK: Body
         
+        self.experienceLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.experienceLabel.topAnchor.constraint(equalTo: self.bodyView.topAnchor, constant: 10),
+            self.experienceLabel.leadingAnchor.constraint(equalTo: self.bodyView.leadingAnchor, constant: 10),
+            self.experienceLabel.bottomAnchor.constraint(equalTo: self.startButton.topAnchor, constant: -10),
+            self.experienceLabel.trailingAnchor.constraint(equalTo: self.historyButton.leadingAnchor, constant: -10)
+        ])
+        
         self.historyButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.historyButton.topAnchor.constraint(equalTo: self.bodyView.topAnchor, constant: 10),
             self.historyButton.bottomAnchor.constraint(equalTo: self.startButton.topAnchor, constant: -10),
             self.historyButton.trailingAnchor.constraint(equalTo: self.bodyView.trailingAnchor, constant: -10),
-            self.startButton.heightAnchor.constraint(equalToConstant: 40)
+            self.historyButton.heightAnchor.constraint(equalToConstant: 40),
+            self.historyButton.widthAnchor.constraint(equalToConstant: 70)
         ])
         
         self.startButton.translatesAutoresizingMaskIntoConstraints = false
