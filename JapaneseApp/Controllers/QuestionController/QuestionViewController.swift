@@ -24,6 +24,11 @@ public protocol QuestionViewControllerDelegate: AnyObject {
 
 public class QuestionViewController: UIViewController {
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.primaryBackgroundColor
+    private var themeSecondaryBackgroundColor = Theme.secondaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     public var questionStrategy: QuestionStrategy! {
@@ -40,7 +45,6 @@ public class QuestionViewController: UIViewController {
         return item
     }()
     
-
     private var questionNavigationController = QuestionNavigationViewController()
     
     private var collectionView: UICollectionView!
@@ -50,7 +54,8 @@ public class QuestionViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(named: "background")
+        
+        self.view.backgroundColor = self.themeBackgroundColor
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
@@ -58,6 +63,7 @@ public class QuestionViewController: UIViewController {
         flowLayout.scrollDirection = .horizontal
 
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        self.collectionView.backgroundColor = self.themeBackgroundColor
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.allowsSelection = true
@@ -65,30 +71,9 @@ public class QuestionViewController: UIViewController {
         self.collectionView.isScrollEnabled = false
         self.collectionView.showsHorizontalScrollIndicator = false
         
+        self.setupView()
+        
         self.collectionView.register(QuestionCell.self, forCellWithReuseIdentifier: self.basicCellIdentifier)
-        
-        self.view.addSubview(self.collectionView)
-        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
-        
-        self.createView(with: [
-            self.questionNavigationController
-        ])
-
-        
-        let questionNavigationView = self.questionNavigationController.view!
-        questionNavigationView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            questionNavigationView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            questionNavigationView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            questionNavigationView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            questionNavigationView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
-        ])
         
         self.questionStrategy.currentQuestionAnswerObservable.addObserver(self, options: [.initial, .new]) { value, option  in
             self.questionNavigationController.checkButton.isEnabled = value != nil
@@ -159,6 +144,32 @@ public class QuestionViewController: UIViewController {
         self.collectionView.scrollToItem(at: currentQuestionIndex, at: .left, animated: true)
         
         self.showQuestion()
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
+        self.view.addSubview(self.collectionView)
+        self.createView(with: [
+            self.questionNavigationController
+        ])
+        
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
+
+        let questionNavigationView = self.questionNavigationController.view!
+        questionNavigationView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            questionNavigationView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            questionNavigationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            questionNavigationView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            questionNavigationView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
+        ])
     }
 
 }

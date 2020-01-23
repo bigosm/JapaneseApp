@@ -70,6 +70,10 @@ public class BaseQuestionStrategy: QuestionStrategy {
         return true
     }
     
+    public func completeQuestionGroup() {
+        self.didCompleteQuestionGroup?(self.questionGroupHandler)
+    }
+    
     public func question(for index: Int) -> Question {
         return self.questions[index]
     }

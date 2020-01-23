@@ -10,6 +10,10 @@ import UIKit
 
 public class QuestionCell: UICollectionViewCell {
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.primaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     public var promptController = PromptViewController()
@@ -19,27 +23,10 @@ public class QuestionCell: UICollectionViewCell {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-
-        let promptView = self.promptController.view!
-        self.addSubview(promptView)
-        promptView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            promptView.topAnchor.constraint(equalTo: self.topAnchor,constant: 20),
-            promptView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            promptView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
-            promptView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20)
-        ])
         
-        let answerView = self.answerController.view!
-        self.addSubview(answerView)
-        answerView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            answerView.topAnchor.constraint(equalTo: promptView.bottomAnchor, constant: 20),
-            answerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            answerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
-            answerView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
-
+        self.backgroundColor = self.themeBackgroundColor
+        
+        self.setupView()
     }
     
     @available(*, unavailable)
@@ -52,6 +39,31 @@ public class QuestionCell: UICollectionViewCell {
     public func configure(with question: Question, feed: [String]) {
         self.promptController.set(prompt: question.prompt)
         self.answerController.configure(with: feed)
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
+        let promptView = self.promptController.view!
+        let answerView = self.answerController.view!
+        self.addSubview(promptView)
+        self.addSubview(answerView)
+
+        promptView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            promptView.topAnchor.constraint(equalTo: self.topAnchor,constant: 20),
+            promptView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            promptView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20),
+            promptView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
+        ])
+
+        answerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            answerView.topAnchor.constraint(equalTo: promptView.bottomAnchor, constant: 20),
+            answerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            answerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            answerView.heightAnchor.constraint(equalToConstant: 420)
+        ])
     }
     
 }

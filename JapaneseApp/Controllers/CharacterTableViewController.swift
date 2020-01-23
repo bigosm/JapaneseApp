@@ -24,10 +24,15 @@ public protocol CharacterTableViewControllerDelegate: AnyObject {
 
 public class CharacterTableViewController: UIViewController {
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.primaryBackgroundColor
+    private var themeSecondaryBackgroundColor = Theme.secondaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     public weak var delegate: CharacterTableViewControllerDelegate?
-    public var tableView = UITableView()
+    public var tableView = UITableView(frame: .zero, style: .insetGrouped)
     private var basicCellIdentifier = "basicCellIdentifier1"
     
     public var characterTable: JACharacterTable!
@@ -38,11 +43,19 @@ public class CharacterTableViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = self.characterTable.title
+        self.tableView.backgroundColor = self.themeBackgroundColor
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-
+        
+        self.setupView()
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
         self.view.addSubview(self.tableView)
+        
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -50,7 +63,6 @@ public class CharacterTableViewController: UIViewController {
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
-        
     }
     
 }
@@ -71,6 +83,7 @@ extension CharacterTableViewController: UITableViewDataSource {
         cell.textLabel?.text = character.character
         cell.textLabel?.font = .preferredFont(forTextStyle: .largeTitle)
         cell.detailTextLabel?.text = character.phonetic
+        cell.backgroundColor = self.themeSecondaryBackgroundColor
         
         return cell
     }

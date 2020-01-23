@@ -19,6 +19,11 @@ public protocol AppSettingsViewControllerDelegate: AnyObject {
 
 public class AppSettingsViewController: UIViewController {
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.primaryBackgroundColor
+    private var themeSecondaryBackgroundColor = Theme.secondaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     public var tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -33,13 +38,32 @@ public class AppSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "Settings"
+        self.tableView.backgroundColor = self.themeBackgroundColor
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(self.handleDoneButton(_:)))
+        
+        self.setupView()
+    }
+    
+    //MARK: - Instance Methods
+    
+    @objc func handleDoneButton(_ sender: Any) {
+        self.delegate?.appSettingsViewControllerDidFinish(self)
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
         self.view.addSubview(self.tableView)
+        
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -47,17 +71,6 @@ public class AppSettingsViewController: UIViewController {
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: self,
-            action: #selector(self.handleDoneButton(_:)))
-    }
-    
-    //MARK: - Instance Methods
-    
-    @objc func handleDoneButton(_ sender: Any) {
-        self.delegate?.appSettingsViewControllerDidFinish(self)
     }
 
 }
@@ -75,6 +88,7 @@ extension AppSettingsViewController: UITableViewDataSource {
         let questionStrategyType = QuestionStrategyType.allCases[indexPath.row]
         
         cell.textLabel?.text = questionStrategyType.title
+        cell.backgroundColor = self.themeSecondaryBackgroundColor
         
         if self.appSettings.questionStrategyType == questionStrategyType {
             cell.accessoryType = .checkmark

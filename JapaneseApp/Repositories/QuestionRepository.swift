@@ -30,7 +30,7 @@ public class QuestionRepository {
         self.questionGroupCaretaker.questionGroups.append(questionGroup)
         try? self.questionGroupCaretaker.save()
     }
-    
+
     public func level(forQuestionGroupAt index: Int) -> Int {
         self.questionGroupCaretaker.questionGroups[index].questionLevel
     }
@@ -40,10 +40,23 @@ public class QuestionRepository {
     }
     
     public func questionStrategy(forQuestionGroupAt index: Int) -> QuestionStrategy {
+        let questionGroupHandler = self.questionGroupHandler(forQuestionGroupAt: index)
+        let questionStrategy = self.appSettings.questionStrategy(for: questionGroupHandler)
+        questionStrategy.didCompleteQuestionGroup = { [weak self] questionGroupHandler in
+            if let currentAnswers = questionGroupHandler.questionGroupAnswersData.current {
+                questionGroupHandler.questionGroupAnswersData.questionGroupAnswers.append(currentAnswers)
+                questionGroupHandler.questionGroupAnswersData.current = nil
+                try? self?.questionGroupAnswersCaretaker.save()
+            }
+        }
+        return questionStrategy
+    }
+    
+    public func questionGroupHandler(forQuestionGroupAt index: Int) -> QuestionGroupHandler {
         let questionGroup = self.questionGroupCaretaker.questionGroups[index]
-        let questionGroupAnswers = QuestionGroupAnswers(questionAnswers: [])
-        let questionGroupHandler = QuestionGroupHandler(questionGroup: questionGroup, answers: questionGroupAnswers)
-        return self.appSettings.questionStrategy(for: questionGroupHandler)
+        let answersData = self.questionGroupAnswersCaretaker.questionGroupAnswersList
+            .first { $0.questionGroupId == questionGroup.id }!
+        return QuestionGroupHandler(questionGroup: questionGroup, answersData: answersData)
     }
     
     public func title(forQuestionGroupAt index: Int) -> String {

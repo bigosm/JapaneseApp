@@ -10,6 +10,11 @@ import UIKit
 
 public class JapaneseAppViewController: UIViewController{
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.primaryBackgroundColor
+    private var themeSecondaryBackgroundColor = Theme.secondaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     private let appSettings = AppSettings.shared
@@ -36,6 +41,7 @@ public class JapaneseAppViewController: UIViewController{
         super.viewDidLoad()
         
         self.title = "Japanese App"
+        self.tableView.backgroundColor = self.themeBackgroundColor
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -44,15 +50,6 @@ public class JapaneseAppViewController: UIViewController{
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.basicCellIdentifier)
         self.tableView.register(QuestionGroupCell.self, forCellReuseIdentifier: self.questionGroupCellIdentifier)
-        
-        self.view.addSubview(self.tableView)
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "outline_more_horiz_black_36pt"),
@@ -64,6 +61,8 @@ public class JapaneseAppViewController: UIViewController{
             barButtonSystemItem: .add,
             target: self,
             action: #selector(self.handleAddQuestionButton(_:)))
+        
+        self.setupView()
     }
     
     // MARK: - Instance Methods
@@ -84,6 +83,20 @@ public class JapaneseAppViewController: UIViewController{
             UINavigationController(rootViewController: vc),
             animated: true,
             completion: nil)
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
+        self.view.addSubview(self.tableView)
+        
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
     }
     
 }
@@ -112,6 +125,7 @@ extension JapaneseAppViewController: UITableViewDataSource {
             let characterTable = self.characterTableList[indexPath.row]
             
             cell.textLabel?.text = characterTable.title
+            cell.backgroundColor = self.themeSecondaryBackgroundColor
             
             return cell
         case 1:
@@ -124,6 +138,11 @@ extension JapaneseAppViewController: UITableViewDataSource {
                 let vc = QuestionViewController()
                 vc.delegate = self
                 vc.questionStrategy = self?.questionRepository.questionStrategy(forQuestionGroupAt: indexPath.row)
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            cell.historyButtonHandler = { [weak self] in
+                let vc = QuestionHistoryViewController()
+                vc.questionGroupHandler = self?.questionRepository.questionGroupHandler(forQuestionGroupAt: indexPath.row)
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -189,6 +208,7 @@ extension JapaneseAppViewController: QuestionViewControllerDelegate {
     }
     
     public func questionViewController(_ controller: QuestionViewController, didComplete questionStrategy: QuestionStrategy) {
+        questionStrategy.completeQuestionGroup()
         self.navigationController?.popToViewController(self, animated: true)
     }
     

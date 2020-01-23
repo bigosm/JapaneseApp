@@ -14,12 +14,15 @@ public class QuestionGroupHandler: Codable {
     
     public var questionGroup: QuestionGroup
     public var questionGroupAnswers: QuestionGroupAnswers
+    public var questionGroupAnswersData: QuestionGroupAnswersData
     
     // MARK: - Object Lifecycle
     
-    init(questionGroup: QuestionGroup, answers: QuestionGroupAnswers) {
+    init(questionGroup: QuestionGroup, answersData: QuestionGroupAnswersData) {
         self.questionGroup = questionGroup
-        self.questionGroupAnswers = answers
+        self.questionGroupAnswersData = answersData
+        self.questionGroupAnswers = QuestionGroupAnswers(questionAnswers: [])
+        self.questionGroupAnswersData.current = self.questionGroupAnswers
     }
 
 }

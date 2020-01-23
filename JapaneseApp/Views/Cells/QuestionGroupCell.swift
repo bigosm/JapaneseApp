@@ -10,16 +10,32 @@ import UIKit
 
 public class QuestionGroupCell: UITableViewCell {
     
+    // MARK: - Theme
+
+    private var themePrimaryColor = Theme.primaryColor
+    private var themeBackgroundColor = Theme.secondaryBackgroundColor
+    private var themeButtonColor = Theme.primaryButtonColor
+    private var themeButtonTitleColor = Theme.primaryButtonTitleColor
+    private var themeButtonFont = UIFont.systemFont(ofSize: 20)
+    
+    private var themeBasicCornerRadius: CGFloat = 10
+    
     // MARK: - Instance Properties
     
     public var stackView = UIStackView()
     
-    public var headerView = UIView()
-    public var bodyView = UIView()
+    // MARK: Header
     
+    public var headerView = UIView()
     public var titleLabel = UILabel()
     public var levelLabel = UILabel()
-    public var startButton = UIButton()
+    
+    // MARK: Body
+    
+    public var bodyView = UIView()
+    public var historyButton = UIButton(type: .system)
+    public var historyButtonHandler: (() -> Void)?
+    public var startButton = UIButton(type: .system)
     public var startButtonHandler: (() -> Void)?
     
     // MARK: - Object Lifecycle
@@ -27,9 +43,64 @@ public class QuestionGroupCell: UITableViewCell {
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.stackView.axis = .vertical
+        self.backgroundColor = self.themeBackgroundColor
         
+        self.stackView.axis = .vertical
+
+        // MARK: Header View
+        
+        self.titleLabel.font = .preferredFont(forTextStyle: .headline)
+        self.levelLabel.textAlignment = .right
+
+        // MARK: Body View
+        
+        self.bodyView.isHidden = true
+        
+        self.historyButton.setTitle("history", for: .normal)
+        self.historyButton.setImage(UIImage(systemName: "history"), for: .normal)
+        self.historyButton.setTitleColor(self.themePrimaryColor, for: .normal)
+        self.startButton.setTitle("practice", for: .normal)
+        self.startButton.backgroundColor = self.themeButtonColor
+        self.startButton.tintColor = self.themeButtonTitleColor
+        self.startButton.titleLabel?.font = self.themeButtonFont
+        self.startButton.layer.cornerRadius = self.themeBasicCornerRadius
+
+        self.historyButton.addTarget(self, action: #selector(self.handleHistoryButton(_:)), for: .touchUpInside)
+        self.startButton.addTarget(self, action: #selector(self.handleStartButton(_:)), for: .touchUpInside)
+        
+        self.setupView()
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Instance Methods
+    
+    public func toggleBody() {
+        self.bodyView.isHidden.toggle()
+    }
+    
+    @objc func handleHistoryButton(_ sender: Any) {
+        self.historyButtonHandler?()
+    }
+    
+    @objc func handleStartButton(_ sender: Any) {
+        self.startButtonHandler?()
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
         self.addSubview(self.stackView)
+        self.stackView.addArrangedSubview(self.headerView)
+        self.stackView.addArrangedSubview(self.bodyView)
+        self.headerView.addSubview(self.levelLabel)
+        self.headerView.addSubview(self.titleLabel)
+        self.bodyView.addSubview(self.historyButton)
+        self.bodyView.addSubview(self.startButton)
+        
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         let stackViewBottom =  self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         NSLayoutConstraint.activate([
@@ -40,20 +111,13 @@ public class QuestionGroupCell: UITableViewCell {
         ])
         stackViewBottom.priority = .init(rawValue: 999)
         
-        self.stackView.addArrangedSubview(self.headerView)
-        self.stackView.addArrangedSubview(self.bodyView)
+        // MARK: Header
         
         self.headerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.headerView.heightAnchor.constraint(equalToConstant: 50)
         ])
         
-        // MARK: Header View
-        
-        self.titleLabel.font = .preferredFont(forTextStyle: .headline)
-        self.levelLabel.textAlignment = .right
-    
-        self.headerView.addSubview(self.levelLabel)
         self.levelLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.levelLabel.topAnchor.constraint(equalTo: self.headerView.topAnchor),
@@ -62,7 +126,6 @@ public class QuestionGroupCell: UITableViewCell {
             self.levelLabel.trailingAnchor.constraint(equalTo: self.headerView.trailingAnchor, constant: -20)
         ])
         
-        self.headerView.addSubview(self.titleLabel)
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.headerView.topAnchor),
@@ -71,27 +134,14 @@ public class QuestionGroupCell: UITableViewCell {
             self.titleLabel.trailingAnchor.constraint(equalTo: self.levelLabel.leadingAnchor)
         ])
         
-        // MARK: Body View
+        // MARK: Body
         
-        self.bodyView.isHidden = true
-        
-        self.startButton.setTitle("practice", for: .normal)
-        self.startButton.backgroundColor = .darkGray
-        self.startButton.layer.cornerRadius = 10
-        
-        let testLable = UILabel()
-        testLable.text = "Test label"
-        testLable.backgroundColor = .red
-        
-        self.bodyView.addSubview(testLable)
-        self.bodyView.addSubview(self.startButton)
-        
-        testLable.translatesAutoresizingMaskIntoConstraints = false
+        self.historyButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            testLable.topAnchor.constraint(equalTo: self.bodyView.topAnchor),
-            testLable.leadingAnchor.constraint(equalTo: self.bodyView.leadingAnchor),
-            testLable.bottomAnchor.constraint(equalTo: self.startButton.topAnchor),
-            testLable.trailingAnchor.constraint(equalTo: self.bodyView.trailingAnchor)
+            self.historyButton.topAnchor.constraint(equalTo: self.bodyView.topAnchor, constant: 10),
+            self.historyButton.bottomAnchor.constraint(equalTo: self.startButton.topAnchor, constant: -10),
+            self.historyButton.trailingAnchor.constraint(equalTo: self.bodyView.trailingAnchor, constant: -10),
+            self.startButton.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         self.startButton.translatesAutoresizingMaskIntoConstraints = false
@@ -101,51 +151,6 @@ public class QuestionGroupCell: UITableViewCell {
             self.startButton.trailingAnchor.constraint(equalTo: self.bodyView.trailingAnchor, constant: -10),
             self.startButton.heightAnchor.constraint(equalToConstant: 40)
         ])
-        
-        self.startButton.addTarget(self, action: #selector(self.handleStartButton(_:)), for: .touchUpInside)
-        self.startButton.addTarget(self, action: #selector(self.handleStartButtonTouchDown(_:)), for: .touchDown)
-        self.startButton.addTarget(self, action: #selector(self.handleStartButtonCancelTouch(_:)), for: .touchDragExit)
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    public func toggleBody() {
-        self.bodyView.isHidden.toggle()
-    }
-    
-    @objc func handleStartButton(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.2,
-        animations: {
-            self.startButton.backgroundColor = .black
-            self.startButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        },
-        completion: { _ in
-            UIView.animate(withDuration: 0.2) {
-                self.startButton.backgroundColor = .darkGray
-                self.startButton.transform = CGAffineTransform.identity
-            }
-        })
-        
-        self.startButtonHandler?()
-    }
-    
-    @objc func handleStartButtonTouchDown(_ sender: Any) {
-        UIView.animate(withDuration: 0.2,
-        animations: {
-            self.startButton.backgroundColor = .black
-            self.startButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        }, completion: nil)
-    }
-    
-    @objc func handleStartButtonCancelTouch(_ sender: Any) {
-        UIView.animate(withDuration: 0.2) {
-            self.startButton.backgroundColor = .darkGray
-            self.startButton.transform = CGAffineTransform.identity
-        }
     }
     
 }

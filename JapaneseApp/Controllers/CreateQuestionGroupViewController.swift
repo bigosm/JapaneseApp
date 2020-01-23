@@ -23,6 +23,10 @@ public protocol CreateQuestionGroupViewControllerDelegate: AnyObject {
 
 public class CreateQuestionGroupViewController: UIViewController {
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.primaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     public weak var delegate: CreateQuestionGroupViewControllerDelegate?
@@ -39,21 +43,13 @@ public class CreateQuestionGroupViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Add Question Group"
+        self.tableView.backgroundColor = self.themeBackgroundColor
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
         self.tableView.register(TextFieldCell.self, forCellReuseIdentifier: self.textFieldCellIdentifier)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.basicCellIdentifier)
-        
-        self.view.addSubview(self.tableView)
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .cancel,
@@ -65,6 +61,7 @@ public class CreateQuestionGroupViewController: UIViewController {
             target: self,
             action: #selector(self.handleSaveButton(_:)))
         
+        self.setupView()
     }
     
     // MARK: - Instance Methods
@@ -95,6 +92,20 @@ public class CreateQuestionGroupViewController: UIViewController {
         
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
+        self.view.addSubview(self.tableView)
+        
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
     }
     
 }
