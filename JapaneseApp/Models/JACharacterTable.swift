@@ -15,6 +15,8 @@ public struct JACharacterTable: Codable {
         case katakana
     }
     
+    // MARK: - Instance Properties
+    
     public var title: String { return self.tableType.rawValue.capitalized }
     public var tableType: TableType
     public var characters: [JACharacter]

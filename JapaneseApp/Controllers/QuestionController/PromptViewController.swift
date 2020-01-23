@@ -20,13 +20,24 @@ public class PromptViewController: UIViewController {
         super.viewDidLoad()
         
         self.promptLabel = UILabel()
-        self.promptLabel.text = "Test lable 123"
-        
         self.promptLabel.textAlignment = .left
         self.promptLabel.numberOfLines = 0
         self.promptLabel.font = .preferredFont(forTextStyle: .largeTitle)
         
+        self.setupView()
+    }
+    
+    // MARK: - Instance Methods
+    
+    public func set(prompt: String) {
+        self.promptLabel.text = prompt
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
         self.view.addSubview(self.promptLabel)
+        
         self.promptLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.promptLabel.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -34,12 +45,6 @@ public class PromptViewController: UIViewController {
             self.promptLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.promptLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
         ])
-    }
-    
-    // MARK: - Instance Methods
-    
-    public func set(prompt: String) {
-        self.promptLabel.text = prompt
     }
         
 }

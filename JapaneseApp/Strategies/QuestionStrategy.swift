@@ -10,15 +10,18 @@ import Foundation
 
 public protocol QuestionStrategy: AnyObject {
     
-
+    var didCompleteQuestionGroup: ((QuestionGroupHandler) -> Void)? { get set }
     var title: String { get }
-
-    func advanceToNextQuestion() -> Bool
+    var numberOfQuestions: Int { get }
+    var currentQuestionAnswerObservable: Observable<String?> { get }
+    var currentQuestionIndex: Int { get }
+    
+    func completeQuestionGroup()
+    func advanceToNextQuestion(skip: Bool) -> Bool
+    func question(for index: Int) -> Question
     func currentQuestion() -> Question
-    func getAnswersForCurrentQuestion(amount: Int) -> [String]
-    func checkAnswer(selected: String) -> Bool
-    func markQuestionCorrect(_ question: Question)
-    func markQuestionIncorrect(_ question: Question)
+    func feedAnswersFor(question: Question, amount: Int) -> [String]
+    func checkAnswer() -> Bool?
     func questionIndexTitle() -> String
     
 }

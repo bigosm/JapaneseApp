@@ -24,6 +24,11 @@ public protocol QuestionViewControllerDelegate: AnyObject {
 
 public class QuestionViewController: UIViewController {
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.primaryBackgroundColor
+    private var themeSecondaryBackgroundColor = Theme.secondaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     public var questionStrategy: QuestionStrategy! {
@@ -32,8 +37,6 @@ public class QuestionViewController: UIViewController {
         }
     }
 
-    public var questionView = QuestionView()
-    
     public weak var delegate: QuestionViewControllerDelegate?
     
     private lazy var questionIndexItem: UIBarButtonItem = {
@@ -42,68 +45,46 @@ public class QuestionViewController: UIViewController {
         return item
     }()
     
-    private var promptController = PromptViewController()
-    private var answerController = AnswerViewController()
     private var questionNavigationController = QuestionNavigationViewController()
+    
+    private var collectionView: UICollectionView!
+    private var basicCellIdentifier = "basicCellIdentifier"
 
     // MARK: - View Lifecycle
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(named: "background")
         
-        self.createView(with: [
-            self.promptController,
-            self.answerController,
-            self.questionNavigationController
-        ])
+        self.view.backgroundColor = self.themeBackgroundColor
         
-        let promptView = self.promptController.view!
-        promptView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            promptView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            promptView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            promptView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
-            promptView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.scrollDirection = .horizontal
+
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        self.collectionView.backgroundColor = self.themeBackgroundColor
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.allowsSelection = true
+        self.collectionView.isPagingEnabled = true
+        self.collectionView.isScrollEnabled = false
+        self.collectionView.showsHorizontalScrollIndicator = false
         
-        let answerView = self.answerController.view!
-        answerView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            answerView.topAnchor.constraint(equalTo: promptView.bottomAnchor, constant: 20),
-            answerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            answerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
-            answerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
+        self.setupView()
         
-        let questionNavigationView = self.questionNavigationController.view!
-        questionNavigationView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            questionNavigationView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            questionNavigationView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            questionNavigationView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            questionNavigationView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
-        ])
+        self.collectionView.register(QuestionCell.self, forCellWithReuseIdentifier: self.basicCellIdentifier)
         
-        self.answerController.selectedAnswerHandler = { [weak self] selectedAnswer in
-            guard let _ = selectedAnswer else {
-                self?.questionNavigationController.checkButton.isEnabled = false
-                return
-            }
-            
-            self?.questionNavigationController.checkButton.isEnabled = true
+        self.questionStrategy.currentQuestionAnswerObservable.addObserver(self, options: [.initial, .new]) { value, option  in
+            self.questionNavigationController.checkButton.isEnabled = value != nil
         }
         
         self.questionNavigationController.skipButtonAction = { [weak self] in
-            self?.showNextQuestion()
+            self?.showNextQuestion(skip: true)
         }
         
         self.questionNavigationController.checkButtonAction = { [weak self] in
-            if let selectedAnswer = self?.answerController.selectedAnswer {
-                return self?.questionStrategy.checkAnswer(selected: selectedAnswer)
-            }
-            
-            return nil
+            return self?.questionStrategy.checkAnswer()
         }
         
         self.questionNavigationController.continueButtonAction = { [weak self] in
@@ -118,12 +99,11 @@ public class QuestionViewController: UIViewController {
         self.showQuestion()
     }
     
-    // MARK: - Instance Methods
-    
-    @objc func toggleAnsweLabel(_ sender: Any) {
-        self.questionView.hintLabel.isHidden.toggle()
-        self.questionView.answerLabel.isHidden.toggle()
+    deinit {
+        self.questionStrategy.currentQuestionAnswerObservable.removeObserver(self)
     }
+    
+    // MARK: - Instance Methods
     
     @objc func handleCancelButton(_ sender: Any) {
         self.delegate?.questionViewController(self, didCancel: self.questionStrategy)
@@ -140,22 +120,94 @@ public class QuestionViewController: UIViewController {
     }
     
     private func showQuestion() {
-        
         let question = self.questionStrategy.currentQuestion()
-        self.answerController.configure(with: self.questionStrategy.getAnswersForCurrentQuestion(amount: 4))
         self.questionIndexItem.title = self.questionStrategy.questionIndexTitle()
-    
-        self.promptController.set(prompt: question.prompt)
         self.questionNavigationController.set(correctAnswer: question.answer)
     }
     
-    private func showNextQuestion() {
-        guard self.questionStrategy.advanceToNextQuestion() else {
+    private func showNextQuestion(skip: Bool = false) {
+        guard self.questionStrategy.advanceToNextQuestion(skip: skip) else {
             self.delegate?.questionViewController(self, didComplete: self.questionStrategy)
             return
         }
         
+        let currentQuestionIndex = IndexPath(item: self.questionStrategy.currentQuestionIndex, section: 0)
+        
+        if skip {
+            let lastQuestionIndex = IndexPath(item: self.questionStrategy.numberOfQuestions - 1, section: 0)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [currentQuestionIndex])
+                self.collectionView.insertItems(at: [lastQuestionIndex])
+            }, completion: nil)
+        }
+        
+        self.collectionView.scrollToItem(at: currentQuestionIndex, at: .left, animated: true)
+        
         self.showQuestion()
     }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
+        self.view.addSubview(self.collectionView)
+        self.createView(with: [
+            self.questionNavigationController
+        ])
+        
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
 
+        let questionNavigationView = self.questionNavigationController.view!
+        questionNavigationView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            questionNavigationView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            questionNavigationView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            questionNavigationView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            questionNavigationView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
+        ])
+    }
+
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension QuestionViewController: UICollectionViewDataSource {
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.questionStrategy.numberOfQuestions
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.basicCellIdentifier, for: indexPath) as! QuestionCell
+        let question = self.questionStrategy.question(for: indexPath.item)
+        let feed = self.questionStrategy.feedAnswersFor(question: question, amount: 4)
+        
+        cell.configure(with: question, feed: feed)
+        
+        cell.answerController.selectedAnswerHandler = { [weak self] selectedAnswer in
+            self?.questionStrategy.currentQuestionAnswerObservable.value = selectedAnswer
+        }
+        
+        return cell
+    }
+
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension QuestionViewController: UICollectionViewDelegate {}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension QuestionViewController: UICollectionViewDelegateFlowLayout {
+    
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
 }

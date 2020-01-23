@@ -10,6 +10,10 @@ import UIKit
 
 public class TextFieldCell: UITableViewCell {
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.secondaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     public var textDidChange: ((String) -> ())?
@@ -25,17 +29,10 @@ public class TextFieldCell: UITableViewCell {
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.addSubview(self.textField)
-        self.textField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            self.textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            self.textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
-            self.textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
-        ])
-        
         self.textField.delegate = self
         self.textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
+        self.setupView()
     }
     
     @available(*, unavailable)
@@ -47,6 +44,20 @@ public class TextFieldCell: UITableViewCell {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         self.textDidChange?(textField.text!)
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
+        self.addSubview(self.textField)
+        
+        self.textField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.textField.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            self.textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            self.textField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            self.textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+        ])
     }
     
 }

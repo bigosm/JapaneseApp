@@ -10,6 +10,8 @@ import Foundation
 
 public struct JACharacter: Codable {
     
+    // MARK: - Instance Properties
+    
     public var character: String
     public var phonetic: String
     public var recordURL: String?

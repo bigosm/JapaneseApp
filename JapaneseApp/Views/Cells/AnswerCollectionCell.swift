@@ -10,25 +10,29 @@ import UIKit
 
 public class AnswerCollectionCell: UICollectionViewCell {
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.secondaryBackgroundColor
+    private var themeSelectedColor = Theme.tertiaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     public var answerLabel = UILabel()
     
     public override var isSelected: Bool {
         didSet {
-            self.backgroundColor = self.isSelected ? self.selectedColor : self.notSelectedColor
+            self.backgroundColor = self.isSelected
+                ? self.themeSelectedColor
+                : self.themeBackgroundColor
         }
     }
-    
-    private var selectedColor = UIColor.darkGray
-    private var notSelectedColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
     
     // MARK: - Object Lifecycle
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.backgroundColor = self.notSelectedColor
+        self.backgroundColor = self.themeBackgroundColor
         self.layer.cornerRadius = 15
         self.clipsToBounds = true
         
@@ -36,17 +40,7 @@ public class AnswerCollectionCell: UICollectionViewCell {
         self.answerLabel.font = .preferredFont(forTextStyle: .largeTitle)
         self.answerLabel.textAlignment = .center
 
-        self.addSubview(self.answerLabel)
-        self.answerLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.answerLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.answerLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.answerLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            self.answerLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
-        ])
-        
-        
-
+        self.setupView()
     }
     
     @available(*, unavailable)
@@ -58,6 +52,20 @@ public class AnswerCollectionCell: UICollectionViewCell {
     
     public func configure(with answer: String) {
         self.answerLabel.text = answer
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
+        self.addSubview(self.answerLabel)
+        
+        self.answerLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.answerLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.answerLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.answerLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.answerLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+        ])
     }
     
 }

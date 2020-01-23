@@ -10,6 +10,10 @@ import UIKit
 
 public class AnswerViewController: UIViewController {
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.primaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     public var collectionView: UICollectionView!
@@ -26,6 +30,8 @@ public class AnswerViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = self.themeBackgroundColor
+        
         let inset: CGFloat = 20
         let itemWidth: CGFloat = (UIScreen.main.bounds.width - inset * 3) / 2
         let flowLayout = UICollectionViewFlowLayout()
@@ -36,6 +42,9 @@ public class AnswerViewController: UIViewController {
         flowLayout.scrollDirection = .vertical
 
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        
+        self.collectionView.backgroundColor = self.themeBackgroundColor
+        
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.allowsSelection = true
@@ -43,15 +52,7 @@ public class AnswerViewController: UIViewController {
         
         self.collectionView.register(AnswerCollectionCell.self, forCellWithReuseIdentifier: self.basicCellIdentifier)
         
-        self.view.addSubview(self.collectionView)
-        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.collectionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 420)
-        ])
+        self.setupView()
     }
     
     // MARK: - Instance methods
@@ -60,6 +61,20 @@ public class AnswerViewController: UIViewController {
         self.answerList = answerList
         self.selectedAnswer = nil
         self.collectionView.reloadData()
+    }
+    
+    // MARK: - View Position Layout
+    
+    private func setupView() {
+        self.view.addSubview(self.collectionView)
+        
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
     }
     
 }
@@ -97,4 +112,3 @@ extension AnswerViewController: UICollectionViewDelegate {
     }
     
 }
-

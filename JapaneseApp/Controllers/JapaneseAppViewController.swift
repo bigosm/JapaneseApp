@@ -10,11 +10,17 @@ import UIKit
 
 public class JapaneseAppViewController: UIViewController{
     
+    // MARK: - Theme
+    
+    private var themeBackgroundColor = Theme.primaryBackgroundColor
+    private var themeSecondaryBackgroundColor = Theme.secondaryBackgroundColor
+    
     // MARK: - Instance Properties
     
     private let appSettings = AppSettings.shared
     
     public var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    fileprivate var selecectedCell: QuestionGroupCell?
     private var basicCellIdentifier = "basicCellIdentifier"
     private var questionGroupCellIdentifier = "QuestionGroupCell"
 
@@ -27,14 +33,7 @@ public class JapaneseAppViewController: UIViewController{
         set { self.characterTablesCaretaker.selectedCharacterTable = newValue }
     }
     
-    private let questionGroupCaretaker = QuestionGroupCaretaker()
-    private var questionGroups: [QuestionGroup] {
-        return self.questionGroupCaretaker.questionGroups
-    }
-    private var selectedQuestionGroup: QuestionGroup! {
-        get { return self.questionGroupCaretaker.selectedQuestionGroup }
-        set { self.questionGroupCaretaker.selectedQuestionGroup = newValue }
-    }
+    private let questionRepository = QuestionRepository()
     
     // MARK: - View Lifecycle
     
@@ -42,21 +41,15 @@ public class JapaneseAppViewController: UIViewController{
         super.viewDidLoad()
         
         self.title = "Japanese App"
+        self.tableView.backgroundColor = self.themeBackgroundColor
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.basicCellIdentifier)
         self.tableView.register(QuestionGroupCell.self, forCellReuseIdentifier: self.questionGroupCellIdentifier)
-        
-        self.view.addSubview(self.tableView)
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "outline_more_horiz_black_36pt"),
@@ -68,6 +61,8 @@ public class JapaneseAppViewController: UIViewController{
             barButtonSystemItem: .add,
             target: self,
             action: #selector(self.handleAddQuestionButton(_:)))
+        
+        self.setupView()
     }
     
     // MARK: - Instance Methods
@@ -90,6 +85,20 @@ public class JapaneseAppViewController: UIViewController{
             completion: nil)
     }
     
+    // MARK: - View Position Layout
+    
+    private func setupView() {
+        self.view.addSubview(self.tableView)
+        
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -103,7 +112,7 @@ extension JapaneseAppViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return self.characterTableList.count
-        case 1: return self.questionGroups.count
+        case 1: return self.questionRepository.numberOfQuestionGroups
         default:
             fatalError()
         }
@@ -116,13 +125,26 @@ extension JapaneseAppViewController: UITableViewDataSource {
             let characterTable = self.characterTableList[indexPath.row]
             
             cell.textLabel?.text = characterTable.title
+            cell.backgroundColor = self.themeSecondaryBackgroundColor
             
             return cell
         case 1:
             let cell = self.tableView.dequeueReusableCell(withIdentifier: self.questionGroupCellIdentifier, for: indexPath) as! QuestionGroupCell
-            let questionGroup = self.questionGroups[indexPath.row]
-            
-            cell.titleLabel.text = questionGroup.title
+
+            cell.titleLabel.text = self.questionRepository.title(forQuestionGroupAt: indexPath.row)
+            let questionLevel = self.questionRepository.level(forQuestionGroupAt: indexPath.row)
+            cell.levelLabel.text = "Level \(questionLevel)"
+            cell.startButtonHandler = { [weak self] in
+                let vc = QuestionViewController()
+                vc.delegate = self
+                vc.questionStrategy = self?.questionRepository.questionStrategy(forQuestionGroupAt: indexPath.row)
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            cell.historyButtonHandler = { [weak self] in
+                let vc = QuestionHistoryViewController()
+                vc.questionGroupHandler = self?.questionRepository.questionGroupHandler(forQuestionGroupAt: indexPath.row)
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
             
             return cell
         default:
@@ -145,28 +167,31 @@ extension JapaneseAppViewController: UITableViewDelegate {
         }
     }
     
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
-    }
-    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.section {
         case 0:
             self.selectedCharacterTable = self.characterTableList[indexPath.row]
-            self.selectedQuestionGroup = nil
             let vc = CharacterTableViewController()
             vc.delegate = self
             vc.characterTable = self.selectedCharacterTable
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            self.selectedCharacterTable = nil
-            self.selectedQuestionGroup = self.questionGroups[indexPath.row]
-            let vc = QuestionViewController()
-            vc.delegate = self
-            vc.questionStrategy = self.appSettings.questionStrategy(for: self.questionGroupCaretaker)
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.selecectedCell?.toggleBody()
+            
+            if let cell = tableView.cellForRow(at: indexPath) as? QuestionGroupCell {
+                if self.selecectedCell == cell {
+                    self.selecectedCell = nil
+                } else {
+                    cell.toggleBody()
+                    self.selecectedCell = cell
+                }
+            }
+            
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        
         default:
             fatalError()
         }
@@ -183,6 +208,7 @@ extension JapaneseAppViewController: QuestionViewControllerDelegate {
     }
     
     public func questionViewController(_ controller: QuestionViewController, didComplete questionStrategy: QuestionStrategy) {
+        questionStrategy.completeQuestionGroup()
         self.navigationController?.popToViewController(self, animated: true)
     }
     
@@ -200,16 +226,14 @@ extension JapaneseAppViewController: AppSettingsViewControllerDelegate {
 
 // MARK: - CreateQuestionGroupViewControllerDelegate
 
-extension JapaneseAppViewController :CreateQuestionGroupViewControllerDelegate {
+extension JapaneseAppViewController: CreateQuestionGroupViewControllerDelegate {
     
     public func createQuestionGroupViewControllerDidCancel(_ controller: CreateQuestionGroupViewController) {
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     public func createQuestionGroupViewController(_ controller: CreateQuestionGroupViewController, created questionGroup: QuestionGroup) {
-        self.questionGroupCaretaker.questionGroups.append(questionGroup)
-        try? self.questionGroupCaretaker.save()
-        
+        self.questionRepository.addNewQuestionGroup(questionGroup)
         self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
         self.tableView.reloadData()
     }
