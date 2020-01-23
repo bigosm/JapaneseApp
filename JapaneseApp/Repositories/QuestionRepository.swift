@@ -35,6 +35,10 @@ public class QuestionRepository {
         self.questionGroupCaretaker.questionGroups[index].questionLevel
     }
     
+    public func experience(forQuestionGroupAt index: Int) -> Int {
+        self.questionGroupAnswersCaretaker.questionGroupAnswersList[index].experienceEarned
+    }
+    
     public var numberOfQuestionGroups: Int {
         return self.questionGroupCaretaker.questionGroups.count
     }
@@ -44,10 +48,14 @@ public class QuestionRepository {
         let questionStrategy = self.appSettings.questionStrategy(for: questionGroupHandler)
         questionStrategy.didCompleteQuestionGroup = { [weak self] questionGroupHandler in
             if let currentAnswers = questionGroupHandler.questionGroupAnswersData.current {
+                currentAnswers.experienceEarned = ExperienceService.shared
+                    .experience(forQuestionAnswers: currentAnswers.questionAnswers)
                 questionGroupHandler.questionGroupAnswersData.questionGroupAnswers.append(currentAnswers)
                 questionGroupHandler.questionGroupAnswersData.current = nil
                 try? self?.questionGroupAnswersCaretaker.save()
             }
+            
+            print("QuestionGroup: \(questionGroupHandler.questionGroup.title), experience: \(questionGroupHandler.questionGroupAnswersData.experienceEarned)xp")
         }
         return questionStrategy
     }

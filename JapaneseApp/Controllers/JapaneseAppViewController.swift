@@ -134,6 +134,7 @@ extension JapaneseAppViewController: UITableViewDataSource {
             cell.titleLabel.text = self.questionRepository.title(forQuestionGroupAt: indexPath.row)
             let questionLevel = self.questionRepository.level(forQuestionGroupAt: indexPath.row)
             cell.levelLabel.text = "Level \(questionLevel)"
+            cell.experienceLabel.text = "Experience: \(self.questionRepository.experience(forQuestionGroupAt: indexPath.row)) xp"
             cell.startButtonHandler = { [weak self] in
                 let vc = QuestionViewController()
                 vc.delegate = self

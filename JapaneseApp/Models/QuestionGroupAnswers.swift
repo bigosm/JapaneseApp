@@ -14,6 +14,7 @@ public class QuestionGroupAnswers: Codable {
     
     public var endDate: Date?
     public var questionAnswers: [QuestionAnswer]
+    public var experienceEarned = 0
     public var startDate: Date
     
     // MARK: - Object Lifecycle

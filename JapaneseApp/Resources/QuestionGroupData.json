@@ -4,42 +4,48 @@
         "title": "Hiragana 1",
         "questions": [
             {
-                "prompt": "Select the correct characteer(s) for \"i\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "i",
                 "answer": "い",
                 "wrongAnswers": [
                     "ち", "に", "さ", "ん", "よ"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"chi\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "chi",
                 "answer": "ち",
                 "wrongAnswers": [
                     "い", "に", "さ", "ん", "よ"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"ni\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "ni",
                 "answer": "に",
                 "wrongAnswers": [
                     "い", "ち", "さ", "ん", "よ"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"sa\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "sa",
                 "answer": "さ",
                 "wrongAnswers": [
                     "い", "ち", "に", "ん", "よ"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"n\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "n",
                 "answer": "ん",
                 "wrongAnswers": [
                     "い", "ち", "に", "さ", "よ"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"yo\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "yo",
                 "answer": "よ",
                 "wrongAnswers": [
                     "い", "ち", "に", "さ", "ん"
@@ -52,42 +58,48 @@
         "title": "Hiragana 2",
         "questions": [
             {
-                "prompt": "Select the correct characteer(s) for \"ro\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "ro",
                 "answer": "ろ",
                 "wrongAnswers": [
                     "く", "な", "あ", "お", "き"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"ku\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "ku",
                 "answer": "く",
                 "wrongAnswers": [
                     "ろ", "な", "あ", "お", "き"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"na\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "na",
                 "answer": "な",
                 "wrongAnswers": [
                     "ろ", "く", "あ", "お", "き"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"a\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "a",
                 "answer": "あ",
                 "wrongAnswers": [
                     "ろ", "く", "な","お", "き"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"o\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "o",
                 "answer": "お",
                 "wrongAnswers": [
                     "ろ", "く", "な", "あ", "き"
                 ]
             },
             {
-                "prompt": "Select the correct characteer(s) for \"ki\"",
+                "prompt": "Select the correct characteer(s) for:",
+                "subject": "ki",
                 "answer": "き",
                 "wrongAnswers": [
                     "ろ", "く", "な", "あ", "お"
