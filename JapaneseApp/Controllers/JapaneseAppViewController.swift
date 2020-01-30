@@ -25,10 +25,10 @@ public class JapaneseAppViewController: UIViewController{
     private var questionGroupCellIdentifier = "QuestionGroupCell"
 
     private let characterTablesCaretaker = CharacterTablesCaretaker()
-    private var characterTableList: [JACharacterTable] {
+    private var characterTableList: [CharacterTable] {
         return self.characterTablesCaretaker.characterTableList
     }
-    private var selectedCharacterTable: JACharacterTable! {
+    private var selectedCharacterTable: CharacterTable! {
         get { return self.characterTablesCaretaker.selectedCharacterTable }
         set { self.characterTablesCaretaker.selectedCharacterTable = newValue }
     }

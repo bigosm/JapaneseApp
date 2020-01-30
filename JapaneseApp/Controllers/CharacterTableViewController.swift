@@ -35,7 +35,7 @@ public class CharacterTableViewController: UIViewController {
     public var tableView = UITableView(frame: .zero, style: .insetGrouped)
     private var basicCellIdentifier = "basicCellIdentifier1"
     
-    public var characterTable: JACharacterTable!
+    public var characterTable: CharacterTable!
 
     // MARK: - View Lifecycle
     
@@ -80,9 +80,9 @@ extension CharacterTableViewController: UITableViewDataSource {
             UITableViewCell(style: .value1, reuseIdentifier: self.basicCellIdentifier)
         let character = self.characterTable.characters[indexPath.row]
 
-        cell.textLabel?.text = character.character
+        cell.textLabel?.text = character.value
         cell.textLabel?.font = .preferredFont(forTextStyle: .largeTitle)
-        cell.detailTextLabel?.text = character.phonetic
+        cell.detailTextLabel?.text = character.romajiNotation
         cell.backgroundColor = self.themeSecondaryBackgroundColor
         
         return cell
