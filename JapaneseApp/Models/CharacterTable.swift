@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CharacterTable: Codable {
+public struct CharacterTable {
 
     public enum TableType: String, Codable {
         case hiragana
@@ -18,10 +18,14 @@ public struct CharacterTable: Codable {
     // MARK: - Instance Properties
     
     public var title: String { return self.type.rawValue.capitalized }
-    public var type: TableType
-    public var characters: [Character]
+    public let type: TableType
+    public let characters: [Character]
+    
+}
 
-    // MARK: - Codable
+// MARK: - Codable
+
+extension CharacterTable: Codable {
     
     private enum CodingKeys: String, CodingKey {
         case type, characters
@@ -47,7 +51,6 @@ public struct CharacterTable: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(type.rawValue, forKey: .type)
         try container.encode(characters, forKey: .characters)
-
     }
     
 }

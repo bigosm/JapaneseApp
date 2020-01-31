@@ -8,7 +8,9 @@
 
 import Foundation
 
-protocol Writable {
+public protocol Writable {
+    
+    // MARK: - Instance Properties
     
     var id: String { get }
     var value: String { get }

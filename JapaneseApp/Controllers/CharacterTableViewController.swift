@@ -14,11 +14,11 @@ public protocol CharacterTableViewControllerDelegate: AnyObject {
     
     func characterTableViewController(
         _ controller: CharacterTableViewController,
-        didCancel characterTable: JACharacterTable)
+        didCancel characterTable: CharacterTable)
     
     func characterTableViewController(
         _ controller: CharacterTableViewController,
-        didComplete characterTable: JACharacterTable)
+        didComplete characterTable: CharacterTable)
     
 }
 

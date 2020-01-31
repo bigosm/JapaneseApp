@@ -1,0 +1,68 @@
+[
+    {
+        "id": "voc-hiragana-ichi-one",
+        "value": "いち",
+        "kanaNotation": "いち",
+        "romajiNotation": "ichi",
+        "audio": null,
+        "definition": {
+            "value": "one",
+            "type": "numeric"
+        }
+    },
+    {
+        "id": "voc-hiragana-ni-two",
+        "value": "に",
+        "kanaNotation": "に",
+        "romajiNotation": "ni",
+        "audio": null,
+        "definition": {
+            "value": "two",
+            "type": "numeric"
+        }
+    },
+    {
+        "id": "voc-hiragana-san-three",
+        "value": "に",
+        "kanaNotation": "に",
+        "romajiNotation": "ni",
+        "audio": null,
+        "definition": {
+            "value": "three",
+            "type": "numeric"
+        }
+    },
+    {
+        "id": "voc-hiragana-yon-four",
+        "value": "よん",
+        "kanaNotation": "よん",
+        "romajiNotation": "yon",
+        "audio": null,
+        "definition": {
+            "value": "four",
+            "type": "numeric"
+        }
+    },
+    {
+        "id": "voc-hiragana-roku-six",
+        "value": "ろく",
+        "kanaNotation": "ろく",
+        "romajiNotation": "roku",
+        "audio": null,
+        "definition": {
+            "value": "six",
+            "type": "numeric"
+        }
+    },
+    {
+        "id": "voc-hiragana-nana-seven",
+        "value": "なな",
+        "kanaNotation": "なな",
+        "romajiNotation": "nana",
+        "audio": null,
+        "definition": {
+            "value": "seven",
+            "type": "numeric"
+        }
+    },
+]

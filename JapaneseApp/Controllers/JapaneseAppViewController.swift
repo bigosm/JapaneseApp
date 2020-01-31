@@ -24,16 +24,16 @@ public class JapaneseAppViewController: UIViewController{
     private var basicCellIdentifier = "basicCellIdentifier"
     private var questionGroupCellIdentifier = "QuestionGroupCell"
 
-    private let characterTablesCaretaker = CharacterTablesCaretaker()
+    private let characterTablesCaretaker = CharacterRepository.shared
     private var characterTableList: [CharacterTable] {
-        return self.characterTablesCaretaker.characterTableList
+        return self.characterTablesCaretaker.tables
     }
     private var selectedCharacterTable: CharacterTable! {
-        get { return self.characterTablesCaretaker.selectedCharacterTable }
-        set { self.characterTablesCaretaker.selectedCharacterTable = newValue }
+        get { return self.characterTablesCaretaker.selectedTable }
+        set { self.characterTablesCaretaker.selectedTable = newValue }
     }
     
-    private let questionRepository = QuestionRepository()
+    private let questionRepository = QuestionRepository.shared
     
     // MARK: - View Lifecycle
     
@@ -77,12 +77,12 @@ public class JapaneseAppViewController: UIViewController{
     }
     
     @objc func handleAddQuestionButton(_ sender: Any) {
-        let vc = CreateQuestionGroupViewController()
-        vc.delegate = self
-        self.navigationController?.present(
-            UINavigationController(rootViewController: vc),
-            animated: true,
-            completion: nil)
+//        let vc = CreateQuestionGroupViewController()
+//        vc.delegate = self
+//        self.navigationController?.present(
+//            UINavigationController(rootViewController: vc),
+//            animated: true,
+//            completion: nil)
     }
     
     // MARK: - View Position Layout
@@ -132,20 +132,20 @@ extension JapaneseAppViewController: UITableViewDataSource {
             let cell = self.tableView.dequeueReusableCell(withIdentifier: self.questionGroupCellIdentifier, for: indexPath) as! QuestionGroupCell
 
             cell.titleLabel.text = self.questionRepository.title(forQuestionGroupAt: indexPath.row)
-            let questionLevel = self.questionRepository.level(forQuestionGroupAt: indexPath.row)
-            cell.levelLabel.text = "Level \(questionLevel)"
-            cell.experienceLabel.text = "Experience: \(self.questionRepository.experience(forQuestionGroupAt: indexPath.row)) xp"
-            cell.startButtonHandler = { [weak self] in
-                let vc = QuestionViewController()
-                vc.delegate = self
-                vc.questionStrategy = self?.questionRepository.questionStrategy(forQuestionGroupAt: indexPath.row)
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
-            cell.historyButtonHandler = { [weak self] in
-                let vc = QuestionHistoryViewController()
-                vc.questionGroupHandler = self?.questionRepository.questionGroupHandler(forQuestionGroupAt: indexPath.row)
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
+//            let questionLevel = self.questionRepository.level(forQuestionGroupAt: indexPath.row)
+//            cell.levelLabel.text = "Level \(questionLevel)"
+//            cell.experienceLabel.text = "Experience: \(self.questionRepository.experience(forQuestionGroupAt: indexPath.row)) xp"
+//            cell.startButtonHandler = { [weak self] in
+//                let vc = QuestionViewController()
+//                vc.delegate = self
+//                vc.questionStrategy = self?.questionRepository.questionStrategy(forQuestionGroupAt: indexPath.row)
+//                self?.navigationController?.pushViewController(vc, animated: true)
+//            }
+//            cell.historyButtonHandler = { [weak self] in
+//                let vc = QuestionHistoryViewController()
+//                vc.questionGroupHandler = self?.questionRepository.questionGroupHandler(forQuestionGroupAt: indexPath.row)
+//                self?.navigationController?.pushViewController(vc, animated: true)
+//            }
             
             return cell
         default:
@@ -227,29 +227,29 @@ extension JapaneseAppViewController: AppSettingsViewControllerDelegate {
 
 // MARK: - CreateQuestionGroupViewControllerDelegate
 
-extension JapaneseAppViewController: CreateQuestionGroupViewControllerDelegate {
-    
-    public func createQuestionGroupViewControllerDidCancel(_ controller: CreateQuestionGroupViewController) {
-        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    public func createQuestionGroupViewController(_ controller: CreateQuestionGroupViewController, created questionGroup: QuestionGroup) {
-        self.questionRepository.addNewQuestionGroup(questionGroup)
-        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
-        self.tableView.reloadData()
-    }
-    
-}
+//extension JapaneseAppViewController: CreateQuestionGroupViewControllerDelegate {
+//
+//    public func createQuestionGroupViewControllerDidCancel(_ controller: CreateQuestionGroupViewController) {
+//        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
+//    }
+//
+//    public func createQuestionGroupViewController(_ controller: CreateQuestionGroupViewController, created questionGroup: QuestionGroup) {
+////        self.questionRepository.addNewQuestionGroup(questionGroup)
+//        self.navigationController?.presentedViewController?.dismiss(animated: true, completion: nil)
+//        self.tableView.reloadData()
+//    }
+//
+//}
 
 // MARK: - CharacterTableViewControllerDelegate
 
 extension JapaneseAppViewController: CharacterTableViewControllerDelegate {
     
-    public func characterTableViewController(_ controller: CharacterTableViewController, didCancel characterTable: JACharacterTable) {
+    public func characterTableViewController(_ controller: CharacterTableViewController, didCancel characterTable: CharacterTable) {
         self.navigationController?.popToViewController(self, animated: true)
     }
     
-    public func characterTableViewController(_ controller: CharacterTableViewController, didComplete characterTable: JACharacterTable) {
+    public func characterTableViewController(_ controller: CharacterTableViewController, didComplete characterTable: CharacterTable) {
         self.navigationController?.popToViewController(self, animated: true)
     }
 

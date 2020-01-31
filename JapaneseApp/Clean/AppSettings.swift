@@ -39,9 +39,9 @@ public class AppSettings {
     
     // MARK: - Instance Methods
     
-    public func questionStrategy(for questionGroupHandler: QuestionGroupHandler) -> QuestionStrategy {
-        return self.questionStrategyType.questionStrategy(for: questionGroupHandler)
-    }
+//    public func questionStrategy(for questionGroupHandler: QuestionGroupHandler) -> QuestionStrategy {
+//        return self.questionStrategyType.questionStrategy(for: questionGroupHandler)
+//    }
 
 }
 
@@ -61,11 +61,11 @@ public enum QuestionStrategyType: Int, CaseIterable {
         }
     }
     
-    public func questionStrategy(for questionGroupHandler: QuestionGroupHandler) -> QuestionStrategy {
-        switch self {
-        case .random: return RandomQuestionStrategy(questionGroupHandler: questionGroupHandler)
-        case .sequential: return SequentionalQuestionStrategy(questionGroupHandler: questionGroupHandler)
-        }
-    }
+//    public func questionStrategy(for questionGroupHandler: QuestionGroupHandler) -> QuestionStrategy {
+//        switch self {
+//        case .random: return RandomQuestionStrategy(questionGroupHandler: questionGroupHandler)
+//        case .sequential: return SequentionalQuestionStrategy(questionGroupHandler: questionGroupHandler)
+//        }
+//    }
 
 }

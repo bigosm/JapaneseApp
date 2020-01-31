@@ -1,0 +1,55 @@
+[
+    {
+        "id": "hiragana-1",
+        "title": "Hiragana 1",
+        "requirements": [],
+        "levels": [
+            {
+                "id": "hiragana-1-level-1",
+                "level": 1,
+                "characters": [
+                    "hiragana-i",
+                    "hiragana-chi",
+                    "hiragana-ni",
+                ],
+                "vocabulary": [
+                    "voc-hiragana-ichi-one",
+                    "voc-hiragana-ni-two",
+                ],
+                "phrases": [],
+                "questions": []
+            },
+            {
+                "id": "voc-hiragana-1-level-2",
+                "level": 2,
+                "characters": [
+                    "hiragana-sa",
+                    "hiragana-n",
+                    "hiragana-yo",
+                ],
+                "vocabulary": [
+                    "voc-hiragana-san-three",
+                    "voc-hiragana-yon-four",
+                ],
+                "phrases": [],
+                "questions": []
+            },
+            {
+                "id": "hiragana-1-level-3",
+                "level": 3,
+                "characters": [
+                    "hiragana-ro",
+                    "hiragana-ku",
+                    "hiragana-na",
+                ],
+                "vocabulary": [
+                    "voc-hiragana-roku-six",
+                    "voc-hiragana-nana-seven"
+                ],
+                "phrases": [],
+                "questions": []
+            }
+        ]
+    }
+
+]
