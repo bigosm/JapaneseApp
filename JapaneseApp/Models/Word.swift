@@ -43,7 +43,7 @@ extension Word: Codable {
         self.value = try values.decode(String.self, forKey: .value)
         self.kanaNotation = try values.decodeIfPresent(String.self, forKey: .kanaNotation)
         self.romajiNotation = try values.decode(String.self, forKey: .romajiNotation)
-        self.audio = try values.decode(String.self, forKey: .audio)
+        self.audio = try values.decodeIfPresent(String.self, forKey: .audio)
         
         self.meaning = try values.decode(String.self, forKey: .meaning)
         let decodedWordType = try values.decode(String.self, forKey: .type)

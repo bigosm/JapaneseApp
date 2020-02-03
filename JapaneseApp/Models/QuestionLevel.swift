@@ -17,6 +17,6 @@ public struct QuestionLevel: Codable {
     public let characters: [String]
     public let vocabulary: [String]
     public let phrases: [String]
-    public let questions: [Question]
+//    public let questions: [Question]
     
 }
