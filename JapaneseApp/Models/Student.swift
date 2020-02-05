@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Student: Codable {
+public struct Student: Codable, Equatable {
     
     // MARK: - Instance Properties
     

@@ -9,7 +9,7 @@
 import Foundation
 
 
-public struct Experience: Codable {
+public struct Experience: Codable, Equatable {
     
     public var totalExperience: Int
     public var currentLevelExperience: Int

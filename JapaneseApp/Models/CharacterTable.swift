@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CharacterTable {
+public struct CharacterTable: Equatable {
 
     public enum TableType: String, Codable {
         case hiragana

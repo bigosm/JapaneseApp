@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Character: Writable, Codable {
+public struct Character: Writable, Codable, Equatable {
     
     // MARK: - Instance Properties
     

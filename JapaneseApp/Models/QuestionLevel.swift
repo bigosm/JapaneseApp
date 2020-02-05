@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct QuestionLevel: Codable {
+public struct QuestionLevel: Codable, Equatable {
     
     // MARK: - Instance Properties
     
