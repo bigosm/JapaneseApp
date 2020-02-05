@@ -30,6 +30,8 @@
 		1F17691B23E86A9400912335 /* StudentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691A23E86A9400912335 /* StudentState.swift */; };
 		1F43DA5723EB016700CED94A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43DA5623EB016700CED94A /* Button.swift */; };
 		1F45ACF923CC9FE1006B3C8D /* JACharacterTableList.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F45ACF823CC9FE1006B3C8D /* JACharacterTableList.json */; };
+		1F4DABF723EB1841005C92BA /* QuestionGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */; };
+		1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF923EB2031005C92BA /* AppStore.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
 		1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D8123DA11C2004C25DC /* String+Extension.swift */; };
 		1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */; };
@@ -80,6 +82,8 @@
 		1F17691A23E86A9400912335 /* StudentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentState.swift; sourceTree = "<group>"; };
 		1F43DA5623EB016700CED94A /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1F45ACF823CC9FE1006B3C8D /* JACharacterTableList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JACharacterTableList.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupViewModel.swift; sourceTree = "<group>"; };
+		1F4DABF923EB2031005C92BA /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1F531D8123DA11C2004C25DC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		1F17690623E861A100912335 /* ReArchitecture */ = {
 			isa = PBXGroup;
 			children = (
+				1F4DABF823EB2024005C92BA /* Store */,
 				1F17691023E863E700912335 /* Actions */,
 				1F17690F23E863D900912335 /* Reducers */,
 				1F17690E23E863D600912335 /* States */,
@@ -181,6 +186,22 @@
 				1F43DA5623EB016700CED94A /* Button.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		1F4DABF523EB182B005C92BA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1F4DABF823EB2024005C92BA /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				1F4DABF923EB2031005C92BA /* AppStore.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		1F531D7923D9D0CF004C25DC /* Theme */ = {
@@ -245,6 +266,7 @@
 				1FC741FA23BF70F000244938 /* Resources */,
 				1F531D7923D9D0CF004C25DC /* Theme */,
 				1FAAC40223C607340015EDC0 /* Utilities */,
+				1F4DABF523EB182B005C92BA /* ViewModels */,
 				1FC741FB23BF718000244938 /* Views */,
 			);
 			path = JapaneseApp;
@@ -460,11 +482,13 @@
 				1F1768EC23E320F800912335 /* Student.swift in Sources */,
 				1F1768E023E3129100912335 /* Word.swift in Sources */,
 				1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */,
+				1F4DABF723EB1841005C92BA /* QuestionGroupViewModel.swift in Sources */,
 				1F17691B23E86A9400912335 /* StudentState.swift in Sources */,
 				1F1768DE23E304C400912335 /* Writable.swift in Sources */,
 				1F8F10C623BF94350001981C /* JapaneseAppViewController.swift in Sources */,
 				1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */,
 				1F1768EE23E3212F00912335 /* Experience.swift in Sources */,
+				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
 				1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */,
 				1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */,
 			);

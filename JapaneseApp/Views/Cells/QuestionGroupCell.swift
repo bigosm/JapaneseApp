@@ -12,9 +12,11 @@ public class QuestionGroupCell: UITableViewCell {
     
     // MARK: - Instance Properties
     
+    fileprivate let viewModel: QuestionGroupViewModelType = QuestionGroupViewModel()
+    
     override public var isSelected: Bool {
         didSet {
-            self.toggleView.isHidden = !self.isSelected
+            self.viewModel.inputs.setSelected(with: self.isSelected)
         }
     }
     
@@ -27,6 +29,7 @@ public class QuestionGroupCell: UITableViewCell {
     public var titleLabel = UILabel()
     public var levelLabel = UILabel()
     public var experienceLabel = UILabel()
+    public var lockLabel = UIImageView()
     
     // MARK: Body
     
@@ -61,17 +64,23 @@ public class QuestionGroupCell: UITableViewCell {
         self.practiceButton.setTitle("practice", for: .normal)
         self.practiceButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         
-        self.timePracticeButton.setTitle(" practice", for: .normal)
+        self.timePracticeButton.setTitle("practice", for: .normal)
         self.timePracticeButton.setImage(UIImage(named: "baseline_timer_black_24pt"), for: .normal)
         self.timePracticeButton.imageView?.contentMode = .scaleAspectFit
-        self.timePracticeButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 16)
+        self.timePracticeButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 2)
+        self.timePracticeButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: -2)
+        self.timePracticeButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8+2, bottom: 8, right: 16+2)
         self.timePracticeButton.isEnabled = false
+        
+        self.lockLabel.image = UIImage(named: "baseline_lock_black_24pt")
+        self.lockLabel.tintColor = Theme.primaryColor
 
         self.historyButton.addTarget(self, action: #selector(self.handleHistoryButton(_:)), for: .touchUpInside)
         self.practiceButton.addTarget(self, action: #selector(self.handlePracticeButton(_:)), for: .touchUpInside)
         self.timePracticeButton.addTarget(self, action: #selector(self.handleTimePracticeButton(_:)), for: .touchUpInside)
         
         self.setupView()
+        self.bindViewModel()
     }
     
     @available(*, unavailable)
@@ -81,19 +90,50 @@ public class QuestionGroupCell: UITableViewCell {
     
     // MARK: - Instance Methods
     
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        self.viewModel.inputs.prepareForReuse()
+    }
+    
+    public func configureWith(questionGroupAtIndex index: Int) {
+        self.viewModel.inputs.configureWith(questionGroupAtIndex: index)
+    }
+    
     @objc func handleHistoryButton(_ sender: Any) {
-        print("handleHistoryButton ")
+        self.viewModel.inputs.historyButtonTapped()
     }
     
     @objc func handlePracticeButton(_ sender: Any) {
-        print("handlePracticeButton ")
+        self.viewModel.inputs.practiceButtonTapped()
     }
     
     @objc func handleTimePracticeButton(_ sender: Any) {
-        print("handleTimePracticeButton ")
+        self.viewModel.inputs.timedPracticeButtonTapped()
     }
     
     // MARK: - View Position Layout
+    
+    private func bindViewModel() {
+        self.viewModel.outputs.title.addObserver(self, options: [.new]) { value, _ in
+            self.titleLabel.text = value
+        }
+        
+        self.viewModel.outputs.level.addObserver(self, options: [.new]) { value, _ in
+            self.levelLabel.text = value
+        }
+        
+        self.viewModel.outputs.experience.addObserver(self, options: [.new]) { value, _ in
+            self.experienceLabel.text = value
+        }
+        
+        self.viewModel.outputs.isBodyHidden.addObserver(self, options: [.new]) { value, _ in
+            self.toggleView.isHidden = value
+        }
+        
+        self.viewModel.outputs.isLocked.addObserver(self, options: [.new]) { value, _ in
+            self.lockLabel.isHidden = !value
+        }
+    }
     
     private func setupView() {
         self.addSubview(self.stackView)
@@ -103,6 +143,7 @@ public class QuestionGroupCell: UITableViewCell {
         self.mainView.addSubview(self.titleLabel)
         self.mainView.addSubview(self.levelLabel)
         self.mainView.addSubview(self.experienceLabel)
+        self.mainView.addSubview(self.lockLabel)
         self.toggleView.addSubview(self.historyButton)
         self.toggleView.addSubview(self.practiceButton)
         self.toggleView.addSubview(self.timePracticeButton)
@@ -147,6 +188,14 @@ public class QuestionGroupCell: UITableViewCell {
             self.experienceLabel.topAnchor.constraint(equalTo: self.levelLabel.bottomAnchor, constant: 5),
             self.experienceLabel.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor),
             self.experienceLabel.trailingAnchor.constraint(equalTo: self.titleLabel.trailingAnchor)
+        ])
+        
+        self.lockLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.lockLabel.bottomAnchor.constraint(equalTo: self.groupImage.bottomAnchor),
+            self.lockLabel.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -20),
+            self.lockLabel.heightAnchor.constraint(equalToConstant: 30),
+            self.lockLabel.widthAnchor.constraint(equalToConstant: 30)
         ])
         
         // MARK: Body

@@ -12,3 +12,13 @@ import ReSwift
 public struct SelectQuestionGroup: Action {
     let indexOf: Int
 }
+
+public struct StartPractice: Action {
+    let questionGroup: QuestionGroup
+}
+public struct StartTimedPractice: Action {
+    let questionGroup: QuestionGroup
+}
+public struct ViewHistory: Action {
+    let questionGroup: QuestionGroup
+}
