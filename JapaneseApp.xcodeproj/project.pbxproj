@@ -260,11 +260,9 @@
 			children = (
 				1FC741F723BF70C000244938 /* AppDelegate */,
 				1FAAC3FF23C6058E0015EDC0 /* CareTakers */,
-				1FC741F823BF70E000244938 /* Controllers */,
 				1FC741F923BF70E900244938 /* Models */,
 				1F17690623E861A100912335 /* ReArchitecture */,
 				1FC741FA23BF70F000244938 /* Resources */,
-				1F531D7923D9D0CF004C25DC /* Theme */,
 				1FAAC40223C607340015EDC0 /* Utilities */,
 				1F4DABF523EB182B005C92BA /* ViewModels */,
 				1FC741FB23BF718000244938 /* Views */,
@@ -334,9 +332,11 @@
 		1FC741FB23BF718000244938 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1F43DA5523EB015600CED94A /* Custom */,
 				1F8F10C723BF99200001981C /* Cells */,
+				1FC741F823BF70E000244938 /* Controllers */,
+				1F43DA5523EB015600CED94A /* Custom */,
 				1FC741E023BF6AE600244938 /* LaunchScreen.storyboard */,
+				1F531D7923D9D0CF004C25DC /* Theme */,
 			);
 			path = Views;
 			sourceTree = "<group>";
