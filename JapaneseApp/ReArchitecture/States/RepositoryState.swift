@@ -9,12 +9,21 @@
 import Foundation
 import ReSwift
 
-public struct RepositoryState: StateType {
+public struct RepositoryState: StateType, Equatable {
     
     var characterTables: [CharacterTable]
     var vocabulary: [Word]
-    var questionGroups: [QuestionGroup]
+    private var questionGroups: [QuestionGroup]
     
+    public var numberOfQuestionGroups: Int { return self.questionGroups.count }
+    
+    public func getQuestionGroup(atIndex index: Int) -> QuestionGroup {
+        return self.questionGroups[index]
+    }
+    
+    public func getQuestionGroup(byId id: String) -> QuestionGroup? {
+        return self.questionGroups.first { $0.id == id }
+    }
 }
 
 extension RepositoryState {

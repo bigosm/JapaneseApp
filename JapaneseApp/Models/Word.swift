@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Word: Writable {
+public struct Word: Writable, Equatable {
     
     public enum WordType: String, Codable {
         case noun

@@ -10,66 +10,77 @@ import UIKit
 
 public class QuestionGroupCell: UITableViewCell {
     
-    // MARK: - Theme
-
-    private var themePrimaryColor = Theme.primaryColor
-    private var themeBackgroundColor = Theme.secondaryBackgroundColor
-    private var themeButtonColor = Theme.primaryButtonColor
-    private var themeButtonTitleColor = Theme.primaryButtonTitleColor
-    private var themeButtonFont = UIFont.systemFont(ofSize: 20)
-    
-    private var themeBasicCornerRadius: CGFloat = 10
-    
     // MARK: - Instance Properties
+    
+    fileprivate let viewModel: QuestionGroupViewModelType = QuestionGroupViewModel()
+    
+    override public var isSelected: Bool {
+        didSet {
+            self.viewModel.inputs.setSelected(with: self.isSelected)
+        }
+    }
     
     public var stackView = UIStackView()
     
     // MARK: Header
     
-    public var headerView = UIView()
+    public var mainView = UIView()
+    public var groupImage = UIImageView()
     public var titleLabel = UILabel()
     public var levelLabel = UILabel()
+    public var experienceLabel = UILabel()
+    public var lockLabel = UIImageView()
     
     // MARK: Body
     
-    public var bodyView = UIView()
-    public var experienceLabel = UILabel()
-    public var historyButton = UIButton(type: .system)
-    public var historyButtonHandler: (() -> Void)?
-    public var startButton = UIButton(type: .system)
-    public var startButtonHandler: (() -> Void)?
+    public var toggleView = UIView()
+    public var historyButton = Button(customType: .primary)
+    public var practiceButton = Button(customType: .primaryRounded)
+    public var timePracticeButton = Button(customType: .primaryRounded)
     
     // MARK: - Object Lifecycle
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.backgroundColor = self.themeBackgroundColor
+        self.backgroundColor = Theme.primaryBackgroundColor
+        self.selectionStyle = .none
         
         self.stackView.axis = .vertical
 
         // MARK: Header View
         
+        self.groupImage.image = UIImage(named: "hiragana-1")
         self.titleLabel.font = .preferredFont(forTextStyle: .headline)
-        self.levelLabel.textAlignment = .right
 
         // MARK: Body View
         
-        self.bodyView.isHidden = true
+        self.toggleView.isHidden = true
         
-        self.historyButton.setTitle("history", for: .normal)
-        self.historyButton.setImage(UIImage(systemName: "history"), for: .normal)
-        self.historyButton.setTitleColor(self.themePrimaryColor, for: .normal)
-        self.startButton.setTitle("practice", for: .normal)
-        self.startButton.backgroundColor = self.themeButtonColor
-        self.startButton.tintColor = self.themeButtonTitleColor
-        self.startButton.titleLabel?.font = self.themeButtonFont
-        self.startButton.layer.cornerRadius = self.themeBasicCornerRadius
+        self.historyButton.setImage(UIImage(named: "baseline_history_black_36pt"), for: .normal)
+        self.historyButton.imageView?.contentMode = .scaleAspectFit
+        self.historyButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 6, bottom: 8, right: 6)
+
+        self.practiceButton.setTitle("practice", for: .normal)
+        self.practiceButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        
+        self.timePracticeButton.setTitle("practice", for: .normal)
+        self.timePracticeButton.setImage(UIImage(named: "baseline_timer_black_24pt"), for: .normal)
+        self.timePracticeButton.imageView?.contentMode = .scaleAspectFit
+        self.timePracticeButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 2)
+        self.timePracticeButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: -2)
+        self.timePracticeButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8+2, bottom: 8, right: 16+2)
+        self.timePracticeButton.isEnabled = false
+        
+        self.lockLabel.image = UIImage(named: "baseline_lock_black_24pt")
+        self.lockLabel.tintColor = Theme.primaryColor
 
         self.historyButton.addTarget(self, action: #selector(self.handleHistoryButton(_:)), for: .touchUpInside)
-        self.startButton.addTarget(self, action: #selector(self.handleStartButton(_:)), for: .touchUpInside)
+        self.practiceButton.addTarget(self, action: #selector(self.handlePracticeButton(_:)), for: .touchUpInside)
+        self.timePracticeButton.addTarget(self, action: #selector(self.handleTimePracticeButton(_:)), for: .touchUpInside)
         
         self.setupView()
+        self.bindViewModel()
     }
     
     @available(*, unavailable)
@@ -79,29 +90,63 @@ public class QuestionGroupCell: UITableViewCell {
     
     // MARK: - Instance Methods
     
-    public func toggleBody() {
-        self.bodyView.isHidden.toggle()
+    public override func prepareForReuse() {
+        super.prepareForReuse()
+        self.viewModel.inputs.prepareForReuse()
+    }
+    
+    public func configureWith(questionGroupAtIndex index: Int) {
+        self.viewModel.inputs.configureWith(questionGroupAtIndex: index)
     }
     
     @objc func handleHistoryButton(_ sender: Any) {
-        self.historyButtonHandler?()
+        self.viewModel.inputs.historyButtonTapped()
     }
     
-    @objc func handleStartButton(_ sender: Any) {
-        self.startButtonHandler?()
+    @objc func handlePracticeButton(_ sender: Any) {
+        self.viewModel.inputs.practiceButtonTapped()
+    }
+    
+    @objc func handleTimePracticeButton(_ sender: Any) {
+        self.viewModel.inputs.timedPracticeButtonTapped()
     }
     
     // MARK: - View Position Layout
     
+    private func bindViewModel() {
+        self.viewModel.outputs.title.addObserver(self, options: [.new]) { value, _ in
+            self.titleLabel.text = value
+        }
+        
+        self.viewModel.outputs.level.addObserver(self, options: [.new]) { value, _ in
+            self.levelLabel.text = value
+        }
+        
+        self.viewModel.outputs.experience.addObserver(self, options: [.new]) { value, _ in
+            self.experienceLabel.text = value
+        }
+        
+        self.viewModel.outputs.isBodyHidden.addObserver(self, options: [.new]) { value, _ in
+            self.toggleView.isHidden = value
+        }
+        
+        self.viewModel.outputs.isLocked.addObserver(self, options: [.new]) { value, _ in
+            self.lockLabel.isHidden = !value
+        }
+    }
+    
     private func setupView() {
         self.addSubview(self.stackView)
-        self.stackView.addArrangedSubview(self.headerView)
-        self.stackView.addArrangedSubview(self.bodyView)
-        self.headerView.addSubview(self.levelLabel)
-        self.headerView.addSubview(self.titleLabel)
-        self.bodyView.addSubview(self.experienceLabel)
-        self.bodyView.addSubview(self.historyButton)
-        self.bodyView.addSubview(self.startButton)
+        self.stackView.addArrangedSubview(self.mainView)
+        self.stackView.addArrangedSubview(self.toggleView)
+        self.mainView.addSubview(self.groupImage)
+        self.mainView.addSubview(self.titleLabel)
+        self.mainView.addSubview(self.levelLabel)
+        self.mainView.addSubview(self.experienceLabel)
+        self.mainView.addSubview(self.lockLabel)
+        self.toggleView.addSubview(self.historyButton)
+        self.toggleView.addSubview(self.practiceButton)
+        self.toggleView.addSubview(self.timePracticeButton)
         
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         let stackViewBottom =  self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
@@ -115,52 +160,68 @@ public class QuestionGroupCell: UITableViewCell {
         
         // MARK: Header
         
-        self.headerView.translatesAutoresizingMaskIntoConstraints = false
+        self.groupImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.headerView.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        self.levelLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.levelLabel.topAnchor.constraint(equalTo: self.headerView.topAnchor),
-            self.levelLabel.widthAnchor.constraint(equalToConstant: 80),
-            self.levelLabel.bottomAnchor.constraint(equalTo: self.headerView.bottomAnchor),
-            self.levelLabel.trailingAnchor.constraint(equalTo: self.headerView.trailingAnchor, constant: -10)
+            self.groupImage.topAnchor.constraint(equalTo: self.mainView.topAnchor, constant: 20),
+            self.groupImage.leadingAnchor.constraint(equalTo: self.mainView.leadingAnchor, constant: 20),
+            self.groupImage.bottomAnchor.constraint(equalTo: self.mainView.bottomAnchor, constant: -20),
+            self.groupImage.widthAnchor.constraint(equalToConstant: 100),
+            self.groupImage.heightAnchor.constraint(equalToConstant: 100)
         ])
         
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.headerView.topAnchor),
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.headerView.leadingAnchor, constant: 10),
-            self.titleLabel.bottomAnchor.constraint(equalTo: self.headerView.bottomAnchor),
-            self.titleLabel.trailingAnchor.constraint(equalTo: self.levelLabel.leadingAnchor)
+            self.titleLabel.topAnchor.constraint(equalTo: self.groupImage.topAnchor),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.groupImage.trailingAnchor, constant: 10),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -20)
+        ])
+        
+        self.levelLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.levelLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10),
+            self.levelLabel.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor),
+            self.levelLabel.trailingAnchor.constraint(equalTo: self.titleLabel.trailingAnchor)
+        ])
+        
+        self.experienceLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.experienceLabel.topAnchor.constraint(equalTo: self.levelLabel.bottomAnchor, constant: 5),
+            self.experienceLabel.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor),
+            self.experienceLabel.trailingAnchor.constraint(equalTo: self.titleLabel.trailingAnchor)
+        ])
+        
+        self.lockLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.lockLabel.bottomAnchor.constraint(equalTo: self.groupImage.bottomAnchor),
+            self.lockLabel.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -20),
+            self.lockLabel.heightAnchor.constraint(equalToConstant: 30),
+            self.lockLabel.widthAnchor.constraint(equalToConstant: 30)
         ])
         
         // MARK: Body
         
-        self.experienceLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.practiceButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.experienceLabel.topAnchor.constraint(equalTo: self.bodyView.topAnchor, constant: 10),
-            self.experienceLabel.leadingAnchor.constraint(equalTo: self.bodyView.leadingAnchor, constant: 10),
-            self.experienceLabel.bottomAnchor.constraint(equalTo: self.startButton.topAnchor, constant: -10),
-            self.experienceLabel.trailingAnchor.constraint(equalTo: self.historyButton.leadingAnchor, constant: -10)
+            self.practiceButton.topAnchor.constraint(equalTo: self.toggleView.topAnchor),
+            self.practiceButton.bottomAnchor.constraint(equalTo: self.toggleView.bottomAnchor, constant: -20),
+            self.practiceButton.trailingAnchor.constraint(equalTo: self.toggleView.trailingAnchor, constant: -20),
+            self.practiceButton.heightAnchor.constraint(equalToConstant: self.practiceButton.buttonHeight)
+        ])
+        
+        self.timePracticeButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.timePracticeButton.bottomAnchor.constraint(equalTo: self.practiceButton.bottomAnchor),
+            self.timePracticeButton.trailingAnchor.constraint(equalTo: self.practiceButton.leadingAnchor, constant: -10),
+            self.timePracticeButton.heightAnchor.constraint(equalToConstant: self.timePracticeButton.buttonHeight)
         ])
         
         self.historyButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.historyButton.topAnchor.constraint(equalTo: self.bodyView.topAnchor, constant: 10),
-            self.historyButton.bottomAnchor.constraint(equalTo: self.startButton.topAnchor, constant: -10),
-            self.historyButton.trailingAnchor.constraint(equalTo: self.bodyView.trailingAnchor, constant: -10),
-            self.historyButton.heightAnchor.constraint(equalToConstant: 40),
-            self.historyButton.widthAnchor.constraint(equalToConstant: 70)
-        ])
-        
-        self.startButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.startButton.leadingAnchor.constraint(equalTo: self.bodyView.leadingAnchor, constant: 10),
-            self.startButton.bottomAnchor.constraint(equalTo: self.bodyView.bottomAnchor, constant: -10),
-            self.startButton.trailingAnchor.constraint(equalTo: self.bodyView.trailingAnchor, constant: -10),
-            self.startButton.heightAnchor.constraint(equalToConstant: 40)
+            self.historyButton.bottomAnchor.constraint(equalTo: self.practiceButton.bottomAnchor),
+            self.historyButton.trailingAnchor.constraint(equalTo: self.timePracticeButton.leadingAnchor, constant: -10),
+            self.historyButton.heightAnchor.constraint(equalToConstant: self.historyButton.buttonHeight),
+            self.historyButton.widthAnchor.constraint(equalToConstant: self.historyButton.buttonHeight)
+
         ])
     }
     

@@ -17,8 +17,9 @@ public final class JapaneseAppViewController: UIViewController, StoreSubscriber 
     private var themeSecondaryBackgroundColor = Theme.secondaryBackgroundColor
     
     // MARK: - Instance Properties
+    fileprivate var selecectedCell: QuestionGroupCell?
 
-    public var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    public var tableView = UITableView()
     
     private var basicCellIdentifier = "basicCellIdentifier"
     private var questionGroupCellIdentifier = "QuestionGroupCell"
@@ -48,7 +49,7 @@ public final class JapaneseAppViewController: UIViewController, StoreSubscriber 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        store.subscribe(self) {
+        AppStore.shared.subscribe(self) {
             $0.select { $0.repositoryState }
         }
     }
@@ -56,7 +57,7 @@ public final class JapaneseAppViewController: UIViewController, StoreSubscriber 
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        store.unsubscribe(self)
+        AppStore.shared.unsubscribe(self)
     }
     
     // MARK: - Instance Methods
@@ -84,14 +85,14 @@ public final class JapaneseAppViewController: UIViewController, StoreSubscriber 
 extension JapaneseAppViewController: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.state.repositoryState.questionGroups.count
+        return AppStore.shared.state.repositoryState.numberOfQuestionGroups
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: self.questionGroupCellIdentifier, for: indexPath) as! QuestionGroupCell
 
-        cell.textLabel?.text = "test"
-        
+        cell.configureWith(questionGroupAtIndex: indexPath.row)
+
         return cell
     }
     
@@ -102,9 +103,16 @@ extension JapaneseAppViewController: UITableViewDataSource {
 extension JapaneseAppViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
+        tableView.cellForRow(at: indexPath)?.isSelected = true
         
-        store.dispatch(SelectQuestionGroup(indexOf: indexPath.row))
+//        AppStore.shared.dispatch(SelectQuestionGroup(indexOf: indexPath.row))
+
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
     
 }
