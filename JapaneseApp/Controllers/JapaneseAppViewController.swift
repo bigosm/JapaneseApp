@@ -17,8 +17,9 @@ public final class JapaneseAppViewController: UIViewController, StoreSubscriber 
     private var themeSecondaryBackgroundColor = Theme.secondaryBackgroundColor
     
     // MARK: - Instance Properties
+    fileprivate var selecectedCell: QuestionGroupCell?
 
-    public var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    public var tableView = UITableView()
     
     private var basicCellIdentifier = "basicCellIdentifier"
     private var questionGroupCellIdentifier = "QuestionGroupCell"
@@ -90,7 +91,9 @@ extension JapaneseAppViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: self.questionGroupCellIdentifier, for: indexPath) as! QuestionGroupCell
 
-        cell.textLabel?.text = "test"
+        cell.titleLabel.text = store.state.repositoryState.questionGroups[indexPath.row].title
+        cell.levelLabel.text = "Level 1/5"
+        cell.experienceLabel.text = "120 xp"
         
         return cell
     }
@@ -102,9 +105,16 @@ extension JapaneseAppViewController: UITableViewDataSource {
 extension JapaneseAppViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectRow(at: indexPath, animated: true)
+        tableView.cellForRow(at: indexPath)?.isSelected = true
         
         store.dispatch(SelectQuestionGroup(indexOf: indexPath.row))
+
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
     
 }

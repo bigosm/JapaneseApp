@@ -28,6 +28,7 @@
 		1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691623E869D500912335 /* RepositoryReducer.swift */; };
 		1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691823E86A7C00912335 /* StudentReducer.swift */; };
 		1F17691B23E86A9400912335 /* StudentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691A23E86A9400912335 /* StudentState.swift */; };
+		1F43DA5723EB016700CED94A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43DA5623EB016700CED94A /* Button.swift */; };
 		1F45ACF923CC9FE1006B3C8D /* JACharacterTableList.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F45ACF823CC9FE1006B3C8D /* JACharacterTableList.json */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
 		1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D8123DA11C2004C25DC /* String+Extension.swift */; };
@@ -77,6 +78,7 @@
 		1F17691623E869D500912335 /* RepositoryReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryReducer.swift; sourceTree = "<group>"; };
 		1F17691823E86A7C00912335 /* StudentReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentReducer.swift; sourceTree = "<group>"; };
 		1F17691A23E86A9400912335 /* StudentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentState.swift; sourceTree = "<group>"; };
+		1F43DA5623EB016700CED94A /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1F45ACF823CC9FE1006B3C8D /* JACharacterTableList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JACharacterTableList.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1F531D8123DA11C2004C25DC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -129,10 +131,10 @@
 		1F17690623E861A100912335 /* ReArchitecture */ = {
 			isa = PBXGroup;
 			children = (
-				1F17691323E868EA00912335 /* Utilities */,
 				1F17691023E863E700912335 /* Actions */,
 				1F17690F23E863D900912335 /* Reducers */,
 				1F17690E23E863D600912335 /* States */,
+				1F17691323E868EA00912335 /* Utilities */,
 			);
 			path = ReArchitecture;
 			sourceTree = "<group>";
@@ -171,6 +173,14 @@
 				1F17691423E868FE00912335 /* HelperFunctions.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1F43DA5523EB015600CED94A /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				1F43DA5623EB016700CED94A /* Button.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		1F531D7923D9D0CF004C25DC /* Theme */ = {
@@ -302,6 +312,7 @@
 		1FC741FB23BF718000244938 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F43DA5523EB015600CED94A /* Custom */,
 				1F8F10C723BF99200001981C /* Cells */,
 				1FC741E023BF6AE600244938 /* LaunchScreen.storyboard */,
 			);
@@ -445,6 +456,7 @@
 				1F17690823E861BB00912335 /* Actions.swift in Sources */,
 				1F8F10C023BF73590001981C /* QuestionGroup.swift in Sources */,
 				1F8F10C923BF992B0001981C /* QuestionGroupCell.swift in Sources */,
+				1F43DA5723EB016700CED94A /* Button.swift in Sources */,
 				1F1768EC23E320F800912335 /* Student.swift in Sources */,
 				1F1768E023E3129100912335 /* Word.swift in Sources */,
 				1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */,
