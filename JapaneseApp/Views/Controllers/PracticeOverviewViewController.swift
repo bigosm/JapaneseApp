@@ -9,7 +9,7 @@
 import UIKit
 import ReSwift
 
-public final class JapaneseAppViewController: UIViewController, StoreSubscriber {
+public final class PracticeOverviewViewController: UIViewController, StoreSubscriber {
     
     // MARK: - Theme
     
@@ -82,7 +82,7 @@ public final class JapaneseAppViewController: UIViewController, StoreSubscriber 
 
 // MARK: - UITableViewDataSource
 
-extension JapaneseAppViewController: UITableViewDataSource {
+extension PracticeOverviewViewController: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AppStore.shared.state.repositoryState.numberOfQuestionGroups
@@ -100,7 +100,7 @@ extension JapaneseAppViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension JapaneseAppViewController: UITableViewDelegate {
+extension PracticeOverviewViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = true

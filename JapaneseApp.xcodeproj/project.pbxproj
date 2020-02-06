@@ -36,7 +36,7 @@
 		1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D8123DA11C2004C25DC /* String+Extension.swift */; };
 		1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */; };
 		1F8F10C023BF73590001981C /* QuestionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10BF23BF73590001981C /* QuestionGroup.swift */; };
-		1F8F10C623BF94350001981C /* JapaneseAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C523BF94350001981C /* JapaneseAppViewController.swift */; };
+		1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */; };
 		1F8F10C923BF992B0001981C /* QuestionGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C823BF992B0001981C /* QuestionGroupCell.swift */; };
 		1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */; };
 		1FAAC40423C6074B0015EDC0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAC40323C6074B0015EDC0 /* Date+Extension.swift */; };
@@ -88,7 +88,7 @@
 		1F531D8123DA11C2004C25DC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
 		1F8F10BF23BF73590001981C /* QuestionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroup.swift; sourceTree = "<group>"; };
-		1F8F10C523BF94350001981C /* JapaneseAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapaneseAppViewController.swift; sourceTree = "<group>"; };
+		1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewController.swift; sourceTree = "<group>"; };
 		1F8F10C823BF992B0001981C /* QuestionGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupCell.swift; sourceTree = "<group>"; };
 		1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		1FAAC40323C6074B0015EDC0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */,
-				1F8F10C523BF94350001981C /* JapaneseAppViewController.swift */,
+				1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -485,7 +485,7 @@
 				1F4DABF723EB1841005C92BA /* QuestionGroupViewModel.swift in Sources */,
 				1F17691B23E86A9400912335 /* StudentState.swift in Sources */,
 				1F1768DE23E304C400912335 /* Writable.swift in Sources */,
-				1F8F10C623BF94350001981C /* JapaneseAppViewController.swift in Sources */,
+				1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */,
 				1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */,
 				1F1768EE23E3212F00912335 /* Experience.swift in Sources */,
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
