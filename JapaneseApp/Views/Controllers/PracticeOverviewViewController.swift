@@ -62,8 +62,6 @@ public final class PracticeOverviewViewController: UIViewController, StoreSubscr
     
     // MARK: - Instance Methods
     
-    
-    
     // MARK: - View Position Layout
     
     private func setupView() {

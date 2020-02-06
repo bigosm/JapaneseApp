@@ -34,6 +34,11 @@
 		1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF923EB2031005C92BA /* AppStore.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
 		1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D8123DA11C2004C25DC /* String+Extension.swift */; };
+		1F5F493023EC7C0800F17C13 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */; };
+		1F5F493223EC7C3200F17C13 /* PracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493123EC7C3200F17C13 /* PracticeViewModel.swift */; };
+		1F5F493423EC8E1600F17C13 /* CharacterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */; };
+		1F5F493723EC8EFB00F17C13 /* CharacterCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493623EC8EFB00F17C13 /* CharacterCollectionLayout.swift */; };
+		1F5F493923EC919B00F17C13 /* CharacterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493823EC919B00F17C13 /* CharacterCollectionCell.swift */; };
 		1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */; };
 		1F8F10C023BF73590001981C /* QuestionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10BF23BF73590001981C /* QuestionGroup.swift */; };
 		1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */; };
@@ -86,6 +91,11 @@
 		1F4DABF923EB2031005C92BA /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1F531D8123DA11C2004C25DC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
+		1F5F493123EC7C3200F17C13 /* PracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewModel.swift; sourceTree = "<group>"; };
+		1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewController.swift; sourceTree = "<group>"; };
+		1F5F493623EC8EFB00F17C13 /* CharacterCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionLayout.swift; sourceTree = "<group>"; };
+		1F5F493823EC919B00F17C13 /* CharacterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionCell.swift; sourceTree = "<group>"; };
 		1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
 		1F8F10BF23BF73590001981C /* QuestionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroup.swift; sourceTree = "<group>"; };
 		1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */,
+				1F5F493123EC7C3200F17C13 /* PracticeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -212,10 +223,19 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		1F5F493523EC8EEE00F17C13 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				1F5F493623EC8EFB00F17C13 /* CharacterCollectionLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		1F8F10C723BF99200001981C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				1F8F10C823BF992B0001981C /* QuestionGroupCell.swift */,
+				1F5F493823EC919B00F17C13 /* CharacterCollectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -293,6 +313,8 @@
 			children = (
 				1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */,
 				1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */,
+				1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */,
+				1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -332,6 +354,7 @@
 		1FC741FB23BF718000244938 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1F5F493523EC8EEE00F17C13 /* Layout */,
 				1F8F10C723BF99200001981C /* Cells */,
 				1FC741F823BF70E000244938 /* Controllers */,
 				1F43DA5523EB015600CED94A /* Custom */,
@@ -465,6 +488,7 @@
 				1FAAC41423C61B080015EDC0 /* Observable.swift in Sources */,
 				1F17691523E868FE00912335 /* HelperFunctions.swift in Sources */,
 				1F1768DA23E303AE00912335 /* CharacterTable.swift in Sources */,
+				1F5F493023EC7C0800F17C13 /* PracticeViewController.swift in Sources */,
 				1F1768DC23E303D200912335 /* Character.swift in Sources */,
 				1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */,
 				1F531D7823D9CD43004C25DC /* Theme.swift in Sources */,
@@ -473,6 +497,7 @@
 				1F17690523E85B2500912335 /* AppState.swift in Sources */,
 				1F17691223E8686D00912335 /* RepositoryState.swift in Sources */,
 				1FAAC40423C6074B0015EDC0 /* Date+Extension.swift in Sources */,
+				1F5F493423EC8E1600F17C13 /* CharacterCollectionViewController.swift in Sources */,
 				1F17690A23E861C700912335 /* AppReducer.swift in Sources */,
 				1F1768F023E3295F00912335 /* QuestionLevel.swift in Sources */,
 				1F17690823E861BB00912335 /* Actions.swift in Sources */,
@@ -483,9 +508,12 @@
 				1F1768E023E3129100912335 /* Word.swift in Sources */,
 				1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */,
 				1F4DABF723EB1841005C92BA /* QuestionGroupViewModel.swift in Sources */,
+				1F5F493923EC919B00F17C13 /* CharacterCollectionCell.swift in Sources */,
 				1F17691B23E86A9400912335 /* StudentState.swift in Sources */,
 				1F1768DE23E304C400912335 /* Writable.swift in Sources */,
 				1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */,
+				1F5F493223EC7C3200F17C13 /* PracticeViewModel.swift in Sources */,
+				1F5F493723EC8EFB00F17C13 /* CharacterCollectionLayout.swift in Sources */,
 				1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */,
 				1F1768EE23E3212F00912335 /* Experience.swift in Sources */,
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,

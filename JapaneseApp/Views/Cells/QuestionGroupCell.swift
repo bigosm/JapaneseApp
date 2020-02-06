@@ -111,7 +111,7 @@ public class QuestionGroupCell: UITableViewCell {
         self.viewModel.inputs.timedPracticeButtonTapped()
     }
     
-    // MARK: - View Position Layout
+    // MARK: - Binding
     
     private func bindViewModel() {
         self.viewModel.outputs.title.addObserver(self, options: [.new]) { value, _ in
@@ -134,6 +134,8 @@ public class QuestionGroupCell: UITableViewCell {
             self.lockLabel.isHidden = !value
         }
     }
+    
+    // MARK: - View Position Layout
     
     private func setupView() {
         self.addSubview(self.stackView)
