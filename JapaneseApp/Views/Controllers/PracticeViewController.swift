@@ -35,6 +35,7 @@ public final class PracticeViewController: UIViewController {
         self.listenButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         self.readingAidVisibilityButton.setImage(UIImage(named: "round_visibility_black_36pt"), for: .normal)
+        self.readingAidVisibilityButton.setImage(UIImage(named: "round_visibility_off_black_36pt"), for: .selected)
         self.readingAidVisibilityButton.imageView?.contentMode = .scaleAspectFit
         self.readingAidVisibilityButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
@@ -73,6 +74,7 @@ public final class PracticeViewController: UIViewController {
     }
     
     @objc func handleReadingAidVisibilityButton(_ sender: Any) {
+        self.readingAidVisibilityButton.isSelected.toggle()
         self.viewModel.inputs.readingAidVisibilityButtonTapped()
     }
 
