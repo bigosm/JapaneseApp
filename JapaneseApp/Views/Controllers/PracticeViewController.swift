@@ -16,7 +16,7 @@ public final class PracticeViewController: UIViewController {
     
     public let questionLabel = UILabel()
     public let questionSubject = CharacterCollectionViewController()
-    public let listenButton = Button(customType: .primaryRounded)
+    public let listenButton = Button(customType: .primary)
     public let readingAidVisibilityButton = Button(customType: .primary)
 
     // MARK: - View Lifecycle
@@ -30,15 +30,13 @@ public final class PracticeViewController: UIViewController {
         self.questionLabel.numberOfLines = 0
         self.questionLabel.font = .boldSystemFont(ofSize: 20)
         
-        self.listenButton.setTitle("listen", for: .normal)
-        self.listenButton.setImage(UIImage(named: "round_music_note_black_24pt"), for: .normal)
-        self.listenButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 2)
-        self.listenButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: -2)
-        self.listenButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8+2, bottom: 8, right: 16+2)
+        self.listenButton.setImage(UIImage(named: "round_music_note_black_36pt"), for: .normal)
+        self.readingAidVisibilityButton.imageView?.contentMode = .scaleAspectFit
+        self.listenButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         self.readingAidVisibilityButton.setImage(UIImage(named: "round_visibility_black_36pt"), for: .normal)
         self.readingAidVisibilityButton.imageView?.contentMode = .scaleAspectFit
-        self.readingAidVisibilityButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 6, bottom: 8, right: 6)
+        self.readingAidVisibilityButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         self.listenButton.addTarget(self, action: #selector(handleListenButton(_:)), for: .touchUpInside)
         self.readingAidVisibilityButton.addTarget(self, action: #selector(handleReadingAidVisibilityButton(_:)), for: .touchUpInside)
@@ -114,13 +112,14 @@ public final class PracticeViewController: UIViewController {
         NSLayoutConstraint.activate([
             self.listenButton.topAnchor.constraint(equalTo: self.questionSubject.view.bottomAnchor, constant: 20),
             self.listenButton.leadingAnchor.constraint(equalTo: self.questionLabel.leadingAnchor),
-            self.listenButton.heightAnchor.constraint(equalToConstant: self.listenButton.buttonHeight)
+            self.listenButton.heightAnchor.constraint(equalToConstant: self.listenButton.buttonHeight),
+            self.listenButton.widthAnchor.constraint(equalToConstant: self.listenButton.buttonHeight)
         ])
         
         self.readingAidVisibilityButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.readingAidVisibilityButton.topAnchor.constraint(equalTo: self.listenButton.topAnchor),
-            self.readingAidVisibilityButton.leadingAnchor.constraint(equalTo: self.listenButton.trailingAnchor, constant: 10),
+            self.readingAidVisibilityButton.leadingAnchor.constraint(equalTo: self.listenButton.trailingAnchor),
             self.readingAidVisibilityButton.heightAnchor.constraint(equalToConstant: self.readingAidVisibilityButton.buttonHeight),
             self.readingAidVisibilityButton.widthAnchor.constraint(equalToConstant: self.readingAidVisibilityButton.buttonHeight)
         ])
