@@ -9,9 +9,11 @@
 import Foundation
 import ReSwift
 
-public func appReducer(action: Action, state: AppState?) -> AppState {
+internal func appReducer(action: Action, state: AppState?) -> AppState {
     return AppState(
+        navigationState: navigationReducer(action: action, state: state?.navigationState),
         repositoryState: repositoryReducer(action: action, state: state?.repositoryState),
+        practiceState: practiceReducer(action: action, state: state?.practiceState),
         studentState: studentReducer(action: action, state: state?.studentState)
     )
 }

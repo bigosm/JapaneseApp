@@ -30,6 +30,10 @@
 		1F17691B23E86A9400912335 /* StudentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691A23E86A9400912335 /* StudentState.swift */; };
 		1F43DA5723EB016700CED94A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43DA5623EB016700CED94A /* Button.swift */; };
 		1F45ACF923CC9FE1006B3C8D /* JACharacterTableList.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F45ACF823CC9FE1006B3C8D /* JACharacterTableList.json */; };
+		1F48D44D23EDB7B70069B2D4 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D44C23EDB7B70069B2D4 /* NavigationState.swift */; };
+		1F48D44F23EDB7BF0069B2D4 /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */; };
+		1F48D45223EDB9360069B2D4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45123EDB9360069B2D4 /* Router.swift */; };
+		1F48D45423EDC8B00069B2D4 /* PracticeOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45323EDC8B00069B2D4 /* PracticeOverviewViewModel.swift */; };
 		1F4DABF723EB1841005C92BA /* QuestionGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */; };
 		1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF923EB2031005C92BA /* AppStore.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
@@ -39,6 +43,10 @@
 		1F5F493423EC8E1600F17C13 /* CharacterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */; };
 		1F5F493723EC8EFB00F17C13 /* CharacterCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493623EC8EFB00F17C13 /* CharacterCollectionLayout.swift */; };
 		1F5F493923EC919B00F17C13 /* CharacterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493823EC919B00F17C13 /* CharacterCollectionCell.swift */; };
+		1F5F493B23ED9FBB00F17C13 /* CharacterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493A23ED9FBB00F17C13 /* CharacterCellViewModel.swift */; };
+		1F5F493D23EDA18C00F17C13 /* CharacterCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493C23EDA18C00F17C13 /* CharacterCollectionViewModel.swift */; };
+		1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493E23EDAC6800F17C13 /* PracticeState.swift */; };
+		1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */; };
 		1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */; };
 		1F8F10C023BF73590001981C /* QuestionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10BF23BF73590001981C /* QuestionGroup.swift */; };
 		1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */; };
@@ -87,6 +95,10 @@
 		1F17691A23E86A9400912335 /* StudentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentState.swift; sourceTree = "<group>"; };
 		1F43DA5623EB016700CED94A /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1F45ACF823CC9FE1006B3C8D /* JACharacterTableList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JACharacterTableList.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		1F48D44C23EDB7B70069B2D4 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
+		1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducer.swift; sourceTree = "<group>"; };
+		1F48D45123EDB9360069B2D4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1F48D45323EDC8B00069B2D4 /* PracticeOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewModel.swift; sourceTree = "<group>"; };
 		1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupViewModel.swift; sourceTree = "<group>"; };
 		1F4DABF923EB2031005C92BA /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -96,6 +108,10 @@
 		1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewController.swift; sourceTree = "<group>"; };
 		1F5F493623EC8EFB00F17C13 /* CharacterCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionLayout.swift; sourceTree = "<group>"; };
 		1F5F493823EC919B00F17C13 /* CharacterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionCell.swift; sourceTree = "<group>"; };
+		1F5F493A23ED9FBB00F17C13 /* CharacterCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCellViewModel.swift; sourceTree = "<group>"; };
+		1F5F493C23EDA18C00F17C13 /* CharacterCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewModel.swift; sourceTree = "<group>"; };
+		1F5F493E23EDAC6800F17C13 /* PracticeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeState.swift; sourceTree = "<group>"; };
+		1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeReducer.swift; sourceTree = "<group>"; };
 		1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
 		1F8F10BF23BF73590001981C /* QuestionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroup.swift; sourceTree = "<group>"; };
 		1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +176,8 @@
 				1F17690423E85B2500912335 /* AppState.swift */,
 				1F17691123E8686D00912335 /* RepositoryState.swift */,
 				1F17691A23E86A9400912335 /* StudentState.swift */,
+				1F5F493E23EDAC6800F17C13 /* PracticeState.swift */,
+				1F48D44C23EDB7B70069B2D4 /* NavigationState.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -170,6 +188,8 @@
 				1F17690923E861C700912335 /* AppReducer.swift */,
 				1F17691623E869D500912335 /* RepositoryReducer.swift */,
 				1F17691823E86A7C00912335 /* StudentReducer.swift */,
+				1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */,
+				1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -198,11 +218,22 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		1F48D45023EDB92E0069B2D4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1F48D45123EDB9360069B2D4 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		1F4DABF523EB182B005C92BA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */,
+				1F5F493A23ED9FBB00F17C13 /* CharacterCellViewModel.swift */,
+				1F5F493C23EDA18C00F17C13 /* CharacterCollectionViewModel.swift */,
+				1F48D45323EDC8B00069B2D4 /* PracticeOverviewViewModel.swift */,
 				1F5F493123EC7C3200F17C13 /* PracticeViewModel.swift */,
+				1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -278,6 +309,7 @@
 		1FC741D423BF6AE000244938 /* JapaneseApp */ = {
 			isa = PBXGroup;
 			children = (
+				1F48D45023EDB92E0069B2D4 /* Router */,
 				1FC741F723BF70C000244938 /* AppDelegate */,
 				1FAAC3FF23C6058E0015EDC0 /* CareTakers */,
 				1FC741F923BF70E900244938 /* Models */,
@@ -485,9 +517,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F48D45223EDB9360069B2D4 /* Router.swift in Sources */,
 				1FAAC41423C61B080015EDC0 /* Observable.swift in Sources */,
 				1F17691523E868FE00912335 /* HelperFunctions.swift in Sources */,
 				1F1768DA23E303AE00912335 /* CharacterTable.swift in Sources */,
+				1F5F493B23ED9FBB00F17C13 /* CharacterCellViewModel.swift in Sources */,
+				1F48D44D23EDB7B70069B2D4 /* NavigationState.swift in Sources */,
 				1F5F493023EC7C0800F17C13 /* PracticeViewController.swift in Sources */,
 				1F1768DC23E303D200912335 /* Character.swift in Sources */,
 				1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */,
@@ -507,17 +542,22 @@
 				1F1768EC23E320F800912335 /* Student.swift in Sources */,
 				1F1768E023E3129100912335 /* Word.swift in Sources */,
 				1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */,
+				1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */,
 				1F4DABF723EB1841005C92BA /* QuestionGroupViewModel.swift in Sources */,
 				1F5F493923EC919B00F17C13 /* CharacterCollectionCell.swift in Sources */,
 				1F17691B23E86A9400912335 /* StudentState.swift in Sources */,
+				1F48D44F23EDB7BF0069B2D4 /* NavigationReducer.swift in Sources */,
 				1F1768DE23E304C400912335 /* Writable.swift in Sources */,
 				1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */,
 				1F5F493223EC7C3200F17C13 /* PracticeViewModel.swift in Sources */,
 				1F5F493723EC8EFB00F17C13 /* CharacterCollectionLayout.swift in Sources */,
+				1F48D45423EDC8B00069B2D4 /* PracticeOverviewViewModel.swift in Sources */,
 				1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */,
 				1F1768EE23E3212F00912335 /* Experience.swift in Sources */,
+				1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */,
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
 				1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */,
+				1F5F493D23EDA18C00F17C13 /* CharacterCollectionViewModel.swift in Sources */,
 				1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

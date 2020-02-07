@@ -13,12 +13,17 @@ public struct SelectQuestionGroup: Action {
     let indexOf: Int
 }
 
-public struct StartPractice: Action {
-    let questionGroup: QuestionGroup
-}
-public struct StartTimedPractice: Action {
-    let questionGroup: QuestionGroup
-}
 public struct ViewHistory: Action {
     let questionGroup: QuestionGroup
+}
+
+public enum PracticeAction: Action {
+    case cancel
+    case toggleReadingAid
+    case startPractice(QuestionGroup)
+    case startTimePractice(QuestionGroup)
+}
+
+public enum RepositoryAction: Action {
+    case selectQuestionGroupAtIndex(Int)
 }

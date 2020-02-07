@@ -9,6 +9,6 @@
 import Foundation
 import ReSwift
 
-public func studentReducer(action: Action, state: StudentState?) -> StudentState {
+internal func studentReducer(action: Action, state: StudentState?) -> StudentState {
     return state ?? StudentState()
 }

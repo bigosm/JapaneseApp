@@ -9,20 +9,15 @@
 import UIKit
 import ReSwift
 
-public final class PracticeOverviewViewController: UIViewController, StoreSubscriber {
-    
-    // MARK: - Theme
-    
-    private var themeBackgroundColor = Theme.primaryBackgroundColor
-    private var themeSecondaryBackgroundColor = Theme.secondaryBackgroundColor
+public final class PracticeOverviewViewController: UIViewController {
     
     // MARK: - Instance Properties
-    fileprivate var selecectedCell: QuestionGroupCell?
-
-    public var tableView = UITableView()
     
-    private var basicCellIdentifier = "basicCellIdentifier"
-    private var questionGroupCellIdentifier = "QuestionGroupCell"
+    private let viewModel: PracticeOverviewViewModelType = PracticeOverviewViewModel()
+    private let basicCellIdentifier = "basicCellIdentifier"
+    private let questionGroupCellIdentifier = "QuestionGroupCell"
+    
+    public var tableView = UITableView()
     
     // MARK: - View Lifecycle
     
@@ -30,7 +25,7 @@ public final class PracticeOverviewViewController: UIViewController, StoreSubscr
         super.viewDidLoad()
         
         self.title = "Japanese App"
-        self.tableView.backgroundColor = self.themeBackgroundColor
+        self.tableView.backgroundColor = Theme.primaryBackgroundColor
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -40,27 +35,27 @@ public final class PracticeOverviewViewController: UIViewController, StoreSubscr
         self.tableView.register(QuestionGroupCell.self, forCellReuseIdentifier: self.questionGroupCellIdentifier)
         
         self.setupView()
+        self.bindViewModel()
+        self.viewModel.inputs.viewDidLoad()
     }
-    
-    public func newState(state: RepositoryState) {
-        
-    }
-    
+
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        AppStore.shared.subscribe(self) {
-            $0.select { $0.repositoryState }
-        }
+        self.viewModel.inputs.viewWillAppear()
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        AppStore.shared.unsubscribe(self)
+        self.viewModel.inputs.viewWillDisappear()
     }
     
     // MARK: - Instance Methods
+    
+    // MARK: - Bindings
+    
+    private func bindViewModel() { }
     
     // MARK: - View Position Layout
     
@@ -83,14 +78,12 @@ public final class PracticeOverviewViewController: UIViewController, StoreSubscr
 extension PracticeOverviewViewController: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AppStore.shared.state.repositoryState.numberOfQuestionGroups
+        return self.viewModel.outputs.numberOfItems
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: self.questionGroupCellIdentifier, for: indexPath) as! QuestionGroupCell
-
         cell.configureWith(questionGroupAtIndex: indexPath.row)
-
         return cell
     }
     
@@ -101,16 +94,11 @@ extension PracticeOverviewViewController: UITableViewDataSource {
 extension PracticeOverviewViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.isSelected = true
-        
-//        AppStore.shared.dispatch(SelectQuestionGroup(indexOf: indexPath.row))
+        self.viewModel.inputs.select(questionGroupAtIndex: indexPath.row)
 
+        // Nice and smoth selecting cell animation.
         tableView.beginUpdates()
         tableView.endUpdates()
-    }
-    
-    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
     
 }

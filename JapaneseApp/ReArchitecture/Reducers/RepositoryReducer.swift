@@ -9,18 +9,21 @@
 import Foundation
 import ReSwift
 
-public func repositoryReducer(action: Action, state: RepositoryState?) -> RepositoryState {
+internal func repositoryReducer(action: Action, state: RepositoryState?) -> RepositoryState {
+    
+    let state = state ?? .initial
+    
     switch action {
-    case let startPractice as StartPractice:
-        print("[RepositoryReducer] Start Practice for question group: \(startPractice.questionGroup.title)")
-    case let startPractice as StartTimedPractice:
-        print("[RepositoryReducer] Start Timed Practice for question group: \(startPractice.questionGroup.title)")
+    case RepositoryAction.selectQuestionGroupAtIndex(let index):
+        return RepositoryState(
+            characterTables: state.characterTables,
+            vocabulary: state.vocabulary,
+            questionGroups: state.questionGroups,
+            selectedQuestionGroup: state.questionGroups[index]
+        )
     case let startPractice as ViewHistory:
         print("[RepositoryReducer] View history for question group: \(startPractice.questionGroup.title)")
     default: ()
     }
-    
-    
-    return state ?? .initial
-    
+    return state
 }

@@ -12,13 +12,13 @@ public final class CharacterCollectionViewController: UIViewController {
     
     // MARK: - Instance Properties
     
-    private var cellIdentifier = "cellIdentifier"
+    private let viewModel: CharacterCollectionViewModelType = CharacterCollectionViewModel()
+    private let cellIdentifier = "cellIdentifier"
+    private var collectionHeightAnchor: NSLayoutConstraint?
     public var collectionView: UICollectionView {
         return self.view as! UICollectionView
     }
-    
-    public var content: [String] = ["僕","の","名前","は","ミ","ハ","ル","や","さ","い","す","み","ま","せ","ん","こ","何","を"]
-    
+
     // MARK: - View Lifecycle
     
     public override func viewDidLoad() {
@@ -36,39 +36,64 @@ public final class CharacterCollectionViewController: UIViewController {
         self.collectionView.delegate = self
         
         self.setupView()
+        self.bindViewModel()
+        self.viewModel.inputs.viewDidLoad()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.viewModel.inputs.viewWillAppear()
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.viewModel.inputs.viewWillDisappear()
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.collectionHeightAnchor?.constant = self.collectionView.contentSize.height
     }
     
     // MARK: - Instance Methods
     
+    // MARK: - Binding
+    
+    private func bindViewModel() {
+        self.viewModel.outputs.contentUpdate.addObserver(self, options: [.new]) { [weak self] _, _ in
+            self?.collectionView.reloadData()
+        }
+    }
+    
     // MARK: - View Position Layout
     
     private func setupView() {
-
+        self.collectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.collectionHeightAnchor = self.collectionView.heightAnchor.constraint(equalToConstant: self.collectionView.contentSize.height)
+        self.collectionHeightAnchor?.isActive = true
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension CharacterCollectionViewController: UICollectionViewDataSource {
+    
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.content.count
+        return self.viewModel.outputs.numberOfItems
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as! CharacterCollectionCell
-        
-        cell.titleLabel.text = content[indexPath.row]
-        switch indexPath.row {
-        case 0: cell.someLabel.text = "ぼく"
-        case 2: cell.someLabel.text = "なまえ"
-        case 16: cell.someLabel.text = "なに"
-        default:
-            ()
-        }
-        
+        cell.configureWith(characterAtIndex: indexPath.row)
         return cell
     }
     
-    
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension CharacterCollectionViewController: UICollectionViewDelegate {
     

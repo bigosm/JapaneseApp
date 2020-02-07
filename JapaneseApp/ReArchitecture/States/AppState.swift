@@ -11,8 +11,10 @@ import ReSwift
 
 public struct AppState: StateType {
     
-    let repositoryState: RepositoryState
-    var studentState: StudentState
+    public let navigationState: NavigationState
+    public let repositoryState: RepositoryState
+    public let practiceState: PracticeState
+    public let studentState: StudentState
     
 }
 

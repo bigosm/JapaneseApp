@@ -11,11 +11,16 @@ import ReSwift
 
 public struct RepositoryState: StateType, Equatable {
     
-    var characterTables: [CharacterTable]
-    var vocabulary: [Word]
-    private var questionGroups: [QuestionGroup]
+    internal let characterTables: [CharacterTable]
+    internal let vocabulary: [Word]
+    internal let questionGroups: [QuestionGroup]
+    public let selectedQuestionGroup: QuestionGroup?
     
     public var numberOfQuestionGroups: Int { return self.questionGroups.count }
+    
+    public func isSelected(questionGroup: QuestionGroup) -> Bool {
+        return questionGroup == selectedQuestionGroup
+    }
     
     public func getQuestionGroup(atIndex index: Int) -> QuestionGroup {
         return self.questionGroups[index]
@@ -31,7 +36,8 @@ extension RepositoryState {
     static var initial = RepositoryState(
         characterTables: bundleLoad(resource: "Characters", type: [CharacterTable].self),
         vocabulary: bundleLoad(resource: "Vocabulary", type: [Word].self),
-        questionGroups: bundleLoad(resource: "QuestionGroupData1", type: [QuestionGroup].self)
+        questionGroups: bundleLoad(resource: "QuestionGroupData1", type: [QuestionGroup].self),
+        selectedQuestionGroup: nil
     )
     
 }

@@ -10,6 +10,9 @@ import Foundation
 import ReSwift
 
 public protocol PracticeViewModelInputs {
+    func cancelButtonTapped()
+    func listenButtonTapped()
+    func readingAidVisibilityButtonTapped()
     func viewDidLoad()
     func viewWillAppear()
     func viewWillDisappear()
@@ -25,34 +28,45 @@ public protocol PracticeViewModelType {
 }
 
 public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelInputs, PracticeViewModelOutputs, StoreSubscriber {
-    public typealias StoreSubscriberStateType = RepositoryState
+    public typealias StoreSubscriberStateType = PracticeState
     
     // MARK: - Object Lifecycle
     
     public init() { }
     
-    public func newState(state: RepositoryState) {
-        
-    }
+    public func newState(state: PracticeState) { }
     
     // MARK: - Inputs
     
-    public func viewDidLoad() {
-        
+    public func cancelButtonTapped() {
+        AppStore.shared.dispatch(
+            PracticeAction.cancel
+        )
     }
+    
+    public func listenButtonTapped() { }
+    
+    public func readingAidVisibilityButtonTapped() {
+        AppStore.shared.dispatch(
+            PracticeAction.toggleReadingAid
+        )
+    }
+    
+    public func viewDidLoad() { }
     
     public func viewWillAppear() {
         AppStore.shared.subscribe(self) {
-            $0.select { $0.repositoryState }
+            $0.select { $0.practiceState }
         }
     }
+    
     public func viewWillDisappear() {
         AppStore.shared.unsubscribe(self)
     }
     
     // MARK: - Outputs
     
-    public var title: Observable<String?> = Observable(nil)
+    public let title: Observable<String?> = Observable(nil)
 
     public var inputs: PracticeViewModelInputs { return self }
     public var outputs: PracticeViewModelOutputs { return self }

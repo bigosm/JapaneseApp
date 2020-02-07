@@ -15,7 +15,6 @@ public protocol QuestionGroupViewModelInputs {
     func practiceButtonTapped()
     func timedPracticeButtonTapped()
     func historyButtonTapped()
-    func setSelected(with isSelected: Bool)
 }
 
 public protocol QuestionGroupViewModelOutputs {
@@ -23,7 +22,7 @@ public protocol QuestionGroupViewModelOutputs {
     var level: Observable<String?> { get }
     var experience: Observable<String?> { get }
     var isLocked: Observable<Bool> { get }
-    var isBodyHidden: Observable<Bool> { get }
+    var isSelected: Observable<Bool> { get }
 }
 
 public protocol QuestionGroupViewModelType {
@@ -36,71 +35,59 @@ public final class QuestionGroupViewModel: QuestionGroupViewModelType, QuestionG
     
     public init() { }
     
-    private var repositoryState: RepositoryState? = AppStore.shared.state.repositoryState
     public func newState(state: RepositoryState) {
-        self.repositoryState = state
-        if let questionGroup = self.questionGroup {
-            self.questionGroup = state.getQuestionGroup(byId: questionGroup.id)
+        let questionGroup = state.getQuestionGroup(atIndex: self.index)
+        self.questionGroup = questionGroup
+        
+        self.title.value = questionGroup.title
+        self.level.value = "Level 1"
+        self.experience.value = "99999 xp"
+        self.isLocked.value = questionGroup.id != "hiragana-1"
+
+        // Skip the same value
+        if self.isSelected.value != state.isSelected(questionGroup: questionGroup) && !self.isLocked.value {
+            self.isSelected.value.toggle()
         }
     }
     
-    private var questionGroup: QuestionGroup? {
-        didSet {
-            self.title.value = self.questionGroup?.title
-            self.level.value = "Level 1"
-            self.experience.value = "99999 xp"
-            /// - TODO: "figure out how to handle student related data, and change this 'isLocked' to check from store")
-            if self.questionGroup?.id == "hiragana-1" {
-                self.isLocked.value = false
-            } else {
-                self.isLocked.value = true
-            }
-            self.isBodyHidden.value = true
-        }
-    }
+    private var index: Int!
+    private var questionGroup: QuestionGroup!
+    
     public func configureWith(questionGroupAtIndex index: Int) {
+        self.index = index
         AppStore.shared.subscribe(self) {
             $0.select { $0.repositoryState }
         }
-        self.questionGroup = self.repositoryState?.getQuestionGroup(atIndex: index)
     }
     
     public func prepareForReuse() {
         AppStore.shared.unsubscribe(self)
+        self.isSelected.value = false
     }
     
     public func practiceButtonTapped() {
-        guard let questionGroup = self.questionGroup else { return }
         AppStore.shared.dispatch(
-            StartPractice(questionGroup: questionGroup)
+            PracticeAction.startPractice(questionGroup)
         )
     }
     
     public func timedPracticeButtonTapped() {
-        guard let questionGroup = self.questionGroup else { return }
         AppStore.shared.dispatch(
-            StartTimedPractice(questionGroup: questionGroup)
+            PracticeAction.startTimePractice(questionGroup)
         )
     }
     
     public func historyButtonTapped() {
-        guard let questionGroup = self.questionGroup else { return }
         AppStore.shared.dispatch(
             ViewHistory(questionGroup: questionGroup)
         )
     }
     
-    public func setSelected(with isSelected: Bool) {
-        if self.isLocked.value == false {
-            self.isBodyHidden.value = !isSelected
-        }
-    }
-    
     public let title: Observable<String?> = Observable(nil)
     public let level: Observable<String?> = Observable(nil)
     public let experience: Observable<String?> = Observable(nil)
-    public let isLocked: Observable<Bool> = Observable(true)
-    public let isBodyHidden: Observable<Bool> = Observable(true)
+    public let isLocked: Observable<Bool> = Observable(false)
+    public let isSelected: Observable<Bool> = Observable(false)
     
     public var inputs: QuestionGroupViewModelInputs { return self }
     public var outputs: QuestionGroupViewModelOutputs { return self }

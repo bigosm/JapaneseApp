@@ -12,31 +12,23 @@ public class QuestionGroupCell: UITableViewCell {
     
     // MARK: - Instance Properties
     
-    fileprivate let viewModel: QuestionGroupViewModelType = QuestionGroupViewModel()
+    private let viewModel: QuestionGroupViewModelType = QuestionGroupViewModel()
     
-    override public var isSelected: Bool {
-        didSet {
-            self.viewModel.inputs.setSelected(with: self.isSelected)
-        }
-    }
-    
-    public var stackView = UIStackView()
+    public let stackView = UIStackView()
     
     // MARK: Header
-    
-    public var mainView = UIView()
-    public var groupImage = UIImageView()
-    public var titleLabel = UILabel()
-    public var levelLabel = UILabel()
-    public var experienceLabel = UILabel()
-    public var lockLabel = UIImageView()
+    public let mainView = UIView()
+    public let groupImage = UIImageView()
+    public let titleLabel = UILabel()
+    public let levelLabel = UILabel()
+    public let experienceLabel = UILabel()
+    public let lockLabel = UIImageView()
     
     // MARK: Body
-    
-    public var toggleView = UIView()
-    public var historyButton = Button(customType: .primary)
-    public var practiceButton = Button(customType: .primaryRounded)
-    public var timePracticeButton = Button(customType: .primaryRounded)
+    public let toggleView = UIView()
+    public let historyButton = Button(customType: .primary)
+    public let practiceButton = Button(customType: .primaryRounded)
+    public let timePracticeButton = Button(customType: .primaryRounded)
     
     // MARK: - Object Lifecycle
     
@@ -114,24 +106,29 @@ public class QuestionGroupCell: UITableViewCell {
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.title.addObserver(self, options: [.new]) { value, _ in
-            self.titleLabel.text = value
+        self.viewModel.outputs.title.addObserver(self, options: [.new]) { [weak self] value, _ in
+            self?.titleLabel.text = value
         }
         
-        self.viewModel.outputs.level.addObserver(self, options: [.new]) { value, _ in
-            self.levelLabel.text = value
+        self.viewModel.outputs.level.addObserver(self, options: [.new]) { [weak self] value, _ in
+            self?.levelLabel.text = value
         }
         
-        self.viewModel.outputs.experience.addObserver(self, options: [.new]) { value, _ in
-            self.experienceLabel.text = value
+        self.viewModel.outputs.experience.addObserver(self, options: [.new]) { [weak self] value, _ in
+            self?.experienceLabel.text = value
         }
         
-        self.viewModel.outputs.isBodyHidden.addObserver(self, options: [.new]) { value, _ in
-            self.toggleView.isHidden = value
+        self.viewModel.outputs.isSelected.addObserver(self, options: [.new]) { [weak self] value, _ in
+            self?.toggleView.isHidden = value
         }
         
-        self.viewModel.outputs.isLocked.addObserver(self, options: [.new]) { value, _ in
-            self.lockLabel.isHidden = !value
+        self.viewModel.outputs.isSelected.addObserver(self, options: [.new]) { [weak self] value, _ in
+            self?.isSelected = value
+            self?.toggleView.isHidden = !value
+        }
+        
+        self.viewModel.outputs.isLocked.addObserver(self, options: [.new]) { [weak self] value, _ in
+            self?.lockLabel.isHidden = !value
         }
     }
     
