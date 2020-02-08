@@ -5,7 +5,7 @@
     "kanaNotation": "いち",
     "romajiNotation": "ichi",
     "audio": null,
-    "meaning": ["one"]
+    "meaning": ["one"],
     "type": "numeric"
   },
   {
@@ -77,7 +77,7 @@
     "kanaNotation": "きゅう",
     "romajiNotation": "kyuu",
     "audio": null,
-    "meaning": ["nine"]
+    "meaning": ["nine"],
     "type": "numeric"
   },
   {
@@ -115,7 +115,7 @@
     "audio": null,
     "meaning": ["black"],
     "type": "noun"
-  }
+  },
   {
     "id": "word-ao-blue",
     "value": "青",
