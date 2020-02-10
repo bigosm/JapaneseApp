@@ -34,6 +34,7 @@
 		1F48D44F23EDB7BF0069B2D4 /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */; };
 		1F48D45223EDB9360069B2D4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45123EDB9360069B2D4 /* Router.swift */; };
 		1F48D45423EDC8B00069B2D4 /* PracticeOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45323EDC8B00069B2D4 /* PracticeOverviewViewModel.swift */; };
+		1F48D45723F1AA740069B2D4 /* PracticeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45623F1AA740069B2D4 /* PracticeFactory.swift */; };
 		1F4DABF723EB1841005C92BA /* QuestionGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */; };
 		1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF923EB2031005C92BA /* AppStore.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
@@ -99,6 +100,7 @@
 		1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducer.swift; sourceTree = "<group>"; };
 		1F48D45123EDB9360069B2D4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1F48D45323EDC8B00069B2D4 /* PracticeOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewModel.swift; sourceTree = "<group>"; };
+		1F48D45623F1AA740069B2D4 /* PracticeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeFactory.swift; sourceTree = "<group>"; };
 		1F4DABF623EB1841005C92BA /* QuestionGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupViewModel.swift; sourceTree = "<group>"; };
 		1F4DABF923EB2031005C92BA /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -161,10 +163,10 @@
 		1F17690623E861A100912335 /* ReArchitecture */ = {
 			isa = PBXGroup;
 			children = (
-				1F4DABF823EB2024005C92BA /* Store */,
 				1F17691023E863E700912335 /* Actions */,
 				1F17690F23E863D900912335 /* Reducers */,
 				1F17690E23E863D600912335 /* States */,
+				1F4DABF823EB2024005C92BA /* Store */,
 				1F17691323E868EA00912335 /* Utilities */,
 			);
 			path = ReArchitecture;
@@ -226,6 +228,19 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		1F48D45523F1A9DD0069B2D4 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				1FAAC3FF23C6058E0015EDC0 /* CareTakers */,
+				1FC741F923BF70E900244938 /* Models */,
+				1F17690623E861A100912335 /* ReArchitecture */,
+				1F48D45023EDB92E0069B2D4 /* Router */,
+				1FAAC40223C607340015EDC0 /* Utilities */,
+				1F4DABF523EB182B005C92BA /* ViewModels */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		1F4DABF523EB182B005C92BA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,8 +280,8 @@
 		1F8F10C723BF99200001981C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				1F8F10C823BF992B0001981C /* QuestionGroupCell.swift */,
 				1F5F493823EC919B00F17C13 /* CharacterCollectionCell.swift */,
+				1F8F10C823BF992B0001981C /* QuestionGroupCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -283,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				1FAAC40323C6074B0015EDC0 /* Date+Extension.swift */,
+				1F48D45623F1AA740069B2D4 /* PracticeFactory.swift */,
 				1F531D8123DA11C2004C25DC /* String+Extension.swift */,
 			);
 			path = Utilities;
@@ -309,14 +325,9 @@
 		1FC741D423BF6AE000244938 /* JapaneseApp */ = {
 			isa = PBXGroup;
 			children = (
-				1F48D45023EDB92E0069B2D4 /* Router */,
 				1FC741F723BF70C000244938 /* AppDelegate */,
-				1FAAC3FF23C6058E0015EDC0 /* CareTakers */,
-				1FC741F923BF70E900244938 /* Models */,
-				1F17690623E861A100912335 /* ReArchitecture */,
+				1F48D45523F1A9DD0069B2D4 /* Library */,
 				1FC741FA23BF70F000244938 /* Resources */,
-				1FAAC40223C607340015EDC0 /* Utilities */,
-				1F4DABF523EB182B005C92BA /* ViewModels */,
 				1FC741FB23BF718000244938 /* Views */,
 			);
 			path = JapaneseApp;
@@ -343,10 +354,10 @@
 		1FC741F823BF70E000244938 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */,
 				1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */,
 				1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */,
 				1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */,
-				1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -354,10 +365,10 @@
 		1FC741F923BF70E900244938 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1F1768F623E499A200912335 /* Observable */,
 				1F1768DB23E303D200912335 /* Character.swift */,
 				1F1768D923E303AE00912335 /* CharacterTable.swift */,
 				1F1768ED23E3212F00912335 /* Experience.swift */,
+				1F1768F623E499A200912335 /* Observable */,
 				1F8F10BF23BF73590001981C /* QuestionGroup.swift */,
 				1F1768EF23E3295F00912335 /* QuestionLevel.swift */,
 				1F1768EB23E320F800912335 /* Student.swift */,
@@ -372,13 +383,13 @@
 			children = (
 				1FC741DE23BF6AE600244938 /* Assets.xcassets */,
 				1F1768D523E2FDB200912335 /* Characters.json */,
+				1F1768F323E32AAA00912335 /* ExperienceModel.json */,
 				1FC741E323BF6AE600244938 /* Info.plist */,
 				1F45ACF823CC9FE1006B3C8D /* JACharacterTableList.json */,
 				1F1768D723E300D800912335 /* Phrases */,
 				1FAAC40F23C60BE10015EDC0 /* QuestionGroupData.json */,
 				1F1768D123E2E48800912335 /* QuestionGroupData1.json */,
 				1F1768D323E2FC7B00912335 /* Vocabulary.json */,
-				1F1768F323E32AAA00912335 /* ExperienceModel.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -537,6 +548,7 @@
 				1F1768F023E3295F00912335 /* QuestionLevel.swift in Sources */,
 				1F17690823E861BB00912335 /* Actions.swift in Sources */,
 				1F8F10C023BF73590001981C /* QuestionGroup.swift in Sources */,
+				1F48D45723F1AA740069B2D4 /* PracticeFactory.swift in Sources */,
 				1F8F10C923BF992B0001981C /* QuestionGroupCell.swift in Sources */,
 				1F43DA5723EB016700CED94A /* Button.swift in Sources */,
 				1F1768EC23E320F800912335 /* Student.swift in Sources */,
