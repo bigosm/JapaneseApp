@@ -13,21 +13,21 @@ public struct RepositoryState: StateType, Equatable {
     
     internal let characterTables: [CharacterTable]
     internal let vocabulary: [Word]
-    internal let questionGroups: [QuestionGroup]
-    public let selectedQuestionGroup: QuestionGroup?
+    internal let practiceGroups: [PracticeGroup]
+    public let selectedPracticeGroup: PracticeGroup?
     
-    public var numberOfQuestionGroups: Int { return self.questionGroups.count }
+    public var numberOfPracticeGroups: Int { return self.practiceGroups.count }
     
-    public func isSelected(questionGroup: QuestionGroup) -> Bool {
-        return questionGroup == selectedQuestionGroup
+    public func isSelected(practiceGroup: PracticeGroup) -> Bool {
+        return practiceGroup == selectedPracticeGroup
     }
     
-    public func getQuestionGroup(atIndex index: Int) -> QuestionGroup {
-        return self.questionGroups[index]
+    public func getPracticeGroup(atIndex index: Int) -> PracticeGroup {
+        return self.practiceGroups[index]
     }
     
-    public func getQuestionGroup(byId id: String) -> QuestionGroup? {
-        return self.questionGroups.first { $0.id == id }
+    public func getPracticeGroup(byId id: String) -> PracticeGroup? {
+        return self.practiceGroups.first { $0.id == id }
     }
 }
 
@@ -36,8 +36,8 @@ extension RepositoryState {
     static var initial = RepositoryState(
         characterTables: bundleLoad(resource: "Characters", type: [CharacterTable].self),
         vocabulary: bundleLoad(resource: "Vocabulary", type: [Word].self),
-        questionGroups: bundleLoad(resource: "QuestionGroupData1", type: [QuestionGroup].self),
-        selectedQuestionGroup: nil
+        practiceGroups: bundleLoad(resource: "QuestionGroupData1", type: [PracticeGroup].self),
+        selectedPracticeGroup: nil
     )
     
 }

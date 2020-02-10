@@ -14,15 +14,15 @@ internal func repositoryReducer(action: Action, state: RepositoryState?) -> Repo
     let state = state ?? .initial
     
     switch action {
-    case RepositoryAction.selectQuestionGroupAtIndex(let index):
+    case RepositoryAction.selectPracticeGroupAtIndex(let index):
         return RepositoryState(
             characterTables: state.characterTables,
             vocabulary: state.vocabulary,
-            questionGroups: state.questionGroups,
-            selectedQuestionGroup: state.questionGroups[index]
+            practiceGroups: state.practiceGroups,
+            selectedPracticeGroup: state.practiceGroups[index]
         )
     case let startPractice as ViewHistory:
-        print("[RepositoryReducer] View history for question group: \(startPractice.questionGroup.title)")
+        print("[RepositoryReducer] View history for question group: \(startPractice.practiceGroup.title)")
     default: ()
     }
     return state

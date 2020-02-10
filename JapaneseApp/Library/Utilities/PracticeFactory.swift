@@ -10,4 +10,8 @@ import Foundation
 
 internal struct PracticeFactory {
     
+    init(practiceGroup: PracticeGroup) {
+        
+    }
+    
 }

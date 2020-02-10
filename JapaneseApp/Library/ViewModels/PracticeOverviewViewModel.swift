@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 
 public protocol PracticeOverviewViewModelInputs {
-    func select(questionGroupAtIndex index: Int)
+    func select(practiceGroupAtIndex index: Int)
     func viewDidLoad()
     func viewWillAppear()
     func viewWillDisappear()
@@ -35,14 +35,14 @@ public final class PracticeOverviewViewModel: PracticeOverviewViewModelType, Pra
     public init() { }
     
     public func newState(state: RepositoryState) {
-        self.numberOfItems = state.numberOfQuestionGroups
+        self.numberOfItems = state.numberOfPracticeGroups
     }
     
     // MARK: - Inputs
     
-    public func select(questionGroupAtIndex index: Int) {
+    public func select(practiceGroupAtIndex index: Int) {
         AppStore.shared.dispatch(
-            RepositoryAction.selectQuestionGroupAtIndex(index)
+            RepositoryAction.selectPracticeGroupAtIndex(index)
         )
     }
     

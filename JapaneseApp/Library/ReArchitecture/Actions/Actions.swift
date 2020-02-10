@@ -14,16 +14,16 @@ public struct SelectQuestionGroup: Action {
 }
 
 public struct ViewHistory: Action {
-    let questionGroup: QuestionGroup
+    let practiceGroup: PracticeGroup
 }
 
 public enum PracticeAction: Action {
     case cancel
     case toggleReadingAid
-    case startPractice(QuestionGroup)
-    case startTimePractice(QuestionGroup)
+    case startPractice(PracticeGroup)
+    case startTimePractice(PracticeGroup)
 }
 
 public enum RepositoryAction: Action {
-    case selectQuestionGroupAtIndex(Int)
+    case selectPracticeGroupAtIndex(Int)
 }

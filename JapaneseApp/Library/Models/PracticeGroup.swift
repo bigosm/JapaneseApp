@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct QuestionGroup: Codable, Equatable {
+public struct PracticeGroup: Codable, Equatable {
     
     // MARK: - Instance Properties
     
     public let id: String
     public let title: String
     public let requirements: [String]
-    public let levels: [QuestionLevel]
+    public let levels: [PracticeLevel]
 
 }

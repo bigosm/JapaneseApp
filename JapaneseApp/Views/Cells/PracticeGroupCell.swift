@@ -1,5 +1,5 @@
 //
-//  QuestionGroupCell.swift
+//  PracticeGroupCell.swift
 //  JapaneseApp
 //
 //  Created by Michal Bigos on 03/01/2020.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class QuestionGroupCell: UITableViewCell {
+public class PracticeGroupCell: UITableViewCell {
     
     // MARK: - Instance Properties
     
-    private let viewModel: QuestionGroupViewModelType = QuestionGroupViewModel()
+    private let viewModel: PracticeGroupViewModelType = PracticeGroupViewModel()
     
     public let stackView = UIStackView()
     
@@ -87,8 +87,8 @@ public class QuestionGroupCell: UITableViewCell {
         self.viewModel.inputs.prepareForReuse()
     }
     
-    public func configureWith(questionGroupAtIndex index: Int) {
-        self.viewModel.inputs.configureWith(questionGroupAtIndex: index)
+    public func configureWith(practiceGroupAtIndex index: Int) {
+        self.viewModel.inputs.configureWith(practiceGroupAtIndex: index)
     }
     
     @objc func handleHistoryButton(_ sender: Any) {

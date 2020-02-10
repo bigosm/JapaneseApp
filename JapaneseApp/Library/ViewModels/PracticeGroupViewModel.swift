@@ -1,5 +1,5 @@
 //
-//  QuestionGroupViewModel.swift
+//  PracticeGroupViewModel.swift
 //  JapaneseApp
 //
 //  Created by Michal Bigos on 05/02/2020.
@@ -9,15 +9,15 @@
 import Foundation
 import ReSwift
 
-public protocol QuestionGroupViewModelInputs {
-    func configureWith(questionGroupAtIndex index: Int)
+public protocol PracticeGroupViewModelInputs {
+    func configureWith(practiceGroupAtIndex index: Int)
     func prepareForReuse()
     func practiceButtonTapped()
     func timedPracticeButtonTapped()
     func historyButtonTapped()
 }
 
-public protocol QuestionGroupViewModelOutputs {
+public protocol PracticeGroupViewModelOutputs {
     var title: Observable<String?> { get }
     var level: Observable<String?> { get }
     var experience: Observable<String?> { get }
@@ -25,35 +25,35 @@ public protocol QuestionGroupViewModelOutputs {
     var isSelected: Observable<Bool> { get }
 }
 
-public protocol QuestionGroupViewModelType {
-    var inputs: QuestionGroupViewModelInputs { get }
-    var outputs: QuestionGroupViewModelOutputs { get }
+public protocol PracticeGroupViewModelType {
+    var inputs: PracticeGroupViewModelInputs { get }
+    var outputs: PracticeGroupViewModelOutputs { get }
 }
 
-public final class QuestionGroupViewModel: QuestionGroupViewModelType, QuestionGroupViewModelInputs, QuestionGroupViewModelOutputs, StoreSubscriber {
+public final class PracticeGroupViewModel: PracticeGroupViewModelType, PracticeGroupViewModelInputs, PracticeGroupViewModelOutputs, StoreSubscriber {
     public typealias StoreSubscriberStateType = RepositoryState
     
     public init() { }
     
     public func newState(state: RepositoryState) {
-        let questionGroup = state.getQuestionGroup(atIndex: self.index)
-        self.questionGroup = questionGroup
+        let practiceGroup = state.getPracticeGroup(atIndex: self.index)
+        self.practiceGroup = practiceGroup
         
-        self.title.value = questionGroup.title
+        self.title.value = practiceGroup.title
         self.level.value = "Level 1"
         self.experience.value = "99999 xp"
-        self.isLocked.value = questionGroup.id != "hiragana-1"
+        self.isLocked.value = practiceGroup.id != "hiragana-1"
 
         // Skip the same value
-        if self.isSelected.value != state.isSelected(questionGroup: questionGroup) && !self.isLocked.value {
+        if self.isSelected.value != state.isSelected(practiceGroup: practiceGroup) && !self.isLocked.value {
             self.isSelected.value.toggle()
         }
     }
     
     private var index: Int!
-    private var questionGroup: QuestionGroup!
+    private var practiceGroup: PracticeGroup!
     
-    public func configureWith(questionGroupAtIndex index: Int) {
+    public func configureWith(practiceGroupAtIndex index: Int) {
         self.index = index
         AppStore.shared.subscribe(self) {
             $0.select { $0.repositoryState }
@@ -67,19 +67,19 @@ public final class QuestionGroupViewModel: QuestionGroupViewModelType, QuestionG
     
     public func practiceButtonTapped() {
         AppStore.shared.dispatch(
-            PracticeAction.startPractice(questionGroup)
+            PracticeAction.startPractice(practiceGroup)
         )
     }
     
     public func timedPracticeButtonTapped() {
         AppStore.shared.dispatch(
-            PracticeAction.startTimePractice(questionGroup)
+            PracticeAction.startTimePractice(practiceGroup)
         )
     }
     
     public func historyButtonTapped() {
         AppStore.shared.dispatch(
-            ViewHistory(questionGroup: questionGroup)
+            ViewHistory(practiceGroup: practiceGroup)
         )
     }
     
@@ -89,7 +89,7 @@ public final class QuestionGroupViewModel: QuestionGroupViewModelType, QuestionG
     public let isLocked: Observable<Bool> = Observable(false)
     public let isSelected: Observable<Bool> = Observable(false)
     
-    public var inputs: QuestionGroupViewModelInputs { return self }
-    public var outputs: QuestionGroupViewModelOutputs { return self }
+    public var inputs: PracticeGroupViewModelInputs { return self }
+    public var outputs: PracticeGroupViewModelOutputs { return self }
     
 }

@@ -15,7 +15,7 @@ public final class PracticeOverviewViewController: UIViewController {
     
     private let viewModel: PracticeOverviewViewModelType = PracticeOverviewViewModel()
     private let basicCellIdentifier = "basicCellIdentifier"
-    private let questionGroupCellIdentifier = "QuestionGroupCell"
+    private let practiceGroupCellIdentifier = "PracticeGroupCell"
     
     public var tableView = UITableView()
     
@@ -32,7 +32,7 @@ public final class PracticeOverviewViewController: UIViewController {
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
         self.tableView.rowHeight = UITableView.automaticDimension
         
-        self.tableView.register(QuestionGroupCell.self, forCellReuseIdentifier: self.questionGroupCellIdentifier)
+        self.tableView.register(PracticeGroupCell.self, forCellReuseIdentifier: self.practiceGroupCellIdentifier)
         
         self.setupView()
         self.bindViewModel()
@@ -82,8 +82,8 @@ extension PracticeOverviewViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: self.questionGroupCellIdentifier, for: indexPath) as! QuestionGroupCell
-        cell.configureWith(questionGroupAtIndex: indexPath.row)
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: self.practiceGroupCellIdentifier, for: indexPath) as! PracticeGroupCell
+        cell.configureWith(practiceGroupAtIndex: indexPath.row)
         return cell
     }
     
@@ -94,7 +94,7 @@ extension PracticeOverviewViewController: UITableViewDataSource {
 extension PracticeOverviewViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel.inputs.select(questionGroupAtIndex: indexPath.row)
+        self.viewModel.inputs.select(practiceGroupAtIndex: indexPath.row)
 
         // Nice and smoth selecting cell animation.
         tableView.beginUpdates()

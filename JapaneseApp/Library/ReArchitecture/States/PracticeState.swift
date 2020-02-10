@@ -13,12 +13,12 @@ public struct PracticeState: StateType, Equatable {
 
     public enum Current: Equatable {
         case noPractice
-        case inProgress(QuestionGroup)
+        case inProgress(PracticeGroup)
     }
     
     public var current: Current = .noPractice
     public var numberOfQuestions = 10
-    public var currentQuestion: QuestionGroup?
+    public var currentQuestion: PracticeGroup?
     public var isReadingAidVisible = false
     public var hasReadingAid: Bool {
         guard case .inProgress(_) = self.current else {
