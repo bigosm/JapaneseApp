@@ -33,6 +33,7 @@ public final class CharacterCollectionViewModel: CharacterCollectionViewModelTyp
     public init() { }
     
     public func newState(state: PracticeState) {
+        self.numberOfItems = state.currentQuestion?.subject.count ?? 0
         self.contentUpdate.value = true
     }
     
@@ -52,7 +53,7 @@ public final class CharacterCollectionViewModel: CharacterCollectionViewModelTyp
     
     // MARK: - Outputs
     
-    public var numberOfItems: Int = 5
+    public var numberOfItems: Int = 0
     public let contentUpdate: Observable<Bool> = Observable(false)
     
     public var inputs: CharacterCollectionViewModelInputs { return self }

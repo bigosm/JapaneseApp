@@ -33,8 +33,9 @@ public final class CharacterCellViewModel: CharacterCellViewModelType, Character
     public init() { }
     
     public func newState(state: PracticeState) {
-        self.title.value = ["あ","名前","い","お","う"][index]
-        self.readingAid.value = [nil, "なまえ", nil,nil,nil][index]
+        let subject = state.currentQuestion?.subject[index]
+        self.title.value = subject?.value
+        self.readingAid.value = subject?.readingAid
         self.readingAidVisibility.value = state.isReadingAidVisible
     }
     

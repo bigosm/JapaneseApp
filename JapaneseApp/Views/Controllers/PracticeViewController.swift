@@ -85,6 +85,10 @@ public final class PracticeViewController: UIViewController {
             self?.title = value
         }
         
+        self.viewModel.outputs.question.addObserver(self, options: [.new]) { [weak self] value, options in
+            self?.questionLabel.text = value
+        }
+        
         self.viewModel.outputs.isReadingAidButtonHidden.addObserver(self, options: [.new]) { [weak self] value, options in
             self?.readingAidVisibilityButton.isHidden = value
         }

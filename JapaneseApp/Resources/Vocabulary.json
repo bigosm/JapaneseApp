@@ -2,8 +2,8 @@
   {
     "id": "word-ichi-one",
     "value": "一",
-    "kanaNotation": "いち",
-    "romajiNotation": "ichi",
+    "readingAid": "いち",
+    "altNotation": "ichi",
     "audio": null,
     "meaning": ["one"],
     "type": "numeric"
@@ -11,8 +11,8 @@
   {
     "id": "word-ni-two",
     "value": "二",
-    "kanaNotation": "に",
-    "romajiNotation": "ni",
+    "readingAid": "に",
+    "altNotation": "ni",
     "audio": null,
     "meaning": ["two"],
     "type": "numeric"
@@ -20,8 +20,8 @@
   {
     "id": "word-san-three",
     "value": "三",
-    "kanaNotation": "さん",
-    "romajiNotation": "san",
+    "readingAid": "さん",
+    "altNotation": "san",
     "audio": null,
     "meaning": ["three"],
     "type": "numeric"
@@ -29,8 +29,8 @@
   {
     "id": "word-yon-four",
     "value": "四",
-    "kanaNotation": "よん",
-    "romajiNotation": "yon",
+    "readingAid": "よん",
+    "altNotation": "yon",
     "audio": null,
     "meaning": ["four"],
     "type": "numeric"
@@ -38,8 +38,8 @@
   {
     "id": "word-go-five",
     "value": "五",
-    "kanaNotation": "ご",
-    "romajiNotation": "go",
+    "readingAid": "ご",
+    "altNotation": "go",
     "audio": null,
     "meaning": ["five"],
     "type": "numeric"
@@ -47,8 +47,8 @@
   {
     "id": "word-roku-six",
     "value": "六",
-    "kanaNotation": "ろく",
-    "romajiNotation": "roku",
+    "readingAid": "ろく",
+    "altNotation": "roku",
     "audio": null,
     "meaning": ["six"],
     "type": "numeric"
@@ -56,8 +56,8 @@
   {
     "id": "word-nana-seven",
     "value": "七",
-    "kanaNotation": "なな",
-    "romajiNotation": "nana",
+    "readingAid": "なな",
+    "altNotation": "nana",
     "audio": null,
     "meaning": ["seven"],
     "type": "numeric"
@@ -65,8 +65,8 @@
   {
     "id": "word-hachi-eight",
     "value": "八",
-    "kanaNotation": "はち",
-    "romajiNotation": "hachi",
+    "readingAid": "はち",
+    "altNotation": "hachi",
     "audio": null,
     "meaning": ["eight"],
     "type": "numeric"
@@ -74,8 +74,8 @@
   {
     "id": "word-kyuu-seven",
     "value": "九",
-    "kanaNotation": "きゅう",
-    "romajiNotation": "kyuu",
+    "readingAid": "きゅう",
+    "altNotation": "kyuu",
     "audio": null,
     "meaning": ["nine"],
     "type": "numeric"
@@ -83,8 +83,8 @@
   {
     "id": "word-juu-ten",
     "value": "十",
-    "kanaNotation": "じゅう",
-    "romajiNotation": "juu",
+    "readingAid": "じゅう",
+    "altNotation": "juu",
     "audio": null,
     "meaning": ["ten"],
     "type": "numeric"
@@ -92,8 +92,8 @@
   {
     "id": "word-iro-color",
     "value": "色",
-    "kanaNotation": "いろ",
-    "romajiNotation": "iro",
+    "readingAid": "いろ",
+    "altNotation": "iro",
     "audio": null,
     "meaning": ["color", "colour", "hue", "tint", "tinge", "shade"],
     "type": "noun"
@@ -101,8 +101,8 @@
   {
     "id": "word-shiro-white",
     "value": "白",
-    "kanaNotation": "しろ",
-    "romajiNotation": "shiro",
+    "readingAid": "しろ",
+    "altNotation": "shiro",
     "audio": null,
     "meaning": ["white"],
     "type": "noun"
@@ -110,8 +110,8 @@
   {
     "id": "word-kuro-black",
     "value": "黒",
-    "kanaNotation": "くろ",
-    "romajiNotation": "kuro",
+    "readingAid": "くろ",
+    "altNotation": "kuro",
     "audio": null,
     "meaning": ["black"],
     "type": "noun"
@@ -119,8 +119,8 @@
   {
     "id": "word-ao-blue",
     "value": "青",
-    "kanaNotation": "あお",
-    "romajiNotation": "ao",
+    "readingAid": "あお",
+    "altNotation": "ao",
     "audio": null,
     "meaning": ["blue", "azure"],
     "type": "color"
@@ -128,8 +128,8 @@
   {
     "id": "word-aka-red",
     "value": "赤",
-    "kanaNotation": "あか",
-    "romajiNotation": "aka",
+    "readingAid": "あか",
+    "altNotation": "aka",
     "audio": null,
     "meaning": ["red", "crimson", "scarlet"],
     "type": "color"
@@ -137,8 +137,8 @@
   {
     "id": "word-orenji-orange",
     "value": "オレンジ",
-    "kanaNotation": "オレンジ",
-    "romajiNotation": "orenji",
+    "readingAid": "オレンジ",
+    "altNotation": "orenji",
     "audio": null,
     "meaning": ["orange"],
     "type": "noun"
@@ -146,8 +146,8 @@
   {
     "id": "word-kiiro-yellow",
     "value": "黄色",
-    "kanaNotation": "きいろ",
-    "romajiNotation": "kiiro",
+    "readingAid": "きいろ",
+    "altNotation": "kiiro",
     "audio": null,
     "meaning": ["yellow", "amber"],
     "type": "noun"
@@ -155,8 +155,8 @@
   {
     "id": "word-midori-green",
     "value": "緑",
-    "kanaNotation": "みどり",
-    "romajiNotation": "midori",
+    "readingAid": "みどり",
+    "altNotation": "midori",
     "audio": null,
     "meaning": ["green"],
     "type": "noun"
@@ -164,8 +164,8 @@
   {
     "id": "word-pinku-pink",
     "value": "ピンク",
-    "kanaNotation": "ピンク",
-    "romajiNotation": "pinku",
+    "readingAid": "ピンク",
+    "altNotation": "pinku",
     "audio": null,
     "meaning": ["pink"],
     "type": "noun"
@@ -173,8 +173,8 @@
   {
     "id": "word-murasaki-purple",
     "value": "紫",
-    "kanaNotation": "むらさき",
-    "romajiNotation": "murasaki",
+    "readingAid": "むらさき",
+    "altNotation": "murasaki",
     "audio": null,
     "meaning": ["purple", "violet"],
     "type": "noun"
@@ -182,8 +182,8 @@
   {
     "id": "word-haiiro-gray",
     "value": "灰色",
-    "kanaNotation": "はいいろ",
-    "romajiNotation": "haiiro",
+    "readingAid": "はいいろ",
+    "altNotation": "haiiro",
     "audio": null,
     "meaning": ["gray", "grey", "ashen"],
     "type": "noun"
@@ -191,8 +191,8 @@
   {
     "id": "word-kiniro-gold",
     "value": "金色",
-    "kanaNotation": "きんいろ",
-    "romajiNotation": "kiniro",
+    "readingAid": "きんいろ",
+    "altNotation": "kiniro",
     "audio": null,
     "meaning": ["golden", "gold"],
     "type": "noun"
@@ -200,8 +200,8 @@
   {
     "id": "word-giniro-silver",
     "value": "銀色",
-    "kanaNotation": "ぎんいろ",
-    "romajiNotation": "giniro",
+    "readingAid": "ぎんいろ",
+    "altNotation": "giniro",
     "audio": null,
     "meaning": ["silver"],
     "type": "noun"
@@ -209,8 +209,8 @@
   {
     "id": "word-buronzuiro-brown",
     "value": "ブロンズ色",
-    "kanaNotation": "ぶろんずいろ",
-    "romajiNotation": "buronzuiro",
+    "readingAid": "ぶろんずいろ",
+    "altNotation": "buronzuiro",
     "audio": null,
     "meaning": ["brown", "bronze"],
     "type": "noun"

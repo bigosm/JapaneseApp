@@ -11,13 +11,6 @@
 		1F1768D423E2FC7C00912335 /* Vocabulary.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F1768D323E2FC7B00912335 /* Vocabulary.json */; };
 		1F1768D623E2FDB200912335 /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F1768D523E2FDB200912335 /* Characters.json */; };
 		1F1768D823E300D800912335 /* Phrases in Resources */ = {isa = PBXBuildFile; fileRef = 1F1768D723E300D800912335 /* Phrases */; };
-		1F1768DA23E303AE00912335 /* CharacterTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1768D923E303AE00912335 /* CharacterTable.swift */; };
-		1F1768DC23E303D200912335 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1768DB23E303D200912335 /* Character.swift */; };
-		1F1768DE23E304C400912335 /* Writable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1768DD23E304C400912335 /* Writable.swift */; };
-		1F1768E023E3129100912335 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1768DF23E3129100912335 /* Word.swift */; };
-		1F1768EC23E320F800912335 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1768EB23E320F800912335 /* Student.swift */; };
-		1F1768EE23E3212F00912335 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1768ED23E3212F00912335 /* Experience.swift */; };
-		1F1768F023E3295F00912335 /* PracticeLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1768EF23E3295F00912335 /* PracticeLevel.swift */; };
 		1F1768F423E32AAA00912335 /* ExperienceModel.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F1768F323E32AAA00912335 /* ExperienceModel.json */; };
 		1F17690023E85A1800912335 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1F1768FF23E85A1800912335 /* ReSwift */; };
 		1F17690523E85B2500912335 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17690423E85B2500912335 /* AppState.swift */; };
@@ -35,6 +28,15 @@
 		1F48D45223EDB9360069B2D4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45123EDB9360069B2D4 /* Router.swift */; };
 		1F48D45423EDC8B00069B2D4 /* PracticeOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45323EDC8B00069B2D4 /* PracticeOverviewViewModel.swift */; };
 		1F48D45723F1AA740069B2D4 /* PracticeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45623F1AA740069B2D4 /* PracticeFactory.swift */; };
+		1F48D46523F1C5810069B2D4 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45D23F1C5810069B2D4 /* Experience.swift */; };
+		1F48D46623F1C5810069B2D4 /* PracticeLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D45E23F1C5810069B2D4 /* PracticeLevel.swift */; };
+		1F48D46823F1C5810069B2D4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46123F1C5810069B2D4 /* Observable.swift */; };
+		1F48D46923F1C5810069B2D4 /* CharacterTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46223F1C5810069B2D4 /* CharacterTable.swift */; };
+		1F48D46A23F1C5810069B2D4 /* PracticeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46323F1C5810069B2D4 /* PracticeGroup.swift */; };
+		1F48D46B23F1C5810069B2D4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46423F1C5810069B2D4 /* Student.swift */; };
+		1F48D46D23F1C5C30069B2D4 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46C23F1C5C30069B2D4 /* Subject.swift */; };
+		1F48D47023F1C6450069B2D4 /* Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46E23F1C6450069B2D4 /* Practice.swift */; };
+		1F48D47123F1C6450069B2D4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46F23F1C6450069B2D4 /* Question.swift */; };
 		1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */; };
 		1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF923EB2031005C92BA /* AppStore.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
@@ -49,13 +51,11 @@
 		1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493E23EDAC6800F17C13 /* PracticeState.swift */; };
 		1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */; };
 		1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */; };
-		1F8F10C023BF73590001981C /* PracticeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10BF23BF73590001981C /* PracticeGroup.swift */; };
 		1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */; };
 		1F8F10C923BF992B0001981C /* PracticeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */; };
 		1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */; };
 		1FAAC40423C6074B0015EDC0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAC40323C6074B0015EDC0 /* Date+Extension.swift */; };
 		1FAAC41023C60BE10015EDC0 /* QuestionGroupData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1FAAC40F23C60BE10015EDC0 /* QuestionGroupData.json */; };
-		1FAAC41423C61B080015EDC0 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAC41323C61B080015EDC0 /* Observable.swift */; };
 		1FC741D623BF6AE000244938 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC741D523BF6AE000244938 /* AppDelegate.swift */; };
 		1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC741D723BF6AE000244938 /* SceneDelegate.swift */; };
 		1FC741DF23BF6AE600244938 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FC741DE23BF6AE600244938 /* Assets.xcassets */; };
@@ -78,13 +78,6 @@
 		1F1768D323E2FC7B00912335 /* Vocabulary.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Vocabulary.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		1F1768D523E2FDB200912335 /* Characters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Characters.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		1F1768D723E300D800912335 /* Phrases */ = {isa = PBXFileReference; lastKnownFileType = text; path = Phrases; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
-		1F1768D923E303AE00912335 /* CharacterTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTable.swift; sourceTree = "<group>"; };
-		1F1768DB23E303D200912335 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		1F1768DD23E304C400912335 /* Writable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writable.swift; sourceTree = "<group>"; };
-		1F1768DF23E3129100912335 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
-		1F1768EB23E320F800912335 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
-		1F1768ED23E3212F00912335 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
-		1F1768EF23E3295F00912335 /* PracticeLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeLevel.swift; sourceTree = "<group>"; };
 		1F1768F323E32AAA00912335 /* ExperienceModel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExperienceModel.json; sourceTree = "<group>"; };
 		1F17690423E85B2500912335 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1F17690723E861BB00912335 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
@@ -101,6 +94,15 @@
 		1F48D45123EDB9360069B2D4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1F48D45323EDC8B00069B2D4 /* PracticeOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewModel.swift; sourceTree = "<group>"; };
 		1F48D45623F1AA740069B2D4 /* PracticeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeFactory.swift; sourceTree = "<group>"; };
+		1F48D45D23F1C5810069B2D4 /* Experience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
+		1F48D45E23F1C5810069B2D4 /* PracticeLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PracticeLevel.swift; sourceTree = "<group>"; };
+		1F48D46123F1C5810069B2D4 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		1F48D46223F1C5810069B2D4 /* CharacterTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTable.swift; sourceTree = "<group>"; };
+		1F48D46323F1C5810069B2D4 /* PracticeGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PracticeGroup.swift; sourceTree = "<group>"; };
+		1F48D46423F1C5810069B2D4 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		1F48D46C23F1C5C30069B2D4 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		1F48D46E23F1C6450069B2D4 /* Practice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Practice.swift; sourceTree = "<group>"; };
+		1F48D46F23F1C6450069B2D4 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupViewModel.swift; sourceTree = "<group>"; };
 		1F4DABF923EB2031005C92BA /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -115,13 +117,11 @@
 		1F5F493E23EDAC6800F17C13 /* PracticeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeState.swift; sourceTree = "<group>"; };
 		1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeReducer.swift; sourceTree = "<group>"; };
 		1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
-		1F8F10BF23BF73590001981C /* PracticeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroup.swift; sourceTree = "<group>"; };
 		1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewController.swift; sourceTree = "<group>"; };
 		1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupCell.swift; sourceTree = "<group>"; };
 		1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		1FAAC40323C6074B0015EDC0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		1FAAC40F23C60BE10015EDC0 /* QuestionGroupData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuestionGroupData.json; sourceTree = "<group>"; };
-		1FAAC41323C61B080015EDC0 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1FC741D223BF6AE000244938 /* JapaneseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JapaneseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC741D523BF6AE000244938 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FC741D723BF6AE000244938 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,14 +152,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F1768F623E499A200912335 /* Observable */ = {
-			isa = PBXGroup;
-			children = (
-				1FAAC41323C61B080015EDC0 /* Observable.swift */,
-			);
-			path = Observable;
-			sourceTree = "<group>";
-		};
 		1F17690623E861A100912335 /* ReArchitecture */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,13 +224,37 @@
 			isa = PBXGroup;
 			children = (
 				1FAAC3FF23C6058E0015EDC0 /* CareTakers */,
-				1FC741F923BF70E900244938 /* Models */,
+				1F48D45C23F1C5810069B2D4 /* Models */,
 				1F17690623E861A100912335 /* ReArchitecture */,
 				1F48D45023EDB92E0069B2D4 /* Router */,
 				1FAAC40223C607340015EDC0 /* Utilities */,
 				1F4DABF523EB182B005C92BA /* ViewModels */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		1F48D45C23F1C5810069B2D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1F48D46223F1C5810069B2D4 /* CharacterTable.swift */,
+				1F48D45D23F1C5810069B2D4 /* Experience.swift */,
+				1F48D46023F1C5810069B2D4 /* Observable */,
+				1F48D46E23F1C6450069B2D4 /* Practice.swift */,
+				1F48D46323F1C5810069B2D4 /* PracticeGroup.swift */,
+				1F48D45E23F1C5810069B2D4 /* PracticeLevel.swift */,
+				1F48D46F23F1C6450069B2D4 /* Question.swift */,
+				1F48D46423F1C5810069B2D4 /* Student.swift */,
+				1F48D46C23F1C5C30069B2D4 /* Subject.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1F48D46023F1C5810069B2D4 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				1F48D46123F1C5810069B2D4 /* Observable.swift */,
+			);
+			path = Observable;
 			sourceTree = "<group>";
 		};
 		1F4DABF523EB182B005C92BA /* ViewModels */ = {
@@ -360,22 +376,6 @@
 				1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		1FC741F923BF70E900244938 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				1F1768DB23E303D200912335 /* Character.swift */,
-				1F1768D923E303AE00912335 /* CharacterTable.swift */,
-				1F1768ED23E3212F00912335 /* Experience.swift */,
-				1F1768F623E499A200912335 /* Observable */,
-				1F8F10BF23BF73590001981C /* PracticeGroup.swift */,
-				1F1768EF23E3295F00912335 /* PracticeLevel.swift */,
-				1F1768EB23E320F800912335 /* Student.swift */,
-				1F1768DF23E3129100912335 /* Word.swift */,
-				1F1768DD23E304C400912335 /* Writable.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		1FC741FA23BF70F000244938 /* Resources */ = {
@@ -528,15 +528,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F48D46823F1C5810069B2D4 /* Observable.swift in Sources */,
 				1F48D45223EDB9360069B2D4 /* Router.swift in Sources */,
-				1FAAC41423C61B080015EDC0 /* Observable.swift in Sources */,
 				1F17691523E868FE00912335 /* HelperFunctions.swift in Sources */,
-				1F1768DA23E303AE00912335 /* CharacterTable.swift in Sources */,
 				1F5F493B23ED9FBB00F17C13 /* CharacterCellViewModel.swift in Sources */,
+				1F48D46523F1C5810069B2D4 /* Experience.swift in Sources */,
 				1F48D44D23EDB7B70069B2D4 /* NavigationState.swift in Sources */,
+				1F48D46623F1C5810069B2D4 /* PracticeLevel.swift in Sources */,
 				1F5F493023EC7C0800F17C13 /* PracticeViewController.swift in Sources */,
-				1F1768DC23E303D200912335 /* Character.swift in Sources */,
 				1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */,
+				1F48D47123F1C6450069B2D4 /* Question.swift in Sources */,
 				1F531D7823D9CD43004C25DC /* Theme.swift in Sources */,
 				1FC741D623BF6AE000244938 /* AppDelegate.swift in Sources */,
 				1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */,
@@ -544,30 +545,29 @@
 				1F17691223E8686D00912335 /* RepositoryState.swift in Sources */,
 				1FAAC40423C6074B0015EDC0 /* Date+Extension.swift in Sources */,
 				1F5F493423EC8E1600F17C13 /* CharacterCollectionViewController.swift in Sources */,
+				1F48D46D23F1C5C30069B2D4 /* Subject.swift in Sources */,
 				1F17690A23E861C700912335 /* AppReducer.swift in Sources */,
-				1F1768F023E3295F00912335 /* PracticeLevel.swift in Sources */,
 				1F17690823E861BB00912335 /* Actions.swift in Sources */,
-				1F8F10C023BF73590001981C /* PracticeGroup.swift in Sources */,
+				1F48D46B23F1C5810069B2D4 /* Student.swift in Sources */,
 				1F48D45723F1AA740069B2D4 /* PracticeFactory.swift in Sources */,
 				1F8F10C923BF992B0001981C /* PracticeGroupCell.swift in Sources */,
 				1F43DA5723EB016700CED94A /* Button.swift in Sources */,
-				1F1768EC23E320F800912335 /* Student.swift in Sources */,
-				1F1768E023E3129100912335 /* Word.swift in Sources */,
+				1F48D46A23F1C5810069B2D4 /* PracticeGroup.swift in Sources */,
 				1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */,
 				1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */,
 				1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */,
 				1F5F493923EC919B00F17C13 /* CharacterCollectionCell.swift in Sources */,
 				1F17691B23E86A9400912335 /* StudentState.swift in Sources */,
 				1F48D44F23EDB7BF0069B2D4 /* NavigationReducer.swift in Sources */,
-				1F1768DE23E304C400912335 /* Writable.swift in Sources */,
 				1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */,
 				1F5F493223EC7C3200F17C13 /* PracticeViewModel.swift in Sources */,
 				1F5F493723EC8EFB00F17C13 /* CharacterCollectionLayout.swift in Sources */,
 				1F48D45423EDC8B00069B2D4 /* PracticeOverviewViewModel.swift in Sources */,
+				1F48D46923F1C5810069B2D4 /* CharacterTable.swift in Sources */,
 				1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */,
-				1F1768EE23E3212F00912335 /* Experience.swift in Sources */,
 				1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */,
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
+				1F48D47023F1C6450069B2D4 /* Practice.swift in Sources */,
 				1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */,
 				1F5F493D23EDA18C00F17C13 /* CharacterCollectionViewModel.swift in Sources */,
 				1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */,

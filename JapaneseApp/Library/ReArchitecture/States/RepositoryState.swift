@@ -12,7 +12,7 @@ import ReSwift
 public struct RepositoryState: StateType, Equatable {
     
     internal let characterTables: [CharacterTable]
-    internal let vocabulary: [Word]
+    internal let vocabulary: [Subject]
     internal let practiceGroups: [PracticeGroup]
     public let selectedPracticeGroup: PracticeGroup?
     
@@ -35,7 +35,7 @@ extension RepositoryState {
     
     static var initial = RepositoryState(
         characterTables: bundleLoad(resource: "Characters", type: [CharacterTable].self),
-        vocabulary: bundleLoad(resource: "Vocabulary", type: [Word].self),
+        vocabulary: bundleLoad(resource: "Vocabulary", type: [Subject].self),
         practiceGroups: bundleLoad(resource: "QuestionGroupData1", type: [PracticeGroup].self),
         selectedPracticeGroup: nil
     )

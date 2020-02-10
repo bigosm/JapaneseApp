@@ -76,7 +76,7 @@ extension CharacterTableViewController: UITableViewDataSource {
 
         cell.textLabel?.text = character.value
         cell.textLabel?.font = .preferredFont(forTextStyle: .largeTitle)
-        cell.detailTextLabel?.text = character.romajiNotation
+        cell.detailTextLabel?.text = character.altNotation
         cell.backgroundColor = Theme.secondaryBackgroundColor
         
         return cell

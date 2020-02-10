@@ -19,7 +19,7 @@ public struct CharacterTable: Equatable {
     
     public var title: String { return self.type.rawValue.capitalized }
     public let type: TableType
-    public let characters: [Character]
+    public let characters: [Subject]
     
 }
 
@@ -44,7 +44,7 @@ extension CharacterTable: Codable {
         }
         
         self.type = type
-        self.characters = try values.decode([Character].self, forKey: .characters)
+        self.characters = try values.decode([Subject].self, forKey: .characters)
     }
     
     public func encode(to encoder: Encoder) throws {

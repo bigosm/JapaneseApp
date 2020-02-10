@@ -22,16 +22,24 @@ internal func practiceReducer(action: Action, state: PracticeState?) -> Practice
     case .toggleReadingAid:
         return PracticeState(
             current: state.current,
+            practice: state.practice,
+            currentQuestion: state.currentQuestion,
             isReadingAidVisible: !state.isReadingAidVisible
         )
     case .startPractice(let questionGroup):
+        let practice = PracticeFactory(practiceGroup: questionGroup, level: 1).prepare()
         return PracticeState(
             current: .inProgress(questionGroup),
+            practice: practice,
+            currentQuestion: practice.questions.first,
             isReadingAidVisible: state.isReadingAidVisible
         )
     case .startTimePractice(let questionGroup):
+        let practice = PracticeFactory(practiceGroup: questionGroup, level: 1).prepare()
         return PracticeState(
             current: .inProgress(questionGroup),
+            practice: practice,
+            currentQuestion: practice.questions.first,
             isReadingAidVisible: state.isReadingAidVisible
         )
     }
