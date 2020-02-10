@@ -24,7 +24,7 @@ public struct Word: Writable, Equatable {
     public let romajiNotation: String
     public let audio: String?
     
-    public let meaning: String
+    public let meaning: [String]
     public let type: WordType?
     
 }
@@ -45,7 +45,7 @@ extension Word: Codable {
         self.romajiNotation = try values.decode(String.self, forKey: .romajiNotation)
         self.audio = try values.decodeIfPresent(String.self, forKey: .audio)
         
-        self.meaning = try values.decode(String.self, forKey: .meaning)
+        self.meaning = try values.decode([String].self, forKey: .meaning)
         let decodedWordType = try values.decode(String.self, forKey: .type)
         self.type = WordType(rawValue: decodedWordType)
     }

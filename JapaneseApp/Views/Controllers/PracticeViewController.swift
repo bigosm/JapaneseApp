@@ -84,6 +84,10 @@ public final class PracticeViewController: UIViewController {
         self.viewModel.outputs.title.addObserver(self, options: [.new]) { [weak self] value, options in
             self?.title = value
         }
+        
+        self.viewModel.outputs.isReadingAidButtonHidden.addObserver(self, options: [.new]) { [weak self] value, options in
+            self?.readingAidVisibilityButton.isHidden = value
+        }
     }
     
     // MARK: - View Position Layout

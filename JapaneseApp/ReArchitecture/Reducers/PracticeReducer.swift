@@ -18,13 +18,10 @@ internal func practiceReducer(action: Action, state: PracticeState?) -> Practice
 
     switch action {
     case .cancel:
-        return PracticeState(
-            current: .noPractice,
-            isReadingAidVisible: state.isReadingAidVisible
-        )
+        return PracticeState()
     case .toggleReadingAid:
         return PracticeState(
-            current: .noPractice,
+            current: state.current,
             isReadingAidVisible: !state.isReadingAidVisible
         )
     case .startPractice(let questionGroup):

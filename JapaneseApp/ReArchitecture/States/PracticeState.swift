@@ -17,6 +17,15 @@ public struct PracticeState: StateType, Equatable {
     }
     
     public var current: Current = .noPractice
+    public var numberOfQuestions = 10
+    public var currentQuestion: QuestionGroup?
     public var isReadingAidVisible = false
+    public var hasReadingAid: Bool {
+        guard case .inProgress(_) = self.current else {
+            return false
+        }
+        
+        return true
+    }
     
 }

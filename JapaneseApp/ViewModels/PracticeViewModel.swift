@@ -20,6 +20,7 @@ public protocol PracticeViewModelInputs {
 
 public protocol PracticeViewModelOutputs {
     var title: Observable<String?> { get }
+    var isReadingAidButtonHidden: Observable<Bool> { get }
 }
 
 public protocol PracticeViewModelType {
@@ -34,7 +35,9 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
     
     public init() { }
     
-    public func newState(state: PracticeState) { }
+    public func newState(state: PracticeState) {
+        self.isReadingAidButtonHidden.value = !state.hasReadingAid
+    }
     
     // MARK: - Inputs
     
@@ -67,6 +70,7 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
     // MARK: - Outputs
     
     public let title: Observable<String?> = Observable(nil)
+    public let isReadingAidButtonHidden: Observable<Bool> = Observable(false)
 
     public var inputs: PracticeViewModelInputs { return self }
     public var outputs: PracticeViewModelOutputs { return self }
