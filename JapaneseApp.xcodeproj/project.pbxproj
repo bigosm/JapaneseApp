@@ -40,6 +40,10 @@
 		1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47423F2C52B0069B2D4 /* CharacterView.swift */; };
 		1F48D47723F2D2D40069B2D4 /* PracticeCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47623F2D2D40069B2D4 /* PracticeCharacterViewController.swift */; };
 		1F48D47923F2D3040069B2D4 /* PracticeCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47823F2D3040069B2D4 /* PracticeCharacterViewModel.swift */; };
+		1F48D47B23F301150069B2D4 /* AnswerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47A23F301150069B2D4 /* AnswerCollectionViewController.swift */; };
+		1F48D47D23F301350069B2D4 /* AnswerCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47C23F301350069B2D4 /* AnswerCollectionViewModel.swift */; };
+		1F48D47F23F302F90069B2D4 /* TypeInAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */; };
+		1F48D48123F30C4B0069B2D4 /* TypeInAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */; };
 		1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */; };
 		1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF923EB2031005C92BA /* AppStore.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
@@ -107,6 +111,10 @@
 		1F48D47423F2C52B0069B2D4 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		1F48D47623F2D2D40069B2D4 /* PracticeCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCharacterViewController.swift; sourceTree = "<group>"; };
 		1F48D47823F2D3040069B2D4 /* PracticeCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCharacterViewModel.swift; sourceTree = "<group>"; };
+		1F48D47A23F301150069B2D4 /* AnswerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewController.swift; sourceTree = "<group>"; };
+		1F48D47C23F301350069B2D4 /* AnswerCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewModel.swift; sourceTree = "<group>"; };
+		1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeInAnswerViewController.swift; sourceTree = "<group>"; };
+		1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeInAnswerViewModel.swift; sourceTree = "<group>"; };
 		1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupViewModel.swift; sourceTree = "<group>"; };
 		1F4DABF923EB2031005C92BA /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -264,11 +272,13 @@
 		1F4DABF523EB182B005C92BA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				1F48D47C23F301350069B2D4 /* AnswerCollectionViewModel.swift */,
 				1F5F493C23EDA18C00F17C13 /* CharacterCollectionViewModel.swift */,
+				1F48D47823F2D3040069B2D4 /* PracticeCharacterViewModel.swift */,
 				1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */,
 				1F48D45323EDC8B00069B2D4 /* PracticeOverviewViewModel.swift */,
 				1F5F493123EC7C3200F17C13 /* PracticeViewModel.swift */,
-				1F48D47823F2D3040069B2D4 /* PracticeCharacterViewModel.swift */,
+				1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -374,11 +384,13 @@
 		1FC741F823BF70E000244938 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F48D47A23F301150069B2D4 /* AnswerCollectionViewController.swift */,
 				1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */,
 				1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */,
 				1F48D47623F2D2D40069B2D4 /* PracticeCharacterViewController.swift */,
 				1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */,
 				1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */,
+				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -543,10 +555,12 @@
 				1FC741D623BF6AE000244938 /* AppDelegate.swift in Sources */,
 				1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */,
 				1F17690523E85B2500912335 /* AppState.swift in Sources */,
+				1F48D47F23F302F90069B2D4 /* TypeInAnswerViewController.swift in Sources */,
 				1F17691223E8686D00912335 /* RepositoryState.swift in Sources */,
 				1FAAC40423C6074B0015EDC0 /* Date+Extension.swift in Sources */,
 				1F5F493423EC8E1600F17C13 /* CharacterCollectionViewController.swift in Sources */,
 				1F48D46D23F1C5C30069B2D4 /* Subject.swift in Sources */,
+				1F48D47D23F301350069B2D4 /* AnswerCollectionViewModel.swift in Sources */,
 				1F17690A23E861C700912335 /* AppReducer.swift in Sources */,
 				1F17690823E861BB00912335 /* Actions.swift in Sources */,
 				1F48D46B23F1C5810069B2D4 /* Student.swift in Sources */,
@@ -564,6 +578,7 @@
 				1F48D44F23EDB7BF0069B2D4 /* NavigationReducer.swift in Sources */,
 				1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */,
 				1F5F493223EC7C3200F17C13 /* PracticeViewModel.swift in Sources */,
+				1F48D48123F30C4B0069B2D4 /* TypeInAnswerViewModel.swift in Sources */,
 				1F5F493723EC8EFB00F17C13 /* CharacterCollectionLayout.swift in Sources */,
 				1F48D45423EDC8B00069B2D4 /* PracticeOverviewViewModel.swift in Sources */,
 				1F48D46923F1C5810069B2D4 /* CharacterTable.swift in Sources */,
@@ -572,6 +587,7 @@
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
 				1F48D47023F1C6450069B2D4 /* Practice.swift in Sources */,
 				1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */,
+				1F48D47B23F301150069B2D4 /* AnswerCollectionViewController.swift in Sources */,
 				1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */,
 				1F5F493D23EDA18C00F17C13 /* CharacterCollectionViewModel.swift in Sources */,
 				1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */,

@@ -9,6 +9,7 @@
 import UIKit
 
 public protocol PracticeSubjectViewController: UIViewController { }
+public protocol PracticeAnswerViewController: UIViewController { }
 
 public final class PracticeViewController: UIViewController {
     
@@ -18,8 +19,12 @@ public final class PracticeViewController: UIViewController {
     
     public let questionLabel = UILabel()
     public let practiceSubject: PracticeSubjectViewController = CharacterCollectionViewController()
+    public let practiceAnswer: PracticeAnswerViewController = TypeInAnswerViewController()
     public let listenButton = Button(customType: .primary)
     public let readingAidVisibilityButton = Button(customType: .primary)
+    public let checkButton = Button(customType: .primaryRounded)
+    
+    private var bottomConstraint: NSLayoutConstraint?
 
     // MARK: - View Lifecycle
     
@@ -41,12 +46,20 @@ public final class PracticeViewController: UIViewController {
         self.readingAidVisibilityButton.imageView?.contentMode = .scaleAspectFit
         self.readingAidVisibilityButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
+        self.checkButton.setTitle("Check", for: .normal)
+        
         self.listenButton.addTarget(self, action: #selector(handleListenButton(_:)), for: .touchUpInside)
         self.readingAidVisibilityButton.addTarget(self, action: #selector(handleReadingAidVisibilityButton(_:)), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                                 target: self,
                                                                 action: #selector(handleCancelButton(_:)))
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        self.view.addGestureRecognizer(tap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         self.setupView()
         self.bindViewModel()
@@ -57,6 +70,7 @@ public final class PracticeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.viewModel.inputs.viewWillAppear()
+        self.view.layoutIfNeeded()
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -66,6 +80,27 @@ public final class PracticeViewController: UIViewController {
     }
     
     // MARK: - Instance Methods
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            self.bottomConstraint?.constant == -20 {
+            self.bottomConstraint?.constant -= (keyboardSize.height)
+            
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.bottomConstraint?.constant != -20 {
+            self.bottomConstraint?.constant = -20
+            
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
     
     @objc func handleCancelButton(_ sender: Any) {
         self.viewModel.inputs.cancelButtonTapped()
@@ -105,6 +140,10 @@ public final class PracticeViewController: UIViewController {
         self.view.addSubview(self.practiceSubject.view)
         self.view.addSubview(self.listenButton)
         self.view.addSubview(self.readingAidVisibilityButton)
+        self.addChild(self.practiceAnswer)
+        self.practiceAnswer.didMove(toParent: self)
+        self.view.addSubview(self.practiceAnswer.view)
+        self.view.addSubview(self.checkButton)
         
         self.questionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -135,5 +174,23 @@ public final class PracticeViewController: UIViewController {
             self.readingAidVisibilityButton.heightAnchor.constraint(equalToConstant: self.readingAidVisibilityButton.buttonHeight),
             self.readingAidVisibilityButton.widthAnchor.constraint(equalToConstant: self.readingAidVisibilityButton.buttonHeight)
         ])
+        
+        self.practiceAnswer.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.practiceAnswer.view.topAnchor.constraint(equalTo: self.readingAidVisibilityButton.bottomAnchor, constant: 20),
+            self.practiceAnswer.view.leadingAnchor.constraint(equalTo: self.questionLabel.leadingAnchor),
+            self.practiceAnswer.view.trailingAnchor.constraint(equalTo: self.questionLabel.trailingAnchor)
+        ])
+        
+        self.checkButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.checkButton.topAnchor.constraint(equalTo: self.practiceAnswer.view.bottomAnchor, constant: 20),
+            self.checkButton.leadingAnchor.constraint(equalTo: self.questionLabel.leadingAnchor),
+            self.checkButton.trailingAnchor.constraint(equalTo: self.questionLabel.trailingAnchor),
+            self.checkButton.heightAnchor.constraint(equalToConstant: self.checkButton.buttonHeight)
+        ])
+        
+        self.bottomConstraint = self.checkButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        self.bottomConstraint?.isActive = true
     }
 }
