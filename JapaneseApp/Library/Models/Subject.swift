@@ -23,7 +23,6 @@ public struct Subject: Equatable {
     public let readingAid: String?
     public let altNotation: String?
     public let audio: String?
-    
     public let meaning: [String]?
     public let type: WordType?
     

@@ -33,8 +33,12 @@ public final class CharacterCollectionViewModel: CharacterCollectionViewModelTyp
     public init() { }
     
     public func newState(state: PracticeState) {
-        self.numberOfItems = state.currentQuestion?.subject.count ?? 0
-        self.contentUpdate.value = true
+        guard let currentQuestion = state.currentQuestion else { return }
+        
+        if case .sentenceMeaning(_, let phrase, _) = currentQuestion {
+            self.numberOfItems = phrase.value.count
+            self.contentUpdate.value = true
+        }
     }
     
     // MARK: - Inputs

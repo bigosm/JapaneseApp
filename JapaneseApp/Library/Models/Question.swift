@@ -8,10 +8,7 @@
 
 import Foundation
 
-public struct Question: Codable, Equatable {
-
-    public let prompt: String
-    public let subject: [Subject]
-    public let answer: [String]
-    
+public enum Question: Equatable {
+    case sentenceMeaning(prompt: String, phrase: Phrase, answers: [String])
+    case translateMeaning(prompt: String, subject: String, answers: [Subject])
 }

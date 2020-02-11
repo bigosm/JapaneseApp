@@ -36,7 +36,7 @@ extension RepositoryState {
     static var initial = RepositoryState(
         characterTables: bundleLoad(resource: "Characters", type: [CharacterTable].self),
         vocabulary: bundleLoad(resource: "Vocabulary", type: [Subject].self),
-        practiceGroups: bundleLoad(resource: "QuestionGroupData1", type: [PracticeGroup].self),
+        practiceGroups: bundleLoad(resource: "PracticeGroups", type: [PracticeGroup].self),
         selectedPracticeGroup: nil
     )
     

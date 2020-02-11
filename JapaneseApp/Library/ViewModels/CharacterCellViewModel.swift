@@ -33,9 +33,13 @@ public final class CharacterCellViewModel: CharacterCellViewModelType, Character
     public init() { }
     
     public func newState(state: PracticeState) {
-        let subject = state.currentQuestion?.subject[index]
-        self.title.value = subject?.value
-        self.readingAid.value = subject?.readingAid
+        guard let currentQuestion = state.currentQuestion else { return }
+        
+        if case .sentenceMeaning(_, let phrase, _) = currentQuestion {
+            self.title.value = phrase.value[index].value
+            self.readingAid.value = phrase.value[index].readingAid
+        }
+
         self.readingAidVisibility.value = state.isReadingAidVisible
     }
     

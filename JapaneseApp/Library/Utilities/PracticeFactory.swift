@@ -9,10 +9,10 @@
 import Foundation
 
 public struct PracticeFactory {
-    
+
     let practiceGroup: PracticeGroup
     let level: Int
-    
+
     public func prepare() -> Practice {
         
         let currentPracticeLevel = practiceGroup.levels
@@ -24,8 +24,8 @@ public struct PracticeFactory {
         let vocabulary = self.getVocabulary(byIds: vocabularyIds)
         
         return Practice(questions: [
-            Question(prompt: "test", subject: vocabulary, answer: []),
-            Question(prompt: "test", subject: characters, answer: [])
+            .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: vocabulary, audio: nil, meaning: nil), answers: []),
+            .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: characters, audio: nil, meaning: nil), answers: [])
         ])
     }
     
