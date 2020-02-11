@@ -24,7 +24,7 @@ public struct PracticeFactory {
         let vocabulary = self.getVocabulary(byIds: vocabularyIds)
         let randomWord = vocabulary.randomElement()!
         return Practice(questions: [
-            .subjectMeaning(prompt: "What is the meaning", subject: randomWord, answers: randomWord.meaning!),
+            .subjectMeaning(prompt: "What is the meaning", subject: AppStore.shared.state.repositoryState.vocabulary.randomElement()!, answers: randomWord.meaning!),
             .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: vocabulary, audio: nil, meaning: nil), answers: []),
             .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: characters, audio: nil, meaning: nil), answers: [])
         ])

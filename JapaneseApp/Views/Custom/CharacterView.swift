@@ -22,11 +22,23 @@ public class CharacterView: UIView {
     public let readingAidLabel = UILabel()
     public let underlineView = UIView()
     
+    public var isHideable: Bool = true {
+        didSet {
+            guard oldValue != self.isHideable else { return }
+            self.setupReadingAid()
+        }
+    }
     public var isReadingAidVisible: Bool = false {
-        didSet { self.setupReadingAid() }
+        didSet {
+            guard oldValue != self.isReadingAidVisible else { return }
+            self.setupReadingAid()
+        }
     }
     public var readingAidDirection: ReadingAidDriection = .horizontal {
-        didSet { self.setupReadingAid() }
+        didSet {
+            guard oldValue != self.readingAidDirection else { return }
+            self.setupReadingAid()
+        }
     }
     public var readingAidHeight: NSLayoutConstraint!
     public var readingAidWidth: NSLayoutConstraint!
@@ -37,11 +49,12 @@ public class CharacterView: UIView {
         super.init(frame: .zero)
     }
     
-    convenience init(readingAidDirection: ReadingAidDriection = .horizontal) {
+    convenience init(readingAidDirection: ReadingAidDriection = .horizontal, isHideable: Bool = true) {
         self.init(frame: .zero)
         
         self.readingAidDirection = readingAidDirection
         self.readingAidLabel.lineBreakMode = .byCharWrapping
+        self.isHideable = isHideable
         
         self.setupView()
         self.setupReadingAid()
@@ -55,32 +68,35 @@ public class CharacterView: UIView {
     
     private func setupReadingAid() {
         self.stackView.removeArrangedSubview(self.readingAidLabel)
-        self.readingAidHeight.isActive = false
-        self.readingAidWidth.isActive = false
         
-        guard isReadingAidVisible else {
-            self.readingAidLabel.isHidden = true
-            return
-        }
+        self.readingAidLabel.isHidden = self.isHideable && !self.isReadingAidVisible
+        self.readingAidLabel.alpha = self.isReadingAidVisible ? 1 : 0
         
-        self.readingAidLabel.isHidden = false
         if case .horizontal = self.readingAidDirection {
             self.stackView.axis = .vertical
-            self.stackView.insertArrangedSubview(self.readingAidLabel, at: 0)
             self.readingAidLabel.numberOfLines = 1
             self.readingAidHeight.isActive = true
+            self.readingAidWidth.isActive = false
         } else {
             self.stackView.axis = .horizontal
-            self.stackView.addArrangedSubview(self.readingAidLabel)
             self.readingAidLabel.numberOfLines = 0
+            self.readingAidHeight.isActive = false
             self.readingAidWidth.isActive = true
         }
+        
+        if self.isHideable && !self.isReadingAidVisible { return }
+
+        self.stackView.axis == .vertical
+            ? self.stackView.insertArrangedSubview(self.readingAidLabel, at: 0)
+            : self.stackView.addArrangedSubview(self.readingAidLabel)
     }
     
     private func setupView() {
         self.addSubview(self.stackView)
         self.stackView.addArrangedSubview(self.titleLabel)
         self.addSubview(self.underlineView)
+        
+        self.titleLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 999), for: .horizontal)
         
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

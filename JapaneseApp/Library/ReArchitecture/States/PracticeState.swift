@@ -23,11 +23,18 @@ public struct PracticeState: StateType, Equatable {
     public var isReadingAidVisible = false
     public var hasReadingAid: Bool {
         guard case .inProgress(_) = self.current,
-            case .sentenceMeaning(_, let phrase, _) = self.currentQuestion else {
+            let question = self.currentQuestion else {
             return false
         }
         
-        return phrase.value.contains { $0.readingAid != nil }
+        switch question {
+        case .sentenceMeaning(_, let phrase, _):
+            return phrase.value.contains { $0.readingAid != nil }
+        case .subjectMeaning(_, let subject, _):
+            return subject.readingAid != nil
+        default:
+            return false
+        }
     }
     
 }

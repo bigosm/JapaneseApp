@@ -8,6 +8,8 @@
 
 import UIKit
 
+public protocol PracticeSubjectViewController: UIViewController { }
+
 public final class PracticeViewController: UIViewController {
     
     // MARK: - Instance Properties
@@ -15,7 +17,7 @@ public final class PracticeViewController: UIViewController {
     private let viewModel: PracticeViewModelType = PracticeViewModel()
     
     public let questionLabel = UILabel()
-    public let questionSubject = CharacterCollectionViewController()
+    public let practiceSubject: PracticeSubjectViewController = CharacterCollectionViewController()
     public let listenButton = Button(customType: .primary)
     public let readingAidVisibilityButton = Button(customType: .primary)
 
@@ -98,9 +100,9 @@ public final class PracticeViewController: UIViewController {
     
     private func setupView() {
         self.view.addSubview(self.questionLabel)
-        self.addChild(self.questionSubject)
-        self.questionSubject.didMove(toParent: self)
-        self.view.addSubview(self.questionSubject.view)
+        self.addChild(self.practiceSubject)
+        self.practiceSubject.didMove(toParent: self)
+        self.view.addSubview(self.practiceSubject.view)
         self.view.addSubview(self.listenButton)
         self.view.addSubview(self.readingAidVisibilityButton)
         
@@ -111,16 +113,16 @@ public final class PracticeViewController: UIViewController {
             self.questionLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20)
         ])
         
-        self.questionSubject.view.translatesAutoresizingMaskIntoConstraints = false
+        self.practiceSubject.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.questionSubject.view.topAnchor.constraint(equalTo: self.questionLabel.bottomAnchor, constant: 20),
-            self.questionSubject.view.leadingAnchor.constraint(equalTo: self.questionLabel.leadingAnchor),
-            self.questionSubject.view.trailingAnchor.constraint(equalTo: self.questionLabel.trailingAnchor)
+            self.practiceSubject.view.topAnchor.constraint(equalTo: self.questionLabel.bottomAnchor, constant: 20),
+            self.practiceSubject.view.leadingAnchor.constraint(equalTo: self.questionLabel.leadingAnchor),
+            self.practiceSubject.view.trailingAnchor.constraint(equalTo: self.questionLabel.trailingAnchor)
         ])
         
         self.listenButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.listenButton.topAnchor.constraint(equalTo: self.questionSubject.view.bottomAnchor, constant: 20),
+            self.listenButton.topAnchor.constraint(equalTo: self.practiceSubject.view.bottomAnchor, constant: 20),
             self.listenButton.leadingAnchor.constraint(equalTo: self.questionLabel.leadingAnchor),
             self.listenButton.heightAnchor.constraint(equalToConstant: self.listenButton.buttonHeight),
             self.listenButton.widthAnchor.constraint(equalToConstant: self.listenButton.buttonHeight)

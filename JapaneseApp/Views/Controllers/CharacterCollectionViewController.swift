@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class CharacterCollectionViewController: UIViewController {
+public final class CharacterCollectionViewController: UIViewController, PracticeSubjectViewController {
     
     // MARK: - Instance Properties
     
