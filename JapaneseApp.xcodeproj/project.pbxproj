@@ -37,6 +37,7 @@
 		1F48D47023F1C6450069B2D4 /* Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46E23F1C6450069B2D4 /* Practice.swift */; };
 		1F48D47123F1C6450069B2D4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46F23F1C6450069B2D4 /* Question.swift */; };
 		1F48D47323F2BE660069B2D4 /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47223F2BE660069B2D4 /* Phrase.swift */; };
+		1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47423F2C52B0069B2D4 /* CharacterView.swift */; };
 		1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */; };
 		1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF923EB2031005C92BA /* AppStore.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
@@ -102,6 +103,7 @@
 		1F48D46E23F1C6450069B2D4 /* Practice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Practice.swift; sourceTree = "<group>"; };
 		1F48D46F23F1C6450069B2D4 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		1F48D47223F2BE660069B2D4 /* Phrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
+		1F48D47423F2C52B0069B2D4 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupViewModel.swift; sourceTree = "<group>"; };
 		1F4DABF923EB2031005C92BA /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				1F43DA5623EB016700CED94A /* Button.swift */,
+				1F48D47423F2C52B0069B2D4 /* CharacterView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
 				1F48D47023F1C6450069B2D4 /* Practice.swift in Sources */,
 				1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */,
+				1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */,
 				1F5F493D23EDA18C00F17C13 /* CharacterCollectionViewModel.swift in Sources */,
 				1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */,
 			);

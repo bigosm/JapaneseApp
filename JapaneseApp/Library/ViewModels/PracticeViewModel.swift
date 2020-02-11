@@ -37,7 +37,11 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
     public init() { }
     
     public func newState(state: PracticeState) {
-        if case .sentenceMeaning(let prompt, _, _) = state.currentQuestion {
+        guard let current = state.currentQuestion else { return }
+        switch current {
+        case .sentenceMeaning(let prompt, _, _),
+             .translateMeaning(let prompt, _, _),
+             .subjectMeaning(let prompt, _, _):
             self.question.value = prompt
         }
         self.isReadingAidButtonHidden.value = !state.hasReadingAid
