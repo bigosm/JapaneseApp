@@ -84,8 +84,9 @@ public final class PracticeViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             self.bottomConstraint?.constant == -20 {
-            self.bottomConstraint?.constant -= (keyboardSize.height)
+            self.bottomConstraint?.constant -= (keyboardSize.height - self.view.safeAreaInsets.bottom)
             
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
@@ -95,7 +96,8 @@ public final class PracticeViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.bottomConstraint?.constant != -20 {
             self.bottomConstraint?.constant = -20
-            
+
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }

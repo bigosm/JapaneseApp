@@ -71,11 +71,11 @@ public final class PracticeCharacterViewController: UIViewController, PracticeSu
     private func configureView(configuration: CharacterConfiguartion) {
         switch configuration {
         case .subject:
-            self.characterView.isHideable = true
+            self.characterView.isHideable = false
             self.characterView.titleLabel.font = .systemFont(ofSize: 60)
             self.characterView.titleLabel.adjustsFontSizeToFitWidth = true
             self.characterView.readingAidLabel.font = .systemFont(ofSize: 17)
-            self.characterView.readingAidDirection = .vertical
+            self.characterView.readingAidDirection = .horizontal
             self.characterView.underlineView.backgroundColor = Theme.tertiaryBackgroundColor
         case .sentenceElement:
             self.characterView.isHideable = true
