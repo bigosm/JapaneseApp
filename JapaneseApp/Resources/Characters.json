@@ -5,749 +5,749 @@
       {
         "id": "hiragana-a",
         "value": "あ",
-        "kanaNotation": null,
-        "romajiNotation": "a",
+        "readingAid": null,
+        "altNotation": "a",
         "audio": null
       },
       {
         "id": "hiragana-i",
         "value": "い",
-        "kanaNotation": null,
-        "romajiNotation": "i",
+        "readingAid": null,
+        "altNotation": "i",
         "audio": null
       },
       {
         "id": "hiragana-u",
         "value": "う",
-        "kanaNotation": null,
-        "romajiNotation": "u",
+        "readingAid": null,
+        "altNotation": "u",
         "audio": null
       },
       {
         "id": "hiragana-e",
         "value": "え",
-        "kanaNotation": null,
-        "romajiNotation": "e",
+        "readingAid": null,
+        "altNotation": "e",
         "audio": null
       },
       {
         "id": "hiragana-o",
         "value": "お",
-        "kanaNotation": null,
-        "romajiNotation": "o",
+        "readingAid": null,
+        "altNotation": "o",
         "audio": null
       },
       {
         "id": "hiragana-ka",
         "value": "か",
-        "kanaNotation": null,
-        "romajiNotation": "ka",
+        "readingAid": null,
+        "altNotation": "ka",
         "audio": null
       },
       {
         "id": "hiragana-ki",
         "value": "き",
-        "kanaNotation": null,
-        "romajiNotation": "ki",
+        "readingAid": null,
+        "altNotation": "ki",
         "audio": null
       },
       {
         "id": "hiragana-ku",
         "value": "く",
-        "kanaNotation": null,
-        "romajiNotation": "ku",
+        "readingAid": null,
+        "altNotation": "ku",
         "audio": null
       },
       {
         "id": "hiragana-ke",
         "value": "け",
-        "kanaNotation": null,
-        "romajiNotation": "ke",
+        "readingAid": null,
+        "altNotation": "ke",
         "audio": null
       },
       {
         "id": "hiragana-ko",
         "value": "こ",
-        "kanaNotation": null,
-        "romajiNotation": "ko",
+        "readingAid": null,
+        "altNotation": "ko",
         "audio": null
       },
       {
         "id": "hiragana-kya",
         "value": "きゃ",
-        "kanaNotation": null,
-        "romajiNotation": "kya",
+        "readingAid": null,
+        "altNotation": "kya",
         "audio": null
       },
       {
         "id": "hiragana-kyu",
         "value": "きゅ",
-        "kanaNotation": null,
-        "romajiNotation": "kyu",
+        "readingAid": null,
+        "altNotation": "kyu",
         "audio": null
       },
       {
         "id": "hiragana-kyo",
         "value": "きょ",
-        "kanaNotation": null,
-        "romajiNotation": "kyo",
+        "readingAid": null,
+        "altNotation": "kyo",
         "audio": null
       },
       {
         "id": "hiragana-sa",
         "value": "さ",
-        "kanaNotation": null,
-        "romajiNotation": "sa",
+        "readingAid": null,
+        "altNotation": "sa",
         "audio": null
       },
       {
         "id": "hiragana-shi",
         "value": "し",
-        "kanaNotation": null,
-        "romajiNotation": "shi",
+        "readingAid": null,
+        "altNotation": "shi",
         "audio": null
       },
       {
         "id": "hiragana-su",
         "value": "す",
-        "kanaNotation": null,
-        "romajiNotation": "su",
+        "readingAid": null,
+        "altNotation": "su",
         "audio": null
       },
       {
         "id": "hiragana-se",
         "value": "せ",
-        "kanaNotation": null,
-        "romajiNotation": "se",
+        "readingAid": null,
+        "altNotation": "se",
         "audio": null
       },
       {
         "id": "hiragana-so",
         "value": "そ",
-        "kanaNotation": null,
-        "romajiNotation": "so",
+        "readingAid": null,
+        "altNotation": "so",
         "audio": null
       },
       {
         "id": "hiragana-sha",
         "value": "しゃ",
-        "kanaNotation": null,
-        "romajiNotation": "sha",
+        "readingAid": null,
+        "altNotation": "sha",
         "audio": null
       },
       {
         "id": "hiragana-shu",
         "value": "しゅ",
-        "kanaNotation": null,
-        "romajiNotation": "shu",
+        "readingAid": null,
+        "altNotation": "shu",
         "audio": null
       },
       {
         "id": "hiragana-sho",
         "value": "しょ",
-        "kanaNotation": null,
-        "romajiNotation": "sho",
+        "readingAid": null,
+        "altNotation": "sho",
         "audio": null
       },
       {
         "id": "hiragana-ta",
         "value": "た",
-        "kanaNotation": null,
-        "romajiNotation": "ta",
+        "readingAid": null,
+        "altNotation": "ta",
         "audio": null
       },
       {
         "id": "hiragana-chi",
         "value": "ち",
-        "kanaNotation": null,
-        "romajiNotation": "chi",
+        "readingAid": null,
+        "altNotation": "chi",
         "audio": null
       },
       {
         "id": "hiragana-tsu",
         "value": "つ",
-        "kanaNotation": null,
-        "romajiNotation": "tsu",
+        "readingAid": null,
+        "altNotation": "tsu",
         "audio": null
       },
       {
         "id": "hiragana-te",
         "value": "て",
-        "kanaNotation": null,
-        "romajiNotation": "te",
+        "readingAid": null,
+        "altNotation": "te",
         "audio": null
       },
       {
         "id": "hiragana-to",
         "value": "と",
-        "kanaNotation": null,
-        "romajiNotation": "to",
+        "readingAid": null,
+        "altNotation": "to",
         "audio": null
       },
       {
         "id": "hiragana-cha",
         "value": "ちゃ",
-        "kanaNotation": null,
-        "romajiNotation": "cha",
+        "readingAid": null,
+        "altNotation": "cha",
         "audio": null
       },
       {
         "id": "hiragana-chu",
         "value": "ちゅ",
-        "kanaNotation": null,
-        "romajiNotation": "chu",
+        "readingAid": null,
+        "altNotation": "chu",
         "audio": null
       },
       {
         "id": "hiragana-cho",
         "value": "ちょ",
-        "kanaNotation": null,
-        "romajiNotation": "cho",
+        "readingAid": null,
+        "altNotation": "cho",
         "audio": null
       },
       {
         "id": "hiragana-na",
         "value": "な",
-        "kanaNotation": null,
-        "romajiNotation": "na",
+        "readingAid": null,
+        "altNotation": "na",
         "audio": null
       },
       {
         "id": "hiragana-ni",
         "value": "に",
-        "kanaNotation": null,
-        "romajiNotation": "ni",
+        "readingAid": null,
+        "altNotation": "ni",
         "audio": null
       },
       {
         "id": "hiragana-nu",
         "value": "ぬ",
-        "kanaNotation": null,
-        "romajiNotation": "nu",
+        "readingAid": null,
+        "altNotation": "nu",
         "audio": null
       },
       {
         "id": "hiragana-ne",
         "value": "ね",
-        "kanaNotation": null,
-        "romajiNotation": "ne",
+        "readingAid": null,
+        "altNotation": "ne",
         "audio": null
       },
       {
         "id": "hiragana-no",
         "value": "の",
-        "kanaNotation": null,
-        "romajiNotation": "no",
+        "readingAid": null,
+        "altNotation": "no",
         "audio": null
       },
       {
         "id": "hiragana-nya",
         "value": "にゃ",
-        "kanaNotation": null,
-        "romajiNotation": "nya",
+        "readingAid": null,
+        "altNotation": "nya",
         "audio": null
       },
       {
         "id": "hiragana-nyu",
         "value": "にゅ",
-        "kanaNotation": null,
-        "romajiNotation": "nyu",
+        "readingAid": null,
+        "altNotation": "nyu",
         "audio": null
       },
       {
         "id": "hiragana-nyo",
         "value": "にょ",
-        "kanaNotation": null,
-        "romajiNotation": "nyo",
+        "readingAid": null,
+        "altNotation": "nyo",
         "audio": null
       },
       {
         "id": "hiragana-ha",
         "value": "は",
-        "kanaNotation": null,
-        "romajiNotation": "ha",
+        "readingAid": null,
+        "altNotation": "ha",
         "audio": null
       },
       {
         "id": "hiragana-hi",
         "value": "ひ",
-        "kanaNotation": null,
-        "romajiNotation": "hi",
+        "readingAid": null,
+        "altNotation": "hi",
         "audio": null
       },
       {
         "id": "hiragana-fu",
         "value": "ふ",
-        "romajiNotation": "fu",
+        "altNotation": "fu",
         "audio": null
       },
       {
         "id": "hiragana-he",
         "value": "へ",
-        "kanaNotation": null,
-        "romajiNotation": "he",
+        "readingAid": null,
+        "altNotation": "he",
         "audio": null
       },
       {
         "id": "hiragana-ho",
         "value": "ほ",
-        "kanaNotation": null,
-        "romajiNotation": "ho",
+        "readingAid": null,
+        "altNotation": "ho",
         "audio": null
       },
       {
         "id": "hiragana-hya",
         "value": "ひゃ",
-        "kanaNotation": null,
-        "romajiNotation": "hya",
+        "readingAid": null,
+        "altNotation": "hya",
         "audio": null
       },
       {
         "id": "hiragana-hyu",
         "value": "ひゅ",
-        "kanaNotation": null,
-        "romajiNotation": "hyu",
+        "readingAid": null,
+        "altNotation": "hyu",
         "audio": null
       },
       {
         "id": "hiragana-hyo",
         "value": "ひょ",
-        "kanaNotation": null,
-        "romajiNotation": "hyo",
+        "readingAid": null,
+        "altNotation": "hyo",
         "audio": null
       },
       {
         "id": "hiragana-ma",
         "value": "ま",
-        "kanaNotation": null,
-        "romajiNotation": "ma",
+        "readingAid": null,
+        "altNotation": "ma",
         "audio": null
       },
       {
         "id": "hiragana-mi",
         "value": "み",
-        "kanaNotation": null,
-        "romajiNotation": "mi",
+        "readingAid": null,
+        "altNotation": "mi",
         "audio": null
       },
       {
         "id": "hiragana-mu",
         "value": "む",
-        "kanaNotation": null,
-        "romajiNotation": "mu",
+        "readingAid": null,
+        "altNotation": "mu",
         "audio": null
       },
       {
         "id": "hiragana-me",
         "value": "め",
-        "kanaNotation": null,
-        "romajiNotation": "me",
+        "readingAid": null,
+        "altNotation": "me",
         "audio": null
       },
       {
         "id": "hiragana-mo",
         "value": "も",
-        "kanaNotation": null,
-        "romajiNotation": "mo",
+        "readingAid": null,
+        "altNotation": "mo",
         "audio": null
       },
       {
         "id": "hiragana-mya",
         "value": "みゃ",
-        "kanaNotation": null,
-        "romajiNotation": "mya",
+        "readingAid": null,
+        "altNotation": "mya",
         "audio": null
       },
       {
         "id": "hiragana-myu",
         "value": "みゅ",
-        "kanaNotation": null,
-        "romajiNotation": "myu",
+        "readingAid": null,
+        "altNotation": "myu",
         "audio": null
       },
       {
         "id": "hiragana-myo",
         "value": "みょ",
-        "kanaNotation": null,
-        "romajiNotation": "myo",
+        "readingAid": null,
+        "altNotation": "myo",
         "audio": null
       },
       {
         "id": "hiragana-ya",
         "value": "や",
-        "kanaNotation": null,
-        "romajiNotation": "ya",
+        "readingAid": null,
+        "altNotation": "ya",
         "audio": null
       },
       {
         "id": "hiragana-yu",
         "value": "ゆ",
-        "kanaNotation": null,
-        "romajiNotation": "yu",
+        "readingAid": null,
+        "altNotation": "yu",
         "audio": null
       },
       {
         "id": "hiragana-yo",
         "value": "よ",
-        "kanaNotation": null,
-        "romajiNotation": "yo",
+        "readingAid": null,
+        "altNotation": "yo",
         "audio": null
       },
       {
         "id": "hiragana-ra",
         "value": "ら",
-        "kanaNotation": null,
-        "romajiNotation": "ra",
+        "readingAid": null,
+        "altNotation": "ra",
         "audio": null
       },
       {
         "id": "hiragana-ri",
         "value": "り",
-        "kanaNotation": null,
-        "romajiNotation": "ri",
+        "readingAid": null,
+        "altNotation": "ri",
         "audio": null
       },
       {
         "id": "hiragana-ru",
         "value": "る",
-        "kanaNotation": null,
-        "romajiNotation": "ru",
+        "readingAid": null,
+        "altNotation": "ru",
         "audio": null
       },
       {
         "id": "hiragana-re",
         "value": "れ",
-        "kanaNotation": null,
-        "romajiNotation": "re",
+        "readingAid": null,
+        "altNotation": "re",
         "audio": null
       },
       {
         "id": "hiragana-ro",
         "value": "ろ",
-        "kanaNotation": null,
-        "romajiNotation": "ro",
+        "readingAid": null,
+        "altNotation": "ro",
         "audio": null
       },
       {
         "id": "hiragana-rya",
         "value": "りゃ",
-        "kanaNotation": null,
-        "romajiNotation": "rya",
+        "readingAid": null,
+        "altNotation": "rya",
         "audio": null
       },
       {
         "id": "hiragana-ryu",
         "value": "りゅ",
-        "kanaNotation": null,
-        "romajiNotation": "ryu",
+        "readingAid": null,
+        "altNotation": "ryu",
         "audio": null
       },
       {
         "id": "hiragana-ryo",
         "value": "りょ",
-        "kanaNotation": null,
-        "romajiNotation": "ryo",
+        "readingAid": null,
+        "altNotation": "ryo",
         "audio": null
       },
       {
         "id": "hiragana-wa",
         "value": "わ",
-        "kanaNotation": null,
-        "romajiNotation": "wa",
+        "readingAid": null,
+        "altNotation": "wa",
         "audio": null
       },
       {
         "id": "hiragana-wo",
         "value": "を",
-        "kanaNotation": null,
-        "romajiNotation": "wo",
+        "readingAid": null,
+        "altNotation": "wo",
         "audio": null
       },
       {
         "id": "hiragana-n",
         "value": "ん",
-        "kanaNotation": null,
-        "romajiNotation": "n",
+        "readingAid": null,
+        "altNotation": "n",
         "audio": null
       },
       {
         "id": "hiragana-ga",
         "value": "が",
-        "kanaNotation": null,
-        "romajiNotation": "ga",
+        "readingAid": null,
+        "altNotation": "ga",
         "audio": null
       },
       {
         "id": "hiragana-gi",
         "value": "ぎ",
-        "kanaNotation": null,
-        "romajiNotation": "gi",
+        "readingAid": null,
+        "altNotation": "gi",
         "audio": null
       },
       {
         "id": "hiragana-gu",
         "value": "ぐ",
-        "kanaNotation": null,
-        "romajiNotation": "gu",
+        "readingAid": null,
+        "altNotation": "gu",
         "audio": null
       },
       {
         "id": "hiragana-ge",
         "value": "げ",
-        "kanaNotation": null,
-        "romajiNotation": "ge",
+        "readingAid": null,
+        "altNotation": "ge",
         "audio": null
       },
       {
         "id": "hiragana-go",
         "value": "ご",
-        "kanaNotation": null,
-        "romajiNotation": "go",
+        "readingAid": null,
+        "altNotation": "go",
         "audio": null
       },
       {
         "id": "hiragana-gya",
         "value": "ぎゃ",
-        "kanaNotation": null,
-        "romajiNotation": "gya",
+        "readingAid": null,
+        "altNotation": "gya",
         "audio": null
       },
       {
         "id": "hiragana-gyu",
         "value": "ぎゅ",
-        "kanaNotation": null,
-        "romajiNotation": "gyu",
+        "readingAid": null,
+        "altNotation": "gyu",
         "audio": null
       },
       {
         "id": "hiragana-gyo",
         "value": "ぎょ",
-        "kanaNotation": null,
-        "romajiNotation": "gyo",
+        "readingAid": null,
+        "altNotation": "gyo",
         "audio": null
       },
       {
         "id": "hiragana-za",
         "value": "ざ",
-        "kanaNotation": null,
-        "romajiNotation": "za",
+        "readingAid": null,
+        "altNotation": "za",
         "audio": null
       },
       {
         "id": "hiragana-ji",
         "value": "じ",
-        "kanaNotation": null,
-        "romajiNotation": "ji",
+        "readingAid": null,
+        "altNotation": "ji",
         "audio": null
       },
       {
         "id": "hiragana-zu",
         "value": "ず",
-        "kanaNotation": null,
-        "romajiNotation": "zu",
+        "readingAid": null,
+        "altNotation": "zu",
         "audio": null
       },
       {
         "id": "hiragana-ze",
         "value": "ぜ",
-        "kanaNotation": null,
-        "romajiNotation": "ze",
+        "readingAid": null,
+        "altNotation": "ze",
         "audio": null
       },
       {
         "id": "hiragana-zo",
         "value": "ぞ",
-        "kanaNotation": null,
-        "romajiNotation": "zo",
+        "readingAid": null,
+        "altNotation": "zo",
         "audio": null
       },
       {
         "id": "hiragana-ja",
         "value": "じゃ",
-        "kanaNotation": null,
-        "romajiNotation": "ja",
+        "readingAid": null,
+        "altNotation": "ja",
         "audio": null
       },
       {
         "id": "hiragana-ju",
         "value": "じゅ",
-        "kanaNotation": null,
-        "romajiNotation": "ju",
+        "readingAid": null,
+        "altNotation": "ju",
         "audio": null
       },
       {
         "id": "hiragana-jo",
         "value": "じょ",
-        "kanaNotation": null,
-        "romajiNotation": "jo",
+        "readingAid": null,
+        "altNotation": "jo",
         "audio": null
       },
       {
         "id": "hiragana-da",
         "value": "だ",
-        "kanaNotation": null,
-        "romajiNotation": "da",
+        "readingAid": null,
+        "altNotation": "da",
         "audio": null
       },
       {
         "id": "hiragana-ji-di",
         "value": "ぢ",
-        "kanaNotation": null,
-        "romajiNotation": "ji",
+        "readingAid": null,
+        "altNotation": "ji",
         "audio": null
       },
       {
         "id": "hiragana-dzu",
         "value": "づ",
-        "kanaNotation": null,
-        "romajiNotation": "dzu",
+        "readingAid": null,
+        "altNotation": "dzu",
         "audio": null
       },
       {
         "id": "hiragana-de",
         "value": "で",
-        "kanaNotation": null,
-        "romajiNotation": "de",
+        "readingAid": null,
+        "altNotation": "de",
         "audio": null
       },
       {
         "id": "hiragana-do",
         "value": "ど",
-        "kanaNotation": null,
-        "romajiNotation": "do",
+        "readingAid": null,
+        "altNotation": "do",
         "audio": null
       },
       {
         "id": "hiragana-ja",
         "value": "ぢゃ",
-        "kanaNotation": null,
-        "romajiNotation": "ja",
+        "readingAid": null,
+        "altNotation": "ja",
         "audio": null
       },
       {
         "id": "hiragana-ju",
         "value": "ぢゅ",
-        "kanaNotation": null,
-        "romajiNotation": "ju",
+        "readingAid": null,
+        "altNotation": "ju",
         "audio": null
       },
       {
         "id": "hiragana-jo",
         "value": "ぢょ",
-        "kanaNotation": null,
-        "romajiNotation": "jo",
+        "readingAid": null,
+        "altNotation": "jo",
         "audio": null
       },
       {
         "id": "hiragana-ba",
         "value": "ば",
-        "kanaNotation": null,
-        "romajiNotation": "ba",
+        "readingAid": null,
+        "altNotation": "ba",
         "audio": null
       },
       {
         "id": "hiragana-bi",
         "value": "び",
-        "kanaNotation": null,
-        "romajiNotation": "bi",
+        "readingAid": null,
+        "altNotation": "bi",
         "audio": null
       },
       {
         "id": "hiragana-bu",
         "value": "ぶ",
-        "kanaNotation": null,
-        "romajiNotation": "bu",
+        "readingAid": null,
+        "altNotation": "bu",
         "audio": null
       },
       {
         "id": "hiragana-be",
         "value": "べ",
-        "kanaNotation": null,
-        "romajiNotation": "be",
+        "readingAid": null,
+        "altNotation": "be",
         "audio": null
       },
       {
         "id": "hiragana-bo",
         "value": "ぼ",
-        "kanaNotation": null,
-        "romajiNotation": "bo",
+        "readingAid": null,
+        "altNotation": "bo",
         "audio": null
       },
       {
         "id": "hiragana-bya",
         "value": "びゃ",
-        "kanaNotation": null,
-        "romajiNotation": "bya",
+        "readingAid": null,
+        "altNotation": "bya",
         "audio": null
       },
       {
         "id": "hiragana-byu",
         "value": "びゅ",
-        "kanaNotation": null,
-        "romajiNotation": "byu",
+        "readingAid": null,
+        "altNotation": "byu",
         "audio": null
       },
       {
         "id": "hiragana-byo",
         "value": "びょ",
-        "kanaNotation": null,
-        "romajiNotation": "byo",
+        "readingAid": null,
+        "altNotation": "byo",
         "audio": null
       },
       {
         "id": "hiragana-pa",
         "value": "ぱ",
-        "kanaNotation": null,
-        "romajiNotation": "pa",
+        "readingAid": null,
+        "altNotation": "pa",
         "audio": null
       },
       {
         "id": "hiragana-pi",
         "value": "ぴ",
-        "kanaNotation": null,
-        "romajiNotation": "pi",
+        "readingAid": null,
+        "altNotation": "pi",
         "audio": null
       },
       {
         "id": "hiragana-pu",
         "value": "ぷ",
-        "kanaNotation": null,
-        "romajiNotation": "pu",
+        "readingAid": null,
+        "altNotation": "pu",
         "audio": null
       },
       {
         "id": "hiragana-pe",
         "value": "ぺ",
-        "kanaNotation": null,
-        "romajiNotation": "pe",
+        "readingAid": null,
+        "altNotation": "pe",
         "audio": null
       },
       {
         "id": "hiragana-po",
         "value": "ぽ",
-        "kanaNotation": null,
-        "romajiNotation": "po",
+        "readingAid": null,
+        "altNotation": "po",
         "audio": null
       },
       {
         "id": "hiragana-pya",
         "value": "ぴゃ",
-        "kanaNotation": null,
-        "romajiNotation": "pya",
+        "readingAid": null,
+        "altNotation": "pya",
         "audio": null
       },
       {
         "id": "hiragana-pyu",
         "value": "ぴゅ",
-        "kanaNotation": null,
-        "romajiNotation": "pyu",
+        "readingAid": null,
+        "altNotation": "pyu",
         "audio": null
       },
       {
         "id": "hiragana-pyo",
         "value": "ぴょ",
-        "kanaNotation": null,
-        "romajiNotation": "pyo"
+        "readingAid": null,
+        "altNotation": "pyo"
       }
     ]
   },
@@ -757,750 +757,750 @@
       {
         "id": "katakana-a",
         "value": "ア",
-        "kanaNotation": null,
-        "romajiNotation": "a",
+        "readingAid": null,
+        "altNotation": "a",
         "audio": null
       },
       {
         "id": "katakana-i",
         "value": "イ",
-        "kanaNotation": null,
-        "romajiNotation": "i",
+        "readingAid": null,
+        "altNotation": "i",
         "audio": null
       },
       {
         "id": "katakana-u",
         "value": "ウ",
-        "kanaNotation": null,
-        "romajiNotation": "u",
+        "readingAid": null,
+        "altNotation": "u",
         "audio": null
       },
       {
         "id": "katakana-e",
         "value": "エ",
-        "kanaNotation": null,
-        "romajiNotation": "e",
+        "readingAid": null,
+        "altNotation": "e",
         "audio": null
       },
       {
         "id": "katakana-o",
         "value": "オ",
-        "kanaNotation": null,
-        "romajiNotation": "o",
+        "readingAid": null,
+        "altNotation": "o",
         "audio": null
       },
       {
         "id": "katakana-ka",
         "value": "カ",
-        "kanaNotation": null,
-        "romajiNotation": "ka",
+        "readingAid": null,
+        "altNotation": "ka",
         "audio": null
       },
       {
         "id": "katakana-ki",
         "value": "キ",
-        "kanaNotation": null,
-        "romajiNotation": "ki",
+        "readingAid": null,
+        "altNotation": "ki",
         "audio": null
       },
       {
         "id": "katakana-ku",
         "value": "ク",
-        "kanaNotation": null,
-        "romajiNotation": "ku",
+        "readingAid": null,
+        "altNotation": "ku",
         "audio": null
       },
       {
         "id": "katakana-ke",
         "value": "ケ",
-        "kanaNotation": null,
-        "romajiNotation": "ke",
+        "readingAid": null,
+        "altNotation": "ke",
         "audio": null
       },
       {
         "id": "katakana-ko",
         "value": "コ",
-        "kanaNotation": null,
-        "romajiNotation": "ko",
+        "readingAid": null,
+        "altNotation": "ko",
         "audio": null
       },
       {
         "id": "katakana-kya",
         "value": "キャ",
-        "kanaNotation": null,
-        "romajiNotation": "kya",
+        "readingAid": null,
+        "altNotation": "kya",
         "audio": null
       },
       {
         "id": "katakana-kyu",
         "value": "キュ",
-        "kanaNotation": null,
-        "romajiNotation": "kyu",
+        "readingAid": null,
+        "altNotation": "kyu",
         "audio": null
       },
       {
         "id": "katakana-kyo",
         "value": "キョ",
-        "kanaNotation": null,
-        "romajiNotation": "kyo",
+        "readingAid": null,
+        "altNotation": "kyo",
         "audio": null
       },
       {
         "id": "katakana-sa",
         "value": "サ",
-        "kanaNotation": null,
-        "romajiNotation": "sa",
+        "readingAid": null,
+        "altNotation": "sa",
         "audio": null
       },
       {
         "id": "katakana-shi",
         "value": "シ",
-        "kanaNotation": null,
-        "romajiNotation": "shi",
+        "readingAid": null,
+        "altNotation": "shi",
         "audio": null
       },
       {
         "id": "katakana-su",
         "value": "ス",
-        "kanaNotation": null,
-        "romajiNotation": "su",
+        "readingAid": null,
+        "altNotation": "su",
         "audio": null
       },
       {
         "id": "katakana-se",
         "value": "セ",
-        "kanaNotation": null,
-        "romajiNotation": "se",
+        "readingAid": null,
+        "altNotation": "se",
         "audio": null
       },
       {
         "id": "katakana-so",
         "value": "ソ",
-        "kanaNotation": null,
-        "romajiNotation": "so",
+        "readingAid": null,
+        "altNotation": "so",
         "audio": null
       },
       {
         "id": "katakana-sha",
         "value": "シャ",
-        "kanaNotation": null,
-        "romajiNotation": "sha",
+        "readingAid": null,
+        "altNotation": "sha",
         "audio": null
       },
       {
         "id": "katakana-shu",
         "value": "シュ",
-        "kanaNotation": null,
-        "romajiNotation": "shu",
+        "readingAid": null,
+        "altNotation": "shu",
         "audio": null
       },
       {
         "id": "katakana-sho",
         "value": "ショ",
-        "kanaNotation": null,
-        "romajiNotation": "sho",
+        "readingAid": null,
+        "altNotation": "sho",
         "audio": null
       },
       {
         "id": "katakana-ta",
         "value": "タ",
-        "kanaNotation": null,
-        "romajiNotation": "ta",
+        "readingAid": null,
+        "altNotation": "ta",
         "audio": null
       },
       {
         "id": "katakana-chi",
         "value": "チ",
-        "kanaNotation": null,
-        "romajiNotation": "chi",
+        "readingAid": null,
+        "altNotation": "chi",
         "audio": null
       },
       {
         "id": "katakana-tsu",
         "value": "ツ",
-        "kanaNotation": null,
-        "romajiNotation": "tsu",
+        "readingAid": null,
+        "altNotation": "tsu",
         "audio": null
       },
       {
         "id": "katakana-te",
         "value": "テ",
-        "kanaNotation": null,
-        "romajiNotation": "te",
+        "readingAid": null,
+        "altNotation": "te",
         "audio": null
       },
       {
         "id": "katakana-to",
         "value": "ト",
-        "kanaNotation": null,
-        "romajiNotation": "to",
+        "readingAid": null,
+        "altNotation": "to",
         "audio": null
       },
       {
         "id": "katakana-cha",
         "value": "チャ",
-        "kanaNotation": null,
-        "romajiNotation": "cha",
+        "readingAid": null,
+        "altNotation": "cha",
         "audio": null
       },
       {
         "id": "katakana-chu",
         "value": "チュ",
-        "kanaNotation": null,
-        "romajiNotation": "chu",
+        "readingAid": null,
+        "altNotation": "chu",
         "audio": null
       },
       {
         "id": "katakana-cho",
         "value": "チョ",
-        "kanaNotation": null,
-        "romajiNotation": "cho",
+        "readingAid": null,
+        "altNotation": "cho",
         "audio": null
       },
       {
         "id": "katakana-na",
         "value": "ナ",
-        "kanaNotation": null,
-        "romajiNotation": "na",
+        "readingAid": null,
+        "altNotation": "na",
         "audio": null
       },
       {
         "id": "katakana-ni",
         "value": "ニ",
-        "kanaNotation": null,
-        "romajiNotation": "ni",
+        "readingAid": null,
+        "altNotation": "ni",
         "audio": null
       },
       {
         "id": "katakana-nu",
         "value": "ヌ",
-        "kanaNotation": null,
-        "romajiNotation": "nu",
+        "readingAid": null,
+        "altNotation": "nu",
         "audio": null
       },
       {
         "id": "katakana-ne",
         "value": "ネ",
-        "kanaNotation": null,
-        "romajiNotation": "ne",
+        "readingAid": null,
+        "altNotation": "ne",
         "audio": null
       },
       {
         "id": "katakana-no",
         "value": "ノ",
-        "kanaNotation": null,
-        "romajiNotation": "no",
+        "readingAid": null,
+        "altNotation": "no",
         "audio": null
       },
       {
         "id": "katakana-nya",
         "value": "ニャ",
-        "kanaNotation": null,
-        "romajiNotation": "nya",
+        "readingAid": null,
+        "altNotation": "nya",
         "audio": null
       },
       {
         "id": "katakana-nyu",
         "value": "ニュ",
-        "kanaNotation": null,
-        "romajiNotation": "nyu",
+        "readingAid": null,
+        "altNotation": "nyu",
         "audio": null
       },
       {
         "id": "katakana-nyo",
         "value": "ニョ",
-        "kanaNotation": null,
-        "romajiNotation": "nyo",
+        "readingAid": null,
+        "altNotation": "nyo",
         "audio": null
       },
       {
         "id": "katakana-ha",
         "value": "ハ",
-        "kanaNotation": null,
-        "romajiNotation": "ha",
+        "readingAid": null,
+        "altNotation": "ha",
         "audio": null
       },
       {
         "id": "katakana-hi",
         "value": "ヒ",
-        "kanaNotation": null,
-        "romajiNotation": "hi",
+        "readingAid": null,
+        "altNotation": "hi",
         "audio": null
       },
       {
         "id": "katakana-fu",
         "value": "フ",
-        "kanaNotation": null,
-        "romajiNotation": "fu",
+        "readingAid": null,
+        "altNotation": "fu",
         "audio": null
       },
       {
         "id": "katakana-he",
         "value": "ヘ",
-        "kanaNotation": null,
-        "romajiNotation": "he",
+        "readingAid": null,
+        "altNotation": "he",
         "audio": null
       },
       {
         "id": "katakana-ho",
         "value": "ホ",
-        "kanaNotation": null,
-        "romajiNotation": "ho",
+        "readingAid": null,
+        "altNotation": "ho",
         "audio": null
       },
       {
         "id": "katakana-hya",
         "value": "ヒャ",
-        "kanaNotation": null,
-        "romajiNotation": "hya",
+        "readingAid": null,
+        "altNotation": "hya",
         "audio": null
       },
       {
         "id": "katakana-hyu",
         "value": "ヒュ",
-        "kanaNotation": null,
-        "romajiNotation": "hyu",
+        "readingAid": null,
+        "altNotation": "hyu",
         "audio": null
       },
       {
         "id": "katakana-hyo",
         "value": "ヒョ",
-        "kanaNotation": null,
-        "romajiNotation": "hyo",
+        "readingAid": null,
+        "altNotation": "hyo",
         "audio": null
       },
       {
         "id": "katakana-ma",
         "value": "マ",
-        "kanaNotation": null,
-        "romajiNotation": "ma",
+        "readingAid": null,
+        "altNotation": "ma",
         "audio": null
       },
       {
         "id": "katakana-mi",
         "value": "ミ",
-        "kanaNotation": null,
-        "romajiNotation": "mi",
+        "readingAid": null,
+        "altNotation": "mi",
         "audio": null
       },
       {
         "id": "katakana-mu",
         "value": "ム",
-        "kanaNotation": null,
-        "romajiNotation": "mu",
+        "readingAid": null,
+        "altNotation": "mu",
         "audio": null
       },
       {
         "id": "katakana-me",
         "value": "メ",
-        "kanaNotation": null,
-        "romajiNotation": "me",
+        "readingAid": null,
+        "altNotation": "me",
         "audio": null
       },
       {
         "id": "katakana-mo",
         "value": "モ",
-        "kanaNotation": null,
-        "romajiNotation": "mo",
+        "readingAid": null,
+        "altNotation": "mo",
         "audio": null
       },
       {
         "id": "katakana-mya",
         "value": "ミャ",
-        "kanaNotation": null,
-        "romajiNotation": "mya",
+        "readingAid": null,
+        "altNotation": "mya",
         "audio": null
       },
       {
         "id": "katakana-myu",
         "value": "ミュ",
-        "kanaNotation": null,
-        "romajiNotation": "myu",
+        "readingAid": null,
+        "altNotation": "myu",
         "audio": null
       },
       {
         "id": "katakana-myo",
         "value": "ミョ",
-        "kanaNotation": null,
-        "romajiNotation": "myo",
+        "readingAid": null,
+        "altNotation": "myo",
         "audio": null
       },
       {
         "id": "katakana-ya",
         "value": "ヤ",
-        "kanaNotation": null,
-        "romajiNotation": "ya",
+        "readingAid": null,
+        "altNotation": "ya",
         "audio": null
       },
       {
         "id": "katakana-yu",
         "value": "ユ",
-        "kanaNotation": null,
-        "romajiNotation": "yu",
+        "readingAid": null,
+        "altNotation": "yu",
         "audio": null
       },
       {
         "id": "katakana-yo",
         "value": "ヨ",
-        "kanaNotation": null,
-        "romajiNotation": "yo",
+        "readingAid": null,
+        "altNotation": "yo",
         "audio": null
       },
       {
         "id": "katakana-ra",
         "value": "ラ",
-        "kanaNotation": null,
-        "romajiNotation": "ra",
+        "readingAid": null,
+        "altNotation": "ra",
         "audio": null
       },
       {
         "id": "katakana-ri",
         "value": "リ",
-        "kanaNotation": null,
-        "romajiNotation": "ri",
+        "readingAid": null,
+        "altNotation": "ri",
         "audio": null
       },
       {
         "id": "katakana-ru",
         "value": "ル",
-        "kanaNotation": null,
-        "romajiNotation": "ru",
+        "readingAid": null,
+        "altNotation": "ru",
         "audio": null
       },
       {
         "id": "katakana-re",
         "value": "レ",
-        "kanaNotation": null,
-        "romajiNotation": "re",
+        "readingAid": null,
+        "altNotation": "re",
         "audio": null
       },
       {
         "id": "katakana-ro",
         "value": "ロ",
-        "kanaNotation": null,
-        "romajiNotation": "ro",
+        "readingAid": null,
+        "altNotation": "ro",
         "audio": null
       },
       {
         "id": "katakana-rya",
         "value": "リャ",
-        "kanaNotation": null,
-        "romajiNotation": "rya",
+        "readingAid": null,
+        "altNotation": "rya",
         "audio": null
       },
       {
         "id": "katakana-ryu",
         "value": "リュ",
-        "kanaNotation": null,
-        "romajiNotation": "ryu",
+        "readingAid": null,
+        "altNotation": "ryu",
         "audio": null
       },
       {
         "id": "katakana-ryo",
         "value": "リョ",
-        "kanaNotation": null,
-        "romajiNotation": "ryo",
+        "readingAid": null,
+        "altNotation": "ryo",
         "audio": null
       },
       {
         "id": "katakana-wa",
         "value": "ワ",
-        "kanaNotation": null,
-        "romajiNotation": "wa",
+        "readingAid": null,
+        "altNotation": "wa",
         "audio": null
       },
       {
         "id": "katakana-wo",
         "value": "ヲ",
-        "kanaNotation": null,
-        "romajiNotation": "wo",
+        "readingAid": null,
+        "altNotation": "wo",
         "audio": null
       },
       {
         "id": "katakana-n",
         "value": "ン",
-        "kanaNotation": null,
-        "romajiNotation": "n",
+        "readingAid": null,
+        "altNotation": "n",
         "audio": null
       },
       {
         "id": "katakana-ga",
         "value": "ガ",
-        "kanaNotation": null,
-        "romajiNotation": "ga",
+        "readingAid": null,
+        "altNotation": "ga",
         "audio": null
       },
       {
         "id": "katakana-gi",
         "value": "ギ",
-        "kanaNotation": null,
-        "romajiNotation": "gi",
+        "readingAid": null,
+        "altNotation": "gi",
         "audio": null
       },
       {
         "id": "katakana-gu",
         "value": "グ",
-        "kanaNotation": null,
-        "romajiNotation": "gu",
+        "readingAid": null,
+        "altNotation": "gu",
         "audio": null
       },
       {
         "id": "katakana-ge",
         "value": "ゲ",
-        "kanaNotation": null,
-        "romajiNotation": "ge",
+        "readingAid": null,
+        "altNotation": "ge",
         "audio": null
       },
       {
         "id": "katakana-go",
         "value": "ゴ",
-        "kanaNotation": null,
-        "romajiNotation": "go",
+        "readingAid": null,
+        "altNotation": "go",
         "audio": null
       },
       {
         "id": "katakana-gya",
         "value": "ギャ",
-        "kanaNotation": null,
-        "romajiNotation": "gya",
+        "readingAid": null,
+        "altNotation": "gya",
         "audio": null
       },
       {
         "id": "katakana-gyu",
         "value": "ギュ",
-        "kanaNotation": null,
-        "romajiNotation": "gyu",
+        "readingAid": null,
+        "altNotation": "gyu",
         "audio": null
       },
       {
         "id": "katakana-gyo",
         "value": "ギョ",
-        "kanaNotation": null,
-        "romajiNotation": "gyo",
+        "readingAid": null,
+        "altNotation": "gyo",
         "audio": null
       },
       {
         "id": "katakana-za",
         "value": "ザ",
-        "kanaNotation": null,
-        "romajiNotation": "za",
+        "readingAid": null,
+        "altNotation": "za",
         "audio": null
       },
       {
         "id": "katakana-ji",
         "value": "ジ",
-        "kanaNotation": null,
-        "romajiNotation": "ji",
+        "readingAid": null,
+        "altNotation": "ji",
         "audio": null
       },
       {
         "id": "katakana-zu",
         "value": "ズ",
-        "kanaNotation": null,
-        "romajiNotation": "zu",
+        "readingAid": null,
+        "altNotation": "zu",
         "audio": null
       },
       {
         "id": "katakana-z",
         "value": "ゼ",
-        "kanaNotation": null,
-        "romajiNotation": "ze",
+        "readingAid": null,
+        "altNotation": "ze",
         "audio": null
       },
       {
         "id": "katakana-zo",
         "value": "ゾ",
-        "kanaNotation": null,
-        "romajiNotation": "zo",
+        "readingAid": null,
+        "altNotation": "zo",
         "audio": null
       },
       {
         "id": "katakana-ja",
         "value": "ジャ",
-        "kanaNotation": null,
-        "romajiNotation": "ja",
+        "readingAid": null,
+        "altNotation": "ja",
         "audio": null
       },
       {
         "id": "katakana-ju",
         "value": "ジュ",
-        "kanaNotation": null,
-        "romajiNotation": "ju",
+        "readingAid": null,
+        "altNotation": "ju",
         "audio": null
       },
       {
         "id": "katakana-jo",
         "value": "ジョ",
-        "kanaNotation": null,
-        "romajiNotation": "jo",
+        "readingAid": null,
+        "altNotation": "jo",
         "audio": null
       },
       {
         "id": "katakana-da",
         "value": "ダ",
-        "kanaNotation": null,
-        "romajiNotation": "da",
+        "readingAid": null,
+        "altNotation": "da",
         "audio": null
       },
       {
         "id": "katakana-ji-di",
         "value": "ヂ",
-        "kanaNotation": null,
-        "romajiNotation": "ji",
+        "readingAid": null,
+        "altNotation": "ji",
         "audio": null
       },
       {
         "id": "katakana-dzu",
         "value": "ヅ",
-        "kanaNotation": null,
-        "romajiNotation": "dzu",
+        "readingAid": null,
+        "altNotation": "dzu",
         "audio": null
       },
       {
         "id": "katakana-de",
         "value": "デ",
-        "kanaNotation": null,
-        "romajiNotation": "de",
+        "readingAid": null,
+        "altNotation": "de",
         "audio": null
       },
       {
         "id": "katakana-do",
         "value": "ド",
-        "kanaNotation": null,
-        "romajiNotation": "do",
+        "readingAid": null,
+        "altNotation": "do",
         "audio": null
       },
       {
         "id": "katakana-ja",
         "value": "ヂャ",
-        "kanaNotation": null,
-        "romajiNotation": "ja",
+        "readingAid": null,
+        "altNotation": "ja",
         "audio": null
       },
       {
         "id": "katakana-ju",
         "value": "ヂュ",
-        "kanaNotation": null,
-        "romajiNotation": "ju",
+        "readingAid": null,
+        "altNotation": "ju",
         "audio": null
       },
       {
         "id": "katakana-jo",
         "value": "ヂョ",
-        "kanaNotation": null,
-        "romajiNotation": "jo",
+        "readingAid": null,
+        "altNotation": "jo",
         "audio": null
       },
       {
         "id": "katakana-ba",
         "value": "バ",
-        "kanaNotation": null,
-        "romajiNotation": "ba",
+        "readingAid": null,
+        "altNotation": "ba",
         "audio": null
       },
       {
         "id": "katakana-bi",
         "value": "ビ",
-        "kanaNotation": null,
-        "romajiNotation": "bi",
+        "readingAid": null,
+        "altNotation": "bi",
         "audio": null
       },
       {
         "id": "katakana-bu",
         "value": "ブ",
-        "kanaNotation": null,
-        "romajiNotation": "bu",
+        "readingAid": null,
+        "altNotation": "bu",
         "audio": null
       },
       {
         "id": "katakana-be",
         "value": "ベ",
-        "kanaNotation": null,
-        "romajiNotation": "be",
+        "readingAid": null,
+        "altNotation": "be",
         "audio": null
       },
       {
         "id": "katakana-bo",
         "value": "ボ",
-        "kanaNotation": null,
-        "romajiNotation": "bo",
+        "readingAid": null,
+        "altNotation": "bo",
         "audio": null
       },
       {
         "id": "katakana-bya",
         "value": "ビャ",
-        "kanaNotation": null,
-        "romajiNotation": "bya",
+        "readingAid": null,
+        "altNotation": "bya",
         "audio": null
       },
       {
         "id": "katakana-byu",
         "value": "ビュ",
-        "kanaNotation": null,
-        "romajiNotation": "byu",
+        "readingAid": null,
+        "altNotation": "byu",
         "audio": null
       },
       {
         "id": "katakana-byo",
         "value": "ビョ",
-        "kanaNotation": null,
-        "romajiNotation": "byo",
+        "readingAid": null,
+        "altNotation": "byo",
         "audio": null
       },
       {
         "id": "katakana-pa",
         "value": "パ",
-        "kanaNotation": null,
-        "romajiNotation": "pa",
+        "readingAid": null,
+        "altNotation": "pa",
         "audio": null
       },
       {
         "id": "katakana-pi",
         "value": "ピ",
-        "kanaNotation": null,
-        "romajiNotation": "pi",
+        "readingAid": null,
+        "altNotation": "pi",
         "audio": null
       },
       {
         "id": "katakana-pu",
         "value": "プ",
-        "kanaNotation": null,
-        "romajiNotation": "pu",
+        "readingAid": null,
+        "altNotation": "pu",
         "audio": null
       },
       {
         "id": "katakana-pe",
         "value": "ペ",
-        "kanaNotation": null,
-        "romajiNotation": "pe",
+        "readingAid": null,
+        "altNotation": "pe",
         "audio": null
       },
       {
         "id": "katakana-po",
         "value": "ポ",
-        "kanaNotation": null,
-        "romajiNotation": "po",
+        "readingAid": null,
+        "altNotation": "po",
         "audio": null
       },
       {
         "id": "katakana-pya",
         "value": "ピャ",
-        "kanaNotation": null,
-        "romajiNotation": "pya",
+        "readingAid": null,
+        "altNotation": "pya",
         "audio": null
       },
       {
         "id": "katakana-pyu",
         "value": "ピュ",
-        "kanaNotation": null,
-        "romajiNotation": "pyu",
+        "readingAid": null,
+        "altNotation": "pyu",
         "audio": null
       },
       {
         "id": "katakana-pyo",
         "value": "ピョ",
-        "kanaNotation": null,
-        "romajiNotation": "pyo",
+        "readingAid": null,
+        "altNotation": "pyo",
         "audio": null
       }
     ]
