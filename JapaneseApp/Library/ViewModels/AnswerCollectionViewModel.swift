@@ -33,13 +33,13 @@ public final class AnswerCollectionViewModel: AnswerCollectionViewModelType, Ans
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard let currentQuestion = state.currentQuestion else { return }
+        guard let state = state.practice else { return }
         
-        if case .subjectMeaning(_, _, _) = currentQuestion {
+        if case .subjectMeaning(_, _, _) = state.currentQuestion {
             self.numberOfItems = 1
             self.contentUpdate.value = true
             
-        } else if case .sentenceMeaning(_, let phrase, _) = currentQuestion {
+        } else if case .sentenceMeaning(_, let phrase, _) = state.currentQuestion {
             self.numberOfItems = phrase.value.count
             self.contentUpdate.value = true
         }
@@ -47,9 +47,7 @@ public final class AnswerCollectionViewModel: AnswerCollectionViewModelType, Ans
     
     // MARK: - Inputs
     
-    public func viewDidLoad() {
-        
-    }
+    public func viewDidLoad() { }
     
     public func viewWillAppear() {
         AppStore.shared.subscribe(self) {

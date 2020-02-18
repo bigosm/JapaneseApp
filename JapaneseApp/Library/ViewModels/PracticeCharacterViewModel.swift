@@ -41,14 +41,13 @@ public final class PracticeCharacterViewModel: PracticeCharacterViewModelType, P
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard let currentQuestion = state.currentQuestion else { return }
-        
+        guard let state = state.practice else { return }
         var subject: Subject? = nil
         
-        if case .subjectMeaning(_, let value, _) = currentQuestion {
+        if case .subjectMeaning(_, let value, _) = state.currentQuestion {
             subject = value
             self.configuration.value = .subject
-        } else if case .sentenceMeaning(_, let value, _) = currentQuestion,
+        } else if case .sentenceMeaning(_, let value, _) = state.currentQuestion,
             let index = self.characterIndex {
             subject = value.value[index]
             self.configuration.value = .sentenceElement

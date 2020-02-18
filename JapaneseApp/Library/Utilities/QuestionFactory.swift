@@ -8,26 +8,28 @@
 
 import Foundation
 
-public struct PracticeFactory {
+public struct QuestionFactory {
 
     let practiceGroup: PracticeGroup
     let level: Int
 
-    public func prepare() -> Practice {
+    public func prepare() -> [Question] {
         
         let currentPracticeLevel = practiceGroup.levels
         let charactersIds = currentPracticeLevel.map { $0.characters }.flatMap { $0 }
         let vocabularyIds = currentPracticeLevel.map { $0.vocabulary }.flatMap { $0 }
 //        let phrasesIds = currentPracticeLevel.map { $0.phrases }.flatMap { $0 }
         
-        let characters = self.getCharacters(byIds: charactersIds)
+        let characters = self.getCharacters(byIds: charactersIds).shuffled().map { character in
+            return Question.subjectMeaning(prompt: "What is the meaning", subject: character, answers: [])
+        }
         let vocabulary = self.getVocabulary(byIds: vocabularyIds)
         let randomWord = vocabulary.randomElement()!
-        return Practice(questions: [
-            .subjectMeaning(prompt: "What is the meaning", subject: AppStore.shared.state.repositoryState.vocabulary.randomElement()!, answers: randomWord.meaning!),
-            .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: vocabulary, audio: nil, meaning: nil), answers: []),
-            .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: characters, audio: nil, meaning: nil), answers: [])
-        ])
+        return characters
+//            .subjectMeaning(prompt: "What is the meaning", subject: AppStore.shared.state.repositoryState.vocabulary.randomElement()!, answers: randomWord.meaning!),
+//            .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: vocabulary, audio: nil, meaning: nil), answers: []),
+//            .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: characters, audio: nil, meaning: nil), answers: [])
+//        ])
     }
     
     public func getCharacters(byIds charactersIds: [String]) -> [Subject] {

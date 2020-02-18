@@ -13,10 +13,12 @@ public protocol TypeInAnswerViewModelInputs {
     func viewDidLoad()
     func viewWillAppear()
     func viewWillDisappear()
+    func textInput(text: String)
 }
 
 public protocol TypeInAnswerViewModelOutputs {
-    var textInput: String? { get set }
+    var textInput: Observable<String?> { get set }
+    var canChangeTextInput: Bool { get }
 }
 
 public protocol TypeInAnswerViewModelType {
@@ -32,7 +34,9 @@ public final class TypeInAnswerViewModel: TypeInAnswerViewModelType, TypeInAnswe
     public init() { }
     
     public func newState(state: PracticeState) {
-        
+        guard let state = state.practice else { return }
+        self.textInput.value = state.currentQuestionAnswer
+        self.canChangeTextInput = state.correctAnswerState == nil
     }
     
     // MARK: - Inputs
@@ -51,9 +55,16 @@ public final class TypeInAnswerViewModel: TypeInAnswerViewModelType, TypeInAnswe
         AppStore.shared.unsubscribe(self)
     }
     
+    public func textInput(text: String) {
+        AppStore.shared.dispatch(
+            CurrentPracticeAction.answer(text)
+        )
+    }
+    
     // MARK: - Outputs
     
-    public var textInput: String?
+    public var textInput: Observable<String?> = Observable(nil)
+    public private(set) var canChangeTextInput: Bool = true
     
     public var inputs: TypeInAnswerViewModelInputs { return self }
     public var outputs: TypeInAnswerViewModelOutputs { return self }

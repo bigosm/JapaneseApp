@@ -23,6 +23,7 @@ public final class PracticeViewController: UIViewController {
     public let listenButton = Button(customType: .primary)
     public let readingAidVisibilityButton = Button(customType: .primary)
     public let checkButton = Button(customType: .primaryRounded)
+    public let continueButton = Button(customType: .primaryRounded)
     
     private var bottomConstraint: NSLayoutConstraint?
 
@@ -47,9 +48,12 @@ public final class PracticeViewController: UIViewController {
         self.readingAidVisibilityButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         self.checkButton.setTitle("Check", for: .normal)
+        self.continueButton.setTitle("Continue", for: .normal)
         
         self.listenButton.addTarget(self, action: #selector(handleListenButton(_:)), for: .touchUpInside)
         self.readingAidVisibilityButton.addTarget(self, action: #selector(handleReadingAidVisibilityButton(_:)), for: .touchUpInside)
+        self.checkButton.addTarget(self, action: #selector(handleCheckButton(_:)), for: .touchUpInside)
+        self.continueButton.addTarget(self, action: #selector(handleContinueButton(_:)), for: .touchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                                 target: self,
@@ -105,6 +109,7 @@ public final class PracticeViewController: UIViewController {
     }
     
     @objc func handleCancelButton(_ sender: Any) {
+        self.view.endEditing(true)
         self.viewModel.inputs.cancelButtonTapped()
     }
     
@@ -115,6 +120,15 @@ public final class PracticeViewController: UIViewController {
     @objc func handleReadingAidVisibilityButton(_ sender: Any) {
         self.readingAidVisibilityButton.isSelected.toggle()
         self.viewModel.inputs.readingAidVisibilityButtonTapped()
+    }
+    
+    @objc func handleCheckButton(_ sender: Any) {
+        self.view.endEditing(true)
+        self.viewModel.inputs.checkButtonTapped()
+    }
+    
+    @objc func handleContinueButton(_ sender: Any) {
+        self.viewModel.inputs.continueButtonTapped()
     }
 
     // MARK: - Binding
@@ -131,6 +145,18 @@ public final class PracticeViewController: UIViewController {
         self.viewModel.outputs.isReadingAidButtonHidden.addObserver(self, options: [.new]) { [weak self] value, options in
             self?.readingAidVisibilityButton.isHidden = value
         }
+        
+        self.viewModel.outputs.isCheckButtonHidden.addObserver(self, options: [.new]) { [weak self] value, options in
+            self?.checkButton.isHidden = value
+        }
+        
+        self.viewModel.outputs.isCheckButtonEnabled.addObserver(self, options: [.new]) { [weak self] value, options in
+            self?.checkButton.isEnabled = value
+        }
+        
+        self.viewModel.outputs.isContinueButtonHidden.addObserver(self, options: [.new]) { [weak self] value, options in
+            self?.continueButton.isHidden = value
+        }
     }
     
     // MARK: - View Position Layout
@@ -146,6 +172,7 @@ public final class PracticeViewController: UIViewController {
         self.practiceAnswer.didMove(toParent: self)
         self.view.addSubview(self.practiceAnswer.view)
         self.view.addSubview(self.checkButton)
+        self.view.addSubview(self.continueButton)
         
         self.questionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -190,6 +217,14 @@ public final class PracticeViewController: UIViewController {
             self.checkButton.leadingAnchor.constraint(equalTo: self.questionLabel.leadingAnchor),
             self.checkButton.trailingAnchor.constraint(equalTo: self.questionLabel.trailingAnchor),
             self.checkButton.heightAnchor.constraint(equalToConstant: self.checkButton.buttonHeight)
+        ])
+        
+        self.continueButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.continueButton.leadingAnchor.constraint(equalTo: self.checkButton.leadingAnchor),
+            self.continueButton.bottomAnchor.constraint(equalTo: self.checkButton.bottomAnchor),
+            self.continueButton.trailingAnchor.constraint(equalTo: self.checkButton.trailingAnchor),
+            self.continueButton.heightAnchor.constraint(equalToConstant: self.continueButton.buttonHeight)
         ])
         
         self.bottomConstraint = self.checkButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)

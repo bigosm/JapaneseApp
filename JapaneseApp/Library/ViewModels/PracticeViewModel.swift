@@ -11,6 +11,8 @@ import ReSwift
 
 public protocol PracticeViewModelInputs {
     func cancelButtonTapped()
+    func checkButtonTapped()
+    func continueButtonTapped()
     func listenButtonTapped()
     func readingAidVisibilityButtonTapped()
     func viewDidLoad()
@@ -22,6 +24,9 @@ public protocol PracticeViewModelOutputs {
     var title: Observable<String?> { get }
     var question: Observable<String?> { get }
     var isReadingAidButtonHidden: Observable<Bool> { get }
+    var isCheckButtonHidden: Observable<Bool> { get }
+    var isCheckButtonEnabled: Observable<Bool> { get }
+    var isContinueButtonHidden: Observable<Bool> { get }
 }
 
 public protocol PracticeViewModelType {
@@ -37,14 +42,17 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard let current = state.currentQuestion else { return }
-        switch current {
+        guard let state = state.practice else { return }
+        switch state.currentQuestion {
         case .sentenceMeaning(let prompt, _, _),
              .translateMeaning(let prompt, _, _),
              .subjectMeaning(let prompt, _, _):
             self.question.value = prompt
         }
         self.isReadingAidButtonHidden.value = !state.hasReadingAid
+        self.isCheckButtonHidden.value = state.correctAnswerState != nil
+        self.isCheckButtonEnabled.value = !(state.currentQuestionAnswer?.isEmpty ?? true)
+        self.isContinueButtonHidden.value = state.correctAnswerState == nil
     }
     
     // MARK: - Inputs
@@ -55,11 +63,23 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
         )
     }
     
+    public func checkButtonTapped() {
+        AppStore.shared.dispatch(
+            CurrentPracticeAction.checkAnswer
+        )
+    }
+    
+    public func continueButtonTapped() {
+        AppStore.shared.dispatch(
+            CurrentPracticeAction.nextQuestion
+        )
+    }
+    
     public func listenButtonTapped() { }
     
     public func readingAidVisibilityButtonTapped() {
         AppStore.shared.dispatch(
-            PracticeAction.toggleReadingAid
+            CurrentPracticeAction.toggleReadingAid
         )
     }
     
@@ -80,6 +100,9 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
     public let title: Observable<String?> = Observable(nil)
     public let question: Observable<String?> = Observable(nil)
     public let isReadingAidButtonHidden: Observable<Bool> = Observable(false)
+    public let isCheckButtonHidden: Observable<Bool> = Observable(false)
+    public let isCheckButtonEnabled: Observable<Bool> = Observable(false)
+    public let isContinueButtonHidden: Observable<Bool> = Observable(true)
 
     public var inputs: PracticeViewModelInputs { return self }
     public var outputs: PracticeViewModelOutputs { return self }

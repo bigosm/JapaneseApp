@@ -19,9 +19,15 @@ public struct ViewHistory: Action {
 
 public enum PracticeAction: Action {
     case cancel
-    case toggleReadingAid
     case startPractice(PracticeGroup)
     case startTimePractice(PracticeGroup)
+}
+
+public enum CurrentPracticeAction: Action {
+    case answer(String?)
+    case checkAnswer
+    case nextQuestion
+    case toggleReadingAid
 }
 
 public enum RepositoryAction: Action {

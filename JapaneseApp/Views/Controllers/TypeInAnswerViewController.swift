@@ -27,7 +27,7 @@ public final class TypeInAnswerViewController: UIViewController, PracticeAnswerV
         self.textInput.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.textInput.textContainerInset = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
         self.textInput.delegate = self
-        
+
         self.textInput.layer.cornerRadius = 20
         
         self.placeholder.font = .systemFont(ofSize: 20)
@@ -56,9 +56,9 @@ public final class TypeInAnswerViewController: UIViewController, PracticeAnswerV
     // MARK: - Binding
     
     private func bindViewModel() {
-//        self.viewModel.outputs.contentUpdate.addObserver(self, options: [.new]) { [weak self] _, _ in
-//            self?.collectionView.reloadData()
-//        }
+        self.viewModel.outputs.textInput.addObserver(self, options: [.new]) { [weak self] value, _ in
+            self?.textInput.text = value
+        }
     }
     
     // MARK: - View Position Layout
@@ -85,10 +85,18 @@ public final class TypeInAnswerViewController: UIViewController, PracticeAnswerV
     
 }
 
-
 extension TypeInAnswerViewController: UITextViewDelegate {
     
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return self.viewModel.outputs.canChangeTextInput
+    }
+    
+    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        return self.viewModel.outputs.canChangeTextInput
+    }
+    
     public func textViewDidChange(_ textView: UITextView) {
+        self.viewModel.inputs.textInput(text: textView.text)
         self.placeholder.isHidden = !textView.text.isEmpty
     }
 
