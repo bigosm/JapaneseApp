@@ -10,6 +10,7 @@ import UIKit
 
 public protocol PracticeSubjectViewController: UIViewController { }
 public protocol PracticeAnswerViewController: UIViewController { }
+public protocol PracticeAnswerCompletionViewController: UIViewController { }
 
 public final class PracticeViewController: UIViewController {
     
@@ -24,6 +25,7 @@ public final class PracticeViewController: UIViewController {
     public let readingAidVisibilityButton = Button(customType: .primary)
     public let checkButton = Button(customType: .primaryRounded)
     public let continueButton = Button(customType: .primaryRounded)
+    public let answerCheck: PracticeAnswerCompletionViewController = AnswerCompletionViewController()
     
     private var bottomConstraint: NSLayoutConstraint?
 
@@ -157,6 +159,10 @@ public final class PracticeViewController: UIViewController {
         self.viewModel.outputs.isContinueButtonHidden.addObserver(self, options: [.new]) { [weak self] value, options in
             self?.continueButton.isHidden = value
         }
+        
+        self.viewModel.outputs.answerCheck.addObserver(self, options: [.new]) { [weak self] value, options in
+            self?.answerCheck.view.isHidden = value == nil
+        }
     }
     
     // MARK: - View Position Layout
@@ -173,6 +179,9 @@ public final class PracticeViewController: UIViewController {
         self.view.addSubview(self.practiceAnswer.view)
         self.view.addSubview(self.checkButton)
         self.view.addSubview(self.continueButton)
+        self.addChild(self.answerCheck)
+        self.answerCheck.didMove(toParent: self)
+        self.view.addSubview(self.answerCheck.view)
         
         self.questionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -229,5 +238,12 @@ public final class PracticeViewController: UIViewController {
         
         self.bottomConstraint = self.checkButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         self.bottomConstraint?.isActive = true
+
+        self.answerCheck.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.answerCheck.view.leadingAnchor.constraint(equalTo: self.practiceAnswer.view.leadingAnchor),
+            self.answerCheck.view.bottomAnchor.constraint(equalTo: self.practiceAnswer.view.bottomAnchor),
+            self.answerCheck.view.trailingAnchor.constraint(equalTo: self.practiceAnswer.view.trailingAnchor)
+        ])
     }
 }

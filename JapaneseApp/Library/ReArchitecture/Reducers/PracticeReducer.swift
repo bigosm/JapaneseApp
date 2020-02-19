@@ -67,7 +67,19 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             currentQuestionIndex: currentState.currentQuestionIndex,
             currentQuestionAnswer: answer,
             correctAnswerState: nil,
+            correctAnswer: nil,
+            answerMeaning: nil,
             isReadingAidVisible: false
+        )
+    case .answerState(let isCorrect, let correctAnswer, let meaning):
+        return CurrentPracticeState(
+            questions: currentState.questions,
+            currentQuestionIndex: currentState.currentQuestionIndex,
+            currentQuestionAnswer: currentState.currentQuestionAnswer,
+            correctAnswerState: isCorrect,
+            correctAnswer: correctAnswer,
+            answerMeaning: meaning,
+            isReadingAidVisible: currentState.isReadingAidVisible
         )
     case .toggleReadingAid:
         return CurrentPracticeState(
@@ -75,41 +87,21 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             currentQuestionIndex: currentState.currentQuestionIndex,
             currentQuestionAnswer: currentState.currentQuestionAnswer,
             correctAnswerState: currentState.correctAnswerState,
+            correctAnswer: currentState.correctAnswer,
+            answerMeaning: currentState.answerMeaning,
             isReadingAidVisible: !currentState.isReadingAidVisible
         )
     case .checkAnswer:
-        if let _ = currentState.correctAnswerState {
-            print("Answer Already checked.")
-            return currentState
-        }
-        return CurrentPracticeState(
-            questions: currentState.questions,
-            currentQuestionIndex: currentState.currentQuestionIndex,
-            currentQuestionAnswer: currentState.currentQuestionAnswer,
-            correctAnswerState: checkAnswer(state: currentState),
-            isReadingAidVisible: currentState.isReadingAidVisible
-        )
+        fatalError("Action should be swallowed in middleware.")
     case .nextQuestion:
         return CurrentPracticeState(
             questions: currentState.questions,
             currentQuestionIndex: currentState.currentQuestionIndex + 1,
             currentQuestionAnswer: nil,
             correctAnswerState: nil,
+            correctAnswer: nil,
+            answerMeaning: nil,
             isReadingAidVisible: false
         )
-    }
-}
-
-fileprivate func checkAnswer(state: CurrentPracticeState) -> Bool {
-    guard let answer = state.currentQuestionAnswer else {
-        fatalError("Answer should be set, before checking.")
-    }
-    
-    switch state.currentQuestion {
-    case .sentenceMeaning(_, _, let answers),
-         .subjectMeaning(_, _, let answers):
-        return answers.contains(answer)
-    case .translateMeaning(_, _, let answers):
-        return true
     }
 }

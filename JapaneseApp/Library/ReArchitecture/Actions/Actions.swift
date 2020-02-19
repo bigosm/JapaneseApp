@@ -26,6 +26,7 @@ public enum PracticeAction: Action {
 public enum CurrentPracticeAction: Action {
     case answer(String?)
     case checkAnswer
+    case answerState(isCorrect: Bool, correctAnswer: String?, meaning: String?)
     case nextQuestion
     case toggleReadingAid
 }

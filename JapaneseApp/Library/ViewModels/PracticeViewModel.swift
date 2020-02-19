@@ -27,6 +27,7 @@ public protocol PracticeViewModelOutputs {
     var isCheckButtonHidden: Observable<Bool> { get }
     var isCheckButtonEnabled: Observable<Bool> { get }
     var isContinueButtonHidden: Observable<Bool> { get }
+    var answerCheck: Observable<Bool?> { get }
 }
 
 public protocol PracticeViewModelType {
@@ -53,6 +54,7 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
         self.isCheckButtonHidden.value = state.correctAnswerState != nil
         self.isCheckButtonEnabled.value = !(state.currentQuestionAnswer?.isEmpty ?? true)
         self.isContinueButtonHidden.value = state.correctAnswerState == nil
+        self.answerCheck.value = state.correctAnswerState
     }
     
     // MARK: - Inputs
@@ -103,6 +105,7 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
     public let isCheckButtonHidden: Observable<Bool> = Observable(false)
     public let isCheckButtonEnabled: Observable<Bool> = Observable(false)
     public let isContinueButtonHidden: Observable<Bool> = Observable(true)
+    public let answerCheck: Observable<Bool?> = Observable(nil)
 
     public var inputs: PracticeViewModelInputs { return self }
     public var outputs: PracticeViewModelOutputs { return self }

@@ -30,6 +30,9 @@ public struct CurrentPracticeState: StateType, Equatable {
     }
     public var currentQuestionAnswer: String?
     public var correctAnswerState: Bool?
+    public var correctAnswer: String?
+    public var answerMeaning: String?
+    
     public var isReadingAidVisible = false
     public var hasReadingAid: Bool {
         switch self.currentQuestion {

@@ -20,12 +20,12 @@ public struct QuestionFactory {
         let vocabularyIds = currentPracticeLevel.map { $0.vocabulary }.flatMap { $0 }
 //        let phrasesIds = currentPracticeLevel.map { $0.phrases }.flatMap { $0 }
         
-        let characters = self.getCharacters(byIds: charactersIds).shuffled().map { character in
-            return Question.subjectMeaning(prompt: "What is the meaning", subject: character, answers: [])
+        let characters = self.getCharacters(byIds: charactersIds)
+        let vocabulary = self.getVocabulary(byIds: vocabularyIds).shuffled().map { word in
+            return Question.subjectMeaning(prompt: "What is the meaning", subject: word, answers: word.meaning ?? [])
         }
-        let vocabulary = self.getVocabulary(byIds: vocabularyIds)
         let randomWord = vocabulary.randomElement()!
-        return characters
+        return vocabulary
 //            .subjectMeaning(prompt: "What is the meaning", subject: AppStore.shared.state.repositoryState.vocabulary.randomElement()!, answers: randomWord.meaning!),
 //            .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: vocabulary, audio: nil, meaning: nil), answers: []),
 //            .sentenceMeaning(prompt: "Translate the sentence", phrase: Phrase(value: characters, audio: nil, meaning: nil), answers: [])
