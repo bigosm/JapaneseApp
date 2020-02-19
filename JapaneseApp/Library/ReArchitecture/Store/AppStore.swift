@@ -15,7 +15,10 @@ public final class AppStore {
     
     public static let shared = Store<AppState>(
         reducer: appReducer,
-        state: nil
+        state: nil,
+        middleware: [
+            checkAnswerMiddleware
+        ]
     )
     
     // MARK: - Object Lifecycle

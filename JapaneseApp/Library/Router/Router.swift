@@ -14,6 +14,7 @@ public class Router: StoreSubscriber {
 
     public static let shared = Router()
     public let mainNavigationController: UINavigationController
+    public var currentPopViewController: UIViewController?
     
     public var window: UIWindow?
 
@@ -32,12 +33,14 @@ public class Router: StoreSubscriber {
     }
     
     public func newState(state: NavigationState) {
-        switch state.currentView {
+        switch state.routeToView {
         case .practiceOverview:
             self.mainNavigationController.popToRootViewController(animated: true)
         case .practice:
             let vc = PracticeViewController()
             self.mainNavigationController.pushViewController(vc, animated: true)
+        case .none:
+            break
         }
     }
     

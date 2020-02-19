@@ -5,7 +5,7 @@
     "readingAid": "いち",
     "altNotation": "ichi",
     "audio": null,
-    "meaning": ["one"],
+    "meaning": ["One"],
     "type": "numeric"
   },
   {
@@ -14,7 +14,7 @@
     "readingAid": "に",
     "altNotation": "ni",
     "audio": null,
-    "meaning": ["two"],
+    "meaning": ["Two"],
     "type": "numeric"
   },
   {
@@ -23,7 +23,7 @@
     "readingAid": "さん",
     "altNotation": "san",
     "audio": null,
-    "meaning": ["three"],
+    "meaning": ["Three"],
     "type": "numeric"
   },
   {
@@ -32,7 +32,7 @@
     "readingAid": "よん",
     "altNotation": "yon",
     "audio": null,
-    "meaning": ["four"],
+    "meaning": ["Four"],
     "type": "numeric"
   },
   {
@@ -41,7 +41,7 @@
     "readingAid": "ご",
     "altNotation": "go",
     "audio": null,
-    "meaning": ["five"],
+    "meaning": ["Five"],
     "type": "numeric"
   },
   {
@@ -50,7 +50,7 @@
     "readingAid": "ろく",
     "altNotation": "roku",
     "audio": null,
-    "meaning": ["six"],
+    "meaning": ["Six"],
     "type": "numeric"
   },
   {
@@ -59,7 +59,7 @@
     "readingAid": "なな",
     "altNotation": "nana",
     "audio": null,
-    "meaning": ["seven"],
+    "meaning": ["Seven"],
     "type": "numeric"
   },
   {
@@ -68,7 +68,7 @@
     "readingAid": "はち",
     "altNotation": "hachi",
     "audio": null,
-    "meaning": ["eight"],
+    "meaning": ["Eight"],
     "type": "numeric"
   },
   {
@@ -77,7 +77,7 @@
     "readingAid": "きゅう",
     "altNotation": "kyuu",
     "audio": null,
-    "meaning": ["nine"],
+    "meaning": ["Nine"],
     "type": "numeric"
   },
   {
@@ -86,7 +86,7 @@
     "readingAid": "じゅう",
     "altNotation": "juu",
     "audio": null,
-    "meaning": ["ten"],
+    "meaning": ["Ten"],
     "type": "numeric"
   },
   {
@@ -95,7 +95,7 @@
     "readingAid": "いろ",
     "altNotation": "iro",
     "audio": null,
-    "meaning": ["color", "colour", "hue", "tint", "tinge", "shade"],
+    "meaning": ["Color", "Colour", "Hue", "Tint", "Tinge", "Shade"],
     "type": "noun"
   },
   {
@@ -104,7 +104,7 @@
     "readingAid": "しろ",
     "altNotation": "shiro",
     "audio": null,
-    "meaning": ["white"],
+    "meaning": ["White"],
     "type": "noun"
   },
   {
@@ -113,7 +113,7 @@
     "readingAid": "くろ",
     "altNotation": "kuro",
     "audio": null,
-    "meaning": ["black"],
+    "meaning": ["Black"],
     "type": "noun"
   },
   {
@@ -122,7 +122,7 @@
     "readingAid": "あお",
     "altNotation": "ao",
     "audio": null,
-    "meaning": ["blue", "azure"],
+    "meaning": ["Blue", "Azure"],
     "type": "color"
   },
   {
@@ -131,7 +131,7 @@
     "readingAid": "あか",
     "altNotation": "aka",
     "audio": null,
-    "meaning": ["red", "crimson", "scarlet"],
+    "meaning": ["Red", "Crimson", "Scarlet"],
     "type": "color"
   },
   {
@@ -140,7 +140,7 @@
     "readingAid": "オレンジ",
     "altNotation": "orenji",
     "audio": null,
-    "meaning": ["orange"],
+    "meaning": ["Orange"],
     "type": "noun"
   },
   {
@@ -149,7 +149,7 @@
     "readingAid": "きいろ",
     "altNotation": "kiiro",
     "audio": null,
-    "meaning": ["yellow", "amber"],
+    "meaning": ["Yellow", "Amber"],
     "type": "noun"
   },
   {
@@ -158,7 +158,7 @@
     "readingAid": "みどり",
     "altNotation": "midori",
     "audio": null,
-    "meaning": ["green"],
+    "meaning": ["Green"],
     "type": "noun"
   },
   {
@@ -167,7 +167,7 @@
     "readingAid": "ピンク",
     "altNotation": "pinku",
     "audio": null,
-    "meaning": ["pink"],
+    "meaning": ["Pink"],
     "type": "noun"
   },
   {
@@ -176,7 +176,7 @@
     "readingAid": "むらさき",
     "altNotation": "murasaki",
     "audio": null,
-    "meaning": ["purple", "violet"],
+    "meaning": ["Purple", "Violet"],
     "type": "noun"
   },
   {
@@ -185,7 +185,7 @@
     "readingAid": "はいいろ",
     "altNotation": "haiiro",
     "audio": null,
-    "meaning": ["gray", "grey", "ashen"],
+    "meaning": ["Gray", "Grey", "Ashen"],
     "type": "noun"
   },
   {
@@ -194,7 +194,7 @@
     "readingAid": "きんいろ",
     "altNotation": "kiniro",
     "audio": null,
-    "meaning": ["golden", "gold"],
+    "meaning": ["Golden", "Gold"],
     "type": "noun"
   },
   {
@@ -203,7 +203,7 @@
     "readingAid": "ぎんいろ",
     "altNotation": "giniro",
     "audio": null,
-    "meaning": ["silver"],
+    "meaning": ["Silver"],
     "type": "noun"
   },
   {
@@ -212,7 +212,7 @@
     "readingAid": "ぶろんずいろ",
     "altNotation": "buronzuiro",
     "audio": null,
-    "meaning": ["brown", "bronze"],
+    "meaning": ["Brown", "Bronze"],
     "type": "noun"
   }
 ]

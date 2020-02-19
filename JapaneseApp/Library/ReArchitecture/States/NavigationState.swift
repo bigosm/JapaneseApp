@@ -11,10 +11,13 @@ import ReSwift
 
 public struct NavigationState: StateType, Equatable {
     
-    public enum CurrentView: Equatable {
+    public enum View: Equatable {
         case practiceOverview
         case practice
     }
     
-    public let currentView: CurrentView
+    public let currentView: View
+    public let previousView: View?
+    public let routeToView: View?
+    
 }

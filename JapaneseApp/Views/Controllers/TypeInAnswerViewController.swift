@@ -57,6 +57,7 @@ public final class TypeInAnswerViewController: UIViewController, PracticeAnswerV
     
     private func bindViewModel() {
         self.viewModel.outputs.textInput.addObserver(self, options: [.new]) { [weak self] value, _ in
+            self?.placeholder.isHidden = !(value?.isEmpty ?? true)
             self?.textInput.text = value
         }
     }
@@ -97,7 +98,6 @@ extension TypeInAnswerViewController: UITextViewDelegate {
     
     public func textViewDidChange(_ textView: UITextView) {
         self.viewModel.inputs.textInput(text: textView.text)
-        self.placeholder.isHidden = !textView.text.isEmpty
     }
 
 }

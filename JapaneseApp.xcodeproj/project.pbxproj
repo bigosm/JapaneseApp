@@ -44,6 +44,9 @@
 		1F48D47D23F301350069B2D4 /* AnswerCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47C23F301350069B2D4 /* AnswerCollectionViewModel.swift */; };
 		1F48D47F23F302F90069B2D4 /* TypeInAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */; };
 		1F48D48123F30C4B0069B2D4 /* TypeInAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */; };
+		1F48D48323FC23140069B2D4 /* AnswerCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */; };
+		1F48D48523FC233E0069B2D4 /* AnswerCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D48423FC233E0069B2D4 /* AnswerCompletionViewModel.swift */; };
+		1F48D48823FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D48723FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift */; };
 		1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */; };
 		1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF923EB2031005C92BA /* AppStore.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
@@ -115,6 +118,9 @@
 		1F48D47C23F301350069B2D4 /* AnswerCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewModel.swift; sourceTree = "<group>"; };
 		1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeInAnswerViewController.swift; sourceTree = "<group>"; };
 		1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeInAnswerViewModel.swift; sourceTree = "<group>"; };
+		1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletionViewController.swift; sourceTree = "<group>"; };
+		1F48D48423FC233E0069B2D4 /* AnswerCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletionViewModel.swift; sourceTree = "<group>"; };
+		1F48D48723FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAnswerMiddleware.swift; sourceTree = "<group>"; };
 		1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupViewModel.swift; sourceTree = "<group>"; };
 		1F4DABF923EB2031005C92BA /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				1F17691023E863E700912335 /* Actions */,
+				1F48D48623FC2FB90069B2D4 /* Middleware */,
 				1F17690F23E863D900912335 /* Reducers */,
 				1F17690E23E863D600912335 /* States */,
 				1F4DABF823EB2024005C92BA /* Store */,
@@ -269,6 +276,14 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
+		1F48D48623FC2FB90069B2D4 /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				1F48D48723FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
 		1F4DABF523EB182B005C92BA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +294,7 @@
 				1F48D45323EDC8B00069B2D4 /* PracticeOverviewViewModel.swift */,
 				1F5F493123EC7C3200F17C13 /* PracticeViewModel.swift */,
 				1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */,
+				1F48D48423FC233E0069B2D4 /* AnswerCompletionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -391,6 +407,7 @@
 				1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */,
 				1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */,
 				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
+				1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -555,6 +572,7 @@
 				1FC741D623BF6AE000244938 /* AppDelegate.swift in Sources */,
 				1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */,
 				1F17690523E85B2500912335 /* AppState.swift in Sources */,
+				1F48D48823FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift in Sources */,
 				1F48D47F23F302F90069B2D4 /* TypeInAnswerViewController.swift in Sources */,
 				1F17691223E8686D00912335 /* RepositoryState.swift in Sources */,
 				1FAAC40423C6074B0015EDC0 /* Date+Extension.swift in Sources */,
@@ -572,6 +590,7 @@
 				1F48D47923F2D3040069B2D4 /* PracticeCharacterViewModel.swift in Sources */,
 				1F48D47323F2BE660069B2D4 /* Phrase.swift in Sources */,
 				1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */,
+				1F48D48523FC233E0069B2D4 /* AnswerCompletionViewModel.swift in Sources */,
 				1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */,
 				1F5F493923EC919B00F17C13 /* CharacterCollectionCell.swift in Sources */,
 				1F17691B23E86A9400912335 /* StudentState.swift in Sources */,
@@ -584,6 +603,7 @@
 				1F48D46923F1C5810069B2D4 /* CharacterTable.swift in Sources */,
 				1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */,
 				1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */,
+				1F48D48323FC23140069B2D4 /* AnswerCompletionViewController.swift in Sources */,
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
 				1F48D47023F1C6450069B2D4 /* Practice.swift in Sources */,
 				1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */,
