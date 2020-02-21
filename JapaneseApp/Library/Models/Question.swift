@@ -9,6 +9,8 @@
 import Foundation
 
 public enum Question: Equatable {
+    case romajiNotation(prompt: String, subject: Subject, answer: String)
+    case matchSoundToCharacter(prompt: String, subject: String, answer: String)
     case sentenceMeaning(prompt: String, phrase: Phrase, answers: [String])
     case subjectMeaning(prompt: String, subject: Subject, answers: [String])
     case translateMeaning(prompt: String, subject: String, answers: [Subject])

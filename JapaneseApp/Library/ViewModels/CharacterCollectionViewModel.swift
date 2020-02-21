@@ -35,12 +35,12 @@ public final class CharacterCollectionViewModel: CharacterCollectionViewModelTyp
     public func newState(state: PracticeState) {
         guard let state = state.practice else { return }
         
-        if case .subjectMeaning(_, _, _) = state.currentQuestion {
-            self.numberOfItems = 1
-            self.contentUpdate.value = true
-            
-        } else if case .sentenceMeaning(_, let phrase, _) = state.currentQuestion {
+        switch state.currentQuestion {
+        case .sentenceMeaning(_, let phrase, _):
             self.numberOfItems = phrase.value.count
+            self.contentUpdate.value = true
+        default:
+            self.numberOfItems = 1
             self.contentUpdate.value = true
         }
     }

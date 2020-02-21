@@ -29,6 +29,14 @@ fileprivate func checkAnswer(state: CurrentPracticeState?) -> CurrentPracticeAct
     let correctAnswer: String?
     let meaning: String?
     switch state.currentQuestion {
+    case .matchSoundToCharacter(_, _, let answers):
+        isCorrect = answers.lowercased() == answer.lowercased()
+        correctAnswer = isCorrect ? nil : answers
+        meaning = nil
+    case .romajiNotation(_, _, let answers):
+        isCorrect = answers.lowercased() == answer.lowercased()
+        correctAnswer = isCorrect ? nil : answers
+        meaning = nil
     case .sentenceMeaning(_, _, let answers):
         isCorrect = answers.map { $0.lowercased() }.contains(answer.lowercased())
         correctAnswer = isCorrect ? nil : answers.first

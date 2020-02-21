@@ -45,7 +45,9 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
     public func newState(state: PracticeState) {
         guard let state = state.practice else { return }
         switch state.currentQuestion {
-        case .sentenceMeaning(let prompt, _, _),
+        case .matchSoundToCharacter(let prompt, _, _),
+             .romajiNotation(let prompt, _, _),
+             .sentenceMeaning(let prompt, _, _),
              .translateMeaning(let prompt, _, _),
              .subjectMeaning(let prompt, _, _):
             self.question.value = prompt

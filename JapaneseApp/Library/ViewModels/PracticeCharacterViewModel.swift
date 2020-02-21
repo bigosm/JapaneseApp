@@ -42,19 +42,33 @@ public final class PracticeCharacterViewModel: PracticeCharacterViewModelType, P
     
     public func newState(state: PracticeState) {
         guard let state = state.practice else { return }
-        var subject: Subject? = nil
-        
-        if case .subjectMeaning(_, let value, _) = state.currentQuestion {
-            subject = value
+
+        switch state.currentQuestion {
+        case .matchSoundToCharacter(_, let value, _):
+            self.value.value = value
+            self.readingAid.value = nil
             self.configuration.value = .subject
-        } else if case .sentenceMeaning(_, let value, _) = state.currentQuestion,
-            let index = self.characterIndex {
-            subject = value.value[index]
-            self.configuration.value = .sentenceElement
+        case .romajiNotation(_, let value, _):
+            self.value.value = value.value
+            self.readingAid.value = nil
+            self.configuration.value = .subject
+        case .subjectMeaning(_, let value, _):
+            self.value.value = value.value
+            self.readingAid.value = nil
+            self.configuration.value = .subject
+        case .sentenceMeaning(_, let value, _):
+            if let index = self.characterIndex {
+                let subject = value.value[index]
+                self.value.value = subject.value
+                self.readingAid.value = subject.readingAid
+                self.configuration.value = .sentenceElement
+            }
+        case .translateMeaning(_, let value, _):
+            self.value.value = value
+            self.readingAid.value = nil
+            self.configuration.value = .subject
         }
-        
-        self.value.value = subject?.value
-        self.readingAid.value = subject?.readingAid
+
         self.readingAidVisibility.value = state.isReadingAidVisible
     }
     
