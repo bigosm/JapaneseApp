@@ -33,16 +33,18 @@ public final class AnswerCollectionViewModel: AnswerCollectionViewModelType, Ans
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard let state = state.practice else { return }
-        
-        if case .subjectMeaning(_, _, _) = state.currentQuestion {
-            self.numberOfItems = 1
-            self.contentUpdate.value = true
-            
-        } else if case .sentenceMeaning(_, let phrase, _) = state.currentQuestion {
-            self.numberOfItems = phrase.value.count
-            self.contentUpdate.value = true
+        guard case .inProgress(_) = state.current,
+            let state = state.practice else {
+                return
         }
+        
+        if let _ = state.currentQuestion as? SubjectQuestionType {
+            self.numberOfItems = 1
+        } else if let currentQuestion = state.currentQuestion as? PhraseQuestionType {
+            self.numberOfItems = currentQuestion.phrase.value.count
+        }
+        
+        self.contentUpdate.value = true
     }
     
     // MARK: - Inputs

@@ -41,32 +41,30 @@ public final class PracticeCharacterViewModel: PracticeCharacterViewModelType, P
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard let state = state.practice else { return }
+        guard case .inProgress(_) = state.current,
+            let state = state.practice else {
+                return
+        }
 
         switch state.currentQuestion {
-        case .matchSoundToCharacter(_, let value, _):
-            self.value.value = value
+        case let question as RomajiNotation:
+            self.value.value = question.subject.value
             self.readingAid.value = nil
             self.configuration.value = .subject
-        case .romajiNotation(_, let value, _):
-            self.value.value = value.value
+        case let question as MatchSoundToCharacter:
+            self.value.value = question.subject.altNotation
             self.readingAid.value = nil
             self.configuration.value = .subject
-        case .subjectMeaning(_, let value, _):
-            self.value.value = value.value
+        case let question as WordMeaning:
+            self.value.value = question.subject.value
+            self.readingAid.value = question.subject.readingAid
+            self.configuration.value = .subject
+        case let question as TranslateWord:
+            self.value.value = question.subject.meaning?.first
             self.readingAid.value = nil
             self.configuration.value = .subject
-        case .sentenceMeaning(_, let value, _):
-            if let index = self.characterIndex {
-                let subject = value.value[index]
-                self.value.value = subject.value
-                self.readingAid.value = subject.readingAid
-                self.configuration.value = .sentenceElement
-            }
-        case .translateMeaning(_, let value, _):
-            self.value.value = value
-            self.readingAid.value = nil
-            self.configuration.value = .subject
+        default:
+            fatalError("Case not defined")
         }
 
         self.readingAidVisibility.value = state.isReadingAidVisible

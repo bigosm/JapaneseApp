@@ -35,13 +35,20 @@ public final class AnswerCompletionViewModel: AnswerCompletionViewModelType, Ans
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard let state = state.practice,
-            let answerState = state.correctAnswerState else { return }
+        guard case .inProgress(_) = state.current,
+            let state = state.practice,
+            let answerState = state.answerCheck else {
+                return
+        }
         
-        self.title.value = answerState ? "You are Correct!" : "Correct:"
-        self.correctAnswer.value = state.correctAnswer
-        self.meaing.value = state.answerMeaning == nil ? nil : "Meaning: \(state.answerMeaning!)"
-        self.isAnswerCorrect.value = answerState
+        self.title.value = answerState.isCorrect ? "You are Correct!" : "Correct:"
+        self.correctAnswer.value = answerState.correctAnswer
+        if let answerMeaning = answerState.answerMeaning {
+            self.meaing.value = "Meaning: \(answerMeaning)"
+        } else {
+            self.meaing.value = nil
+        }
+        self.isAnswerCorrect.value = answerState.isCorrect
     }
     
     // MARK: - Inputs

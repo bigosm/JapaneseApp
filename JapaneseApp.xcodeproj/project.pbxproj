@@ -21,6 +21,8 @@
 		1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691623E869D500912335 /* RepositoryReducer.swift */; };
 		1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691823E86A7C00912335 /* StudentReducer.swift */; };
 		1F17691B23E86A9400912335 /* StudentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691A23E86A9400912335 /* StudentState.swift */; };
+		1F3E151C240048EA00BFFC43 /* PracticeCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */; };
+		1F3E151E2400491500BFFC43 /* PracticeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */; };
 		1F43DA5723EB016700CED94A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43DA5623EB016700CED94A /* Button.swift */; };
 		1F48D44D23EDB7B70069B2D4 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D44C23EDB7B70069B2D4 /* NavigationState.swift */; };
 		1F48D44F23EDB7BF0069B2D4 /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */; };
@@ -34,7 +36,6 @@
 		1F48D46A23F1C5810069B2D4 /* PracticeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46323F1C5810069B2D4 /* PracticeGroup.swift */; };
 		1F48D46B23F1C5810069B2D4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46423F1C5810069B2D4 /* Student.swift */; };
 		1F48D46D23F1C5C30069B2D4 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46C23F1C5C30069B2D4 /* Subject.swift */; };
-		1F48D47023F1C6450069B2D4 /* Practice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46E23F1C6450069B2D4 /* Practice.swift */; };
 		1F48D47123F1C6450069B2D4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D46F23F1C6450069B2D4 /* Question.swift */; };
 		1F48D47323F2BE660069B2D4 /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47223F2BE660069B2D4 /* Phrase.swift */; };
 		1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D47423F2C52B0069B2D4 /* CharacterView.swift */; };
@@ -47,6 +48,7 @@
 		1F48D48323FC23140069B2D4 /* AnswerCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */; };
 		1F48D48523FC233E0069B2D4 /* AnswerCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D48423FC233E0069B2D4 /* AnswerCompletionViewModel.swift */; };
 		1F48D48823FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D48723FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift */; };
+		1F48D48A23FEBB660069B2D4 /* NextQuestionMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D48923FEBB660069B2D4 /* NextQuestionMiddleware.swift */; };
 		1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */; };
 		1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4DABF923EB2031005C92BA /* AppStore.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
@@ -95,6 +97,8 @@
 		1F17691623E869D500912335 /* RepositoryReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryReducer.swift; sourceTree = "<group>"; };
 		1F17691823E86A7C00912335 /* StudentReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentReducer.swift; sourceTree = "<group>"; };
 		1F17691A23E86A9400912335 /* StudentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentState.swift; sourceTree = "<group>"; };
+		1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewModel.swift; sourceTree = "<group>"; };
+		1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewController.swift; sourceTree = "<group>"; };
 		1F43DA5623EB016700CED94A /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1F48D44C23EDB7B70069B2D4 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducer.swift; sourceTree = "<group>"; };
@@ -108,7 +112,6 @@
 		1F48D46323F1C5810069B2D4 /* PracticeGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PracticeGroup.swift; sourceTree = "<group>"; };
 		1F48D46423F1C5810069B2D4 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		1F48D46C23F1C5C30069B2D4 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
-		1F48D46E23F1C6450069B2D4 /* Practice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Practice.swift; sourceTree = "<group>"; };
 		1F48D46F23F1C6450069B2D4 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		1F48D47223F2BE660069B2D4 /* Phrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
 		1F48D47423F2C52B0069B2D4 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 		1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletionViewController.swift; sourceTree = "<group>"; };
 		1F48D48423FC233E0069B2D4 /* AnswerCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCompletionViewModel.swift; sourceTree = "<group>"; };
 		1F48D48723FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAnswerMiddleware.swift; sourceTree = "<group>"; };
+		1F48D48923FEBB660069B2D4 /* NextQuestionMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextQuestionMiddleware.swift; sourceTree = "<group>"; };
 		1F4DABF623EB1841005C92BA /* PracticeGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupViewModel.swift; sourceTree = "<group>"; };
 		1F4DABF923EB2031005C92BA /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -258,7 +262,6 @@
 				1F48D45D23F1C5810069B2D4 /* Experience.swift */,
 				1F48D46023F1C5810069B2D4 /* Observable */,
 				1F48D47223F2BE660069B2D4 /* Phrase.swift */,
-				1F48D46E23F1C6450069B2D4 /* Practice.swift */,
 				1F48D46323F1C5810069B2D4 /* PracticeGroup.swift */,
 				1F48D45E23F1C5810069B2D4 /* PracticeLevel.swift */,
 				1F48D46F23F1C6450069B2D4 /* Question.swift */,
@@ -280,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				1F48D48723FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift */,
+				1F48D48923FEBB660069B2D4 /* NextQuestionMiddleware.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -295,6 +299,7 @@
 				1F5F493123EC7C3200F17C13 /* PracticeViewModel.swift */,
 				1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */,
 				1F48D48423FC233E0069B2D4 /* AnswerCompletionViewModel.swift */,
+				1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */,
 				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
 				1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */,
+				1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -572,12 +578,14 @@
 				1FC741D623BF6AE000244938 /* AppDelegate.swift in Sources */,
 				1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */,
 				1F17690523E85B2500912335 /* AppState.swift in Sources */,
+				1F3E151C240048EA00BFFC43 /* PracticeCompletionViewModel.swift in Sources */,
 				1F48D48823FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift in Sources */,
 				1F48D47F23F302F90069B2D4 /* TypeInAnswerViewController.swift in Sources */,
 				1F17691223E8686D00912335 /* RepositoryState.swift in Sources */,
 				1FAAC40423C6074B0015EDC0 /* Date+Extension.swift in Sources */,
 				1F5F493423EC8E1600F17C13 /* CharacterCollectionViewController.swift in Sources */,
 				1F48D46D23F1C5C30069B2D4 /* Subject.swift in Sources */,
+				1F3E151E2400491500BFFC43 /* PracticeCompletionViewController.swift in Sources */,
 				1F48D47D23F301350069B2D4 /* AnswerCollectionViewModel.swift in Sources */,
 				1F17690A23E861C700912335 /* AppReducer.swift in Sources */,
 				1F17690823E861BB00912335 /* Actions.swift in Sources */,
@@ -588,6 +596,7 @@
 				1F48D46A23F1C5810069B2D4 /* PracticeGroup.swift in Sources */,
 				1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */,
 				1F48D47923F2D3040069B2D4 /* PracticeCharacterViewModel.swift in Sources */,
+				1F48D48A23FEBB660069B2D4 /* NextQuestionMiddleware.swift in Sources */,
 				1F48D47323F2BE660069B2D4 /* Phrase.swift in Sources */,
 				1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */,
 				1F48D48523FC233E0069B2D4 /* AnswerCompletionViewModel.swift in Sources */,
@@ -605,7 +614,6 @@
 				1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */,
 				1F48D48323FC23140069B2D4 /* AnswerCompletionViewController.swift in Sources */,
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
-				1F48D47023F1C6450069B2D4 /* Practice.swift in Sources */,
 				1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */,
 				1F48D47B23F301150069B2D4 /* AnswerCollectionViewController.swift in Sources */,
 				1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */,

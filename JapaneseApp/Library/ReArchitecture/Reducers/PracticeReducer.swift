@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 
 internal func practiceReducer(action: Action, state: PracticeState?) -> PracticeState {
-    let state = state ?? PracticeState()
+    let state = state ?? PracticeState(current: .noPractice, practice: nil)
     
     guard let practiceAction = action as? PracticeAction else {
         return PracticeState(
@@ -25,10 +25,15 @@ internal func practiceReducer(action: Action, state: PracticeState?) -> Practice
             current: .noPractice,
             practice: currentPracticeReducer(action: action, state: state.practice)
         )
-    case .startPractice(let questionGroup),
-         .startTimePractice(let questionGroup):
+    case .startPractice(let practiceGroup),
+         .startTimePractice(let practiceGroup):
         return PracticeState(
-            current: .inProgress(questionGroup),
+            current: .inProgress(practiceGroup),
+            practice: currentPracticeReducer(action: action, state: state.practice)
+        )
+    case .complete(let practiceGroup):
+        return PracticeState(
+            current: .completed(practiceGroup),
             practice: currentPracticeReducer(action: action, state: state.practice)
         )
     }
@@ -39,14 +44,26 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
     if let action = action as? PracticeAction {
         switch action {
         case .cancel: return nil
-        case .startPractice(let questionGroup),
-             .startTimePractice(let questionGroup):
-            let questions = QuestionFactory(practiceGroup: questionGroup, level: 1).prepare()
+        case .startPractice(let practiceGroup),
+             .startTimePractice(let practiceGroup):
+            let questions = QuestionFactory(practiceGroup: practiceGroup, level: 1).prepare()
+            guard questions.count > 0 else {
+                fatalError("Can not start practice without questions!")
+            }
             return CurrentPracticeState(
                 questions: questions,
                 currentQuestionIndex: 0,
                 currentQuestionAnswer: nil,
-                correctAnswerState: nil,
+                answerCheck: nil,
+                isReadingAidVisible: false
+            )
+        case .complete(_):
+            guard let state = state else { fatalError("state should be defined.") }
+            return CurrentPracticeState(
+                questions: state.questions,
+                currentQuestionIndex: 0,
+                currentQuestionAnswer: nil,
+                answerCheck: nil,
                 isReadingAidVisible: false
             )
         }
@@ -58,27 +75,23 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
 
     switch action {
     case .answer(let answer):
-        if let _ = currentState.correctAnswerState {
-            print("Answer Already checked.")
+        if let _ = currentState.answerCheck {
+            print("Answer is checked, can't do that action right now!")
             return currentState
         }
         return CurrentPracticeState(
             questions: currentState.questions,
             currentQuestionIndex: currentState.currentQuestionIndex,
             currentQuestionAnswer: answer,
-            correctAnswerState: nil,
-            correctAnswer: nil,
-            answerMeaning: nil,
-            isReadingAidVisible: false
+            answerCheck: nil,
+            isReadingAidVisible: currentState.isReadingAidVisible
         )
-    case .answerState(let isCorrect, let correctAnswer, let meaning):
+    case .answerState(let answerCheck):
         return CurrentPracticeState(
             questions: currentState.questions,
             currentQuestionIndex: currentState.currentQuestionIndex,
             currentQuestionAnswer: currentState.currentQuestionAnswer,
-            correctAnswerState: isCorrect,
-            correctAnswer: correctAnswer,
-            answerMeaning: meaning,
+            answerCheck: answerCheck,
             isReadingAidVisible: currentState.isReadingAidVisible
         )
     case .toggleReadingAid:
@@ -86,9 +99,7 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             questions: currentState.questions,
             currentQuestionIndex: currentState.currentQuestionIndex,
             currentQuestionAnswer: currentState.currentQuestionAnswer,
-            correctAnswerState: currentState.correctAnswerState,
-            correctAnswer: currentState.correctAnswer,
-            answerMeaning: currentState.answerMeaning,
+            answerCheck: nil,
             isReadingAidVisible: !currentState.isReadingAidVisible
         )
     case .checkAnswer:
@@ -98,9 +109,7 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             questions: currentState.questions,
             currentQuestionIndex: currentState.currentQuestionIndex + 1,
             currentQuestionAnswer: nil,
-            correctAnswerState: nil,
-            correctAnswer: nil,
-            answerMeaning: nil,
+            answerCheck: nil,
             isReadingAidVisible: false
         )
     }
