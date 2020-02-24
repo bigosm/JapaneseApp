@@ -117,11 +117,7 @@ public class PracticeGroupCell: UITableViewCell {
         self.viewModel.outputs.experience.addObserver(self, options: [.new]) { [weak self] value, _ in
             self?.experienceLabel.text = value
         }
-        
-        self.viewModel.outputs.isSelected.addObserver(self, options: [.new]) { [weak self] value, _ in
-            self?.toggleView.isHidden = value
-        }
-        
+
         self.viewModel.outputs.isSelected.addObserver(self, options: [.new]) { [weak self] value, _ in
             self?.isSelected = value
             self?.toggleView.isHidden = !value

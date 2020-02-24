@@ -22,6 +22,9 @@ public enum PracticeAction: Action {
     case startPractice(PracticeGroup)
     case startTimePractice(PracticeGroup)
     case complete(PracticeGroup)
+    case selectPracticeAnswerAtIndex(Int)
+    case finish
+    
 }
 
 public enum CurrentPracticeAction: Action {

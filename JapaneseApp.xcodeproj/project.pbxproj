@@ -23,6 +23,8 @@
 		1F17691B23E86A9400912335 /* StudentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691A23E86A9400912335 /* StudentState.swift */; };
 		1F3E151C240048EA00BFFC43 /* PracticeCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */; };
 		1F3E151E2400491500BFFC43 /* PracticeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */; };
+		1F3E1522240423D000BFFC43 /* PracticeCompletionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */; };
+		1F3E152424042CE700BFFC43 /* PracticeCompletionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E152324042CE700BFFC43 /* PracticeCompletionCellViewModel.swift */; };
 		1F43DA5723EB016700CED94A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43DA5623EB016700CED94A /* Button.swift */; };
 		1F48D44D23EDB7B70069B2D4 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D44C23EDB7B70069B2D4 /* NavigationState.swift */; };
 		1F48D44F23EDB7BF0069B2D4 /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */; };
@@ -99,6 +101,8 @@
 		1F17691A23E86A9400912335 /* StudentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentState.swift; sourceTree = "<group>"; };
 		1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewModel.swift; sourceTree = "<group>"; };
 		1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewController.swift; sourceTree = "<group>"; };
+		1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionCell.swift; sourceTree = "<group>"; };
+		1F3E152324042CE700BFFC43 /* PracticeCompletionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionCellViewModel.swift; sourceTree = "<group>"; };
 		1F43DA5623EB016700CED94A /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1F48D44C23EDB7B70069B2D4 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducer.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */,
 				1F48D48423FC233E0069B2D4 /* AnswerCompletionViewModel.swift */,
 				1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */,
+				1F3E152324042CE700BFFC43 /* PracticeCompletionCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 			children = (
 				1F5F493823EC919B00F17C13 /* CharacterCollectionCell.swift */,
 				1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */,
+				1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -608,6 +614,7 @@
 				1F5F493223EC7C3200F17C13 /* PracticeViewModel.swift in Sources */,
 				1F48D48123F30C4B0069B2D4 /* TypeInAnswerViewModel.swift in Sources */,
 				1F5F493723EC8EFB00F17C13 /* CharacterCollectionLayout.swift in Sources */,
+				1F3E1522240423D000BFFC43 /* PracticeCompletionCell.swift in Sources */,
 				1F48D45423EDC8B00069B2D4 /* PracticeOverviewViewModel.swift in Sources */,
 				1F48D46923F1C5810069B2D4 /* CharacterTable.swift in Sources */,
 				1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */,
@@ -619,6 +626,7 @@
 				1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */,
 				1F5F493D23EDA18C00F17C13 /* CharacterCollectionViewModel.swift in Sources */,
 				1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */,
+				1F3E152424042CE700BFFC43 /* PracticeCompletionCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

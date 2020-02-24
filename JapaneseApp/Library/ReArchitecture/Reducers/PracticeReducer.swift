@@ -20,7 +20,7 @@ internal func practiceReducer(action: Action, state: PracticeState?) -> Practice
     }
     
     switch practiceAction {
-    case .cancel:
+    case .cancel, .finish:
         return PracticeState(
             current: .noPractice,
             practice: currentPracticeReducer(action: action, state: state.practice)
@@ -36,6 +36,14 @@ internal func practiceReducer(action: Action, state: PracticeState?) -> Practice
             current: .completed(practiceGroup),
             practice: currentPracticeReducer(action: action, state: state.practice)
         )
+    case .selectPracticeAnswerAtIndex(let index):
+        guard case .completed(_) = state.current else {
+            fatalError("Need 'complete' current status.")
+        }
+        return PracticeState(
+            current: state.current,
+            practice: currentPracticeReducer(action: action, state: state.practice)
+        )
     }
 }
 
@@ -43,7 +51,7 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
 
     if let action = action as? PracticeAction {
         switch action {
-        case .cancel: return nil
+        case .cancel, .finish: return nil
         case .startPractice(let practiceGroup),
              .startTimePractice(let practiceGroup):
             let questions = QuestionFactory(practiceGroup: practiceGroup, level: 1).prepare()
@@ -55,7 +63,9 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
                 currentQuestionIndex: 0,
                 currentQuestionAnswer: nil,
                 answerCheck: nil,
-                isReadingAidVisible: false
+                isReadingAidVisible: false,
+                practiceAnswers: [],
+                selectedPracticeAnswer: nil
             )
         case .complete(_):
             guard let state = state else { fatalError("state should be defined.") }
@@ -64,7 +74,20 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
                 currentQuestionIndex: 0,
                 currentQuestionAnswer: nil,
                 answerCheck: nil,
-                isReadingAidVisible: false
+                isReadingAidVisible: false,
+                practiceAnswers: state.practiceAnswers,
+                selectedPracticeAnswer: nil
+            )
+        case .selectPracticeAnswerAtIndex(let index):
+            guard let state = state else { fatalError("state should be defined.") }
+            return CurrentPracticeState(
+                questions: state.questions,
+                currentQuestionIndex: 0,
+                currentQuestionAnswer: nil,
+                answerCheck: nil,
+                isReadingAidVisible: false,
+                practiceAnswers: state.practiceAnswers,
+                selectedPracticeAnswer: state.practiceAnswers[index]
             )
         }
     }
@@ -84,7 +107,9 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             currentQuestionIndex: currentState.currentQuestionIndex,
             currentQuestionAnswer: answer,
             answerCheck: nil,
-            isReadingAidVisible: currentState.isReadingAidVisible
+            isReadingAidVisible: currentState.isReadingAidVisible,
+            practiceAnswers: currentState.practiceAnswers,
+            selectedPracticeAnswer: nil
         )
     case .answerState(let answerCheck):
         return CurrentPracticeState(
@@ -92,7 +117,9 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             currentQuestionIndex: currentState.currentQuestionIndex,
             currentQuestionAnswer: currentState.currentQuestionAnswer,
             answerCheck: answerCheck,
-            isReadingAidVisible: currentState.isReadingAidVisible
+            isReadingAidVisible: currentState.isReadingAidVisible,
+            practiceAnswers: currentState.practiceAnswers + [answerCheck],
+            selectedPracticeAnswer: nil
         )
     case .toggleReadingAid:
         return CurrentPracticeState(
@@ -100,7 +127,9 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             currentQuestionIndex: currentState.currentQuestionIndex,
             currentQuestionAnswer: currentState.currentQuestionAnswer,
             answerCheck: nil,
-            isReadingAidVisible: !currentState.isReadingAidVisible
+            isReadingAidVisible: !currentState.isReadingAidVisible,
+            practiceAnswers: currentState.practiceAnswers,
+            selectedPracticeAnswer: nil
         )
     case .checkAnswer:
         fatalError("Action should be swallowed in middleware.")
@@ -110,7 +139,9 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             currentQuestionIndex: currentState.currentQuestionIndex + 1,
             currentQuestionAnswer: nil,
             answerCheck: nil,
-            isReadingAidVisible: false
+            isReadingAidVisible: false,
+            practiceAnswers: currentState.practiceAnswers,
+            selectedPracticeAnswer: nil
         )
     }
 }

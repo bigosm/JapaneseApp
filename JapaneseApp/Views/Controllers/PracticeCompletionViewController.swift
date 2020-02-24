@@ -13,11 +13,26 @@ public final class PracticeCompletionViewController: UIViewController {
     // MARK: - Instance Properties
     
     private let viewModel: PracticeCompletionViewModelType = PracticeCompletionViewModel()
+    private let basicCellIdentifier = "basicCellIdentifier"
+    private let practiceGroupCellIdentifier = "PracticeGroupCell"
+    
+    public var tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     // MARK: - View Lifecycle
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.backgroundColor = Theme.primaryBackgroundColor
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
+        
+        self.tableView.register(PracticeCompletionCell.self, forCellReuseIdentifier: self.practiceGroupCellIdentifier)
+        
+        self.navigationItem.hidesBackButton = true
         
         self.setupView()
         self.bindViewModel()
@@ -49,6 +64,44 @@ public final class PracticeCompletionViewController: UIViewController {
     // MARK: - View Position Layout
     
     private func setupView() {
+        self.view.addSubview(self.tableView)
         
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
     }
+}
+
+// MARK: - UITableViewDataSource
+
+extension PracticeCompletionViewController: UITableViewDataSource {
+
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.outputs.numberOfItems
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: self.practiceGroupCellIdentifier, for: indexPath) as! PracticeCompletionCell
+        cell.configureWith(practiceAnswerAtIndex: indexPath.row)
+        return cell
+    }
+    
+}
+
+// MARK: - UITableViewDelegate
+
+extension PracticeCompletionViewController: UITableViewDelegate {
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.viewModel.inputs.select(practiceAnswerAtIndex: indexPath.row)
+
+        // Nice and smoth selecting cell animation.
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+    
 }

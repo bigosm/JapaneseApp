@@ -12,10 +12,10 @@ internal struct QuestionFactory {
 
     internal let practiceGroup: PracticeGroup
     internal let level: Int
-    internal let numberOfQuestions: Int = 10
-    internal let numberOfCharactersToPractice: Int = 3
-    internal let numberOfWordsToPractice: Int = 3
-    internal let numberOfPhraseToPractice: Int = 3
+    internal let numberOfQuestions: Int = 2
+    internal let numberOfCharactersToPractice: Int = 1
+    internal let numberOfWordsToPractice: Int = 1
+    internal let numberOfPhraseToPractice: Int = 0
 
     public func prepare() -> [AnyQuestion] {
         let currentPracticeLevel = self.practiceGroup.levels.filter { $0.level <= level }

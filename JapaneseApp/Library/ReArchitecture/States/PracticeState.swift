@@ -32,6 +32,11 @@ public struct CurrentPracticeState: StateType, Equatable {
     public let currentQuestionAnswer: String?
     public let answerCheck: AnswerCheck?
     public let isReadingAidVisible: Bool
+    public let practiceAnswers: [AnswerCheck]
+    public let selectedPracticeAnswer: AnswerCheck?
+    public func isSelected(answerCheck: AnswerCheck) -> Bool {
+        return answerCheck == selectedPracticeAnswer
+    }
 }
 
 public struct AnswerCheck: Equatable {

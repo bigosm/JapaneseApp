@@ -10,6 +10,7 @@ import Foundation
 import ReSwift
 
 public protocol PracticeCompletionViewModelInputs {
+    func select(practiceAnswerAtIndex index: Int)
     func viewDidLoad()
     func viewWillAppear()
     func viewWillDisappear()
@@ -17,6 +18,7 @@ public protocol PracticeCompletionViewModelInputs {
 
 public protocol PracticeCompletionViewModelOutputs {
     var title: Observable<String?> { get }
+    var numberOfItems: Int { get }
 }
 
 public protocol PracticeCompletionViewModelType {
@@ -36,9 +38,18 @@ public final class PracticeCompletionViewModel: PracticeCompletionViewModelType,
             let state = state.practice else {
                 return
         }
+        
+        self.numberOfItems = state.practiceAnswers.count
+        self.title.value = "Practice Completion"
     }
     
     // MARK: - Inputs
+    
+    public func select(practiceAnswerAtIndex index: Int) {
+        AppStore.shared.dispatch(
+            PracticeAction.selectPracticeAnswerAtIndex(index)
+        )
+    }
     
     public func viewDidLoad() {
         
@@ -56,7 +67,8 @@ public final class PracticeCompletionViewModel: PracticeCompletionViewModelType,
     
     // MARK: - Outputs
     
-    public var title: Observable<String?> = Observable(nil)
+    public let title: Observable<String?> = Observable(nil)
+    public var numberOfItems: Int = 0
     
     public var inputs: PracticeCompletionViewModelInputs { return self }
     public var outputs: PracticeCompletionViewModelOutputs { return self }
