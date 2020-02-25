@@ -52,7 +52,7 @@ public final class PracticeCompletionCellViewModel: PracticeCompletionCellViewMo
         
         self.isCorrect.value = state.isCorrect
         self.title.value = "Question \(index + 1)"
-        self.experience.value = "O xp"
+        self.experience.value = "\(state.isCorrect ? 1 : 0) xp"
         self.prompt.value = question.prompt
         switch question {
         case let q as RomajiNotation:
