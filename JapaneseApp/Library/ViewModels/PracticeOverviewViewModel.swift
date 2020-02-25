@@ -17,9 +17,7 @@ public protocol PracticeOverviewViewModelInputs {
 }
 
 public protocol PracticeOverviewViewModelOutputs {
-
     var numberOfItems: Int { get }
-
 }
 
 public protocol PracticeOverviewViewModelType {

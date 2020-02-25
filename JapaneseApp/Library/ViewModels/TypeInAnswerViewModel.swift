@@ -34,9 +34,12 @@ public final class TypeInAnswerViewModel: TypeInAnswerViewModelType, TypeInAnswe
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard let state = state.practice else { return }
+        guard case .inProgress(_) = state.current,
+            let state = state.practice else {
+                return
+        }
         self.textInput.value = state.currentQuestionAnswer
-        self.canChangeTextInput = state.correctAnswerState == nil
+        self.canChangeTextInput = state.answerCheck == nil
     }
     
     // MARK: - Inputs

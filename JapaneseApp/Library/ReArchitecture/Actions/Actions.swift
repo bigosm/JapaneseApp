@@ -21,12 +21,16 @@ public enum PracticeAction: Action {
     case cancel
     case startPractice(PracticeGroup)
     case startTimePractice(PracticeGroup)
+    case complete(PracticeGroup)
+    case selectPracticeAnswerAtIndex(Int)
+    case finish
+    
 }
 
 public enum CurrentPracticeAction: Action {
     case answer(String?)
     case checkAnswer
-    case answerState(isCorrect: Bool, correctAnswer: String?, meaning: String?)
+    case answerState(AnswerCheck)
     case nextQuestion
     case toggleReadingAid
 }

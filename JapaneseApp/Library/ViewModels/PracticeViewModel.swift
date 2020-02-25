@@ -43,18 +43,16 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard let state = state.practice else { return }
-        switch state.currentQuestion {
-        case .sentenceMeaning(let prompt, _, _),
-             .translateMeaning(let prompt, _, _),
-             .subjectMeaning(let prompt, _, _):
-            self.question.value = prompt
+        guard case .inProgress(_) = state.current,
+            let state = state.practice else {
+                return
         }
-        self.isReadingAidButtonHidden.value = !state.hasReadingAid
-        self.isCheckButtonHidden.value = state.correctAnswerState != nil
+        self.question.value = state.currentQuestion.prompt
+        self.isReadingAidButtonHidden.value = false
+        self.isCheckButtonHidden.value = state.answerCheck != nil
         self.isCheckButtonEnabled.value = !(state.currentQuestionAnswer?.isEmpty ?? true)
-        self.isContinueButtonHidden.value = state.correctAnswerState == nil
-        self.answerCheck.value = state.correctAnswerState
+        self.isContinueButtonHidden.value = state.answerCheck == nil
+        self.answerCheck.value = state.answerCheck?.isCorrect
     }
     
     // MARK: - Inputs

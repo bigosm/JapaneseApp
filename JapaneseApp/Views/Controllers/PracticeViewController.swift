@@ -36,7 +36,7 @@ public final class PracticeViewController: UIViewController {
         
         self.view.backgroundColor = Theme.primaryBackgroundColor
         
-        self.questionLabel.text = "Select the correct character(s) for:"
+        self.questionLabel.lineBreakMode = .byWordWrapping
         self.questionLabel.numberOfLines = 0
         self.questionLabel.font = .boldSystemFont(ofSize: 20)
         
@@ -88,10 +88,8 @@ public final class PracticeViewController: UIViewController {
     // MARK: - Instance Methods
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            self.bottomConstraint?.constant == -20 {
-            self.bottomConstraint?.constant -= (keyboardSize.height - self.view.safeAreaInsets.bottom)
-            
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.bottomConstraint?.constant = -20 - (keyboardSize.height - self.view.safeAreaInsets.bottom)
             self.navigationController?.setNavigationBarHidden(true, animated: true)
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
@@ -199,7 +197,7 @@ public final class PracticeViewController: UIViewController {
         
         self.listenButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.listenButton.topAnchor.constraint(equalTo: self.practiceSubject.view.bottomAnchor, constant: 20),
+            self.listenButton.topAnchor.constraint(equalTo: self.practiceSubject.view.bottomAnchor, constant: 10),
             self.listenButton.leadingAnchor.constraint(equalTo: self.questionLabel.leadingAnchor),
             self.listenButton.heightAnchor.constraint(equalToConstant: self.listenButton.buttonHeight),
             self.listenButton.widthAnchor.constraint(equalToConstant: self.listenButton.buttonHeight)
@@ -215,7 +213,7 @@ public final class PracticeViewController: UIViewController {
         
         self.practiceAnswer.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.practiceAnswer.view.topAnchor.constraint(equalTo: self.readingAidVisibilityButton.bottomAnchor, constant: 20),
+            self.practiceAnswer.view.topAnchor.constraint(equalTo: self.readingAidVisibilityButton.bottomAnchor, constant: 10),
             self.practiceAnswer.view.leadingAnchor.constraint(equalTo: self.questionLabel.leadingAnchor),
             self.practiceAnswer.view.trailingAnchor.constraint(equalTo: self.questionLabel.trailingAnchor)
         ])

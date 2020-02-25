@@ -33,14 +33,18 @@ public final class CharacterCollectionViewModel: CharacterCollectionViewModelTyp
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard let state = state.practice else { return }
+        guard case .inProgress(_) = state.current,
+            let state = state.practice else {
+                return
+        }
         
-        if case .subjectMeaning(_, _, _) = state.currentQuestion {
+        switch state.currentQuestion {
+            case _ as RomajiNotation,
+                 _ as MatchSoundToCharacter:
             self.numberOfItems = 1
             self.contentUpdate.value = true
-            
-        } else if case .sentenceMeaning(_, let phrase, _) = state.currentQuestion {
-            self.numberOfItems = phrase.value.count
+        default:
+            self.numberOfItems = 1
             self.contentUpdate.value = true
         }
     }

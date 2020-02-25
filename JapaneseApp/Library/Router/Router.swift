@@ -39,6 +39,9 @@ public class Router: StoreSubscriber {
         case .practice:
             let vc = PracticeViewController()
             self.mainNavigationController.pushViewController(vc, animated: true)
+        case .practiceCompletion:
+            let vc = PracticeCompletionViewController()
+            self.mainNavigationController.pushViewController(vc, animated: true)
         case .none:
             break
         }

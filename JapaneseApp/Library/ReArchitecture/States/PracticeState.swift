@@ -14,34 +14,34 @@ public struct PracticeState: StateType, Equatable {
     public enum Current: Equatable {
         case noPractice
         case inProgress(PracticeGroup)
+        case completed(PracticeGroup)
     }
     
-    public var current: Current = .noPractice
-    public var practice: CurrentPracticeState?
+    public let current: Current
+    public let practice: CurrentPracticeState?
 
 }
 
 public struct CurrentPracticeState: StateType, Equatable {
     
-    public let questions: [Question]
-    public var currentQuestionIndex: Int
-    public var currentQuestion: Question {
-        return self.questions[self.currentQuestionIndex]
+    public let questions: [AnyQuestion]
+    public let currentQuestionIndex: Int
+    public var currentQuestion: QuestionType {
+        return self.questions[self.currentQuestionIndex].value
     }
-    public var currentQuestionAnswer: String?
-    public var correctAnswerState: Bool?
-    public var correctAnswer: String?
-    public var answerMeaning: String?
-    
-    public var isReadingAidVisible = false
-    public var hasReadingAid: Bool {
-        switch self.currentQuestion {
-        case .sentenceMeaning(_, let phrase, _):
-            return phrase.value.contains { $0.readingAid != nil }
-        case .subjectMeaning(_, let subject, _):
-            return subject.readingAid != nil
-        default:
-            return false
-        }
+    public let currentQuestionAnswer: String?
+    public let answerCheck: AnswerCheck?
+    public let isReadingAidVisible: Bool
+    public let practiceAnswers: [AnswerCheck]
+    public let selectedPracticeAnswer: AnswerCheck?
+    public func isSelected(answerCheck: AnswerCheck) -> Bool {
+        return answerCheck == selectedPracticeAnswer
     }
+}
+
+public struct AnswerCheck: Equatable {
+    public let answer: String
+    public let isCorrect: Bool
+    public let correctAnswer: String?
+    public let answerMeaning: String?
 }

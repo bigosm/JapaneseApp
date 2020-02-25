@@ -25,24 +25,14 @@ fileprivate func checkAnswer(state: CurrentPracticeState?) -> CurrentPracticeAct
     guard let state = state, let answer = state.currentQuestionAnswer else {
         fatalError("Answer should be set, before checking.")
     }
-    let isCorrect: Bool
-    let correctAnswer: String?
-    let meaning: String?
-    switch state.currentQuestion {
-    case .sentenceMeaning(_, _, let answers):
-        isCorrect = answers.map { $0.lowercased() }.contains(answer.lowercased())
-        correctAnswer = isCorrect ? nil : answers.first
-        meaning = nil
-    case .subjectMeaning(_, _, let answers):
-        isCorrect = answers.map { $0.lowercased() }.contains(answer.lowercased())
-        correctAnswer = isCorrect ? nil : answers.first
-        meaning = nil
-    case .translateMeaning(_, _, let answers):
-        let possibleAnswers = answers.compactMap { $0.meaning }.flatMap { $0 }
-        isCorrect = possibleAnswers.map { $0.lowercased() }.contains(answer.lowercased())
-        correctAnswer = isCorrect ? nil : possibleAnswers.first(where: { $0.lowercased() == answer.lowercased() })
-        meaning = nil
-    }
+
+    let x = state.currentQuestion.correctAnswerList.first { $0.lowercased() == answer.lowercased() }
+    let isCorrect = x != nil
+    let correctAnswer = isCorrect ? nil : state.currentQuestion.correctAnswerList.first
     
-    return .answerState(isCorrect: isCorrect, correctAnswer: correctAnswer, meaning: meaning)
+    return .answerState(AnswerCheck(
+        answer: answer,
+        isCorrect: isCorrect,
+        correctAnswer: correctAnswer,
+        answerMeaning: nil))
 }

@@ -14,6 +14,7 @@ public struct NavigationState: StateType, Equatable {
     public enum View: Equatable {
         case practiceOverview
         case practice
+        case practiceCompletion
     }
     
     public let currentView: View
