@@ -14,4 +14,4 @@ _Work in progress_
 
 ## Dependencies
 
-_Currently we do not use external dependencies_
+- [ReSwift](https://github.com/ReSwift/ReSwift)
