@@ -13,8 +13,8 @@ public final class PracticeCompletionViewController: UIViewController {
     // MARK: - Instance Properties
     
     private let viewModel: PracticeCompletionViewModelType = PracticeCompletionViewModel()
-    private let basicCellIdentifier = "basicCellIdentifier"
-    private let practiceGroupCellIdentifier = "PracticeGroupCell"
+    private let completionQuestionCell = "completionQuestionCell"
+    private let completionSummaryCell = "completionSummaryCell"
     
     public var tableView = UITableView(frame: .zero, style: .insetGrouped)
     
@@ -24,13 +24,14 @@ public final class PracticeCompletionViewController: UIViewController {
         super.viewDidLoad()
         
         self.tableView.backgroundColor = Theme.primaryBackgroundColor
-        
+        self.tableView.isUserInteractionEnabled = true
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
         self.tableView.rowHeight = UITableView.automaticDimension
         
-        self.tableView.register(PracticeCompletionCell.self, forCellReuseIdentifier: self.practiceGroupCellIdentifier)
+        self.tableView.register(PracticeCompletionCell.self, forCellReuseIdentifier: self.completionQuestionCell)
+        self.tableView.register(PracticeCompletionSummaryCell.self, forCellReuseIdentifier: self.completionSummaryCell)
         
         self.navigationItem.hidesBackButton = true
         
@@ -79,15 +80,30 @@ public final class PracticeCompletionViewController: UIViewController {
 // MARK: - UITableViewDataSource
 
 extension PracticeCompletionViewController: UITableViewDataSource {
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.outputs.numberOfItems
+        switch section {
+        case 0: return self.viewModel.outputs.numberOfItems
+        case 1: return 1
+        default: return 0
+        }
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: self.practiceGroupCellIdentifier, for: indexPath) as! PracticeCompletionCell
-        cell.configureWith(practiceAnswerAtIndex: indexPath.row)
-        return cell
+        switch indexPath.section {
+        case 1:
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: self.completionSummaryCell, for: indexPath) as! PracticeCompletionSummaryCell
+            cell.configure()
+            return cell
+        default:
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: self.completionQuestionCell, for: indexPath) as! PracticeCompletionCell
+            cell.configureWith(practiceAnswerAtIndex: indexPath.row)
+            return cell
+        }
     }
     
 }
@@ -97,6 +113,7 @@ extension PracticeCompletionViewController: UITableViewDataSource {
 extension PracticeCompletionViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section == 0 else { return }
         self.viewModel.inputs.select(practiceAnswerAtIndex: indexPath.row)
 
         // Nice and smoth selecting cell animation.

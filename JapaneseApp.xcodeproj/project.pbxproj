@@ -66,6 +66,8 @@
 		1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */; };
 		1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */; };
 		1F8F10C923BF992B0001981C /* PracticeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */; };
+		1F8F435D24055333008DA65E /* PracticeCompletionSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */; };
+		1F8F435F24055412008DA65E /* PracticeCompletionSummaryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F435E24055412008DA65E /* PracticeCompletionSummaryCellViewModel.swift */; };
 		1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */; };
 		1FAAC40423C6074B0015EDC0 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAC40323C6074B0015EDC0 /* Date+Extension.swift */; };
 		1FC741D623BF6AE000244938 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC741D523BF6AE000244938 /* AppDelegate.swift */; };
@@ -144,6 +146,8 @@
 		1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
 		1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewController.swift; sourceTree = "<group>"; };
 		1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupCell.swift; sourceTree = "<group>"; };
+		1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionSummaryCell.swift; sourceTree = "<group>"; };
+		1F8F435E24055412008DA65E /* PracticeCompletionSummaryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionSummaryCellViewModel.swift; sourceTree = "<group>"; };
 		1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		1FAAC40323C6074B0015EDC0 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		1FC741D223BF6AE000244938 /* JapaneseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JapaneseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +309,7 @@
 				1F48D48423FC233E0069B2D4 /* AnswerCompletionViewModel.swift */,
 				1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */,
 				1F3E152324042CE700BFFC43 /* PracticeCompletionCellViewModel.swift */,
+				1F8F435E24055412008DA65E /* PracticeCompletionSummaryCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				1F5F493823EC919B00F17C13 /* CharacterCollectionCell.swift */,
 				1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */,
 				1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */,
+				1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -583,6 +589,7 @@
 				1F531D7823D9CD43004C25DC /* Theme.swift in Sources */,
 				1FC741D623BF6AE000244938 /* AppDelegate.swift in Sources */,
 				1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */,
+				1F8F435D24055333008DA65E /* PracticeCompletionSummaryCell.swift in Sources */,
 				1F17690523E85B2500912335 /* AppState.swift in Sources */,
 				1F3E151C240048EA00BFFC43 /* PracticeCompletionViewModel.swift in Sources */,
 				1F48D48823FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift in Sources */,
@@ -606,6 +613,7 @@
 				1F48D47323F2BE660069B2D4 /* Phrase.swift in Sources */,
 				1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */,
 				1F48D48523FC233E0069B2D4 /* AnswerCompletionViewModel.swift in Sources */,
+				1F8F435F24055412008DA65E /* PracticeCompletionSummaryCellViewModel.swift in Sources */,
 				1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */,
 				1F5F493923EC919B00F17C13 /* CharacterCollectionCell.swift in Sources */,
 				1F17691B23E86A9400912335 /* StudentState.swift in Sources */,

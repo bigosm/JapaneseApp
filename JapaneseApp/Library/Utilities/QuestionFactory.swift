@@ -12,9 +12,9 @@ internal struct QuestionFactory {
 
     internal let practiceGroup: PracticeGroup
     internal let level: Int
-    internal let numberOfQuestions: Int = 2
-    internal let numberOfCharactersToPractice: Int = 1
-    internal let numberOfWordsToPractice: Int = 1
+    internal let numberOfQuestions: Int = 10
+    internal let numberOfCharactersToPractice: Int = 5
+    internal let numberOfWordsToPractice: Int = 5
     internal let numberOfPhraseToPractice: Int = 0
 
     public func prepare() -> [AnyQuestion] {
