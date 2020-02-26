@@ -41,7 +41,7 @@ public final class PracticeViewController: UIViewController {
         self.questionLabel.font = .boldSystemFont(ofSize: 20)
         
         self.listenButton.setImage(UIImage(named: "round_music_note_black_36pt"), for: .normal)
-        self.readingAidVisibilityButton.imageView?.contentMode = .scaleAspectFit
+        self.listenButton.imageView?.contentMode = .scaleAspectFit
         self.listenButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         self.readingAidVisibilityButton.setImage(UIImage(named: "round_visibility_black_36pt"), for: .normal)

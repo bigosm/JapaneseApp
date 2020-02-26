@@ -47,6 +47,7 @@ public final class PracticeViewModel: PracticeViewModelType, PracticeViewModelIn
             let state = state.practice else {
                 return
         }
+        self.title.value = "Question \(state.currentQuestionIndex + 1)/\(state.questions.count)"
         self.question.value = state.currentQuestion.prompt
         self.isReadingAidButtonHidden.value = false
         self.isCheckButtonHidden.value = state.answerCheck != nil

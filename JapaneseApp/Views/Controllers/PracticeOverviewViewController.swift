@@ -26,7 +26,7 @@ public final class PracticeOverviewViewController: UIViewController {
         
         self.title = "Japanese App"
         self.tableView.backgroundColor = Theme.primaryBackgroundColor
-        
+        self.tableView.isUserInteractionEnabled = true
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = UITableView.automaticDimension

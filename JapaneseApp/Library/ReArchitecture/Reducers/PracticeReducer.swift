@@ -54,7 +54,7 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
         case .cancel, .finish: return nil
         case .startPractice(let practiceGroup),
              .startTimePractice(let practiceGroup):
-            let questions = QuestionFactory(practiceGroup: practiceGroup, level: 1).prepare()
+            let questions = QuestionFactory(practiceGroup: practiceGroup, level: 3).prepare()
             guard questions.count > 0 else {
                 fatalError("Can not start practice without questions!")
             }

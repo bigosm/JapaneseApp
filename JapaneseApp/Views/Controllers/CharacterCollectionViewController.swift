@@ -30,6 +30,7 @@ public final class CharacterCollectionViewController: UIViewController, Practice
         flowLayout.minimumInteritemSpacing = 0
         
         self.view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        self.view.backgroundColor = Theme.primaryBackgroundColor
         
         self.collectionView.register(CharacterCollectionCell.self, forCellWithReuseIdentifier: self.cellIdentifier)
         self.collectionView.dataSource = self

@@ -32,12 +32,16 @@ public class Theme {
     public static let disabledSecondaryRoundedButtonTitleColor: UIColor?    = nil
     
     public static let primaryButtonColor: UIColor?          = nil
+    public static let primaryButtonColorHighlighted: UIColor? = nil
     public static let primaryButtonTitleColor               = UIColor(named: "primaryButtonColor")
+    public static let primaryButtonTitleColorHighlighted: UIColor? = UIColor(named: "primaryButtonTitleColorHighlighted")
     public static let primaryButtonFont                     = UIFont.boldSystemFont(ofSize: 20)
     public static let primaryButtonHeight: CGFloat          = 46
     
     public static let primaryRoundedButtonColor             = UIColor(named: "primaryRoundedButtonColor")
+    public static let primaryRoundedButtonColorHighlighted  = UIColor(named: "primaryRoundedButtonColorHighlighted")
     public static let primaryRoundedButtonTitleColor        = UIColor(named: "primaryRoundedButtonTitleColor")
+    public static let primaryRoundedButtonTitleColorHighlighted = UIColor(named: "primaryRoundedButtonTitleColorHighlighted")
     public static let primaryRoundedButtonFont              = UIFont.boldSystemFont(ofSize: 20)
     public static let primaryRoundedButtonHeight: CGFloat   = 46
     
@@ -49,8 +53,10 @@ public class Theme {
     public static func backgroundColor(buttonType: Button.CustomType, state: Button.State) -> UIColor? {
         switch (buttonType, state) {
         case (.primary, .normal):               return primaryButtonColor
+        case (.primary, .highlighted):          return primaryButtonColorHighlighted
         case (.primary, .disabled):             return disabledPrimaryButtonColor
         case (.primaryRounded, .normal):        return primaryRoundedButtonColor
+        case (.primaryRounded, .highlighted):   return primaryRoundedButtonColorHighlighted
         case (.primaryRounded, .disabled):      return disabledPrimaryRoundedButtonColor
         case (.secondaryRounded, .normal):      return secondaryRoundedButtonColor
         case (.secondaryRounded, .disabled):    return disabledSecondaryRoundedButtonColor
@@ -62,12 +68,14 @@ public class Theme {
     
     public static func titleColor(buttonType: Button.CustomType, state: Button.State) -> UIColor? {
         switch (buttonType, state) {
-        case (.primary, .normal):   return primaryButtonTitleColor
-        case (.primary, .disabled): return primaryRoundedButtonTitleColor
-        case (.primaryRounded, .normal):   return primaryRoundedButtonTitleColor
-        case (.primaryRounded, .disabled): return disabledPrimaryRoundedButtonTitleColor
-        case (.secondaryRounded, .normal):     return secondaryRoundedButtonTitleColor
-        case (.secondaryRounded, .disabled):   return disabledSecondaryRoundedButtonTitleColor
+        case (.primary, .normal):               return primaryButtonTitleColor
+        case (.primary, .highlighted):          return primaryButtonTitleColorHighlighted
+        case (.primary, .disabled):             return primaryRoundedButtonTitleColor
+        case (.primaryRounded, .normal):        return primaryRoundedButtonTitleColor
+        case (.primaryRounded, .highlighted):   return primaryRoundedButtonTitleColorHighlighted
+        case (.primaryRounded, .disabled):      return disabledPrimaryRoundedButtonTitleColor
+        case (.secondaryRounded, .normal):      return secondaryRoundedButtonTitleColor
+        case (.secondaryRounded, .disabled):    return disabledSecondaryRoundedButtonTitleColor
         default:
             print("[Theme] [\(#function)] Case notdefined - buttonType: `\(buttonType)`, state: `\(state)`")
             return nil
