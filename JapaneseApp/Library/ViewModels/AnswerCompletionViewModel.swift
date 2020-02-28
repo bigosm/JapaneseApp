@@ -35,7 +35,7 @@ public final class AnswerCompletionViewModel: AnswerCompletionViewModelType, Ans
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard case .inProgress(_) = state.current,
+        guard case .inProgress = state.current,
             let state = state.practice,
             let answerState = state.answerCheck else {
                 return

@@ -13,8 +13,8 @@ public struct PracticeState: StateType, Equatable {
 
     public enum Current: Equatable {
         case noPractice
-        case inProgress(PracticeGroup)
-        case completed(PracticeGroup)
+        case inProgress
+        case completed
     }
     
     public let current: Current

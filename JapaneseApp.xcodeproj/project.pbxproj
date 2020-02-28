@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F0DD5A824095A2500F57924 /* SelectAnswerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DD5A724095A2500F57924 /* SelectAnswerCellViewModel.swift */; };
+		1F0DD5AA2409939D00F57924 /* PrepareQuestionsMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DD5A92409939D00F57924 /* PrepareQuestionsMiddleware.swift */; };
 		1F1768D223E2E48800912335 /* PracticeGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F1768D123E2E48800912335 /* PracticeGroups.json */; };
 		1F1768D423E2FC7C00912335 /* Vocabulary.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F1768D323E2FC7B00912335 /* Vocabulary.json */; };
 		1F1768D623E2FDB200912335 /* Characters.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F1768D523E2FDB200912335 /* Characters.json */; };
@@ -93,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		1F0DD5A724095A2500F57924 /* SelectAnswerCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAnswerCellViewModel.swift; sourceTree = "<group>"; };
+		1F0DD5A92409939D00F57924 /* PrepareQuestionsMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareQuestionsMiddleware.swift; sourceTree = "<group>"; };
 		1F1768D123E2E48800912335 /* PracticeGroups.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PracticeGroups.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		1F1768D323E2FC7B00912335 /* Vocabulary.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Vocabulary.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		1F1768D523E2FDB200912335 /* Characters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Characters.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
@@ -300,6 +302,7 @@
 			children = (
 				1F48D48723FC2FDC0069B2D4 /* CheckAnswerMiddleware.swift */,
 				1F48D48923FEBB660069B2D4 /* NextQuestionMiddleware.swift */,
+				1F0DD5A92409939D00F57924 /* PrepareQuestionsMiddleware.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				1F8F43612406CD19008DA65E /* SelectAnswerViewModel.swift in Sources */,
 				1F48D47323F2BE660069B2D4 /* Phrase.swift in Sources */,
 				1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */,
+				1F0DD5AA2409939D00F57924 /* PrepareQuestionsMiddleware.swift in Sources */,
 				1F48D48523FC233E0069B2D4 /* AnswerCompletionViewModel.swift in Sources */,
 				1F8F435F24055412008DA65E /* PracticeCompletionSummaryCellViewModel.swift in Sources */,
 				1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */,

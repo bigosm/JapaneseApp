@@ -34,7 +34,7 @@ public final class PracticeCompletionViewModel: PracticeCompletionViewModelType,
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard case .completed(_) = state.current,
+        guard case .completed = state.current,
             let state = state.practice else {
                 return
         }

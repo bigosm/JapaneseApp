@@ -32,7 +32,7 @@ public final class PracticeCompletionSummaryCellViewModel: PracticeCompletionSum
     public init() { }
     
     public func newState(state: PracticeState) {
-        guard case .completed(_) = state.current,
+        guard case .completed = state.current,
             let practice = state.practice else {
                 return
         }

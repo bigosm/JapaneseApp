@@ -16,15 +16,15 @@ internal let nextQuestionMiddleware: Middleware<AppState> = { dispatch, getState
                 return next(action)
             }
                 
-            guard let state = getState()?.practiceState,
-                case .inProgress(let practiceGroup) = state.current,
-                let practice = state.practice else {
+            guard let state = getState(),
+                case .inProgress = state.practiceState.current,
+                let practice = state.practiceState.practice else {
                     print("Something went wrong... Looks like state is not \"nextQuestion\" compatibile.")
                     return
             }
-                
+            
             return practice.currentQuestionIndex >= practice.questions.count - 1
-                ? next(PracticeAction.complete(practiceGroup))
+                ? next(PracticeAction.complete)
                 : next(action)
         }
     }

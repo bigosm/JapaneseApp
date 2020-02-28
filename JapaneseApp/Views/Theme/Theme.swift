@@ -87,9 +87,6 @@ public class Theme {
         case .primary:          return primaryButtonFont
         case .primaryRounded:   return primaryRoundedButtonFont
         case .secondaryRounded: return secondaryRoundedButtonFont
-        default:
-            print("[Theme] [\(#function)] Case notdefined - buttonType: `\(buttonType)`")
-            return nil
         }
     }
     
@@ -98,9 +95,6 @@ public class Theme {
         case .primary:          return primaryButtonHeight
         case .primaryRounded:   return primaryRoundedButtonHeight
         case .secondaryRounded: return secondaryRoundedButtonHeight
-        default:
-            print("[Theme] [\(#function)] Case notdefined - buttonType: `\(buttonType)`")
-            return nil
         }
     }
 

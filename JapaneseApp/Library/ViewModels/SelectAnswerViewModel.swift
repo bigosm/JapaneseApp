@@ -34,7 +34,7 @@ public final class SelectAnswerViewModel: SelectAnswerViewModelType, SelectAnswe
     public init() { }
 
     public func newState(state: PracticeState) {
-        guard case .inProgress(_) = state.current,
+        guard case .inProgress = state.current,
             let state = state.practice else {
                 return
         }

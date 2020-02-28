@@ -39,12 +39,12 @@ public final class PracticeCompletionCellViewModel: PracticeCompletionCellViewMo
     public init() { }
     
     private var index: Int!
-    private var practiceGroup: PracticeGroup!
     
     public func newState(state: PracticeState) {
-        guard case .completed(_) = state.current,
+        guard case .completed = state.current,
             let index = self.index,
-            let practice = state.practice else {
+            let practice = state.practice,
+            practice.practiceAnswers.count > index else {
                 return
         }
         let state = practice.practiceAnswers[index]
@@ -84,6 +84,7 @@ public final class PracticeCompletionCellViewModel: PracticeCompletionCellViewMo
     public func prepareForReuse() {
         AppStore.shared.unsubscribe(self)
         self.isSelected.value = false
+        self.index = nil
     }
     
     // MARK: - Outputs

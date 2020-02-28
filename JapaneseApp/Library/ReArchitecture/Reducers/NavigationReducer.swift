@@ -30,7 +30,7 @@ internal func navigationReducer(action: Action, state: NavigationState?) -> Navi
             previousView: state.currentView,
             routeToView: .practice
         )
-    case PracticeAction.complete(_):
+    case PracticeAction.complete:
         return NavigationState(
             currentView: .practiceCompletion,
             previousView: state.currentView,
@@ -43,6 +43,10 @@ internal func navigationReducer(action: Action, state: NavigationState?) -> Navi
             routeToView: .practiceOverview
         )
     default:
-        return state
+        return NavigationState(
+            currentView: state.currentView,
+            previousView: state.previousView,
+            routeToView: nil
+        )
     }
 }
