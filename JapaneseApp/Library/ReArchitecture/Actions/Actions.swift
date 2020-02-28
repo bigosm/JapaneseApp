@@ -29,6 +29,7 @@ public enum PracticeAction: Action {
 
 public enum CurrentPracticeAction: Action {
     case answer(String?)
+    case answerAt(Int)
     case checkAnswer
     case answerState(AnswerCheck)
     case nextQuestion

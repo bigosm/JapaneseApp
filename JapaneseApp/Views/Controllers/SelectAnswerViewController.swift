@@ -1,45 +1,42 @@
 //
-//  JapaneseAppViewController.swift
+//  SelectAnswerViewController.swift
 //  JapaneseApp
 //
-//  Created by Michal Bigos on 03/01/2020.
+//  Created by Michal Bigos on 26/02/2020.
 //  Copyright © 2020 Example. All rights reserved.
 //
 
 import UIKit
-import ReSwift
 
-public final class PracticeOverviewViewController: UIViewController {
+public final class SelectAnswerViewController: UIViewController, PracticeAnswerViewController {
     
     // MARK: - Instance Properties
     
-    private let viewModel: PracticeOverviewViewModelType = PracticeOverviewViewModel()
-    private let basicCellIdentifier = "basicCellIdentifier"
-    private let practiceGroupCellIdentifier = "PracticeGroupCell"
-    
+    private let viewModel: SelectAnswerViewModelType = SelectAnswerViewModel()
+
+    private var basicCellIdentifier = "basicCellIdentifier"
     public var tableView = UITableView()
-    
+
     // MARK: - View Lifecycle
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Japanese App"
-        self.tableView.separatorStyle = .none
+
         self.tableView.backgroundColor = Theme.primaryBackgroundColor
         self.tableView.isUserInteractionEnabled = true
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = UITableView.automaticDimension
         self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.separatorStyle = .none
         
-        self.tableView.register(PracticeGroupCell.self, forCellReuseIdentifier: self.practiceGroupCellIdentifier)
+        self.tableView.register(SelectAnswerCell.self, forCellReuseIdentifier: self.basicCellIdentifier)
         
         self.setupView()
         self.bindViewModel()
         self.viewModel.inputs.viewDidLoad()
     }
-
+    
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -54,9 +51,13 @@ public final class PracticeOverviewViewController: UIViewController {
     
     // MARK: - Instance Methods
     
-    // MARK: - Bindings
+    // MARK: - Binding
     
-    private func bindViewModel() { }
+    private func bindViewModel() {
+        self.viewModel.outputs.contentUpdate.addObserver(self, options: [.new]) { [weak self] _, _ in
+            self?.tableView.reloadData()
+        }
+    }
     
     // MARK: - View Position Layout
     
@@ -71,20 +72,19 @@ public final class PracticeOverviewViewController: UIViewController {
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
-    
 }
 
 // MARK: - UITableViewDataSource
 
-extension PracticeOverviewViewController: UITableViewDataSource {
+extension SelectAnswerViewController: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel.outputs.numberOfItems
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: self.practiceGroupCellIdentifier, for: indexPath) as! PracticeGroupCell
-        cell.configureWith(practiceGroupAtIndex: indexPath.row)
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: self.basicCellIdentifier, for: indexPath) as! SelectAnswerCell
+        cell.configureWith(answerFeedAtIndex: indexPath.row)
         return cell
     }
     
@@ -92,15 +92,10 @@ extension PracticeOverviewViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension PracticeOverviewViewController: UITableViewDelegate {
+extension SelectAnswerViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel.inputs.select(practiceGroupAtIndex: indexPath.row)
-
-        // Nice and smoth selecting cell animation.
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        self.viewModel.inputs.select(answerAtIndex: indexPath.row)
     }
     
 }
-

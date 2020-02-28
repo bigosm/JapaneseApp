@@ -25,6 +25,7 @@ public struct AnyQuestion: Equatable {
 public protocol QuestionType {
     var prompt: String { get }
     var correctAnswerList: [String] { get }
+    var answerFeed: [String] { get }
     var answer: String? { get }
     var isCorrect: String? { get }
 }
@@ -40,6 +41,7 @@ public protocol PhraseQuestionType: QuestionType {
 public struct MatchSoundToCharacter: SubjectQuestionType, Equatable {
     public let prompt: String
     public let correctAnswerList: [String]
+    public var answerFeed: [String]
     public let answer: String?
     public let isCorrect: String?
     public let subject: Subject
@@ -48,6 +50,7 @@ public struct MatchSoundToCharacter: SubjectQuestionType, Equatable {
 public struct RomajiNotation: SubjectQuestionType, Equatable {
     public let prompt: String
     public let correctAnswerList: [String]
+    public var answerFeed: [String]
     public let answer: String?
     public let isCorrect: String?
     public let subject: Subject
@@ -56,6 +59,7 @@ public struct RomajiNotation: SubjectQuestionType, Equatable {
 public struct WordMeaning: SubjectQuestionType, Equatable {
     public let prompt: String
     public let correctAnswerList: [String]
+    public var answerFeed: [String]
     public let answer: String?
     public let isCorrect: String?
     public let subject: Subject
@@ -64,6 +68,7 @@ public struct WordMeaning: SubjectQuestionType, Equatable {
 public struct TranslateWord: SubjectQuestionType, Equatable {
     public let prompt: String
     public let correctAnswerList: [String]
+    public var answerFeed: [String]
     public let answer: String?
     public let isCorrect: String?
     public let subject: Subject

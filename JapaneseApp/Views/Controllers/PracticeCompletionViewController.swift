@@ -16,14 +16,17 @@ public final class PracticeCompletionViewController: UIViewController {
     private let completionQuestionCell = "completionQuestionCell"
     private let completionSummaryCell = "completionSummaryCell"
     
-    public var tableView = UITableView(frame: .zero, style: .insetGrouped)
+    public var tableView = UITableView()
     
     // MARK: - View Lifecycle
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = Theme.primaryBackgroundColor
+        self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = Theme.primaryBackgroundColor
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         self.tableView.isUserInteractionEnabled = true
         self.tableView.dataSource = self
         self.tableView.delegate = self

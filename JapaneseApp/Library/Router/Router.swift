@@ -20,7 +20,8 @@ public class Router: StoreSubscriber {
 
     private init() {
         self.mainNavigationController = UINavigationController(rootViewController: PracticeOverviewViewController())
-        self.mainNavigationController.navigationBar.tintColor = UIColor(named: "primaryColor")
+        self.mainNavigationController.navigationBar.tintColor = Theme.primaryColor
+        self.mainNavigationController.navigationBar.backgroundColor = Theme.secondaryBackgroundColor
     }
     
     public func configureWith(window: UIWindow?) {
