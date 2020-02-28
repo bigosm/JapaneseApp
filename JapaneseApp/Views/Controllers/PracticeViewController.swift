@@ -20,7 +20,7 @@ public final class PracticeViewController: UIViewController {
     
     public let questionLabel = UILabel()
     public let practiceSubject: PracticeSubjectViewController = CharacterCollectionViewController()
-    public let practiceAnswer: PracticeAnswerViewController = TypeInAnswerViewController()
+    public let practiceAnswer: PracticeAnswerViewController = SelectAnswerViewController()
     public let listenButton = Button(customType: .primary)
     public let readingAidVisibilityButton = Button(customType: .primary)
     public let checkButton = Button(customType: .primaryRounded)
@@ -62,6 +62,7 @@ public final class PracticeViewController: UIViewController {
                                                                 action: #selector(handleCancelButton(_:)))
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -76,7 +77,6 @@ public final class PracticeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.viewModel.inputs.viewWillAppear()
-        self.view.layoutIfNeeded()
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
@@ -167,19 +167,19 @@ public final class PracticeViewController: UIViewController {
     
     private func setupView() {
         self.view.addSubview(self.questionLabel)
+        self.view.addSubview(self.practiceSubject.view)
         self.addChild(self.practiceSubject)
         self.practiceSubject.didMove(toParent: self)
-        self.view.addSubview(self.practiceSubject.view)
         self.view.addSubview(self.listenButton)
         self.view.addSubview(self.readingAidVisibilityButton)
+        self.view.addSubview(self.practiceAnswer.view)
         self.addChild(self.practiceAnswer)
         self.practiceAnswer.didMove(toParent: self)
-        self.view.addSubview(self.practiceAnswer.view)
         self.view.addSubview(self.checkButton)
         self.view.addSubview(self.continueButton)
+        self.view.addSubview(self.answerCheck.view)
         self.addChild(self.answerCheck)
         self.answerCheck.didMove(toParent: self)
-        self.view.addSubview(self.answerCheck.view)
         
         self.questionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

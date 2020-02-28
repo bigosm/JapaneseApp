@@ -111,6 +111,20 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             practiceAnswers: currentState.practiceAnswers,
             selectedPracticeAnswer: nil
         )
+        case .answerAt(let index):
+            if let _ = currentState.answerCheck {
+                print("Answer is checked, can't do that action right now!")
+                return currentState
+            }
+            return CurrentPracticeState(
+                questions: currentState.questions,
+                currentQuestionIndex: currentState.currentQuestionIndex,
+                currentQuestionAnswer: currentState.currentQuestion.answerFeed[index],
+                answerCheck: nil,
+                isReadingAidVisible: currentState.isReadingAidVisible,
+                practiceAnswers: currentState.practiceAnswers,
+                selectedPracticeAnswer: nil
+            )
     case .answerState(let answerCheck):
         return CurrentPracticeState(
             questions: currentState.questions,
