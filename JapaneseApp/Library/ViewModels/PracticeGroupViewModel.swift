@@ -67,13 +67,13 @@ public final class PracticeGroupViewModel: PracticeGroupViewModelType, PracticeG
     
     public func practiceButtonTapped() {
         AppStore.shared.dispatch(
-            PracticeAction.startPractice(practiceGroup)
+            PracticeAction.preparePractice(practiceGroup)
         )
     }
     
     public func timedPracticeButtonTapped() {
         AppStore.shared.dispatch(
-            PracticeAction.startTimePractice(practiceGroup)
+            PracticeAction.prepareTimePractice(practiceGroup)
         )
     }
     

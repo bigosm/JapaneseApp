@@ -26,7 +26,20 @@ public class Router: StoreSubscriber {
     
     public func configureWith(window: UIWindow?) {
         self.window = window
-        self.window?.rootViewController = self.mainNavigationController
+        guard let window = window else { return }
+        
+        window.rootViewController = self.mainNavigationController
+        
+        let splashScreen = SplashScreen.instance
+        
+        self.mainNavigationController.view.addSubview(splashScreen.view)
+        self.mainNavigationController.addChild(splashScreen)
+        splashScreen.didMove(toParent: self.mainNavigationController)
+        splashScreen.animate {
+            splashScreen.view.removeFromSuperview()
+            splashScreen.removeFromParent()
+            splashScreen.didMove(toParent: nil)
+        }
         
         AppStore.shared.subscribe(self) {
             $0.select { $0.navigationState }

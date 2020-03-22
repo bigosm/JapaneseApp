@@ -34,13 +34,16 @@ public final class SelectAnswerCellViewModel: SelectAnswerCellViewModelType, Sel
     private var index: Int!
     
     public func newState(state: PracticeState) {
-        guard case .inProgress(_) = state.current,
+        guard case .inProgress = state.current,
             let index = self.index,
-            let practice = state.practice else {
+            let practice = state.practice,
+            let question = state.practice?.currentQuestion,
+            question.answerFeed.count > index
+            else {
                 return
         }
         
-        let answerFeed = practice.currentQuestion.answerFeed[index]
+        let answerFeed = question.answerFeed[index]
         
         self.answerFeed.value = answerFeed
         self.isSelected.value = answerFeed == practice.currentQuestionAnswer
@@ -59,6 +62,7 @@ public final class SelectAnswerCellViewModel: SelectAnswerCellViewModelType, Sel
     public func prepareForReuse() {
         AppStore.shared.unsubscribe(self)
         self.isSelected.value = false
+        self.index = nil
     }
     
     // MARK: - Outputs

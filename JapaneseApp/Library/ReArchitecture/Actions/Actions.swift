@@ -19,9 +19,11 @@ public struct ViewHistory: Action {
 
 public enum PracticeAction: Action {
     case cancel
-    case startPractice(PracticeGroup)
-    case startTimePractice(PracticeGroup)
-    case complete(PracticeGroup)
+    case preparePractice(PracticeGroup)
+    case prepareTimePractice(PracticeGroup)
+    case startPractice([AnyQuestion])
+    case startTimePractice([AnyQuestion])
+    case complete
     case selectPracticeAnswerAtIndex(Int)
     case finish
     

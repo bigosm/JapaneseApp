@@ -25,39 +25,38 @@ internal func practiceReducer(action: Action, state: PracticeState?) -> Practice
             current: .noPractice,
             practice: currentPracticeReducer(action: action, state: state.practice)
         )
-    case .startPractice(let practiceGroup),
-         .startTimePractice(let practiceGroup):
+    case .startPractice,
+         .startTimePractice:
         return PracticeState(
-            current: .inProgress(practiceGroup),
+            current: .inProgress,
             practice: currentPracticeReducer(action: action, state: state.practice)
         )
-    case .complete(let practiceGroup):
+    case .complete:
         return PracticeState(
-            current: .completed(practiceGroup),
+            current: .completed,
             practice: currentPracticeReducer(action: action, state: state.practice)
         )
-    case .selectPracticeAnswerAtIndex(let index):
-        guard case .completed(_) = state.current else {
+    case .selectPracticeAnswerAtIndex(_):
+        guard case .completed = state.current else {
             fatalError("Need 'complete' current status.")
         }
         return PracticeState(
             current: state.current,
             practice: currentPracticeReducer(action: action, state: state.practice)
         )
+    case .preparePractice,
+         .prepareTimePractice:
+        fatalError("Action should be swallowed in middleware")
     }
 }
 
 internal func currentPracticeReducer(action: Action, state: CurrentPracticeState?) -> CurrentPracticeState? {
-
+    
     if let action = action as? PracticeAction {
         switch action {
         case .cancel, .finish: return nil
-        case .startPractice(let practiceGroup),
-             .startTimePractice(let practiceGroup):
-            let questions = QuestionFactory(practiceGroup: practiceGroup, level: 3).prepare()
-            guard questions.count > 0 else {
-                fatalError("Can not start practice without questions!")
-            }
+        case .startPractice(let questions),
+             .startTimePractice(let questions):
             return CurrentPracticeState(
                 questions: questions,
                 currentQuestionIndex: 0,
@@ -67,7 +66,7 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
                 practiceAnswers: [],
                 selectedPracticeAnswer: nil
             )
-        case .complete(_):
+        case .complete:
             guard let state = state else { fatalError("state should be defined.") }
             return CurrentPracticeState(
                 questions: state.questions,
@@ -89,13 +88,16 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
                 practiceAnswers: state.practiceAnswers,
                 selectedPracticeAnswer: state.practiceAnswers[index]
             )
+        case .preparePractice,
+             .prepareTimePractice:
+            fatalError("Action should be swallowed in middleware")
         }
     }
     
     guard let action = action as? CurrentPracticeAction, let currentState = state else {
         return state
     }
-
+    
     switch action {
     case .answer(let answer):
         if let _ = currentState.answerCheck {
@@ -111,20 +113,20 @@ internal func currentPracticeReducer(action: Action, state: CurrentPracticeState
             practiceAnswers: currentState.practiceAnswers,
             selectedPracticeAnswer: nil
         )
-        case .answerAt(let index):
-            if let _ = currentState.answerCheck {
-                print("Answer is checked, can't do that action right now!")
-                return currentState
-            }
-            return CurrentPracticeState(
-                questions: currentState.questions,
-                currentQuestionIndex: currentState.currentQuestionIndex,
-                currentQuestionAnswer: currentState.currentQuestion.answerFeed[index],
-                answerCheck: nil,
-                isReadingAidVisible: currentState.isReadingAidVisible,
-                practiceAnswers: currentState.practiceAnswers,
-                selectedPracticeAnswer: nil
-            )
+    case .answerAt(let index):
+        if let _ = currentState.answerCheck {
+            print("Answer is checked, can't do that action right now!")
+            return currentState
+        }
+        return CurrentPracticeState(
+            questions: currentState.questions,
+            currentQuestionIndex: currentState.currentQuestionIndex,
+            currentQuestionAnswer: currentState.currentQuestion.answerFeed[index],
+            answerCheck: nil,
+            isReadingAidVisible: currentState.isReadingAidVisible,
+            practiceAnswers: currentState.practiceAnswers,
+            selectedPracticeAnswer: nil
+        )
     case .answerState(let answerCheck):
         return CurrentPracticeState(
             questions: currentState.questions,
