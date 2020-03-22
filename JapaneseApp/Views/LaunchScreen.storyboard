@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Wz-Dd-Vnc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello sunshine!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvi-6E-yXB">
+                                <rect key="frame" x="0.0" y="414" width="414" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YumeApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLt-Mx-5Ob">
+                                <rect key="frame" x="0.0" y="332" width="414" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="primaryBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jLt-Mx-5Ob" firstAttribute="centerY" secondItem="pjW-bY-Tkj" secondAttribute="centerY" constant="-100" id="3af-WF-nzl"/>
+                            <constraint firstItem="xvi-6E-yXB" firstAttribute="trailing" secondItem="pjW-bY-Tkj" secondAttribute="trailing" id="87L-T7-hSL"/>
+                            <constraint firstItem="xvi-6E-yXB" firstAttribute="leading" secondItem="pjW-bY-Tkj" secondAttribute="leading" id="dMi-Tj-Z8p"/>
+                            <constraint firstItem="jLt-Mx-5Ob" firstAttribute="leading" secondItem="1Wz-Dd-Vnc" secondAttribute="leading" id="jFV-lo-Qgh"/>
+                            <constraint firstItem="pjW-bY-Tkj" firstAttribute="trailing" secondItem="jLt-Mx-5Ob" secondAttribute="trailing" id="jpn-zY-Cc7"/>
+                            <constraint firstItem="xvi-6E-yXB" firstAttribute="top" secondItem="jLt-Mx-5Ob" secondAttribute="bottom" constant="40" id="xYi-8f-Yb6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pjW-bY-Tkj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="primaryBackgroundColor">
+            <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
