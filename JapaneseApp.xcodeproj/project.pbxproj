@@ -30,6 +30,8 @@
 		1F3013E72465DF5700503B93 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013E62465DF5700503B93 /* UserProfile.swift */; };
 		1F3013E92465DFBC00503B93 /* UserProfileReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013E82465DFBC00503B93 /* UserProfileReducer.swift */; };
 		1F3013EB2465E34D00503B93 /* ScrollableContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013EA2465E34D00503B93 /* ScrollableContainerViewController.swift */; };
+		1F3013ED2465EA8600503B93 /* UserProfieAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */; };
+		1F3013EF2465EAB600503B93 /* UserProfileAboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013EE2465EAB600503B93 /* UserProfileAboutViewModel.swift */; };
 		1F3E151C240048EA00BFFC43 /* PracticeCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */; };
 		1F3E151E2400491500BFFC43 /* PracticeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */; };
 		1F3E1522240423D000BFFC43 /* PracticeCompletionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */; };
@@ -124,6 +126,8 @@
 		1F3013E62465DF5700503B93 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		1F3013E82465DFBC00503B93 /* UserProfileReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileReducer.swift; sourceTree = "<group>"; };
 		1F3013EA2465E34D00503B93 /* ScrollableContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableContainerViewController.swift; sourceTree = "<group>"; };
+		1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfieAboutViewController.swift; sourceTree = "<group>"; };
+		1F3013EE2465EAB600503B93 /* UserProfileAboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAboutViewModel.swift; sourceTree = "<group>"; };
 		1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewModel.swift; sourceTree = "<group>"; };
 		1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewController.swift; sourceTree = "<group>"; };
 		1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionCell.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 				1F8F43602406CD19008DA65E /* SelectAnswerViewModel.swift */,
 				1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */,
 				1F3013E22465DDDB00503B93 /* UserProfileViewModel.swift */,
+				1F3013EE2465EAB600503B93 /* UserProfileAboutViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				1F922E6F2423AC8F00DBE7CC /* SplashScreen.swift */,
 				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
 				1F3013E02465DDB900503B93 /* UserProfileViewController.swift */,
+				1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -621,6 +627,7 @@
 			files = (
 				1F48D46823F1C5810069B2D4 /* Observable.swift in Sources */,
 				1F48D45223EDB9360069B2D4 /* Router.swift in Sources */,
+				1F3013ED2465EA8600503B93 /* UserProfieAboutViewController.swift in Sources */,
 				1F3013E72465DF5700503B93 /* UserProfile.swift in Sources */,
 				1F17691523E868FE00912335 /* HelperFunctions.swift in Sources */,
 				1F48D46523F1C5810069B2D4 /* Experience.swift in Sources */,
@@ -665,6 +672,7 @@
 				1F48D48523FC233E0069B2D4 /* AnswerCompletionViewModel.swift in Sources */,
 				1F8F435F24055412008DA65E /* PracticeCompletionSummaryCellViewModel.swift in Sources */,
 				1F4DABF723EB1841005C92BA /* PracticeGroupViewModel.swift in Sources */,
+				1F3013EF2465EAB600503B93 /* UserProfileAboutViewModel.swift in Sources */,
 				1F0DD5A824095A2500F57924 /* SelectAnswerCellViewModel.swift in Sources */,
 				1F5F493923EC919B00F17C13 /* CharacterCollectionCell.swift in Sources */,
 				1F17691B23E86A9400912335 /* StudentState.swift in Sources */,

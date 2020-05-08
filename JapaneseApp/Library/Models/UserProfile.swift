@@ -10,4 +10,8 @@ import Foundation
 
 public struct UserProfile: Equatable {
     
+    // MARK: - Instance Properties
+    
+    public let name: String
+    
 }

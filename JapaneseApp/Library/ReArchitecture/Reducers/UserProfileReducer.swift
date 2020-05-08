@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 
 internal func userProfileReducer(action: Action, state: UserProfileState?) -> UserProfileState {
-    let state = state ?? UserProfileState(profile: nil)
+    let state = state ?? UserProfileState(profile: UserProfile(name: "Test Name"))
     
     return state
 }

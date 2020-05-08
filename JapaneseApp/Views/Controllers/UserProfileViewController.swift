@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class UserProfileViewController: UIViewController {
+public final class UserProfileViewController: ScrollableContainerViewController {
     
     // MARK: - Instance Properties
     
@@ -19,9 +19,11 @@ public final class UserProfileViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupView()
-        self.bindViewModel()
-        self.viewModel.inputs.viewDidLoad()
+        title = "Profile"
+        
+        setupView()
+        bindViewModel()
+        viewModel.inputs.viewDidLoad()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -40,15 +42,15 @@ public final class UserProfileViewController: UIViewController {
     
     // MARK: - Binding
     
-    private func bindViewModel() {
-        self.viewModel.outputs.title.addObserver(self, options: [.new]) { value, options in
-            self.title = value
-        }
-    }
+    private func bindViewModel() { }
     
-    // MARK: - View Position Layout
+    // MARK: - Setup View
     
     private func setupView() {
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0)
+        stackView.spacing = 20
         
+        addToStack(UserProfileAboutViewController())
     }
 }
