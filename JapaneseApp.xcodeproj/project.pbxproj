@@ -29,6 +29,7 @@
 		1F3013E52465DE3C00503B93 /* UserProfileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013E42465DE3C00503B93 /* UserProfileState.swift */; };
 		1F3013E72465DF5700503B93 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013E62465DF5700503B93 /* UserProfile.swift */; };
 		1F3013E92465DFBC00503B93 /* UserProfileReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013E82465DFBC00503B93 /* UserProfileReducer.swift */; };
+		1F3013EB2465E34D00503B93 /* ScrollableContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013EA2465E34D00503B93 /* ScrollableContainerViewController.swift */; };
 		1F3E151C240048EA00BFFC43 /* PracticeCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */; };
 		1F3E151E2400491500BFFC43 /* PracticeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */; };
 		1F3E1522240423D000BFFC43 /* PracticeCompletionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */; };
@@ -122,6 +123,7 @@
 		1F3013E42465DE3C00503B93 /* UserProfileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileState.swift; sourceTree = "<group>"; };
 		1F3013E62465DF5700503B93 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		1F3013E82465DFBC00503B93 /* UserProfileReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileReducer.swift; sourceTree = "<group>"; };
+		1F3013EA2465E34D00503B93 /* ScrollableContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableContainerViewController.swift; sourceTree = "<group>"; };
 		1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewModel.swift; sourceTree = "<group>"; };
 		1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewController.swift; sourceTree = "<group>"; };
 		1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionCell.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			children = (
 				1F43DA5623EB016700CED94A /* Button.swift */,
 				1F48D47423F2C52B0069B2D4 /* CharacterView.swift */,
+				1F3013EA2465E34D00503B93 /* ScrollableContainerViewController.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */,
 				1F3E152424042CE700BFFC43 /* PracticeCompletionCellViewModel.swift in Sources */,
 				1F8F436524083069008DA65E /* SelectAnswerCell.swift in Sources */,
+				1F3013EB2465E34D00503B93 /* ScrollableContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
