@@ -41,14 +41,14 @@ public class ScrollableContainerViewController: UIViewController {
         viewController.didMove(toParent: nil)
     }
     
-    // MARK: - Binding
-    
     private func setScrollableContainerTo(_ axis: NSLayoutConstraint.Axis) {
         stackView.axis = axis
         
         NSLayoutConstraint.deactivate(stackView.constraints)
         NSLayoutConstraint.activate(axis == .vertical ? vertialStackConstraints : horizontalStackConstraints)
     }
+    
+    // MARK: - Binding
     
     // MARK: - Setup View
     
@@ -90,4 +90,5 @@ public class ScrollableContainerViewController: UIViewController {
         scrollView.addSubview(stackView)
         setScrollableContainerTo(axis)
     }
+
 }
