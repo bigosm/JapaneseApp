@@ -12,29 +12,20 @@ public class ScrollableContainerViewController: UIViewController {
     
     // MARK: - Instance Properties
     
-    lazy var stackView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .vertical
-        return sv
-    }()
-    
-    var scrollView: UIScrollView {
-        guard let view = view as? UIScrollView else {
-            fatalError("View should be an instance of UIScrollView")
-        }
-        return view
+    var axis: NSLayoutConstraint.Axis = .vertical {
+        didSet { setScrollableContainerTo(axis) }
     }
     
     // MARK: - View Lifecycle
     
     public override func loadView() {
-        self.view = UIScrollView()
+        view = scrollView
     }
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupView()
+        setupView()
     }
 
     // MARK: - Instance Methods
@@ -52,17 +43,51 @@ public class ScrollableContainerViewController: UIViewController {
     
     // MARK: - Binding
     
-    // MARK: - View Position Layout
+    private func setScrollableContainerTo(_ axis: NSLayoutConstraint.Axis) {
+        stackView.axis = axis
+        
+        NSLayoutConstraint.deactivate(stackView.constraints)
+        NSLayoutConstraint.activate(axis == .vertical ? vertialStackConstraints : horizontalStackConstraints)
+    }
     
+    // MARK: - Setup View
+    
+    lazy var scrollView: UIScrollView = {
+        return UIScrollView()
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let x = UIStackView()
+        x.axis = axis
+        x.alignment = .fill
+        x.distribution = .equalSpacing
+        x.spacing = 0
+        x.translatesAutoresizingMaskIntoConstraints = false
+        return x
+    }()
+    
+    private lazy var vertialStackConstraints: [NSLayoutConstraint] = {
+        return [
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+        ]
+    }()
+    
+    private lazy var horizontalStackConstraints: [NSLayoutConstraint] = {
+        return [
+            stackView.topAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.bottomAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.heightAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.heightAnchor),
+        ]
+    }()
+
     private func setupView() {
         scrollView.addSubview(stackView)
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
+        setScrollableContainerTo(axis)
     }
 }
