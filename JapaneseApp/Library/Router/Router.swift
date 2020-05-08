@@ -9,32 +9,46 @@
 import UIKit
 import ReSwift
 
-public class Router: StoreSubscriber {
-    public typealias StoreSubscriberStateType = NavigationState
+class Router: StoreSubscriber {
+    typealias StoreSubscriberStateType = NavigationState
 
-    public static let shared = Router()
-    public let mainNavigationController: UINavigationController
-    public var currentPopViewController: UIViewController?
+    static let shared = Router()
     
-    public var window: UIWindow?
+    let mainTabBarController = UITabBarController()
+    
+    let practiceNavigationController = UINavigationController()
+    let profileNavigationController = UINavigationController()
+
+    var window: UIWindow?
 
     private init() {
-        self.mainNavigationController = UINavigationController(rootViewController: PracticeOverviewViewController())
-        self.mainNavigationController.navigationBar.tintColor = Theme.primaryColor
-        self.mainNavigationController.navigationBar.backgroundColor = Theme.secondaryBackgroundColor
+        practiceNavigationController.viewControllers = [PracticeOverviewViewController()]
+        practiceNavigationController.navigationBar.tintColor = Theme.primaryColor
+        practiceNavigationController.navigationBar.backgroundColor = Theme.secondaryBackgroundColor
+        practiceNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
+        
+        profileNavigationController.navigationBar.tintColor = Theme.primaryColor
+        profileNavigationController.navigationBar.backgroundColor = Theme.secondaryBackgroundColor
+        profileNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        
+        mainTabBarController.viewControllers = [
+            practiceNavigationController,
+            profileNavigationController,
+        ]
     }
     
-    public func configureWith(window: UIWindow?) {
+     func configureWith(window: UIWindow?) {
         self.window = window
+        
         guard let window = window else { return }
         
-        window.rootViewController = self.mainNavigationController
+        window.rootViewController = mainTabBarController
         
         let splashScreen = SplashScreen.instance
         
-        self.mainNavigationController.view.addSubview(splashScreen.view)
-        self.mainNavigationController.addChild(splashScreen)
-        splashScreen.didMove(toParent: self.mainNavigationController)
+        mainTabBarController.view.addSubview(splashScreen.view)
+        mainTabBarController.addChild(splashScreen)
+        splashScreen.didMove(toParent: mainTabBarController)
         splashScreen.animate {
             splashScreen.view.removeFromSuperview()
             splashScreen.removeFromParent()
@@ -46,19 +60,24 @@ public class Router: StoreSubscriber {
         }
     }
     
-    public func newState(state: NavigationState) {
+    func newState(state: NavigationState) {
         switch state.routeToView {
         case .practiceOverview:
-            self.mainNavigationController.popToRootViewController(animated: true)
+            practiceNavigationController.popToRootViewController(animated: true)
+            mainTabBarController.tabBar.isHidden = false
+            mainTabBarController.tabBar.isUserInteractionEnabled = true
         case .practice:
             let vc = PracticeViewController()
-            self.mainNavigationController.pushViewController(vc, animated: true)
+            practiceNavigationController.pushViewController(vc, animated: true)
+            mainTabBarController.tabBar.isHidden = true
+            mainTabBarController.tabBar.isUserInteractionEnabled = false
         case .practiceCompletion:
             let vc = PracticeCompletionViewController()
-            self.mainNavigationController.pushViewController(vc, animated: true)
+            practiceNavigationController.pushViewController(vc, animated: true)
+            mainTabBarController.tabBar.isHidden = true
+            mainTabBarController.tabBar.isUserInteractionEnabled = false
         case .none:
             break
         }
     }
-    
 }

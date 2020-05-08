@@ -436,17 +436,17 @@
 			isa = PBXGroup;
 			children = (
 				1F48D47A23F301150069B2D4 /* AnswerCollectionViewController.swift */,
+				1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */,
 				1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */,
 				1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */,
 				1F48D47623F2D2D40069B2D4 /* PracticeCharacterViewController.swift */,
-				1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */,
-				1F8F43622406CD29008DA65E /* SelectAnswerViewController.swift */,
-				1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */,
-				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
-				1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */,
 				1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */,
-				1F922E6F2423AC8F00DBE7CC /* SplashScreen.swift */,
+				1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */,
+				1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */,
+				1F8F43622406CD29008DA65E /* SelectAnswerViewController.swift */,
 				1F1082B82427B78100ED1682 /* SplashScreen.storyboard */,
+				1F922E6F2423AC8F00DBE7CC /* SplashScreen.swift */,
+				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
