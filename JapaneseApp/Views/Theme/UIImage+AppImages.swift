@@ -8,16 +8,7 @@
 
 import UIKit
 
-extension UIImage {
-    enum App: String {
-        case practiceTab
-        case profileTab
-        
-        var image: UIImage {
-            switch self {
-            case .practiceTab: return UIImage(systemName: "pencil.tip.crop.circle")!
-            case .profileTab: return UIImage(systemName: "person.crop.circle.fill")!
-            }
-        }
-    }
+enum AppImage {
+    static let practiceTab = UIImage(systemName: "pencil.tip.crop.circle")!
+    static let profileTab = UIImage(systemName: "person.crop.circle.fill")!
 }

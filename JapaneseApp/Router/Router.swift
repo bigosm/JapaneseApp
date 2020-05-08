@@ -25,11 +25,11 @@ class Router: StoreSubscriber {
         practiceNavigationController.viewControllers = [PracticeOverviewViewController()]
         practiceNavigationController.navigationBar.tintColor = Theme.primaryColor
         practiceNavigationController.navigationBar.backgroundColor = Theme.secondaryBackgroundColor
-        practiceNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage.App.practiceTab.image, tag: 0)
+        practiceNavigationController.tabBarItem = UITabBarItem(title: nil, image: AppImage.practiceTab, tag: 0)
         
         profileNavigationController.navigationBar.tintColor = Theme.primaryColor
         profileNavigationController.navigationBar.backgroundColor = Theme.secondaryBackgroundColor
-        profileNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage.App.profileTab.image, tag: 1)
+        profileNavigationController.tabBarItem = UITabBarItem(title: nil, image: AppImage.profileTab, tag: 1)
         
         mainTabBarController.viewControllers = [
             practiceNavigationController,
