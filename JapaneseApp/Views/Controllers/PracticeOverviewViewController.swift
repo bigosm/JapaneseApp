@@ -24,7 +24,7 @@ public final class PracticeOverviewViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Japanese App"
+        self.title = "Practice"
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = Theme.primaryBackgroundColor
         self.tableView.isUserInteractionEnabled = true
