@@ -9,6 +9,11 @@
 import Foundation
 import ReSwift
 
+public enum UserSessionAction: Action {
+    case logout
+    case login(UserSession)
+}
+
 public struct SelectQuestionGroup: Action {
     let indexOf: Int
 }
