@@ -12,6 +12,7 @@ import ReSwift
 public enum UserSessionAction: Action {
     case logout
     case login(UserSession)
+    case tryLogin(username: String, password: String)
 }
 
 public struct SelectQuestionGroup: Action {

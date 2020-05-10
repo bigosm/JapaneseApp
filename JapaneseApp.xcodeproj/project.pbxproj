@@ -84,6 +84,8 @@
 		1F7372222468745B008C95B9 /* UserSessionReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7372212468745B008C95B9 /* UserSessionReducer.swift */; };
 		1F737225246878B0008C95B9 /* UserCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F737224246878B0008C95B9 /* UserCredentials.json */; };
 		1F73722724687919008C95B9 /* UserProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F73722624687919008C95B9 /* UserProfiles.json */; };
+		1F73722924689FB2008C95B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73722824689FB2008C95B9 /* LoginViewModel.swift */; };
+		1F73722B2468A68F008C95B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73722A2468A68F008C95B9 /* LoginViewController.swift */; };
 		1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */; };
 		1F8F10C923BF992B0001981C /* PracticeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */; };
 		1F8F435D24055333008DA65E /* PracticeCompletionSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */; };
@@ -188,6 +190,8 @@
 		1F7372212468745B008C95B9 /* UserSessionReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionReducer.swift; sourceTree = "<group>"; };
 		1F737224246878B0008C95B9 /* UserCredentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserCredentials.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		1F73722624687919008C95B9 /* UserProfiles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserProfiles.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		1F73722824689FB2008C95B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1F73722A2468A68F008C95B9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewController.swift; sourceTree = "<group>"; };
 		1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupCell.swift; sourceTree = "<group>"; };
 		1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionSummaryCell.swift; sourceTree = "<group>"; };
@@ -370,6 +374,7 @@
 				1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */,
 				1F3013E22465DDDB00503B93 /* UserProfileViewModel.swift */,
 				1F3013EE2465EAB600503B93 /* UserProfileAboutViewModel.swift */,
+				1F73722824689FB2008C95B9 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -526,6 +531,7 @@
 				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
 				1F3013E02465DDB900503B93 /* UserProfileViewController.swift */,
 				1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */,
+				1F73722A2468A68F008C95B9 /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F73722B2468A68F008C95B9 /* LoginViewController.swift in Sources */,
 				1F48D46823F1C5810069B2D4 /* Observable.swift in Sources */,
 				1F48D45223EDB9360069B2D4 /* Router.swift in Sources */,
 				1F3013ED2465EA8600503B93 /* UserProfieAboutViewController.swift in Sources */,
@@ -743,6 +750,7 @@
 				1F3013E92465DFBC00503B93 /* UserProfileReducer.swift in Sources */,
 				1F48D46923F1C5810069B2D4 /* CharacterTable.swift in Sources */,
 				1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */,
+				1F73722924689FB2008C95B9 /* LoginViewModel.swift in Sources */,
 				1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */,
 				1F48D48323FC23140069B2D4 /* AnswerCompletionViewController.swift in Sources */,
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
