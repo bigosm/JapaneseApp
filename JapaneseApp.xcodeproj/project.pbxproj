@@ -77,6 +77,8 @@
 		1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */; };
 		1F679B1C2427BB0C005D6CF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F679B1B2427BB0C005D6CF1 /* LaunchScreen.storyboard */; };
 		1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */; };
+		1F73721A2468730A008C95B9 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7372192468730A008C95B9 /* KeychainService.swift */; };
+		1F73721C24687318008C95B9 /* KeychainServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73721B24687318008C95B9 /* KeychainServiceTests.swift */; };
 		1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */; };
 		1F8F10C923BF992B0001981C /* PracticeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */; };
 		1F8F435D24055333008DA65E /* PracticeCompletionSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */; };
@@ -174,6 +176,8 @@
 		1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeReducer.swift; sourceTree = "<group>"; };
 		1F679B1B2427BB0C005D6CF1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
+		1F7372192468730A008C95B9 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		1F73721B24687318008C95B9 /* KeychainServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceTests.swift; sourceTree = "<group>"; };
 		1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewController.swift; sourceTree = "<group>"; };
 		1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupCell.swift; sourceTree = "<group>"; };
 		1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionSummaryCell.swift; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 				1FAAC3FF23C6058E0015EDC0 /* CareTakers */,
 				1F48D45C23F1C5810069B2D4 /* Models */,
 				1F17690623E861A100912335 /* ReArchitecture */,
+				1F737217246872EF008C95B9 /* Service */,
 				1FAAC40223C607340015EDC0 /* Utilities */,
 				1F4DABF523EB182B005C92BA /* ViewModels */,
 			);
@@ -379,6 +384,23 @@
 				1F5F493623EC8EFB00F17C13 /* CharacterCollectionLayout.swift */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		1F737217246872EF008C95B9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1F737218246872FD008C95B9 /* KeychainService */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1F737218246872FD008C95B9 /* KeychainService */ = {
+			isa = PBXGroup;
+			children = (
+				1F7372192468730A008C95B9 /* KeychainService.swift */,
+				1F73721B24687318008C95B9 /* KeychainServiceTests.swift */,
+			);
+			path = KeychainService;
 			sourceTree = "<group>";
 		};
 		1F8F10C723BF99200001981C /* Cells */ = {
@@ -682,6 +704,7 @@
 				1F17691B23E86A9400912335 /* StudentState.swift in Sources */,
 				1F48D44F23EDB7BF0069B2D4 /* NavigationReducer.swift in Sources */,
 				1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */,
+				1F73721A2468730A008C95B9 /* KeychainService.swift in Sources */,
 				1F3013E32465DDDB00503B93 /* UserProfileViewModel.swift in Sources */,
 				1F5F493223EC7C3200F17C13 /* PracticeViewModel.swift in Sources */,
 				1F48D48123F30C4B0069B2D4 /* TypeInAnswerViewModel.swift in Sources */,
@@ -711,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FC741ED23BF6AE600244938 /* QuestionViewControllerTests.swift in Sources */,
+				1F73721C24687318008C95B9 /* KeychainServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
