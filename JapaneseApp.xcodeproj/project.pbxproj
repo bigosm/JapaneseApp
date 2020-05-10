@@ -86,6 +86,7 @@
 		1F73722724687919008C95B9 /* UserProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F73722624687919008C95B9 /* UserProfiles.json */; };
 		1F73722924689FB2008C95B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73722824689FB2008C95B9 /* LoginViewModel.swift */; };
 		1F73722B2468A68F008C95B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73722A2468A68F008C95B9 /* LoginViewController.swift */; };
+		1F73722D2468AE16008C95B9 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73722C2468AE16008C95B9 /* TextField.swift */; };
 		1F8F10C623BF94350001981C /* PracticeOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */; };
 		1F8F10C923BF992B0001981C /* PracticeGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */; };
 		1F8F435D24055333008DA65E /* PracticeCompletionSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */; };
@@ -192,6 +193,7 @@
 		1F73722624687919008C95B9 /* UserProfiles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserProfiles.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		1F73722824689FB2008C95B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1F73722A2468A68F008C95B9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1F73722C2468AE16008C95B9 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeOverviewViewController.swift; sourceTree = "<group>"; };
 		1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeGroupCell.swift; sourceTree = "<group>"; };
 		1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionSummaryCell.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				1F43DA5623EB016700CED94A /* Button.swift */,
 				1F48D47423F2C52B0069B2D4 /* CharacterView.swift */,
 				1F3013EA2465E34D00503B93 /* ScrollableContainerViewController.swift */,
+				1F73722C2468AE16008C95B9 /* TextField.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				1F8F435D24055333008DA65E /* PracticeCompletionSummaryCell.swift in Sources */,
 				1F73721E246873C8008C95B9 /* UserSession.swift in Sources */,
 				1F17690523E85B2500912335 /* AppState.swift in Sources */,
+				1F73722D2468AE16008C95B9 /* TextField.swift in Sources */,
 				1F3013E52465DE3C00503B93 /* UserProfileState.swift in Sources */,
 				1F3013F9246867DB00503B93 /* Logger.swift in Sources */,
 				1F3E151C240048EA00BFFC43 /* PracticeCompletionViewModel.swift in Sources */,

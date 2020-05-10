@@ -35,15 +35,7 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
     
     // MARK: - Object Lifecycle
     
-    public init() {
-        username.addObserver(self) { [weak self] _, _ in
-            self?.setLoginButtonState()
-        }
-        
-        password.addObserver(self) { [weak self] _, _ in
-            self?.setLoginButtonState()
-        }
-    }
+    public init() { }
     
     public func newState(state: UserSessionState) {
         
@@ -55,7 +47,7 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
         guard let username = username.value, let password = password.value else {
             return
         }
-        
+
         AppStore.shared.dispatch(
             UserSessionAction.tryLogin(username: username, password: password)
         )
@@ -63,10 +55,12 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
     
     public func setUsername(_ value: String) {
         username.value = value
+        setLoginButtonState()
     }
     
     public func setPassword(_ value: String) {
         password.value = value
+        setLoginButtonState()
     }
     
     public func viewDidLoad() { }
