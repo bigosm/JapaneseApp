@@ -12,6 +12,7 @@ public final class PracticeCharacterViewController: UIViewController, PracticeSu
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: PracticeCharacterViewModelType = PracticeCharacterViewModel()
     
     public let characterView = CharacterView(readingAidDirection: .horizontal)
@@ -49,21 +50,21 @@ public final class PracticeCharacterViewController: UIViewController, PracticeSu
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.value.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.value.bind { [weak self] value in
             self?.characterView.titleLabel.text = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.readingAid.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.readingAid.bind { [weak self] value in
             self?.characterView.readingAidLabel.text = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.readingAidVisibility.addObserver(self, options: [.initial, .new]) { [weak self] value, _ in
+        viewModel.outputs.readingAidVisibility.bind { [weak self] value in
             self?.characterView.isReadingAidVisible = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.configuration.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.configuration.bind { [weak self] value in
             self?.configureView(configuration: value)
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout

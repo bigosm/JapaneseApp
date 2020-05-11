@@ -12,6 +12,7 @@ public class PracticeCompletionCell: UITableViewCell {
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: PracticeCompletionCellViewModelType = PracticeCompletionCellViewModel()
     
     public let stackView = UIStackView()
@@ -43,11 +44,11 @@ public class PracticeCompletionCell: UITableViewCell {
         self.selectionStyle = .none
         
         self.stackView.axis = .vertical
-
+        
         // MARK: Header View
         
         self.titleLabel.font = .preferredFont(forTextStyle: .headline)
-
+        
         // MARK: Body View
         
         self.subjectHeader.text = "Subject"
@@ -83,65 +84,65 @@ public class PracticeCompletionCell: UITableViewCell {
     
     public override func prepareForReuse() {
         super.prepareForReuse()
-        self.viewModel.inputs.prepareForReuse()
+        viewModel.inputs.prepareForReuse()
     }
     
     public func configureWith(practiceAnswerAtIndex index: Int) {
-        self.viewModel.inputs.configureWith(practiceAnswerAtIndex: index)
+        viewModel.inputs.configureWith(practiceAnswerAtIndex: index)
     }
-
+    
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.isCorrect.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.isCorrect.bind{ [weak self] value in
             self?.correctImage.image = value
-            ? UIImage(named: "round_done_36pt")
-            : UIImage(named: "round_clear_36pt")
+                ? UIImage(named: "round_done_36pt")
+                : UIImage(named: "round_clear_36pt")
             
             self?.correctImage.tintColor = value
                 ? Theme.successColor
                 : Theme.alertColor
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.title.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.title.bind { [weak self] value in
             self?.titleLabel.text = value
-        }
-
-        self.viewModel.outputs.experience.addObserver(self, options: [.new]) { [weak self] value, _ in
+        }.disposed(by: disposeBag)
+        
+        viewModel.outputs.experience.bind { [weak self] value in
             self?.experienceLabel.text = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.prompt.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.prompt.bind { [weak self] value in
             self?.promptLabel.text = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.subject.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.subject.bind { [weak self] value in
             guard let self = self else { return }
             self.subjectLabel.text = value
-        }
-
-        self.viewModel.outputs.answer.addObserver(self, options: [.new]) { [weak self] value, _ in
+        }.disposed(by: disposeBag)
+        
+        viewModel.outputs.answer.bind { [weak self] value in
             guard let self = self else { return }
             self.answerLabel.text = value
-        }
-
-        self.viewModel.outputs.correctAnswer.addObserver(self, options: [.new]) { [weak self] value, _ in
+        }.disposed(by: disposeBag)
+        
+        viewModel.outputs.correctAnswer.bind { [weak self] value in
             guard let self = self else { return }
             self.correctAnswerLabel.text = value
             self.setHidden(for: self.correctAnswerLabel, isHidden: value == nil)
             self.answerLabel.textColor = value == nil ? Theme.successColor : Theme.alertColor
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.meaning.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.meaning.bind { [weak self] value in
             guard let self = self else { return }
             self.meaningLabel.text = value
             self.setHidden(for: self.meaningLabel, isHidden: value == nil)
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.isSelected.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.isSelected.bind { [weak self] value in
             self?.isSelected = value
             self?.toggleView.isHidden = !value
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout
@@ -158,7 +159,7 @@ public class PracticeCompletionCell: UITableViewCell {
         self.mainView.addSubview(self.correctImage)
         self.mainView.addSubview(self.titleLabel)
         self.mainView.addSubview(self.experienceLabel)
-
+        
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         let stackViewBottom =  self.stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         NSLayoutConstraint.activate([
@@ -187,13 +188,13 @@ public class PracticeCompletionCell: UITableViewCell {
             self.titleLabel.trailingAnchor.constraint(equalTo: self.experienceLabel.leadingAnchor, constant: -10),
             self.titleLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
-
+        
         self.experienceLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.experienceLabel.bottomAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
             self.experienceLabel.trailingAnchor.constraint(equalTo: self.mainView.trailingAnchor, constant: -20)
         ])
-
+        
         // MARK: Body
         
         let container = UIStackView()
@@ -208,7 +209,7 @@ public class PracticeCompletionCell: UITableViewCell {
             [self.correctAnswerHeader, self.correctAnswerLabel],
             [self.meaningHeader, self.meaningLabel]
         ]
-
+        
         stack.enumerated().forEach { (key, row) in
             let rowStack = UIStackView()
             rowStack.axis = .horizontal
@@ -228,7 +229,7 @@ public class PracticeCompletionCell: UITableViewCell {
             self.promptLabel.leadingAnchor.constraint(equalTo: self.toggleView.leadingAnchor, constant: 20),
             self.promptLabel.trailingAnchor.constraint(equalTo: self.toggleView.trailingAnchor, constant: -20)
         ])
-
+        
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: self.promptLabel.bottomAnchor, constant: 20),

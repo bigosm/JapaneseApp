@@ -12,6 +12,7 @@ public final class AnswerCompletionViewController: UIViewController, PracticeAns
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: AnswerCompletionViewModelType = AnswerCompletionViewModel()
     
     public let titleLabel = UILabel()
@@ -55,23 +56,23 @@ public final class AnswerCompletionViewController: UIViewController, PracticeAns
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.title.addObserver(self, options: [.new]) { value, _ in
-            self.titleLabel.text = value
-        }
+        viewModel.outputs.title.bind { [weak self] value in
+            self?.titleLabel.text = value
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.correctAnswer.addObserver(self, options: [.new]) { value, _ in
-            self.correctAnswerLabel.text = value
-        }
+        viewModel.outputs.correctAnswer.bind { [weak self] value in
+            self?.correctAnswerLabel.text = value
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.meaing.addObserver(self, options: [.new]) { value, _ in
-            self.meaningLabel.text = value
-        }
+        viewModel.outputs.meaing.bind { [weak self] value in
+            self?.meaningLabel.text = value
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.isAnswerCorrect.addObserver(self, options: [.new]) { value, _ in
-            self.view.backgroundColor = value
+        viewModel.outputs.isAnswerCorrect.bind { [weak self] value in
+            self?.view.backgroundColor = value
                 ? Theme.successColor
                 : Theme.alertColor
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout

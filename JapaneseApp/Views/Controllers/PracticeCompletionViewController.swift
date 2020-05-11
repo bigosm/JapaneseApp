@@ -12,6 +12,7 @@ public final class PracticeCompletionViewController: UIViewController {
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: PracticeCompletionViewModelType = PracticeCompletionViewModel()
     private let completionQuestionCell = "completionQuestionCell"
     private let completionSummaryCell = "completionSummaryCell"
@@ -60,9 +61,9 @@ public final class PracticeCompletionViewController: UIViewController {
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.title.addObserver(self, options: [.new]) { value, options in
-            self.title = value
-        }
+        viewModel.outputs.title.bind { [weak self] value in
+            self?.title = value
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout

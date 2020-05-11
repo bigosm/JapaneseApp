@@ -12,6 +12,7 @@ public final class LoginViewController: UIViewController {
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: LoginViewModelType = LoginViewModel()
     
     // MARK: - View Lifecycle
@@ -62,17 +63,20 @@ public final class LoginViewController: UIViewController {
     // MARK: - Binding
     
     private func bindViewModel() {
-        viewModel.outputs.username.addObserver(self, options: [.initial, .new]) { [weak self] value, _ in
+        viewModel.outputs.username.bind { [weak self] value in
             self?.usernameTextField.text = value
-        }
+            print(value)
+        }.disposed(by: disposeBag)
         
-        viewModel.outputs.password.addObserver(self, options: [.initial, .new]) { [weak self] value, _ in
+        viewModel.outputs.password.bind { [weak self] value in
             self?.passwordTextField.text = value
-        }
+            print(value)
+        }.disposed(by: disposeBag)
         
-        viewModel.outputs.isLoginButtonActive.addObserver(self, options: [.initial, .new]) { [weak self] value, _ in
+        viewModel.outputs.isLoginButtonActive.bind { [weak self] value in
             self?.loginButton.isEnabled = value
-        }
+            print(value)
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - Setup View

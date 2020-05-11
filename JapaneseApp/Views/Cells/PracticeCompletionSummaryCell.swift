@@ -12,6 +12,7 @@ public class PracticeCompletionSummaryCell: UITableViewCell {
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: PracticeCompletionSummaryCellViewModelType = PracticeCompletionSummaryCellViewModel()
     
     public let stackView = UIStackView()
@@ -65,9 +66,9 @@ public class PracticeCompletionSummaryCell: UITableViewCell {
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.experience.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.experience.bind { [weak self] value in
             self?.experienceLabel.text = value
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout

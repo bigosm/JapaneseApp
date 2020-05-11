@@ -9,9 +9,10 @@
 import UIKit
 
 public final class SelectAnswerCell: UITableViewCell {
-
+    
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: SelectAnswerCellViewModelType = SelectAnswerCellViewModel()
     
     private let container = UIView()
@@ -43,7 +44,7 @@ public final class SelectAnswerCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: Instance Methods
     
     public func configureWith(answerFeedAtIndex index: Int) {
@@ -53,13 +54,13 @@ public final class SelectAnswerCell: UITableViewCell {
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.answerFeed.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.answerFeed.bind { [weak self] value in
             self?.answerFeedLabel.text = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.isSelected.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.isSelected.bind { [weak self] value in
             self?.isSelected = value
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout
@@ -67,7 +68,7 @@ public final class SelectAnswerCell: UITableViewCell {
     private func setupView() {
         self.addSubview(self.container)
         self.container.addSubview(answerFeedLabel)
-
+        
         self.container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.container.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
@@ -75,7 +76,7 @@ public final class SelectAnswerCell: UITableViewCell {
             self.container.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             self.container.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
-
+        
         self.answerFeedLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.answerFeedLabel.topAnchor.constraint(equalTo: self.container.topAnchor, constant: 15),
