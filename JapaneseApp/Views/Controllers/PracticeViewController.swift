@@ -16,6 +16,7 @@ public final class PracticeViewController: UIViewController {
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: PracticeViewModelType = PracticeViewModel()
     
     public let questionLabel = UILabel()
@@ -134,33 +135,33 @@ public final class PracticeViewController: UIViewController {
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.title.addObserver(self, options: [.new]) { [weak self] value, options in
+        viewModel.outputs.title.bind { [weak self] value in
             self?.title = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.question.addObserver(self, options: [.new]) { [weak self] value, options in
+        viewModel.outputs.question.bind { [weak self] value in
             self?.questionLabel.text = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.isReadingAidButtonHidden.addObserver(self, options: [.new]) { [weak self] value, options in
+        viewModel.outputs.isReadingAidButtonHidden.bind { [weak self] value in
             self?.readingAidVisibilityButton.isHidden = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.isCheckButtonHidden.addObserver(self, options: [.new]) { [weak self] value, options in
+        viewModel.outputs.isCheckButtonHidden.bind { [weak self] value in
             self?.checkButton.isHidden = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.isCheckButtonEnabled.addObserver(self, options: [.new]) { [weak self] value, options in
+        viewModel.outputs.isCheckButtonEnabled.bind { [weak self] value in
             self?.checkButton.isEnabled = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.isContinueButtonHidden.addObserver(self, options: [.new]) { [weak self] value, options in
+        viewModel.outputs.isContinueButtonHidden.bind { [weak self] value in
             self?.continueButton.isHidden = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.answerCheck.addObserver(self, options: [.new]) { [weak self] value, options in
+        viewModel.outputs.answerCheck.bind { [weak self] value in
             self?.answerCheck.view.isHidden = value == nil
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout

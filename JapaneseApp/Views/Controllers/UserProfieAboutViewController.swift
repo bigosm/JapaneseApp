@@ -12,6 +12,7 @@ public final class UserProfileAboutViewController: UIViewController {
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: UserProfileAboutViewModelType = UserProfileAboutViewModel()
     
     // MARK: - View Lifecycle
@@ -41,9 +42,9 @@ public final class UserProfileAboutViewController: UIViewController {
     // MARK: - Binding
     
     private func bindViewModel() {
-        viewModel.outputs.userName.addObserver(self) { [weak self] value, _ in
+        viewModel.outputs.userName.bind { [weak self] value in
             self?.userNameLabel.text = value
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - SetupView

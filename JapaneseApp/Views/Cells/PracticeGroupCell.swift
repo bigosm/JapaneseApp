@@ -12,6 +12,7 @@ public class PracticeGroupCell: UITableViewCell {
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: PracticeGroupViewModelType = PracticeGroupViewModel()
     
     public let stackView = UIStackView()
@@ -106,26 +107,26 @@ public class PracticeGroupCell: UITableViewCell {
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.title.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.title.bind { [weak self] value in
             self?.titleLabel.text = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.level.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.level.bind { [weak self] value in
             self?.levelLabel.text = value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.experience.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.experience.bind { [weak self] value in
             self?.experienceLabel.text = value
-        }
-
-        self.viewModel.outputs.isSelected.addObserver(self, options: [.new]) { [weak self] value, _ in
+        }.disposed(by: disposeBag)
+        
+        viewModel.outputs.isSelected.bind { [weak self] value in
             self?.isSelected = value
             self?.toggleView.isHidden = !value
-        }
+        }.disposed(by: disposeBag)
         
-        self.viewModel.outputs.isLocked.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.isLocked.bind { [weak self] value in
             self?.lockLabel.isHidden = !value
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout

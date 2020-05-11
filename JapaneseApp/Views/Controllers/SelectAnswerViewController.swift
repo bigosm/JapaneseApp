@@ -12,6 +12,7 @@ public final class SelectAnswerViewController: UIViewController, PracticeAnswerV
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: SelectAnswerViewModelType = SelectAnswerViewModel()
 
     private var basicCellIdentifier = "basicCellIdentifier"
@@ -54,9 +55,9 @@ public final class SelectAnswerViewController: UIViewController, PracticeAnswerV
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.contentUpdate.addObserver(self, options: [.new]) { [weak self] _, _ in
+        viewModel.outputs.contentUpdate.bind { [weak self] _ in
             self?.tableView.reloadData()
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout

@@ -12,6 +12,7 @@ public final class TypeInAnswerViewController: UIViewController, PracticeAnswerV
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     fileprivate let viewModel = TypeInAnswerViewModel()
     
     public let textInput = UITextView()
@@ -56,10 +57,10 @@ public final class TypeInAnswerViewController: UIViewController, PracticeAnswerV
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.textInput.addObserver(self, options: [.new]) { [weak self] value, _ in
+        viewModel.outputs.textInput.bind { [weak self] value in
             self?.placeholder.isHidden = !(value?.isEmpty ?? true)
             self?.textInput.text = value
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout

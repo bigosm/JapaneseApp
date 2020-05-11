@@ -12,6 +12,7 @@ public final class CharacterCollectionViewController: UIViewController, Practice
     
     // MARK: - Instance Properties
     
+    private let disposeBag = DisposeBag()
     private let viewModel: CharacterCollectionViewModelType = CharacterCollectionViewModel()
     private let cellIdentifier = "cellIdentifier"
     private var collectionHeightAnchor: NSLayoutConstraint?
@@ -64,9 +65,9 @@ public final class CharacterCollectionViewController: UIViewController, Practice
     // MARK: - Binding
     
     private func bindViewModel() {
-        self.viewModel.outputs.contentUpdate.addObserver(self, options: [.new]) { [weak self] _, _ in
+        viewModel.outputs.contentUpdate.bind { [weak self] value in
             self?.collectionView.reloadData()
-        }
+        }.disposed(by: disposeBag)
     }
     
     // MARK: - View Position Layout

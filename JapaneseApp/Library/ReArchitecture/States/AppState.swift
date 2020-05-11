@@ -16,6 +16,7 @@ public struct AppState: StateType {
     public let practiceState: PracticeState
     public let studentState: StudentState
     public let userProfileState: UserProfileState
+    public let userSessionState: UserSessionState
     
 }
 
