@@ -40,6 +40,8 @@ protocol KeychainServiceType {
 
 final class KeychainService: KeychainServiceType {
     
+    private let debug = "[🔑 KeychainService] "
+    
     public static let shared = KeychainService()
     
     private (set) public var serviceName: String
@@ -76,7 +78,7 @@ final class KeychainService: KeychainServiceType {
         let status = SecItemCopyMatching(keychainQueryDictionary as CFDictionary, &result)
         
         guard status == noErr else {
-            Log.error(self, item: "Get key `\(key)` failed, error: " + errorMessage(from: status))
+            Log.error(debug + "Get key `\(key)` failed, error: " + errorMessage(from: status))
             return nil
         }
         
@@ -103,7 +105,7 @@ final class KeychainService: KeychainServiceType {
         case errSecSuccess: return true
         case errSecDuplicateItem: return update(value, forKey: key)
         default:
-            Log.warning(self, item: "Set value for key `\(key)` failed, error: " + errorMessage(from: status))
+            Log.warning(debug + "Set value for key `\(key)` failed, error: " + errorMessage(from: status))
             return false
         }
     }
@@ -114,7 +116,7 @@ final class KeychainService: KeychainServiceType {
         let status = SecItemDelete(keychainQueryDictionary as CFDictionary)
 
         guard status == errSecSuccess else {
-            Log.warning(self, item: "Remove key `\(key)` failed, error: " + errorMessage(from: status))
+            Log.warning(debug + "Remove key `\(key)` failed, error: " + errorMessage(from: status))
             return false
         }
         
@@ -127,7 +129,7 @@ final class KeychainService: KeychainServiceType {
         let status = SecItemDelete(keychainQueryDictionary as CFDictionary)
         
         guard status == errSecSuccess else {
-            Log.warning(self, item: "Remove all keys failed, error: " + errorMessage(from: status))
+            Log.warning(debug + "Remove all keys failed, error: " + errorMessage(from: status))
             return false
         }
             
@@ -144,7 +146,7 @@ final class KeychainService: KeychainServiceType {
         let status = SecItemUpdate(keychainQueryDictionary as CFDictionary, updateDictionary as CFDictionary)
         
         guard status == errSecSuccess else {
-            Log.warning(self, item: "Update value for key `\(key)` failed, error: " + errorMessage(from: status))
+            Log.warning(debug + "Update value for key `\(key)` failed, error: " + errorMessage(from: status))
             return false
         }
         

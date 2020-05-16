@@ -9,25 +9,26 @@
 import Foundation
 
 public class Log {
-    private static func debugPrint<T>(_ sign: String, _ notifier: T, _ item: Any) {
+    
+    private static func debugPrint(_ sign: String, _ item: Any) {
         #if DEBUG
-        print("[\(sign)] [\(Date().iso8601)] [\(T.self)] - \(item)")
+        print("[\(sign)] [\(Date())] \(item)")
         #endif
     }
 
-    public static func error<T>(_ notifier: T, item: Any) {
-        debugPrint("❌", notifier, item)
+    public static func error(_ item: Any) {
+        debugPrint("❌", item)
     }
 
-    public static func warning<T>(_ notifier: T, item: Any) {
-        debugPrint("⚠️", notifier, item)
+    public static func warning(_ item: Any) {
+        debugPrint("⚠️", item)
     }
 
-    public static func info<T>(_ notifier: T, item: Any) {
-        debugPrint("ℹ️", notifier, item)
+    public static func info(_ item: Any) {
+        debugPrint("ℹ️", item)
     }
 
-    public static func success<T>(_ notifier: T, item: Any) {
-        debugPrint("✅", notifier, item)
+    public static func success(_ item: Any) {
+        debugPrint("✅", item)
     }
 }

@@ -11,6 +11,7 @@ import ReSwift
 
 internal func appReducer(action: Action, state: AppState?) -> AppState {
     return AppState(
+        urlSession: state?.urlSession ?? URLSessionMock(),
         navigationState: navigationReducer(action: action, state: state?.navigationState),
         repositoryState: repositoryReducer(action: action, state: state?.repositoryState),
         practiceState: practiceReducer(action: action, state: state?.practiceState),
