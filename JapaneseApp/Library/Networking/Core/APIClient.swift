@@ -10,9 +10,16 @@ import Foundation
 
 extension URLSession {
     
-    enum Error: Swift.Error {
+    enum Error: LocalizedError {
         case invalidResponse
         case server(statusCode: Int, message: String)
+        
+        var errorDescription: String? {
+            switch self {
+            case .invalidResponse: return "Invalid server response."
+            case .server(_, let message): return message
+            }
+        }
     }
     
     func request<T: APIRequest>(_ request: T) -> APIClientTask<T.Response?> {

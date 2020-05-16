@@ -24,9 +24,9 @@ public final class PracticeCompletionViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = Theme.primaryBackgroundColor
+        self.view.backgroundColor = Theme.Background.primaryColor
         self.tableView.separatorStyle = .none
-        self.tableView.backgroundColor = Theme.primaryBackgroundColor
+        self.tableView.backgroundColor = Theme.Background.primaryColor
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         self.tableView.isUserInteractionEnabled = true
         self.tableView.dataSource = self

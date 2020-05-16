@@ -9,7 +9,7 @@
 import Foundation
 
 struct LoginRequest: APIRequest {
-    typealias Response = String
+    typealias Response = Token
     
     let method = HTTPMethod.POST
     let resource = "auth/token"

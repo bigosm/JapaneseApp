@@ -61,7 +61,7 @@ public final class UserProfileAboutViewController: UIViewController {
         let x = UIImageView()
         x.layer.cornerRadius = 75
         x.layer.masksToBounds = true
-        x.layer.borderColor = Theme.secondaryBackgroundColor?.cgColor
+        x.layer.borderColor = Theme.Background.secondaryColor?.cgColor
         x.layer.borderWidth = 10
         x.contentMode = .scaleAspectFill
         x.image = AppImage.profileUserImagePlaceholder

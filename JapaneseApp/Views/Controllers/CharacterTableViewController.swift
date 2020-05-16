@@ -37,7 +37,7 @@ public class CharacterTableViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = self.characterTable.title
-        self.tableView.backgroundColor = Theme.primaryBackgroundColor
+        self.tableView.backgroundColor = Theme.Background.primaryColor
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -77,7 +77,7 @@ extension CharacterTableViewController: UITableViewDataSource {
         cell.textLabel?.text = character.value
         cell.textLabel?.font = .preferredFont(forTextStyle: .largeTitle)
         cell.detailTextLabel?.text = character.altNotation
-        cell.backgroundColor = Theme.secondaryBackgroundColor
+        cell.backgroundColor = Theme.Background.secondaryColor
         
         return cell
     }

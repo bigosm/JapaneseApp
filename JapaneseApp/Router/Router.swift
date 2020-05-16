@@ -10,75 +10,99 @@ import UIKit
 import ReSwift
 
 class Router: StoreSubscriber {
-    typealias StoreSubscriberStateType = NavigationState
-
+    typealias StoreSubscriberStateType = AppState
+    
     static let shared = Router()
     
-    let mainTabBarController = UITabBarController()
+    var windowScene: UIWindowScene!
     
-    let practiceNavigationController = UINavigationController()
-    let profileNavigationController = UINavigationController()
-
-    var window: UIWindow?
-
-    private init() {
-        practiceNavigationController.viewControllers = [LoginViewController()]
-        practiceNavigationController.navigationBar.tintColor = Theme.primaryColor
-        practiceNavigationController.navigationBar.backgroundColor = Theme.secondaryBackgroundColor
-        practiceNavigationController.tabBarItem = UITabBarItem(title: nil, image: AppImage.tabPractice, tag: 0)
-        
-        profileNavigationController.viewControllers = [UserProfileViewController()]
-        profileNavigationController.navigationBar.tintColor = Theme.primaryColor
-        profileNavigationController.navigationBar.backgroundColor = Theme.secondaryBackgroundColor
-        profileNavigationController.tabBarItem = UITabBarItem(title: nil, image: AppImage.tabProfile, tag: 1)
-        
-        mainTabBarController.viewControllers = [
-            practiceNavigationController,
-            profileNavigationController,
-        ]
-    }
+    var windowLogin: UIWindow?
+    var windowMain: UIWindow?
+    var windowSplashScreen: UIWindow?
     
-     func configureWith(window: UIWindow?) {
-        self.window = window
-        
-        guard let window = window else { return }
-        
-        window.rootViewController = mainTabBarController
-        
+    var navigationPractice: UINavigationController?
+    var navigationProfile: UINavigationController?
+    
+    var tabBarMain: UITabBarController?
+    
+    func configureWith(windowScene: UIWindowScene) {
+        self.windowScene = windowScene
+
         let splashScreen = SplashScreen.instance
-        
-        mainTabBarController.view.addSubview(splashScreen.view)
-        mainTabBarController.addChild(splashScreen)
-        splashScreen.didMove(toParent: mainTabBarController)
+        windowSplashScreen = newWindow(splashScreen)
+        windowSplashScreen?.makeKeyAndVisible()
         splashScreen.animate {
-            splashScreen.view.removeFromSuperview()
-            splashScreen.removeFromParent()
-            splashScreen.didMove(toParent: nil)
-        }
-        
-        AppStore.shared.subscribe(self) {
-            $0.select { $0.navigationState }
+            AppStore.shared.subscribe(self) {
+                $0.select { $0 }
+            }
         }
     }
     
-    func newState(state: NavigationState) {
-        switch state.routeToView {
+    func newState(state: AppState) {
+        let navigationSate = state.navigationState
+        
+        guard case .authorized = state.userSessionState else {
+            let windowLogin = self.windowLogin ?? newWindow(LoginViewController())
+            windowLogin.makeKeyAndVisible()
+            self.windowLogin = windowLogin
+            return
+        }
+        
+        let tabBarMain = self.tabBarMain ?? newTabBarMain()
+        self.tabBarMain = tabBarMain
+        
+        let windowMain = self.windowMain ?? newWindow(tabBarMain)
+        self.windowMain = windowMain
+        windowMain.makeKeyAndVisible()
+
+        switch navigationSate.routeToView {
         case .practiceOverview:
-            practiceNavigationController.popToRootViewController(animated: true)
-            mainTabBarController.tabBar.isHidden = false
-            mainTabBarController.tabBar.isUserInteractionEnabled = true
+            navigationPractice?.popToRootViewController(animated: true)
+            tabBarMain.tabBar.isHidden = false
+            tabBarMain.tabBar.isUserInteractionEnabled = true
         case .practice:
             let vc = PracticeViewController()
-            practiceNavigationController.pushViewController(vc, animated: true)
-            mainTabBarController.tabBar.isHidden = true
-            mainTabBarController.tabBar.isUserInteractionEnabled = false
+            navigationPractice?.pushViewController(vc, animated: true)
+            tabBarMain.tabBar.isHidden = true
+            tabBarMain.tabBar.isUserInteractionEnabled = false
         case .practiceCompletion:
             let vc = PracticeCompletionViewController()
-            practiceNavigationController.pushViewController(vc, animated: true)
-            mainTabBarController.tabBar.isHidden = true
-            mainTabBarController.tabBar.isUserInteractionEnabled = false
+            navigationPractice?.pushViewController(vc, animated: true)
+            tabBarMain.tabBar.isHidden = true
+            tabBarMain.tabBar.isUserInteractionEnabled = false
         case .none:
             break
         }
+    }
+    
+    // MARK: - Private methods
+    
+    private func newWindow(_ rootViewController: UIViewController) -> UIWindow {
+        let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window.windowScene = windowScene
+        window.rootViewController = rootViewController
+        window.backgroundColor = Theme.Background.primaryColor
+        return window
+    }
+    
+    private func newNavigationController(_ rootViewController: UIViewController) -> UINavigationController {
+        let nav = UINavigationController(rootViewController: rootViewController)
+        nav.isNavigationBarHidden = true
+        return nav
+    }
+    
+    private func newTabBarMain() -> UITabBarController {
+        navigationPractice = newNavigationController(PracticeOverviewViewController())
+        navigationPractice?.tabBarItem = UITabBarItem(title: nil, image: AppImage.tabPractice, tag: 0)
+        
+        navigationProfile = newNavigationController(UserProfileViewController())
+        navigationProfile?.tabBarItem = UITabBarItem(title: nil, image: AppImage.tabProfile, tag: 1)
+        
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [
+            navigationPractice!,
+            navigationProfile!,
+        ]
+        return tabBar
     }
 }

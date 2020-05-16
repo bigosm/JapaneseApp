@@ -26,7 +26,7 @@ public final class PracticeOverviewViewController: UIViewController {
         
         self.title = "Practice"
         self.tableView.separatorStyle = .none
-        self.tableView.backgroundColor = Theme.primaryBackgroundColor
+        self.tableView.backgroundColor = Theme.Background.primaryColor
         self.tableView.isUserInteractionEnabled = true
         self.tableView.dataSource = self
         self.tableView.delegate = self

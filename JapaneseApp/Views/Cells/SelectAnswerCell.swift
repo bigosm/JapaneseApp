@@ -22,7 +22,7 @@ public final class SelectAnswerCell: UITableViewCell {
         didSet {
             self.container.backgroundColor = self.isSelected
                 ? Theme.primaryColor
-                : Theme.secondaryBackgroundColor
+                : Theme.Background.secondaryColor
         }
     }
     
@@ -34,7 +34,7 @@ public final class SelectAnswerCell: UITableViewCell {
         self.selectionStyle = .none
         self.backgroundColor = .clear
         self.container.layer.cornerRadius = 20
-        self.container.backgroundColor = Theme.secondaryBackgroundColor
+        self.container.backgroundColor = Theme.Background.secondaryColor
         self.answerFeedLabel.font = .systemFont(ofSize: 20)
         
         self.setupView()

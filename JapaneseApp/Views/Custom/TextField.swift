@@ -9,6 +9,15 @@
 import UIKit
 
 class TextField: UITextField {
+    
+    override var isEnabled: Bool {
+        didSet {
+            textColor = isEnabled
+                ? Theme.Text.Color.primary
+                : Theme.Text.Color.secondary
+        }
+    }
+    
     var textInsets = UIEdgeInsets.zero {
         didSet { invalidateIntrinsicContentSize() }
     }

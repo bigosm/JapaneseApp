@@ -23,7 +23,7 @@ public final class TypeInAnswerViewController: UIViewController, PracticeAnswerV
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.textInput.backgroundColor = Theme.secondaryBackgroundColor
+        self.textInput.backgroundColor = Theme.Background.secondaryColor
         self.textInput.font = .systemFont(ofSize: 20)
         self.textInput.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.textInput.textContainerInset = UIEdgeInsets(top: 20, left: 15, bottom: 20, right: 15)
