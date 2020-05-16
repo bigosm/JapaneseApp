@@ -313,9 +313,9 @@
 				1F17690923E861C700912335 /* AppReducer.swift */,
 				1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */,
 				1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */,
-				1F3013E82465DFBC00503B93 /* UserProfileReducer.swift */,
 				1F17691623E869D500912335 /* RepositoryReducer.swift */,
 				1F17691823E86A7C00912335 /* StudentReducer.swift */,
+				1F3013E82465DFBC00503B93 /* UserProfileReducer.swift */,
 				1F7372212468745B008C95B9 /* UserSessionReducer.swift */,
 			);
 			path = Reducers;
@@ -405,6 +405,7 @@
 				1F48D47C23F301350069B2D4 /* AnswerCollectionViewModel.swift */,
 				1F48D48423FC233E0069B2D4 /* AnswerCompletionViewModel.swift */,
 				1F5F493C23EDA18C00F17C13 /* CharacterCollectionViewModel.swift */,
+				1F73722824689FB2008C95B9 /* LoginViewModel.swift */,
 				1F48D47823F2D3040069B2D4 /* PracticeCharacterViewModel.swift */,
 				1F3E152324042CE700BFFC43 /* PracticeCompletionCellViewModel.swift */,
 				1F8F435E24055412008DA65E /* PracticeCompletionSummaryCellViewModel.swift */,
@@ -415,9 +416,8 @@
 				1F0DD5A724095A2500F57924 /* SelectAnswerCellViewModel.swift */,
 				1F8F43602406CD19008DA65E /* SelectAnswerViewModel.swift */,
 				1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */,
-				1F3013E22465DDDB00503B93 /* UserProfileViewModel.swift */,
 				1F3013EE2465EAB600503B93 /* UserProfileAboutViewModel.swift */,
-				1F73722824689FB2008C95B9 /* LoginViewModel.swift */,
+				1F3013E22465DDDB00503B93 /* UserProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -433,9 +433,9 @@
 		1F501A192469BBCB00495A25 /* Observable */ = {
 			isa = PBXGroup;
 			children = (
+				1F501A1E2469C11300495A25 /* Disposable.swift */,
 				1F501A1C2469BF9C00495A25 /* Observable.swift */,
 				1F501A1A2469BF8300495A25 /* ObservableTests.swift */,
-				1F501A1E2469C11300495A25 /* Disposable.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -482,9 +482,9 @@
 				1F1768F323E32AAA00912335 /* ExperienceModel.json */,
 				1F1768D723E300D800912335 /* Phrases.json */,
 				1F1768D123E2E48800912335 /* PracticeGroups.json */,
-				1F1768D323E2FC7B00912335 /* Vocabulary.json */,
 				1F737224246878B0008C95B9 /* UserCredentials.json */,
 				1F73722624687919008C95B9 /* UserProfiles.json */,
+				1F1768D323E2FC7B00912335 /* Vocabulary.json */,
 			);
 			path = MockDatabase;
 			sourceTree = "<group>";
@@ -493,10 +493,10 @@
 			isa = PBXGroup;
 			children = (
 				1F5F493823EC919B00F17C13 /* CharacterCollectionCell.swift */,
-				1F8F436424083069008DA65E /* SelectAnswerCell.swift */,
-				1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */,
 				1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */,
 				1F8F435C24055333008DA65E /* PracticeCompletionSummaryCell.swift */,
+				1F8F10C823BF992B0001981C /* PracticeGroupCell.swift */,
+				1F8F436424083069008DA65E /* SelectAnswerCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -621,6 +621,7 @@
 				1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */,
 				1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */,
 				1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */,
+				1F73722A2468A68F008C95B9 /* LoginViewController.swift */,
 				1F48D47623F2D2D40069B2D4 /* PracticeCharacterViewController.swift */,
 				1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */,
 				1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */,
@@ -629,9 +630,8 @@
 				1F1082B82427B78100ED1682 /* SplashScreen.storyboard */,
 				1F922E6F2423AC8F00DBE7CC /* SplashScreen.swift */,
 				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
-				1F3013E02465DDB900503B93 /* UserProfileViewController.swift */,
 				1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */,
-				1F73722A2468A68F008C95B9 /* LoginViewController.swift */,
+				1F3013E02465DDB900503B93 /* UserProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -649,12 +649,12 @@
 		1FC741FB23BF718000244938 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1F5F493523EC8EEE00F17C13 /* Layout */,
 				1F8F10C723BF99200001981C /* Cells */,
 				1FC741F823BF70E000244938 /* Controllers */,
 				1F43DA5523EB015600CED94A /* Custom */,
-				1F531D7923D9D0CF004C25DC /* Theme */,
 				1F679B1B2427BB0C005D6CF1 /* LaunchScreen.storyboard */,
+				1F5F493523EC8EEE00F17C13 /* Layout */,
+				1F531D7923D9D0CF004C25DC /* Theme */,
 			);
 			path = Views;
 			sourceTree = "<group>";
