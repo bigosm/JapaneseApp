@@ -9,12 +9,20 @@
 import Foundation
 import ReSwift
 
-public enum UserSessionAction: Action {
-    case logout
-    case login(UserSession)
-    case tryLogin(username: String, password: String)
-    case loginAttemptFailed(Error)
-    case loginRequestInProcess
+enum UserActions {
+    enum UserSessionAction: Action {
+        case login(username: String, password: String)
+        case logout
+    }
+}
+
+enum AppActions {
+    enum UserSessionAction: Action {
+        case loginRequestFailed(Error)
+        case loginRequestInProgress
+        case loginRequestSuccessful(Token)
+        case unauthorized
+    }
 }
 
 public struct SelectQuestionGroup: Action {

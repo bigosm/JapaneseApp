@@ -55,12 +55,12 @@ class URLSessionMock: URLSession {
             
             let resource = bundleLoad(resource: "UserCredentials", type: Resource.self)
             
-            let isAuthorized = resource.users.contains {
+            let user = resource.users.first {
                 request.isEqual(LoginRequest(username: $0.username, password: $0.password).urlRequest)
             }
             
-            if isAuthorized {
-                data = try? "login".jsonEncode()
+            if let user = user, let token = try? token(user.username).jsonEncode() {
+                data = token
                 response = successResponse
                 error = nil
             } else {
@@ -79,6 +79,8 @@ class URLSessionMock: URLSession {
         }
     }
 }
+
+// MARK: - URLSessionDataTask
 
 class URLSessionDataTaskMock: URLSessionDataTask {
     private let closure: () -> Void
@@ -108,4 +110,28 @@ fileprivate extension URLRequest {
             && object.httpBody == self.httpBody
             && object.allHTTPHeaderFields == self.allHTTPHeaderFields
     }
+}
+
+fileprivate func token(_ username: String) -> Token {
+    let expireIn = 60
+    let refreshExpireIn = 3600
+    let now = Date()
+    
+    let prepare: (String, Int) -> String = {
+        [
+            $0,
+            username,
+            Date(timeInterval: Double($1), since: now).iso8601WithFractionalSeconds,
+        ].joined(separator: "&")
+    }
+
+    return Token(
+        accessToken: prepare("AccessToken", expireIn),
+        expiresIn: expireIn,
+        refreshExpiresIn: refreshExpireIn,
+        refreshToken: prepare("RefreshToken", refreshExpireIn),
+        tokenType: "Bearer",
+        notBeforePolicy: 0,
+        sessionState: UUID().uuidString
+    )
 }

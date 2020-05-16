@@ -9,20 +9,20 @@
 import Foundation
 import ReSwift
 
-public struct UserSessionState: StateType, Equatable {
-    
-    public let userSession: UserSession?
-    
-}
-
-extension UserSessionState {
-    
-    static var loggedOut: UserSessionState {
-        UserSessionState(userSession: nil)
+public enum UserSessionState: StateType, Equatable {
+    public static func == (lhs: UserSessionState, rhs: UserSessionState) -> Bool {
+        switch (lhs, rhs) {
+        case (.authorized(let lhs), .authorized(let rhs)): return lhs == rhs
+        case (.unauthorized, .unauthorized),
+             (.requesting, .requesting),
+             (.authorizationFailed, .authorizationFailed):
+            return true
+        default: return false
+        }
     }
     
-    static let loggedIn: (UserSession) -> UserSessionState = { userSession in
-        UserSessionState(userSession: userSession)
-    }
-    
+    case authorizationFailed(Error)
+    case authorized(Token)
+    case requesting
+    case unauthorized
 }

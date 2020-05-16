@@ -19,9 +19,11 @@ public protocol LoginViewModelInputs {
 }
 
 public protocol LoginViewModelOutputs {
+    var errorMessage: Observable<String?> { get }
     var username: Observable<String?> { get }
     var password: Observable<String?> { get }
     var isLoginButtonActive: Observable<Bool> { get }
+    var isRequestInProcess: Observable<Bool> { get }
 }
 
 public protocol LoginViewModelType {
@@ -30,7 +32,6 @@ public protocol LoginViewModelType {
 }
 
 public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOutputs, StoreSubscriber {
-
     public typealias StoreSubscriberStateType = UserSessionState
     
     // MARK: - Object Lifecycle
@@ -38,7 +39,19 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
     public init() { }
     
     public func newState(state: UserSessionState) {
+        isRequestInProcess.value = state == .requesting
         
+        switch state {
+        case .authorizationFailed(let error):
+            errorMessage.value = error.localizedDescription
+            setLoginButtonState()
+        case .requesting:
+            errorMessage.value = nil
+            isLoginButtonActive.value = false
+        case .unauthorized, .authorized:
+            errorMessage.value = nil
+            setLoginButtonState()
+        }
     }
     
     // MARK: - Inputs
@@ -49,7 +62,7 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
         }
 
         AppStore.shared.dispatch(
-            UserSessionAction.tryLogin(username: username, password: password)
+            UserActions.UserSessionAction.login(username: username, password: password)
         )
     }
     
@@ -77,9 +90,11 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
 
     // MARK: - Outputs
     
+    public let errorMessage: Observable<String?> = Observable(nil)
     public let username: Observable<String?> = Observable(nil)
     public let password: Observable<String?> = Observable(nil)
     public let isLoginButtonActive = Observable(false)
+    public let isRequestInProcess = Observable(false)
     
     public var inputs: LoginViewModelInputs { return self }
     public var outputs: LoginViewModelOutputs { return self }

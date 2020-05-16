@@ -71,8 +71,22 @@ public final class LoginViewController: UIViewController {
             self?.passwordTextField.text = value
         }.disposed(by: disposeBag)
         
+        viewModel.outputs.errorMessage.bind { [weak self] value in
+            self?.errorLabel.text = value
+        }.disposed(by: disposeBag)
+        
         viewModel.outputs.isLoginButtonActive.bind { [weak self] value in
             self?.loginButton.isEnabled = value
+        }.disposed(by: disposeBag)
+        
+        viewModel.outputs.isRequestInProcess.bind { [weak self] isProcessing in
+            self?.usernameTextField.isEnabled = !isProcessing
+            self?.passwordTextField.isEnabled = !isProcessing
+            if isProcessing {
+                self?.requestIndicator.startAnimating()
+            } else {
+                self?.requestIndicator.stopAnimating()
+            }
         }.disposed(by: disposeBag)
     }
     
@@ -141,6 +155,22 @@ public final class LoginViewController: UIViewController {
         x.translatesAutoresizingMaskIntoConstraints = false
         return x
     }()
+    
+    lazy var errorLabel: UILabel = {
+        let x = UILabel()
+        x.numberOfLines = 0
+        x.textAlignment = .center
+        x.textColor = .red
+        x.font = .systemFont(ofSize: 20)
+        x.translatesAutoresizingMaskIntoConstraints = false
+        return x
+    }()
+    
+    lazy var requestIndicator: UIActivityIndicatorView = {
+        let x = UIActivityIndicatorView(style: .large)
+        x.translatesAutoresizingMaskIntoConstraints = false
+        return x
+    }()
 
     private lazy var dayTimeImage: UIImage? = {
         switch Calendar.current.component(.hour, from: Date()) {
@@ -170,6 +200,8 @@ public final class LoginViewController: UIViewController {
         view.addSubview(usernameTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
+        view.addSubview(errorLabel)
+        view.addSubview(requestIndicator)
         
         // Setup constraints
         
@@ -203,6 +235,18 @@ public final class LoginViewController: UIViewController {
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             loginButton.heightAnchor.constraint(equalToConstant: loginButton.buttonHeight),
+        ])
+        
+        NSLayoutConstraint.activate([
+            errorLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
+            errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+        ])
+        
+        NSLayoutConstraint.activate([
+            requestIndicator.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 20),
+            requestIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            requestIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
