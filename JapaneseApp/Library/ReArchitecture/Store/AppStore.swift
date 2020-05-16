@@ -17,6 +17,8 @@ public final class AppStore {
         reducer: appReducer,
         state: nil,
         middleware: [
+            loggerMiddleware,
+            userSessionMiddleware,
             prepareQuestionsMiddleware,
             checkAnswerMiddleware,
             nextQuestionMiddleware

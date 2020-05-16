@@ -65,17 +65,14 @@ public final class LoginViewController: UIViewController {
     private func bindViewModel() {
         viewModel.outputs.username.bind { [weak self] value in
             self?.usernameTextField.text = value
-            print(value)
         }.disposed(by: disposeBag)
         
         viewModel.outputs.password.bind { [weak self] value in
             self?.passwordTextField.text = value
-            print(value)
         }.disposed(by: disposeBag)
         
         viewModel.outputs.isLoginButtonActive.bind { [weak self] value in
             self?.loginButton.isEnabled = value
-            print(value)
         }.disposed(by: disposeBag)
     }
     

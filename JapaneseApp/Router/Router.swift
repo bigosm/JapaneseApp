@@ -22,7 +22,7 @@ class Router: StoreSubscriber {
     var window: UIWindow?
 
     private init() {
-        practiceNavigationController.viewControllers = [PracticeOverviewViewController()]
+        practiceNavigationController.viewControllers = [LoginViewController()]
         practiceNavigationController.navigationBar.tintColor = Theme.primaryColor
         practiceNavigationController.navigationBar.backgroundColor = Theme.secondaryBackgroundColor
         practiceNavigationController.tabBarItem = UITabBarItem(title: nil, image: AppImage.tabPractice, tag: 0)

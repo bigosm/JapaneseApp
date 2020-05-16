@@ -9,7 +9,11 @@
 import Foundation
 import ReSwift
 
+public let config = URLSessionConfiguration.default
 public struct AppState: StateType {
+    
+    
+    public let urlSession: URLSession
     
     public let navigationState: NavigationState
     public let repositoryState: RepositoryState
