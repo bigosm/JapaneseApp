@@ -23,7 +23,7 @@ public final class SelectAnswerViewController: UIViewController, PracticeAnswerV
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.backgroundColor = Theme.primaryBackgroundColor
+        self.tableView.backgroundColor = Theme.Background.primaryColor
         self.tableView.isUserInteractionEnabled = true
         self.tableView.dataSource = self
         self.tableView.delegate = self

@@ -77,14 +77,14 @@ public final class PracticeCharacterViewController: UIViewController, PracticeSu
             self.characterView.titleLabel.adjustsFontSizeToFitWidth = true
             self.characterView.readingAidLabel.font = .systemFont(ofSize: 17)
             self.characterView.readingAidDirection = .horizontal
-            self.characterView.underlineView.backgroundColor = Theme.tertiaryBackgroundColor
+            self.characterView.underlineView.backgroundColor = Theme.Background.tertiaryColor
         case .sentenceElement:
             self.characterView.isHideable = true
             self.characterView.titleLabel.font = .systemFont(ofSize: 25)
             self.characterView.titleLabel.adjustsFontSizeToFitWidth = false
             self.characterView.readingAidLabel.font = .systemFont(ofSize: 17)
             self.characterView.readingAidDirection = .horizontal
-            self.characterView.underlineView.backgroundColor = Theme.tertiaryBackgroundColor
+            self.characterView.underlineView.backgroundColor = Theme.Background.tertiaryColor
         }
     }
     

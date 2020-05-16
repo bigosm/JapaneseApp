@@ -95,7 +95,7 @@ public final class LoginViewController: UIViewController {
     lazy var logoView: UIStackView = {
         let x = UIStackView(arrangedSubviews: [dayTimeImageView, logoLabel])
         x.axis = .vertical
-        x.spacing = 20
+        x.spacing = 10
         x.alignment = .center
         x.distribution = .equalSpacing
         x.translatesAutoresizingMaskIntoConstraints = false
@@ -138,7 +138,7 @@ public final class LoginViewController: UIViewController {
     private var basicTextField: TextField {
         let x = TextField()
         x.returnKeyType = .next
-        x.backgroundColor = Theme.secondaryBackgroundColor
+        x.backgroundColor = Theme.Background.secondaryColor
         x.font = .systemFont(ofSize: 20)
         x.layer.cornerRadius = 25
         x.textInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
@@ -160,7 +160,7 @@ public final class LoginViewController: UIViewController {
         let x = UILabel()
         x.numberOfLines = 0
         x.textAlignment = .center
-        x.textColor = .red
+        x.textColor = Theme.alertColor
         x.font = .systemFont(ofSize: 20)
         x.translatesAutoresizingMaskIntoConstraints = false
         return x
@@ -174,21 +174,17 @@ public final class LoginViewController: UIViewController {
 
     private lazy var dayTimeImage: UIImage? = {
         switch Calendar.current.component(.hour, from: Date()) {
-        case 5...8:
-            return UIImage(systemName: "sunrise.fill")
-        case 9...18:
-            return UIImage(systemName: "sun.max.fill")
-        case 19...21:
-            return UIImage(systemName: "sunset.fill")
-        default:
-            return UIImage(systemName: "moon.zzz.fill")
+        case 5...8: return UIImage(systemName: "sunrise.fill")
+        case 9...18: return UIImage(systemName: "sun.max.fill")
+        case 19...21: return UIImage(systemName: "sunset.fill")
+        default: return UIImage(systemName: "moon.zzz.fill")
         }
     }()
     
     private func setupView() {
         // setup view
         
-        view.backgroundColor = Theme.primaryBackgroundColor
+        view.backgroundColor = Theme.Background.primaryColor
         
         view.addGestureRecognizer(
             UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -204,49 +200,66 @@ public final class LoginViewController: UIViewController {
         view.addSubview(requestIndicator)
         
         // Setup constraints
-        
         NSLayoutConstraint.activate([
-            logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            logoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            logoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            logoView.topAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor,
+                constant: Theme.Size.Height.screen(x568: 10, x667: 20, x812: 30)),
+            logoView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Theme.Size.Padding.standard),
+            logoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Theme.Size.Padding.standard),
+        ])
+        
+        let dayTimeImageSize = Theme.Size.Height.screen(x568: 50, x667: 70, x812: 80)
+        NSLayoutConstraint.activate([
+            dayTimeImageView.widthAnchor.constraint(equalToConstant: dayTimeImageSize),
+            dayTimeImageView.heightAnchor.constraint(equalToConstant: dayTimeImageSize),
         ])
         
         NSLayoutConstraint.activate([
-            dayTimeImageView.widthAnchor.constraint(equalToConstant: 80),
-            dayTimeImageView.heightAnchor.constraint(equalToConstant: 80),
-        ])
-        
-        NSLayoutConstraint.activate([
-            usernameTextField.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 20),
-            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            usernameTextField.topAnchor.constraint(
+                equalTo: logoView.bottomAnchor,
+                constant: Theme.Size.Height.screen(x568: 10, x667: 20)),
+            usernameTextField.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Theme.Size.Padding.standard),
+            usernameTextField.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -Theme.Size.Padding.standard),
             usernameTextField.heightAnchor.constraint(equalToConstant: 50),
         ])
         
         NSLayoutConstraint.activate([
-            passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            passwordTextField.topAnchor.constraint(
+                equalTo: usernameTextField.bottomAnchor,
+                constant: 10),
+            passwordTextField.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor),
+            passwordTextField.trailingAnchor.constraint(equalTo: usernameTextField.trailingAnchor),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
         ])
         
         NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            loginButton.topAnchor.constraint(
+                equalTo: passwordTextField.bottomAnchor,
+                constant: Theme.Size.Height.screen(x568: 10, x667: 30)),
+            loginButton.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: usernameTextField.trailingAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: loginButton.buttonHeight),
         ])
         
         NSLayoutConstraint.activate([
-            errorLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
-            errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            errorLabel.topAnchor.constraint(
+                equalTo: loginButton.bottomAnchor,
+                constant: Theme.Size.Height.screen(x568: 10, x812: 20)),
+            errorLabel.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor),
+            errorLabel.trailingAnchor.constraint(equalTo: usernameTextField.trailingAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            requestIndicator.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 20),
-            requestIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            requestIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            requestIndicator.topAnchor.constraint(
+                equalTo: errorLabel.bottomAnchor,
+                constant: Theme.Size.Height.screen(x568: 10, x812: 20)),
+            requestIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
 }

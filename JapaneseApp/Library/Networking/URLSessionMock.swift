@@ -92,7 +92,7 @@ class URLSessionDataTaskMock: URLSessionDataTask {
     // We override the 'resume' method and simply call our closure
     // instead of actually resuming any task.
     override func resume() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.closure()
         }
     }

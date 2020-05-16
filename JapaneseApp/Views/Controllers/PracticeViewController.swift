@@ -35,7 +35,7 @@ public final class PracticeViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = Theme.primaryBackgroundColor
+        self.view.backgroundColor = Theme.Background.primaryColor
         
         self.questionLabel.lineBreakMode = .byWordWrapping
         self.questionLabel.numberOfLines = 0
@@ -66,9 +66,6 @@ public final class PracticeViewController: UIViewController {
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
         self.setupView()
         self.bindViewModel()
         self.viewModel.inputs.viewDidLoad()
@@ -76,12 +73,17 @@ public final class PracticeViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         self.viewModel.inputs.viewWillAppear()
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
         
         self.viewModel.inputs.viewWillDisappear()
     }
