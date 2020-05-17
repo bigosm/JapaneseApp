@@ -166,8 +166,8 @@ public final class LoginViewController: UIViewController {
         return x
     }()
     
-    lazy var requestIndicator: UIActivityIndicatorView = {
-        let x = UIActivityIndicatorView(style: .large)
+    lazy var requestIndicator: LoadingIndicatorView = {
+        let x = LoadingIndicatorView()
         x.translatesAutoresizingMaskIntoConstraints = false
         return x
     }()
