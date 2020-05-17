@@ -57,7 +57,9 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
     // MARK: - Inputs
     
     public func loginButtonTapped() {
-        guard let username = username.value, let password = password.value else {
+        guard let username = username.value,
+            let password = password.value,
+            !isRequestInProcess.value else {
             return
         }
 
