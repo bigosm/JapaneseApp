@@ -39,21 +39,35 @@ public final class UserProfileAboutViewController: UIViewController {
     
     // MARK: - Instance Methods
     
+    @objc func logoutButtonTapped() {
+        viewModel.inputs.logout()
+    }
+    
     // MARK: - Binding
     
     private func bindViewModel() {
-        viewModel.outputs.userName.bind { [weak self] value in
-            self?.userNameLabel.text = value
+        viewModel.outputs.preferredName.bind { [weak self] value in
+            self?.preferredName.text = value
+        }.disposed(by: disposeBag)
+        
+        viewModel.outputs.username.bind { [weak self] value in
+            self?.username.text = value
         }.disposed(by: disposeBag)
     }
     
     // MARK: - SetupView
     
-    lazy var userNameLabel: UILabel = {
-        let x = UILabel()
-        x.adjustsFontSizeToFitWidth = true
-        x.textAlignment = .center
-        x.font = .preferredFont(forTextStyle: .largeTitle)
+    lazy var logoutButton: Button = {
+        let x = Button(customType: .primary)
+        x.setImage(UIImage(systemName: "arrow.left.circle"), for: .normal)
+        x.setTitle("Logout", for: .normal)
+        x.imageView?.contentMode = .scaleAspectFit
+        x.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 2)
+        x.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: -2)
+        x.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8+2, bottom: 8, right: 16+2)
+        x.titleLabel?.font = .preferredFont(forTextStyle: .body)
+        x.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+        x.translatesAutoresizingMaskIntoConstraints = false
         return x
     }()
     
@@ -66,14 +80,40 @@ public final class UserProfileAboutViewController: UIViewController {
         x.contentMode = .scaleAspectFill
         x.image = AppImage.profileUserImagePlaceholder
         x.tintColor = .darkGray
+        x.translatesAutoresizingMaskIntoConstraints = false
+        return x
+    }()
+    
+    lazy var preferredName: UILabel = {
+        let x = UILabel()
+        x.adjustsFontSizeToFitWidth = true
+        x.textAlignment = .center
+        x.font = .preferredFont(forTextStyle: .largeTitle)
+        x.translatesAutoresizingMaskIntoConstraints = false
+        return x
+    }()
+    
+    lazy var username: UILabel = {
+        let x = UILabel()
+        x.adjustsFontSizeToFitWidth = true
+        x.textAlignment = .center
+        x.font = .preferredFont(forTextStyle: .caption1)
+        x.textColor = Theme.Text.Color.secondary
+        x.translatesAutoresizingMaskIntoConstraints = false
         return x
     }()
     
     private func setupView() {
+        view.addSubview(logoutButton)
         view.addSubview(userPicture)
-        view.addSubview(userNameLabel)
+        view.addSubview(preferredName)
+        view.addSubview(username)
         
-        userPicture.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            logoutButton.topAnchor.constraint(equalTo: view.topAnchor),
+            logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        ])
+        
         NSLayoutConstraint.activate([
             userPicture.topAnchor.constraint(equalTo: view.topAnchor),
             userPicture.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -81,12 +121,17 @@ public final class UserProfileAboutViewController: UIViewController {
             userPicture.heightAnchor.constraint(equalToConstant: 150)
         ])
 
-        userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            userNameLabel.topAnchor.constraint(equalTo: userPicture.bottomAnchor, constant: 20),
-            userNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            userNameLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            userNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            preferredName.topAnchor.constraint(equalTo: userPicture.bottomAnchor, constant: 20),
+            preferredName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            preferredName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            username.topAnchor.constraint(equalTo: preferredName.bottomAnchor, constant: 10),
+            username.leadingAnchor.constraint(equalTo: preferredName.leadingAnchor),
+            username.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            username.trailingAnchor.constraint(equalTo: preferredName.trailingAnchor)
         ])
     }
 }

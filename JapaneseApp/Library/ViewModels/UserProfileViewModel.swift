@@ -16,7 +16,6 @@ public protocol UserProfileViewModelInputs {
 }
 
 public protocol UserProfileViewModelOutputs {
-    var userName: Observable<String?> { get }
 }
 
 public protocol UserProfileViewModelType {
@@ -52,8 +51,6 @@ public final class UserProfileViewModel: UserProfileViewModelType, UserProfileVi
     }
     
     // MARK: - Outputs
-    
-    public let userName: Observable<String?> = Observable(nil)
     
     public var inputs: UserProfileViewModelInputs { return self }
     public var outputs: UserProfileViewModelOutputs { return self }
