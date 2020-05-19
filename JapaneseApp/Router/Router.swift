@@ -31,11 +31,15 @@ class Router: StoreSubscriber {
         let splashScreen = SplashScreen.instance
         windowSplashScreen = newWindow(splashScreen)
         windowSplashScreen?.makeKeyAndVisible()
+        
         splashScreen.animate {
             AppStore.shared.subscribe(self) {
                 $0.select { $0 }
             }
         }
+        
+        // Init AppStore
+        _ = AppStore.shared.state
     }
     
     func newState(state: AppState) {
@@ -53,8 +57,11 @@ class Router: StoreSubscriber {
         
         let windowMain = self.windowMain ?? newWindow(tabBarMain)
         self.windowMain = windowMain
-        windowMain.makeKeyAndVisible()
-
+        
+        if !windowMain.isKeyWindow {
+            windowMain.makeKeyAndVisible()
+        }
+        
         switch navigationSate.routeToView {
         case .practiceOverview:
             navigationPractice?.popToRootViewController(animated: true)

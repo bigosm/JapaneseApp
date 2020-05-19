@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol NetwrokErrorContainer: Decodable {
+protocol NetwrokErrorContainer: Codable {
     var localizedDescription: String { get }
 }
 
@@ -18,3 +18,12 @@ struct LoginErrorContainer: NetwrokErrorContainer {
     
     var localizedDescription: String { error_description }
 }
+
+struct ServerResponse<T: Codable>: NetwrokErrorContainer {
+    let data: T?
+    let error: Bool
+    let message: String
+    
+    var localizedDescription: String { message }
+}
+

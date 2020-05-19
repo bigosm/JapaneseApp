@@ -11,14 +11,17 @@ import ReSwift
 
 internal func userSessionReducer(action: Action, state: UserSessionState?) -> UserSessionState {
     switch action {
-    case AppActions.UserSessionAction.loginRequestSuccessful(let token):
-        return UserSessionState.authorized(token)
-    case AppActions.UserSessionAction.loginRequestFailed(let error):
-        return UserSessionState.authorizationFailed(error)
-    case AppActions.UserSessionAction.loginRequestInProgress:
-        return UserSessionState.requesting
-    case AppActions.UserSessionAction.unauthorized,
-         UserActions.UserSessionAction.logout:
+    case let action as AppActions.Networking.Login:
+        switch action.state {
+        case .success(let token):
+            return UserSessionState.authorized(token)
+        case .failure(let error):
+            return UserSessionState.authorizationFailed(error)
+        case .inProgress:
+            return UserSessionState.requesting
+        }
+    case AppActions.UserSession.sessionExpired,
+         UserActions.UserSession.logout:
         return UserSessionState.unauthorized
     default:
         return state ?? UserSessionState.unauthorized

@@ -1,8 +1,11 @@
 {
     "users": [
         {
-            "username": "michal@example.com",
+            "username": "Michal@example.com",
+            "email": "Michal@example.com",
             "name": "Michał",
+            "surname": null,
+            "prefferedUsername": "Majkel"
         },
     ]
 }

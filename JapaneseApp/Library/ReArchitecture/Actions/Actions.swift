@@ -10,18 +10,45 @@ import Foundation
 import ReSwift
 
 enum UserActions {
-    enum UserSessionAction: Action {
+    enum UserSession: Action {
         case login(username: String, password: String)
         case logout
     }
 }
 
+
+// MARK: -
+
 enum AppActions {
-    enum UserSessionAction: Action {
-        case loginRequestFailed(Error)
-        case loginRequestInProgress
-        case loginRequestSuccessful(Token)
-        case unauthorized
+    
+    enum UserSession: Action {
+        case refreshSession
+        case sessionExpired
+    }
+    
+    enum UserProfile: Action {
+        case getUserProfile
+    }
+
+    enum Networking {
+        class Request<T>: Action {
+            enum State<T> {
+                case success(T)
+                case failure(Error)
+                case inProgress
+            }
+            
+            let state: State<T>
+            
+            init(state: State<T>) {
+                self.state = state
+            }
+        }
+        
+        class Login: Request<LoginRequest.Response> { }
+        class RefreshSession: Request<RefreshSessionRequest.Response> { }
+        
+        class UserProfile: Request<UserProfileRequest.Response> { }
     }
 }
 

@@ -24,6 +24,7 @@
 		1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691623E869D500912335 /* RepositoryReducer.swift */; };
 		1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691823E86A7C00912335 /* StudentReducer.swift */; };
 		1F17691B23E86A9400912335 /* StudentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17691A23E86A9400912335 /* StudentState.swift */; };
+		1F2C44DC2471541500338894 /* UserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C44DB2471541500338894 /* UserProfileRequest.swift */; };
 		1F3013E12465DDB900503B93 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013E02465DDB900503B93 /* UserProfileViewController.swift */; };
 		1F3013E32465DDDB00503B93 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013E22465DDDB00503B93 /* UserProfileViewModel.swift */; };
 		1F3013E52465DE3C00503B93 /* UserProfileState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013E42465DE3C00503B93 /* UserProfileState.swift */; };
@@ -33,6 +34,7 @@
 		1F3013ED2465EA8600503B93 /* UserProfieAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */; };
 		1F3013EF2465EAB600503B93 /* UserProfileAboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013EE2465EAB600503B93 /* UserProfileAboutViewModel.swift */; };
 		1F3013F9246867DB00503B93 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3013F8246867DB00503B93 /* Logger.swift */; };
+		1F3365662471DFA100A45DA3 /* RefreshSessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3365652471DFA100A45DA3 /* RefreshSessionRequest.swift */; };
 		1F3E151C240048EA00BFFC43 /* PracticeCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */; };
 		1F3E151E2400491500BFFC43 /* PracticeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */; };
 		1F3E1522240423D000BFFC43 /* PracticeCompletionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */; };
@@ -67,10 +69,11 @@
 		1F501A1D2469BF9C00495A25 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F501A1C2469BF9C00495A25 /* Observable.swift */; };
 		1F501A1F2469C11300495A25 /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F501A1E2469C11300495A25 /* Disposable.swift */; };
 		1F501A202469C1F900495A25 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F501A1A2469BF8300495A25 /* ObservableTests.swift */; };
-		1F501A232469D33600495A25 /* UserSessionMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F501A212469D28300495A25 /* UserSessionMiddleware.swift */; };
+		1F501A232469D33600495A25 /* NetworkingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F501A212469D28300495A25 /* NetworkingMiddleware.swift */; };
 		1F501A252469DDDB00495A25 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F501A242469DDDB00495A25 /* Functional.swift */; };
 		1F531D7823D9CD43004C25DC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D7723D9CD43004C25DC /* Theme.swift */; };
 		1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F531D8123DA11C2004C25DC /* String+Extension.swift */; };
+		1F5D73C32474817400B63CCC /* AuthorizationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D73C22474817400B63CCC /* AuthorizationMiddleware.swift */; };
 		1F5F493023EC7C0800F17C13 /* PracticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */; };
 		1F5F493223EC7C3200F17C13 /* PracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493123EC7C3200F17C13 /* PracticeViewModel.swift */; };
 		1F5F493423EC8E1600F17C13 /* CharacterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */; };
@@ -155,6 +158,7 @@
 		1F17691623E869D500912335 /* RepositoryReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryReducer.swift; sourceTree = "<group>"; };
 		1F17691823E86A7C00912335 /* StudentReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentReducer.swift; sourceTree = "<group>"; };
 		1F17691A23E86A9400912335 /* StudentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentState.swift; sourceTree = "<group>"; };
+		1F2C44DB2471541500338894 /* UserProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRequest.swift; sourceTree = "<group>"; };
 		1F3013E02465DDB900503B93 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		1F3013E22465DDDB00503B93 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		1F3013E42465DE3C00503B93 /* UserProfileState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileState.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 		1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfieAboutViewController.swift; sourceTree = "<group>"; };
 		1F3013EE2465EAB600503B93 /* UserProfileAboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileAboutViewModel.swift; sourceTree = "<group>"; };
 		1F3013F8246867DB00503B93 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		1F3365652471DFA100A45DA3 /* RefreshSessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshSessionRequest.swift; sourceTree = "<group>"; };
 		1F3E151B240048EA00BFFC43 /* PracticeCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewModel.swift; sourceTree = "<group>"; };
 		1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewController.swift; sourceTree = "<group>"; };
 		1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionCell.swift; sourceTree = "<group>"; };
@@ -198,10 +203,11 @@
 		1F501A1A2469BF8300495A25 /* ObservableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		1F501A1C2469BF9C00495A25 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1F501A1E2469C11300495A25 /* Disposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
-		1F501A212469D28300495A25 /* UserSessionMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionMiddleware.swift; sourceTree = "<group>"; };
+		1F501A212469D28300495A25 /* NetworkingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingMiddleware.swift; sourceTree = "<group>"; };
 		1F501A242469DDDB00495A25 /* Functional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
 		1F531D7723D9CD43004C25DC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1F531D8123DA11C2004C25DC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		1F5D73C22474817400B63CCC /* AuthorizationMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationMiddleware.swift; sourceTree = "<group>"; };
 		1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewController.swift; sourceTree = "<group>"; };
 		1F5F493123EC7C3200F17C13 /* PracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewModel.swift; sourceTree = "<group>"; };
 		1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewController.swift; sourceTree = "<group>"; };
@@ -397,7 +403,8 @@
 				1F809C50246F388500526323 /* LoggerMiddleware.swift */,
 				1F48D48923FEBB660069B2D4 /* NextQuestionMiddleware.swift */,
 				1F0DD5A92409939D00F57924 /* PrepareQuestionsMiddleware.swift */,
-				1F501A212469D28300495A25 /* UserSessionMiddleware.swift */,
+				1F501A212469D28300495A25 /* NetworkingMiddleware.swift */,
+				1F5D73C22474817400B63CCC /* AuthorizationMiddleware.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -565,6 +572,8 @@
 			children = (
 				1F809C5C246F514200526323 /* APIRequests+Default.swift */,
 				1FB6E458246F115000C975D5 /* LoginRequest.swift */,
+				1F3365652471DFA100A45DA3 /* RefreshSessionRequest.swift */,
+				1F2C44DB2471541500338894 /* UserProfileRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -820,6 +829,7 @@
 				1FB6E451246F0AC600C975D5 /* ContentType.swift in Sources */,
 				1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */,
 				1F8F435D24055333008DA65E /* PracticeCompletionSummaryCell.swift in Sources */,
+				1F3365662471DFA100A45DA3 /* RefreshSessionRequest.swift in Sources */,
 				1F17690523E85B2500912335 /* AppState.swift in Sources */,
 				1F73722D2468AE16008C95B9 /* TextField.swift in Sources */,
 				1F3013E52465DE3C00503B93 /* UserProfileState.swift in Sources */,
@@ -876,9 +886,10 @@
 				1F3013E12465DDB900503B93 /* UserProfileViewController.swift in Sources */,
 				1F48D45423EDC8B00069B2D4 /* PracticeOverviewViewModel.swift in Sources */,
 				1F7372202468744C008C95B9 /* UserSessionState.swift in Sources */,
-				1F501A232469D33600495A25 /* UserSessionMiddleware.swift in Sources */,
+				1F501A232469D33600495A25 /* NetworkingMiddleware.swift in Sources */,
 				1F3013E92465DFBC00503B93 /* UserProfileReducer.swift in Sources */,
 				1F809C632470092500526323 /* APIClientTask.swift in Sources */,
+				1F2C44DC2471541500338894 /* UserProfileRequest.swift in Sources */,
 				1F48D46923F1C5810069B2D4 /* CharacterTable.swift in Sources */,
 				1F17691923E86A7C00912335 /* StudentReducer.swift in Sources */,
 				1FB6E459246F115000C975D5 /* LoginRequest.swift in Sources */,
@@ -897,6 +908,7 @@
 				1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */,
 				1F5F493D23EDA18C00F17C13 /* CharacterCollectionViewModel.swift in Sources */,
 				1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */,
+				1F5D73C32474817400B63CCC /* AuthorizationMiddleware.swift in Sources */,
 				1F3E152424042CE700BFFC43 /* PracticeCompletionCellViewModel.swift in Sources */,
 				1F501A252469DDDB00495A25 /* Functional.swift in Sources */,
 				1F8F436524083069008DA65E /* SelectAnswerCell.swift in Sources */,

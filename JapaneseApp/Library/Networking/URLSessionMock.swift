@@ -8,7 +8,21 @@
 
 import Foundation
 
+fileprivate let accessTokenExpireIn = 60
+fileprivate let refreshTokenExpireIn = 3600
+
 class URLSessionMock: URLSession {
+    
+    enum Response {
+        static let success = { httpURLResponse($0, 200) }
+        static let unauthorized = { httpURLResponse($0, 401) }
+        static let notFound = { httpURLResponse($0, 404) }
+        static let internalServerErrpr = { httpURLResponse($0, 500) }
+        
+        private static let httpURLResponse = {
+            HTTPURLResponse(url: $0, statusCode: $1, httpVersion: nil, headerFields: [:])
+        }
+    }
     
     override init() {}
     
@@ -22,8 +36,6 @@ class URLSessionMock: URLSession {
     
     override func dataTask(with request: URLRequest, completionHandler: @escaping CompletionHandler) -> URLSessionDataTask {
         
-        let successResponse = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil)
-        
         if let data = data {
             return URLSessionDataTaskMock {
                 completionHandler(data, self.response, nil)
@@ -36,9 +48,15 @@ class URLSessionMock: URLSession {
             }
         }
         
+        
         var data: Data? = nil
         var error: Swift.Error? = NSError(domain: "", code: 0, userInfo: [:])
         var response: HTTPURLResponse? = nil
+        
+        
+        var request = request
+        let authoriation = request.value(forHTTPHeaderField: "Authorization")
+        request.setValue(nil, forHTTPHeaderField: "Authorization")
         
         switch request {
             
@@ -59,21 +77,72 @@ class URLSessionMock: URLSession {
                 request.isEqual(LoginRequest(username: $0.username, password: $0.password).urlRequest)
             }
             
-            if let user = user, let token = try? token(user.username).jsonEncode() {
-                data = token
-                response = successResponse
+            if let user = user {
+                data = try! token(user.username).jsonEncode()
+                response = Response.success(request.url!)
                 error = nil
             } else {
                 data = try! [
                     "error" : "invalid_grant",
                     "error_description" : "Invalid user credentials"
                     ].jsonEncode()
-                response = HTTPURLResponse(url: request.url!, statusCode: 401, httpVersion: nil, headerFields: [:])
+                response = Response.unauthorized(request.url!)
                 error = nil
             }
+            
+            // MARK: - RefreshSessionRequest
+            
+        case RefreshSessionRequest(refreshToken: "").urlRequest:
+            struct Resource: Codable {
+                let refresh_token: String
+            }
+            
+            let resource = try! Resource.jsonDecode(request.httpBody!)
+            
+            guard let authorized = refreshSession(resource.refresh_token) else {
+                let message = "Session expired"
+                data = try! ServerResponse<String>(data: nil, error: true, message: message).jsonEncode()
+                response = Response.unauthorized(request.url!)
+                error = nil
+                break
+            }
+            
+            data = try! token(authorized.username, sessionId: authorized.sessionId).jsonEncode()
+            response = Response.success(request.url!)
+            error = nil
+            
+            // MARK: - ProfileRequest
+            
+        case UserProfileRequest().urlRequest:
+            struct Resource: Codable, Equatable {
+                let users: [UserProfile]
+            }
+            
+            let resource = bundleLoad(resource: "UserProfiles", type: Resource.self)
+            
+            guard let authorized = authorization(authoriation!) else {
+                let message = "Request unauthorized"
+                data = try! ServerResponse<String>(data: nil, error: true, message: message).jsonEncode()
+                response = Response.unauthorized(request.url!)
+                error = nil
+                break
+            }
+            
+            if let user = resource.users.first(where: { $0.username == authorized.username }) {
+                data = try! user.jsonEncode()
+                response = Response.success(request.url!)
+                error = nil
+            } else {
+                let message = "Something bad happen..."
+                data = try! ServerResponse<String>(data: nil, error: true, message: message).jsonEncode()
+                response = Response.internalServerErrpr(request.url!)
+                error = nil
+            }
+
         default:
             break
         }
+        
         return URLSessionDataTaskMock {
             completionHandler(data, response, error)
         }
@@ -92,7 +161,7 @@ class URLSessionDataTaskMock: URLSessionDataTask {
     // We override the 'resume' method and simply call our closure
     // instead of actually resuming any task.
     override func resume() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.closure()
         }
     }
@@ -100,7 +169,7 @@ class URLSessionDataTaskMock: URLSessionDataTask {
 
 fileprivate extension URLRequest {
     func isEqual(_ object: URLRequest) -> Bool {
-    return object.url == self.url
+        return object.url == self.url
             && object.mainDocumentURL == self.mainDocumentURL
             && object.httpMethod == self.httpMethod
             && object.cachePolicy == self.cachePolicy
@@ -108,23 +177,26 @@ fileprivate extension URLRequest {
             && object.allowsCellularAccess == self.allowsCellularAccess
             && object.httpShouldHandleCookies == self.httpShouldHandleCookies
             && object.httpBody == self.httpBody
-            && object.allHTTPHeaderFields == self.allHTTPHeaderFields
+//            && object.allHTTPHeaderFields == self.allHTTPHeaderFields
     }
 }
 
-fileprivate func token(_ username: String) -> Token {
-    let expireIn = 60
-    let refreshExpireIn = 3600
+fileprivate func token(_ username: String, sessionId: String? = nil) -> Token {
+    let expireIn = accessTokenExpireIn
+    let refreshExpireIn = refreshTokenExpireIn
     let now = Date()
+    
+    let sessionId = sessionId ?? UUID().uuidString
     
     let prepare: (String, Int) -> String = {
         [
             $0,
-            username,
             Date(timeInterval: Double($1), since: now).iso8601WithFractionalSeconds,
+            username,
+            sessionId,
         ].joined(separator: "&")
     }
-
+    
     return Token(
         accessToken: prepare("AccessToken", expireIn),
         expiresIn: expireIn,
@@ -132,6 +204,33 @@ fileprivate func token(_ username: String) -> Token {
         refreshToken: prepare("RefreshToken", refreshExpireIn),
         tokenType: "Bearer",
         notBeforePolicy: 0,
-        sessionState: UUID().uuidString
+        sessionState: sessionId
     )
 }
+
+fileprivate typealias Authorization = (username: String, sessionId: String)
+
+fileprivate func authorization(_ token: String) -> Authorization? {
+    verifyToken(token, tokenType: "AccessToken")
+}
+
+fileprivate func refreshSession(_ token: String) -> Authorization? {
+    verifyToken(token, tokenType: "RefreshToken")
+}
+
+fileprivate func verifyToken(_ token: String, tokenType: String) -> Authorization? {
+    let tokenComponents = token.split(separator: "&")
+    
+    guard tokenComponents.count == 4, tokenComponents[0] == tokenType else {
+        return nil
+    }
+    
+    let formatter = Formatter.iso8601WithFractionalSeconds
+    if let date = formatter.date(from: String(tokenComponents[1])), date > Date() {
+        return (String(tokenComponents[2]), String(tokenComponents[3]))
+    } else {
+        return nil
+    }
+}
+
+

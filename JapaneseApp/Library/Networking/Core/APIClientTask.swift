@@ -8,10 +8,17 @@
 
 import Foundation
 
-struct APIClientTask<T> {
+protocol APIClientTaskType {
+    var task: URLSessionTask { get }
+    var id: UUID { get }
+    
+    func resume()
+}
+
+struct APIClientTask<T>: APIClientTaskType {
     let task: URLSessionTask
     let id: UUID
     let promise: Promise<T>
     
-    func send() { task.resume() }
+    func resume() { task.resume() }
 }

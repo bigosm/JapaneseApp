@@ -1,28 +1,27 @@
 //
-//  LoginRequest.swift
+//  RefreshSessionRequest.swift
 //  JapaneseApp
 //
-//  Created by Michal Bigos on 15/05/2020.
+//  Created by Michal Bigos on 17/05/2020.
 //  Copyright © 2020 Example. All rights reserved.
 //
 
 import Foundation
 
-struct LoginRequest: APIRequest {
+struct RefreshSessionRequest: APIRequest {
     typealias Response = Token
     
     let method = HTTPMethod.POST
-    let resource = "auth/refresh"
+    let resource = "auth/token"
     let requiresAuth = false
     var headers: [String: String] = [:]
     let body: BodyContent?
     
-    init(username: String, password: String) {
-        body = BodyContent(username: username, password: password)
+    init(refreshToken: String) {
+        body = BodyContent(refresh_token: refreshToken)
     }
 
     struct BodyContent: Encodable, Equatable {
-        let username: String
-        let password: String
+        let refresh_token: String
     }
 }
