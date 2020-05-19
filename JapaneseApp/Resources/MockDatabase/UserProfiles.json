@@ -5,7 +5,7 @@
             "email": "Michal@example.com",
             "name": "Michał",
             "surname": null,
-            "prefferedUsername": "Majkel"
+            "preferredUsername": "Majkel"
         },
     ]
 }

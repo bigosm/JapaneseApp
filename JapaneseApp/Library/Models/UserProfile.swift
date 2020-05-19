@@ -13,5 +13,5 @@ public struct UserProfile: Codable, Equatable {
     public let email: String
     public let name: String?
     public let surname: String?
-    public let prefferedUsername: String?
+    public let preferredUsername: String?
 }
