@@ -55,13 +55,13 @@ public class SplashScreen: UIViewController {
     }
     
     public func animate(completion: @escaping () -> ()) {
+        print("Start splash screen")
         welcomeLabel.isHidden = false
         welcomeLabel.alpha = 0
         
         let degree90 = CGFloat.pi / 2
 
         dayTimeImageView[0].alpha = 0
-//        dayTimeImageView[1].alpha = 0
         
         view.layoutIfNeeded()
         
@@ -70,9 +70,7 @@ public class SplashScreen: UIViewController {
                 $0.transform = CGAffineTransform(rotationAngle: -degree90)
             }
             self.dayTimeImageContainer.transform = CGAffineTransform(rotationAngle: degree90)
-            
-//            self.dayTimeImageView[1].alpha = 0.3
-            
+
         }, completion: { _ in
             UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseOut, animations: {
                 self.dayTimeImageView.forEach {

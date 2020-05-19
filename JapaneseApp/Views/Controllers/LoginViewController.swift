@@ -203,14 +203,13 @@ public final class LoginViewController: UIViewController {
         NSLayoutConstraint.activate([
             logoView.topAnchor.constraint(
                 equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: Theme.Size.Height.screen(x568: 10, x667: 20, x812: 30)),
+                constant: Theme.Size.Height.screen(x568: 10, x667: 20, x736: 30)),
             logoView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
                 constant: Theme.Size.Padding.standard),
             logoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Theme.Size.Padding.standard),
         ])
-        
-        let dayTimeImageSize = Theme.Size.Height.screen(x568: 50, x667: 70, x812: 80)
+        let dayTimeImageSize = Theme.Size.Height.screen(x568: 50, x667: 70, x736: 80)
         NSLayoutConstraint.activate([
             dayTimeImageView.widthAnchor.constraint(equalToConstant: dayTimeImageSize),
             dayTimeImageView.heightAnchor.constraint(equalToConstant: dayTimeImageSize),
@@ -250,7 +249,7 @@ public final class LoginViewController: UIViewController {
         NSLayoutConstraint.activate([
             errorLabel.topAnchor.constraint(
                 equalTo: loginButton.bottomAnchor,
-                constant: Theme.Size.Height.screen(x568: 10, x812: 20)),
+                constant: Theme.Size.Height.screen(x568: 10, x736: 20)),
             errorLabel.leadingAnchor.constraint(equalTo: usernameTextField.leadingAnchor),
             errorLabel.trailingAnchor.constraint(equalTo: usernameTextField.trailingAnchor),
         ])
@@ -258,7 +257,7 @@ public final class LoginViewController: UIViewController {
         NSLayoutConstraint.activate([
             requestIndicator.topAnchor.constraint(
                 equalTo: errorLabel.bottomAnchor,
-                constant: Theme.Size.Height.screen(x568: 10, x812: 20)),
+                constant: Theme.Size.Height.screen(x568: 10, x736: 20)),
             requestIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }

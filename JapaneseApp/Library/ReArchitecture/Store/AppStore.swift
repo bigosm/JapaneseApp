@@ -18,7 +18,8 @@ public final class AppStore {
         state: nil,
         middleware: [
             loggerMiddleware,
-            userSessionMiddleware,
+            networkingMiddleware,
+            authorizationMiddleware,
             prepareQuestionsMiddleware,
             checkAnswerMiddleware,
             nextQuestionMiddleware
@@ -27,5 +28,7 @@ public final class AppStore {
     
     // MARK: - Object Lifecycle
     
-    private init() { }
+    private init() {
+        print("test")
+    }
 }

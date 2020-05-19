@@ -12,7 +12,7 @@ extension APIRequest {
     var baseURL: URL { NetworkConfig.BaseURL.standard }
     var contentType: ContentType { .json }
     var responseContentType: ContentType { .json }
-    var requiresAuth: Bool { false }
+    var requiresAuth: Bool { true }
     var params: [URLQueryItem]? { nil }
-    var body: String? { nil}
+    var body: String? { nil }
 }

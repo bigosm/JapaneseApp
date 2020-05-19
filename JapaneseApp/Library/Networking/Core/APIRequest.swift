@@ -18,6 +18,7 @@ protocol APIRequest: Equatable {
     var contentType: ContentType { get }
     var responseContentType: ContentType { get }
     var requiresAuth: Bool { get }
+    var headers: [String: String] { get set}
     var params: [URLQueryItem]? { get }
     var body: Body? { get }
 }
@@ -42,6 +43,8 @@ extension APIRequest {
         
         urlRequest.httpMethod = method.rawValue
         urlRequest.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
+        
+        headers.forEach { urlRequest.addValue($1, forHTTPHeaderField: $0) }
         
         if let body = body {
             do {

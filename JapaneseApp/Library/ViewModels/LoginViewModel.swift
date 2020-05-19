@@ -64,7 +64,7 @@ public final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, Log
         }
 
         AppStore.shared.dispatch(
-            UserActions.UserSessionAction.login(username: username, password: password)
+            UserActions.UserSession.login(username: username, password: password)
         )
     }
     

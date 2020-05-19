@@ -43,6 +43,8 @@ class NetworkConfig {
 
         if let success = decodedError(type: LoginErrorContainer.self, data: data, errors: &errors) {
             return (success, nil)
+        } else if let success = decodedError(type: ServerResponse<String>.self, data: data, errors: &errors) {
+            return (success, nil)
         } else {
             return (nil, errors)
         }

@@ -10,7 +10,19 @@ import Foundation
 import ReSwift
 
 internal func userProfileReducer(action: Action, state: UserProfileState?) -> UserProfileState {
-    let state = state ?? UserProfileState(profile: UserProfile(name: "Test Name"))
+    let state = state ?? UserProfileState(profile: nil)
     
-    return state
+    switch action {
+    case let action as AppActions.Networking.UserProfile:
+        switch action.state {
+        case .success(let userProfile):
+            return UserProfileState(profile: userProfile)
+        case .failure(_):
+            return UserProfileState(profile: nil)
+        case .inProgress:
+            return UserProfileState(profile: nil)
+        }
+    default:
+        return state
+    }
 }

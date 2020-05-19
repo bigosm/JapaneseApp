@@ -58,7 +58,6 @@ extension URLSession {
             
             switch httpResponse.statusCode {
             case 200...299:
-                
                 do {
                     let decoded = try NetworkConfig.decoder.decode(T.Response.self, from: data, contentType: request.responseContentType)
                     NetworkConfig.logger?.success("[📬 \(type(of: self))] [\(uuid)] Response: Success")
