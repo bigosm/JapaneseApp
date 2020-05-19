@@ -10,6 +10,7 @@ import Foundation
 import ReSwift
 
 public protocol UserProfileAboutViewModelInputs {
+    func logout()
     func viewDidLoad()
     func viewWillAppear()
     func viewWillDisappear()
@@ -44,6 +45,12 @@ public final class UserProfileAboutViewModel: UserProfileAboutViewModelType, Use
     }
     
     // MARK: - Inputs
+    
+    public func logout() {
+        AppStore.shared.dispatch(
+            UserActions.UserSession.logout
+        )
+    }
     
     public func viewDidLoad() {
         

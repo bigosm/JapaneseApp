@@ -39,6 +39,10 @@ public final class UserProfileAboutViewController: UIViewController {
     
     // MARK: - Instance Methods
     
+    @objc func logoutButtonTapped() {
+        viewModel.inputs.logout()
+    }
+    
     // MARK: - Binding
     
     private func bindViewModel() {
@@ -52,6 +56,20 @@ public final class UserProfileAboutViewController: UIViewController {
     }
     
     // MARK: - SetupView
+    
+    lazy var logoutButton: Button = {
+        let x = Button(customType: .primary)
+        x.setImage(UIImage(systemName: "arrow.left.circle"), for: .normal)
+        x.setTitle("Logout", for: .normal)
+        x.imageView?.contentMode = .scaleAspectFit
+        x.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 2)
+        x.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: -2)
+        x.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8+2, bottom: 8, right: 16+2)
+        x.titleLabel?.font = .preferredFont(forTextStyle: .body)
+        x.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+        x.translatesAutoresizingMaskIntoConstraints = false
+        return x
+    }()
     
     lazy var userPicture: UIImageView = {
         let x = UIImageView()
@@ -86,9 +104,15 @@ public final class UserProfileAboutViewController: UIViewController {
     }()
     
     private func setupView() {
+        view.addSubview(logoutButton)
         view.addSubview(userPicture)
         view.addSubview(preferredName)
         view.addSubview(username)
+        
+        NSLayoutConstraint.activate([
+            logoutButton.topAnchor.constraint(equalTo: view.topAnchor),
+            logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        ])
         
         NSLayoutConstraint.activate([
             userPicture.topAnchor.constraint(equalTo: view.topAnchor),
