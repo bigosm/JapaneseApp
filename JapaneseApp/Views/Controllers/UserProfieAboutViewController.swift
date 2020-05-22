@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class UserProfileAboutViewController: UIViewController {
+final class UserProfileAboutViewController: UIViewController {
     
     // MARK: - Instance Properties
     
@@ -17,7 +17,7 @@ public final class UserProfileAboutViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
-    public override func viewDidLoad() {
+     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
@@ -25,13 +25,13 @@ public final class UserProfileAboutViewController: UIViewController {
         viewModel.inputs.viewDidLoad()
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
+     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         viewModel.inputs.viewWillAppear()
     }
     
-    public override func viewWillDisappear(_ animated: Bool) {
+     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         viewModel.inputs.viewWillDisappear()
