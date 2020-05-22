@@ -73,14 +73,17 @@ final class UserProfileAboutViewController: UIViewController {
     
     lazy var userPicture: UIImageView = {
         let x = UIImageView()
-        x.layer.cornerRadius = 75
+        let size = Theme.Size.Height.screen(x568: 120)
+        x.layer.cornerRadius = size / 2
         x.layer.masksToBounds = true
         x.layer.borderColor = Theme.Background.secondaryColor?.cgColor
-        x.layer.borderWidth = 10
+        x.layer.borderWidth = 5
         x.contentMode = .scaleAspectFill
         x.image = AppImage.profileUserImagePlaceholder
-        x.tintColor = .darkGray
+        x.tintColor = Theme.Background.tertiaryColor
         x.translatesAutoresizingMaskIntoConstraints = false
+        x.widthAnchor.constraint(equalToConstant: size).isActive = true
+        x.heightAnchor.constraint(equalToConstant: size).isActive = true
         return x
     }()
     
@@ -111,27 +114,30 @@ final class UserProfileAboutViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             logoutButton.topAnchor.constraint(equalTo: view.topAnchor),
-            logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        ])
-        
-        NSLayoutConstraint.activate([
+            logoutButton.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Theme.Size.Padding.standard),
+            
             userPicture.topAnchor.constraint(equalTo: view.topAnchor),
             userPicture.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            userPicture.widthAnchor.constraint(equalToConstant: 150),
-            userPicture.heightAnchor.constraint(equalToConstant: 150)
-        ])
-
-        NSLayoutConstraint.activate([
-            preferredName.topAnchor.constraint(equalTo: userPicture.bottomAnchor, constant: 20),
-            preferredName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            preferredName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        ])
-        
-        NSLayoutConstraint.activate([
-            username.topAnchor.constraint(equalTo: preferredName.bottomAnchor, constant: 10),
+            
+            preferredName.topAnchor.constraint(
+                equalTo: userPicture.bottomAnchor,
+                constant: Theme.Size.Spacing.section),
+            preferredName.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Theme.Size.Padding.standard),
+            preferredName.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -Theme.Size.Padding.standard),
+            
+            username.topAnchor.constraint(
+                equalTo: preferredName.bottomAnchor,
+                constant: Theme.Size.Spacing.common),
             username.leadingAnchor.constraint(equalTo: preferredName.leadingAnchor),
             username.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            username.trailingAnchor.constraint(equalTo: preferredName.trailingAnchor)
+            username.trailingAnchor.constraint(equalTo: preferredName.trailingAnchor),
         ])
     }
+
 }
