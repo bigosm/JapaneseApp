@@ -59,7 +59,7 @@ public final class UserProfileAboutViewController: UIViewController {
     
     lazy var logoutButton: Button = {
         let x = Button(customType: .primary)
-        x.setImage(UIImage(systemName: "arrow.left.circle"), for: .normal)
+        x.setImage(UIImage(systemName: "escape"), for: .normal)
         x.setTitle("Logout", for: .normal)
         x.imageView?.contentMode = .scaleAspectFit
         x.imageEdgeInsets = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 2)
