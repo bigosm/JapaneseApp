@@ -50,6 +50,11 @@ class Theme {
         enum Padding {
             static let standard: CGFloat = Theme.Size.Height.screen(x568: 10, x667: 20)
         }
+        
+        enum Spacing {
+            static let common: CGFloat = Theme.Size.Padding.standard / 2
+            static let section: CGFloat = Theme.Size.Padding.standard
+        }
     }
     
     // MARK: - Class Properties
