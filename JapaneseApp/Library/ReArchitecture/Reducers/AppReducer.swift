@@ -15,7 +15,6 @@ internal func appReducer(action: Action, state: AppState?) -> AppState {
         navigationState: navigationReducer(action: action, state: state?.navigationState),
         repositoryState: repositoryReducer(action: action, state: state?.repositoryState),
         practiceState: practiceReducer(action: action, state: state?.practiceState),
-        studentState: studentReducer(action: action, state: state?.studentState),
         userProfileState: userProfileReducer(action: action, state: state?.userProfileState),
         userSessionState: userSessionReducer(action: action, state: state?.userSessionState)
     )

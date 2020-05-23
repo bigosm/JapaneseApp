@@ -9,13 +9,13 @@
 import Foundation
 
 public struct Token: Codable, Equatable {
-    var accessToken: String
-    var expiresIn: Int
-    var refreshExpiresIn: Int
-    var refreshToken: String
-    var tokenType: String
-    var notBeforePolicy: Int
-    var sessionState: String
+    let accessToken: String
+    let expiresIn: Int
+    let refreshExpiresIn: Int
+    let refreshToken: String
+    let tokenType: String
+    let notBeforePolicy: Int
+    let sessionState: String
     
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"

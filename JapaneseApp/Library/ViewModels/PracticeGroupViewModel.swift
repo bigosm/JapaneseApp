@@ -31,6 +31,7 @@ public protocol PracticeGroupViewModelType {
 }
 
 public final class PracticeGroupViewModel: PracticeGroupViewModelType, PracticeGroupViewModelInputs, PracticeGroupViewModelOutputs, StoreSubscriber {
+    
     public typealias StoreSubscriberStateType = RepositoryState
     
     public init() { }

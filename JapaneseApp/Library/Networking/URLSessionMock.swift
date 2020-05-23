@@ -118,15 +118,11 @@ class URLSessionMock: URLSession {
                 let users: [UserProfile]
             }
             
-            let resource = bundleLoad(resource: "UserProfiles", type: Resource.self)
-            
             guard let authorized = authorization(authoriation!) else {
-                let message = "Request unauthorized"
-                data = try! ServerResponse<String>(data: nil, error: true, message: message).jsonEncode()
-                response = Response.unauthorized(request.url!)
-                error = nil
-                break
+                return unauthorizedResposnse(request, completionHandler)
             }
+            
+            let resource = bundleLoad(resource: "UserProfiles", type: Resource.self)
             
             if let user = resource.users.first(where: { $0.username == authorized.username }) {
                 data = try! user.jsonEncode()
@@ -138,13 +134,43 @@ class URLSessionMock: URLSession {
                 response = Response.internalServerErrpr(request.url!)
                 error = nil
             }
-
+            
+            
+        case PracticeGroupRequest().urlRequest:
+            guard authorization(authoriation!) != nil else {
+                return unauthorizedResposnse(request, completionHandler)
+            }
+            
+            let resource = bundleLoad(resource: "PracticeGroups", type: PracticeGroupEnvelope.self)
+            
+            data = try! resource.jsonEncode()
+            response = Response.success(request.url!)
+            error = nil
+            
+        case KanaCharactersRequest().urlRequest:
+            let resource = bundleLoad(resource: "KanaCharacters", type: KanaCharacters.self)
+            
+            data = try! resource.jsonEncode()
+            response = Response.success(request.url!)
+            error = nil
+            
         default:
             break
         }
         
         return URLSessionDataTaskMock {
             completionHandler(data, response, error)
+        }
+    }
+    
+    func unauthorizedResposnse(_ request: URLRequest, _ completionHandler: @escaping CompletionHandler) -> URLSessionDataTaskMock {
+        let message = "Request unauthorized"
+        return URLSessionDataTaskMock {
+            completionHandler(
+                try! ServerResponse<String>(data: nil, error: true, message: message)
+                    .jsonEncode(),
+                Response.unauthorized(request.url!),
+                nil)
         }
     }
 }

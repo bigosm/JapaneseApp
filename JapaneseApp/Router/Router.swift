@@ -32,11 +32,11 @@ class Router: StoreSubscriber {
         windowSplashScreen = newWindow(splashScreen)
         windowSplashScreen?.makeKeyAndVisible()
         
-        splashScreen.animate {
+//        splashScreen.animate {
             AppStore.shared.subscribe(self) {
                 $0.select { $0 }
             }
-        }
+//        }
         
         // Init AppStore
         _ = AppStore.shared.state
@@ -99,7 +99,7 @@ class Router: StoreSubscriber {
     }
     
     private func newTabBarMain() -> UITabBarController {
-        navigationPractice = newNavigationController(PracticeOverviewViewController())
+        navigationPractice = newNavigationController(PracticeOverviewViewController(practiceType: .hiragana))
         navigationPractice?.tabBarItem = UITabBarItem(title: nil, image: AppImage.tabPractice, tag: 0)
         
         navigationProfile = newNavigationController(UserProfileViewController())

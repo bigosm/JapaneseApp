@@ -11,35 +11,34 @@ import ReSwift
 
 public struct RepositoryState: StateType, Equatable {
     
-    internal let characterTables: [CharacterTable]
-    internal let vocabulary: [Subject]
-    internal let practiceGroups: [PracticeGroup]
-    public let selectedPracticeGroup: PracticeGroup?
+    let kanaCharacters: KanaCharacters
+    let kanji: [Subject]
+    let vocabulary: [Subject]
+    let phrase: [Subject]
     
-    public var numberOfPracticeGroups: Int { return self.practiceGroups.count }
+    let practiceHiragana: [PracticeGroup]
+    let practiceKatakana: [PracticeGroup]
+    let practiceKanji: [PracticeGroup]
+    let practiceVocabulary: [PracticeGroup]
+    let practicePhrase: [PracticeGroup]
+    
+    let errorMessage: String?
+    let isLoading: Bool
+    
+    internal let characterTables: [KanaCharacters] = []
+    public let selectedPracticeGroup: PracticeGroup? = nil
+    
+    var numberOfPracticeGroups: Int { practiceHiragana.count }
     
     public func isSelected(practiceGroup: PracticeGroup) -> Bool {
-        return practiceGroup == selectedPracticeGroup
+        selectedPracticeGroup == practiceGroup
     }
     
     public func getPracticeGroup(atIndex index: Int) -> PracticeGroup {
-        return self.practiceGroups[index]
+        practiceHiragana[index]
     }
     
     public func getPracticeGroup(byId id: String) -> PracticeGroup? {
-        return self.practiceGroups.first { $0.id == id }
+        practiceHiragana.first { $0.id == id }
     }
 }
-
-extension RepositoryState {
-    
-    static var initial = RepositoryState(
-        characterTables: bundleLoad(resource: "Characters", type: [CharacterTable].self),
-        vocabulary: bundleLoad(resource: "Vocabulary", type: [Subject].self),
-        practiceGroups: bundleLoad(resource: "PracticeGroups", type: [PracticeGroup].self),
-        selectedPracticeGroup: nil
-    )
-    
-}
-
-

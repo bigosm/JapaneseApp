@@ -1,54 +1,80 @@
-[
-    {
-        "id": "hiragana-1",
-        "title": "Hiragana 1",
-        "requirements": [],
-        "levels": [
-            {
-                "id": "hiragana-1-level-1",
-                "level": 1,
-                "characters": [
-                    "hiragana-i",
-                    "hiragana-chi",
-                    "hiragana-ni",
-                ],
-                "vocabulary": [
-                    "word-ichi-one",
-                    "word-ni-two",
-                ],
-                "phrases": [],
-                "questions": []
+{
+    "hiragana": [
+        {
+            "id": "hiragana-1",
+            "title": "Hiragana 1",
+            "type": "hiragana",
+            "requirements": [],
+            "progress": {
+                "levels": { },
+                "hiragana": { },
+                "katakana": { },
+                "kanji": { },
+                "vocabulary": { },
+                "phrase": { }
             },
-            {
-                "id": "hiragana-1-level-2",
-                "level": 2,
-                "characters": [
-                    "hiragana-sa",
-                    "hiragana-n",
-                    "hiragana-yo",
-                ],
-                "vocabulary": [
-                    "word-san-three",
-                    "word-yon-four",
-                ],
-                "phrases": [],
-                "questions": []
-            },
-            {
-                "id": "hiragana-1-level-3",
-                "level": 3,
-                "characters": [
-                    "hiragana-ro",
-                    "hiragana-ku",
-                    "hiragana-na",
-                ],
-                "vocabulary": [
-                    "word-roku-six",
-                    "word-nana-seven"
-                ],
-                "phrases": [],
-                "questions": []
-            }
-        ]
-    }
-]
+            "levels": [
+                {
+                    "id": "hiragana-1-level-1",
+                    "level": 1,
+                    "requirements": [],
+                    "hiragana": [
+                        "hiragana-i",
+                        "hiragana-chi",
+                        "hiragana-ni"
+                    ],
+                    "katakana": [],
+                    "kanji": [],
+                    "vocabulary": [
+                        "word-ichi-one",
+                        "word-ni-two"
+                    ],
+                    "phrase": []
+                },
+                {
+                    "id": "hiragana-1-level-2",
+                    "level": 2,
+                    "requirements": [
+                        "hiragana-1-level-1"
+                    ],
+                    "hiragana": [
+                        "hiragana-sa",
+                        "hiragana-n",
+                        "hiragana-yo"
+                    ],
+                    "katakana": [],
+                    "kanji": [],
+                    "vocabulary": [
+                        "word-san-three",
+                        "word-yon-four"
+                    ],
+                    "phrase": []
+                },
+                {
+                    "id": "hiragana-1-level-3",
+                    "level": 3,
+                    "requirements": [
+                        "hiragana-1-level-2"
+                    ],
+                    "hiragana": [
+                        "hiragana-ro",
+                        "hiragana-ku",
+                        "hiragana-na"
+                    ],
+                    "katakana": [],
+                    "kanji": [],
+                    "vocabulary": [
+                        "word-roku-six",
+                        "word-nana-seven"
+                    ],
+                    "phrase": []
+                }
+            ]
+        }
+    ],
+    "katakana": [],
+    "kanji": [],
+    "vocabulary": [],
+    "phrase": []
+}
+

@@ -13,7 +13,7 @@ internal func userProfileReducer(action: Action, state: UserProfileState?) -> Us
     let state = state ?? UserProfileState(profile: nil)
     
     switch action {
-    case let action as AppActions.Networking.UserProfile:
+    case let action as AppActions.RequestResult.UserProfile:
         switch action.state {
         case .success(let userProfile):
             return UserProfileState(profile: userProfile)

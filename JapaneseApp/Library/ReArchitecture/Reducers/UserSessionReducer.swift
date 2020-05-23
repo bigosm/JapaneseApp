@@ -11,7 +11,7 @@ import ReSwift
 
 internal func userSessionReducer(action: Action, state: UserSessionState?) -> UserSessionState {
     switch action {
-    case let action as AppActions.Networking.Login:
+    case let action as AppActions.RequestResult.Login:
         switch action.state {
         case .success(let token):
             return UserSessionState.authorized(token)

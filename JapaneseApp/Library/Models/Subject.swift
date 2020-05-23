@@ -18,13 +18,14 @@ public struct Subject: Equatable {
     
     // MARK: - Instance Properties
     
-    public let id: String
-    public let value: String
-    public let readingAid: String?
-    public let altNotation: String?
-    public let audio: String?
-    public let meaning: [String]?
-    public let type: WordType?
+    let id: String
+    let value: String
+    let readingAid: String?
+    let altNotation: String?
+    let audio: String?
+    let meaning: [String]?
+    let type: WordType?
+    let category: String?
     
 }
 
@@ -33,7 +34,7 @@ public struct Subject: Equatable {
 extension Subject: Codable {
 
     private enum CodingKeys: String, CodingKey {
-        case id, value, readingAid, altNotation, audio, meaning, type
+        case id, value, readingAid, altNotation, audio, meaning, type, category
     }
     
     public init(from decoder: Decoder) throws {
@@ -50,6 +51,7 @@ extension Subject: Codable {
         } else {
             self.type = nil
         }
+        self.category = try values.decodeIfPresent(String.self, forKey: .category)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -60,7 +62,8 @@ extension Subject: Codable {
         try container.encode(altNotation, forKey: .altNotation)
         try container.encodeIfPresent(audio, forKey: .audio)
         
-        try container.encodeIfPresent(meaning, forKey: .type)
+        try container.encodeIfPresent(meaning, forKey: .meaning)
         try container.encodeIfPresent(type?.rawValue, forKey: .type)
+        try container.encodeIfPresent(category, forKey: .category)
     }
 }

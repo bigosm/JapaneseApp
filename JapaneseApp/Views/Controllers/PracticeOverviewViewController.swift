@@ -9,44 +9,34 @@
 import UIKit
 import ReSwift
 
-public final class PracticeOverviewViewController: UIViewController {
+final class PracticeOverviewViewController: TableViewController {
     
     // MARK: - Instance Properties
     
-    private let viewModel: PracticeOverviewViewModelType = PracticeOverviewViewModel()
-    private let basicCellIdentifier = "basicCellIdentifier"
-    private let practiceGroupCellIdentifier = "PracticeGroupCell"
-    
-    public var tableView = UITableView()
-    
+    private let disposeBag = DisposeBag()
+    private let viewModel: PracticeOverviewViewModelType
+
     // MARK: - View Lifecycle
     
-    public override func viewDidLoad() {
+    init(practiceType: PracticeType) {
+        viewModel = PracticeOverviewViewModel(practiceType: practiceType)
+        super.init()
+    }
+
+    override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "Practice"
-        self.tableView.separatorStyle = .none
-        self.tableView.backgroundColor = Theme.Background.primaryColor
-        self.tableView.isUserInteractionEnabled = true
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.estimatedRowHeight = UITableView.automaticDimension
-        self.tableView.rowHeight = UITableView.automaticDimension
-        
-        self.tableView.register(PracticeGroupCell.self, forCellReuseIdentifier: self.practiceGroupCellIdentifier)
         
         self.setupView()
         self.bindViewModel()
-        self.viewModel.inputs.viewDidLoad()
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.viewModel.inputs.viewWillAppear()
     }
     
-    public override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         self.viewModel.inputs.viewWillDisappear()
@@ -56,34 +46,37 @@ public final class PracticeOverviewViewController: UIViewController {
     
     // MARK: - Bindings
     
-    private func bindViewModel() { }
+    private func bindViewModel() {
+        viewModel.outputs.numberOfItems.bind(.update) { [weak self] _ in
+            self?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+        }.disposed(by: disposeBag)
+    }
     
     // MARK: - View Position Layout
     
     private func setupView() {
-        self.view.addSubview(self.tableView)
-        
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
+        self.tableView.separatorStyle = .none
+        self.tableView.backgroundColor = Theme.Background.primaryColor
+        self.tableView.isUserInteractionEnabled = true
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = UITableView.automaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.register(PracticeGroupCell.self)
     }
     
 }
 
 // MARK: - UITableViewDataSource
 
-extension PracticeOverviewViewController: UITableViewDataSource {
+extension PracticeOverviewViewController {
 
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.outputs.numberOfItems
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.outputs.numberOfItems.value
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: self.practiceGroupCellIdentifier, for: indexPath) as! PracticeGroupCell
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withClass: PracticeGroupCell.self, for: indexPath)
         cell.configureWith(practiceGroupAtIndex: indexPath.row)
         return cell
     }
@@ -92,12 +85,11 @@ extension PracticeOverviewViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension PracticeOverviewViewController: UITableViewDelegate {
+extension PracticeOverviewViewController {
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.viewModel.inputs.select(practiceGroupAtIndex: indexPath.row)
 
-        // Nice and smoth selecting cell animation.
         tableView.beginUpdates()
         tableView.endUpdates()
     }

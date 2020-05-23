@@ -6,7 +6,8 @@
     "altNotation": "ichi",
     "audio": null,
     "meaning": ["One"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-ni-two",
@@ -15,7 +16,8 @@
     "altNotation": "ni",
     "audio": null,
     "meaning": ["Two"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-san-three",
@@ -24,7 +26,8 @@
     "altNotation": "san",
     "audio": null,
     "meaning": ["Three"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-yon-four",
@@ -33,7 +36,8 @@
     "altNotation": "yon",
     "audio": null,
     "meaning": ["Four"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-go-five",
@@ -42,7 +46,8 @@
     "altNotation": "go",
     "audio": null,
     "meaning": ["Five"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-roku-six",
@@ -51,7 +56,8 @@
     "altNotation": "roku",
     "audio": null,
     "meaning": ["Six"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-nana-seven",
@@ -60,7 +66,8 @@
     "altNotation": "nana",
     "audio": null,
     "meaning": ["Seven"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-hachi-eight",
@@ -69,7 +76,8 @@
     "altNotation": "hachi",
     "audio": null,
     "meaning": ["Eight"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-kyuu-seven",
@@ -78,7 +86,8 @@
     "altNotation": "kyuu",
     "audio": null,
     "meaning": ["Nine"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-juu-ten",
@@ -87,7 +96,8 @@
     "altNotation": "juu",
     "audio": null,
     "meaning": ["Ten"],
-    "type": "numeric"
+    "type": "numeric",
+    "category": "numbers"
   },
   {
     "id": "word-iro-color",
@@ -96,7 +106,8 @@
     "altNotation": "iro",
     "audio": null,
     "meaning": ["Color", "Colour", "Hue", "Tint", "Tinge", "Shade"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-shiro-white",
@@ -105,7 +116,8 @@
     "altNotation": "shiro",
     "audio": null,
     "meaning": ["White"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-kuro-black",
@@ -114,7 +126,8 @@
     "altNotation": "kuro",
     "audio": null,
     "meaning": ["Black"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-ao-blue",
@@ -123,7 +136,8 @@
     "altNotation": "ao",
     "audio": null,
     "meaning": ["Blue", "Azure"],
-    "type": "color"
+    "type": "color",
+    "category": "colors"
   },
   {
     "id": "word-aka-red",
@@ -132,7 +146,8 @@
     "altNotation": "aka",
     "audio": null,
     "meaning": ["Red", "Crimson", "Scarlet"],
-    "type": "color"
+    "type": "color",
+    "category": "colors"
   },
   {
     "id": "word-orenji-orange",
@@ -141,7 +156,8 @@
     "altNotation": "orenji",
     "audio": null,
     "meaning": ["Orange"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-kiiro-yellow",
@@ -150,7 +166,8 @@
     "altNotation": "kiiro",
     "audio": null,
     "meaning": ["Yellow", "Amber"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-midori-green",
@@ -159,7 +176,8 @@
     "altNotation": "midori",
     "audio": null,
     "meaning": ["Green"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-pinku-pink",
@@ -168,7 +186,8 @@
     "altNotation": "pinku",
     "audio": null,
     "meaning": ["Pink"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-murasaki-purple",
@@ -177,7 +196,8 @@
     "altNotation": "murasaki",
     "audio": null,
     "meaning": ["Purple", "Violet"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-haiiro-gray",
@@ -186,7 +206,8 @@
     "altNotation": "haiiro",
     "audio": null,
     "meaning": ["Gray", "Grey", "Ashen"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-kiniro-gold",
@@ -195,7 +216,8 @@
     "altNotation": "kiniro",
     "audio": null,
     "meaning": ["Golden", "Gold"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-giniro-silver",
@@ -204,7 +226,8 @@
     "altNotation": "giniro",
     "audio": null,
     "meaning": ["Silver"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   },
   {
     "id": "word-buronzuiro-brown",
@@ -213,6 +236,7 @@
     "altNotation": "buronzuiro",
     "audio": null,
     "meaning": ["Brown", "Bronze"],
-    "type": "noun"
+    "type": "noun",
+    "category": "colors"
   }
 ]

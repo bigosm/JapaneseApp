@@ -22,15 +22,19 @@ enum UserActions {
 enum AppActions {
     
     enum UserSession: Action {
-        case refreshSession
         case sessionExpired
     }
-    
-    enum UserProfile: Action {
+
+    enum Request: Action {
+        case refreshSession
+        
         case getUserProfile
+        
+        case getPracticeGroups
+        case getKanaCharacters
     }
 
-    enum Networking {
+    enum RequestResult {
         class Request<T>: Action {
             enum State<T> {
                 case success(T)
@@ -49,6 +53,8 @@ enum AppActions {
         class RefreshSession: Request<RefreshSessionRequest.Response> { }
         
         class UserProfile: Request<UserProfileRequest.Response> { }
+        class PracticeGroups: Request<PracticeGroupRequest.Response> { }
+        class KanaCharacters: Request<KanaCharactersRequest.Response> { }
     }
 }
 

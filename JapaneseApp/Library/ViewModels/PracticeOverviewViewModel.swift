@@ -11,13 +11,12 @@ import ReSwift
 
 public protocol PracticeOverviewViewModelInputs {
     func select(practiceGroupAtIndex index: Int)
-    func viewDidLoad()
     func viewWillAppear()
     func viewWillDisappear()
 }
 
 public protocol PracticeOverviewViewModelOutputs {
-    var numberOfItems: Int { get }
+    var numberOfItems: Observable<Int> { get }
 }
 
 public protocol PracticeOverviewViewModelType {
@@ -30,10 +29,25 @@ public final class PracticeOverviewViewModel: PracticeOverviewViewModelType, Pra
     
     // MARK: - Object Lifecycle
     
-    public init() { }
+    private let practiceType: PracticeType
+    
+    public init(practiceType: PracticeType) {
+        self.practiceType = practiceType
+    }
     
     public func newState(state: RepositoryState) {
-        self.numberOfItems = state.numberOfPracticeGroups
+        switch practiceType {
+        case .hiragana:
+            numberOfItems.value = state.practiceHiragana.count
+        case .katakana:
+            numberOfItems.value = state.practiceKatakana.count
+        case .kanji:
+            numberOfItems.value = state.practiceKanji.count
+        case .vocabulary:
+            numberOfItems.value = state.practiceVocabulary.count
+        case .phrase:
+            numberOfItems.value = state.practicePhrase.count
+        }
     }
     
     // MARK: - Inputs
@@ -43,8 +57,6 @@ public final class PracticeOverviewViewModel: PracticeOverviewViewModelType, Pra
             RepositoryAction.selectPracticeGroupAtIndex(index)
         )
     }
-    
-    public func viewDidLoad() { }
     
     public func viewWillAppear() {
         AppStore.shared.subscribe(self) {
@@ -58,10 +70,10 @@ public final class PracticeOverviewViewModel: PracticeOverviewViewModelType, Pra
     
     // MARK: - Outputs
     
-    public var numberOfItems: Int = 0
+    public let numberOfItems = Observable(0)
 
-    public var inputs: PracticeOverviewViewModelInputs { return self }
-    public var outputs: PracticeOverviewViewModelOutputs { return self }
+    public var inputs: PracticeOverviewViewModelInputs { self }
+    public var outputs: PracticeOverviewViewModelOutputs { self }
     
     // MARK: - Private
 }
