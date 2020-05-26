@@ -31,10 +31,9 @@ internal func repositoryReducer(action: Action, state: RepositoryState?) -> Repo
     
     guard action is RepositoryAction else { return state }
     
-    var kanaCharacters: KanaCharacters = state.kanaCharacters
-    
+    var kanaCharacters = state.kanaCharacters
     let kanji = state.kanji
-    let vocabulary = state.vocabulary
+    var vocabulary = state.vocabulary
     let phrase = state.phrase
     
     var practiceHiragana = state.practiceHiragana
@@ -82,7 +81,19 @@ internal func repositoryReducer(action: Action, state: RepositoryState?) -> Repo
         }
         
         // TODO: Kanji
-        // TODO: Vocabulary
+        
+        // MARK: Vocabulary
+        
+    case let action as AppActions.RequestResult.Vocabulary:
+        switch action.state {
+        case .success(let resource):
+            vocabulary = resource
+        case .failure(let error):
+            errorMessage = error.localizedDescription
+        case .inProgress:
+            isLoading = true
+        }
+
         // TODO: Phrase
         
         // MARK: - ❤️ UserActions.PracticeOveriew

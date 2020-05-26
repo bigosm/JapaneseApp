@@ -36,6 +36,7 @@ enum AppActions {
         
         case getPracticeGroups
         case getKanaCharacters
+        case getVocabulary
     }
 
     enum RequestResult {
@@ -59,6 +60,7 @@ enum AppActions {
         class UserProfile: Request<UserProfileRequest.Response> { }
         class PracticeGroups: Request<PracticeGroupRequest.Response> { }
         class KanaCharacters: Request<KanaCharactersRequest.Response> { }
+        class Vocabulary: Request<VocabularyRequest.Response> { }
     }
 }
 
@@ -66,6 +68,7 @@ protocol RepositoryAction { }
 extension UserActions.PracticeOveriew: RepositoryAction { }
 
 extension AppActions.RequestResult.KanaCharacters: RepositoryAction { }
+extension AppActions.RequestResult.Vocabulary: RepositoryAction { }
 extension AppActions.RequestResult.PracticeGroups: RepositoryAction { }
 
 // MARK: - Deprecated functionality

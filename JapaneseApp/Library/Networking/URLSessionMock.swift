@@ -135,6 +135,7 @@ class URLSessionMock: URLSession {
                 error = nil
             }
             
+            // MARK: - PracticeGroupRequest
             
         case PracticeGroupRequest().urlRequest:
             guard authorization(authoriation!) != nil else {
@@ -147,8 +148,19 @@ class URLSessionMock: URLSession {
             response = Response.success(request.url!)
             error = nil
             
+            // MARK: - KanaCharactersRequest
+            
         case KanaCharactersRequest().urlRequest:
             let resource = bundleLoad(resource: "KanaCharacters", type: KanaCharacters.self)
+            
+            data = try! resource.jsonEncode()
+            response = Response.success(request.url!)
+            error = nil
+            
+            // MARK: - VocabularyRequest
+            
+        case VocabularyRequest().urlRequest:
+            let resource = bundleLoad(resource: "Vocabulary", type: [Subject].self)
             
             data = try! resource.jsonEncode()
             response = Response.success(request.url!)

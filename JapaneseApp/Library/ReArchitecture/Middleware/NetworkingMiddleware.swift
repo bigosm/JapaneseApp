@@ -59,6 +59,11 @@ internal let networkingMiddleware: Middleware<AppState> = { dispatch, getState i
                     KanaCharactersRequest(),
                     AppActions.RequestResult.KanaCharacters.init))
                 
+            case AppActions.Request.getVocabulary:
+                next(networking.request(
+                    VocabularyRequest(),
+                    AppActions.RequestResult.Vocabulary.init))
+                
             default:
                 next(action)
             }
