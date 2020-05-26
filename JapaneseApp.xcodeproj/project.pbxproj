@@ -37,6 +37,7 @@
 		1F3E151E2400491500BFFC43 /* PracticeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */; };
 		1F3E1522240423D000BFFC43 /* PracticeCompletionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */; };
 		1F3E152424042CE700BFFC43 /* PracticeCompletionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3E152324042CE700BFFC43 /* PracticeCompletionCellViewModel.swift */; };
+		1F41F587247D718400DB388E /* VocabularyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F41F586247D718400DB388E /* VocabularyRequest.swift */; };
 		1F43DA5723EB016700CED94A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43DA5623EB016700CED94A /* Button.swift */; };
 		1F48D44D23EDB7B70069B2D4 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D44C23EDB7B70069B2D4 /* NavigationState.swift */; };
 		1F48D44F23EDB7BF0069B2D4 /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */; };
@@ -177,6 +178,7 @@
 		1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionViewController.swift; sourceTree = "<group>"; };
 		1F3E1521240423D000BFFC43 /* PracticeCompletionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionCell.swift; sourceTree = "<group>"; };
 		1F3E152324042CE700BFFC43 /* PracticeCompletionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeCompletionCellViewModel.swift; sourceTree = "<group>"; };
+		1F41F586247D718400DB388E /* VocabularyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyRequest.swift; sourceTree = "<group>"; };
 		1F43DA5623EB016700CED94A /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1F48D44C23EDB7B70069B2D4 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		1F48D44E23EDB7BF0069B2D4 /* NavigationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducer.swift; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 				1F2C44DB2471541500338894 /* UserProfileRequest.swift */,
 				1F9506552477CBE400F64FCB /* PracticeGroupRequest.swift */,
 				1F950669247931DF00F64FCB /* KanaCharactersRequest.swift */,
+				1F41F586247D718400DB388E /* VocabularyRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -938,6 +941,7 @@
 				1F9506582477FA1C00F64FCB /* PracticeGroupEnvelope.swift in Sources */,
 				1F48D48323FC23140069B2D4 /* AnswerCompletionViewController.swift in Sources */,
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
+				1F41F587247D718400DB388E /* VocabularyRequest.swift in Sources */,
 				1F95066E2479545100F64FCB /* TableViewCell.swift in Sources */,
 				1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */,
 				1F809C59246F43A200526323 /* Date+Extension.swift in Sources */,
