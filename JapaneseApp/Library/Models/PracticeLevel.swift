@@ -9,14 +9,12 @@
 import Foundation
 
 public struct PracticeLevel: Codable, Equatable {
-    
-    // MARK: - Instance Properties
-    
-    public let id: String
-    public let level: Int
-    public let characters: [String]
-    public let vocabulary: [String]
-    public let phrases: [String]
-//    public let questions: [Question]
-    
+    let id: String
+    let level: Int
+    let requirements: [String]
+    let hiragana: [String]
+    let katakana: [String]
+    let kanji: [String]
+    let vocabulary: [String]
+    let phrase: [String]
 }

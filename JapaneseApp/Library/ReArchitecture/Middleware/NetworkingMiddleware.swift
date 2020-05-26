@@ -25,15 +25,15 @@ internal let networkingMiddleware: Middleware<AppState> = { dispatch, getState i
             case UserActions.UserSession.login(let username, let password):
                 next(networking.request(
                     LoginRequest(username: username, password: password),
-                    AppActions.Networking.Login.init))
+                    AppActions.RequestResult.Login.init))
 
-            case AppActions.UserSession.refreshSession:
+            case AppActions.Request.refreshSession:
                 guard case .authorized(let token) = getState()?.userSessionState else { return }
                 next(networking.request(
                     RefreshSessionRequest(refreshToken: token.refreshToken),
-                    AppActions.Networking.RefreshSession.init))
+                    AppActions.RequestResult.RefreshSession.init))
                 
-            case let action as AppActions.Networking.RefreshSession:
+            case let action as AppActions.RequestResult.RefreshSession:
                 switch action.state {
                 case .success(_):
                     networking.refreshActions()
@@ -44,10 +44,20 @@ internal let networkingMiddleware: Middleware<AppState> = { dispatch, getState i
                     next(action)
                 }
                 
-            case AppActions.UserProfile.getUserProfile:
+            case AppActions.Request.getUserProfile:
                 next(networking.request(
                     UserProfileRequest(),
-                    AppActions.Networking.UserProfile.init))
+                    AppActions.RequestResult.UserProfile.init))
+                
+            case AppActions.Request.getPracticeGroups:
+                next(networking.request(
+                    PracticeGroupRequest(),
+                    AppActions.RequestResult.PracticeGroups.init))
+                
+            case AppActions.Request.getKanaCharacters:
+                next(networking.request(
+                    KanaCharactersRequest(),
+                    AppActions.RequestResult.KanaCharacters.init))
                 
             default:
                 next(action)
@@ -89,7 +99,7 @@ class Networking {
     var inProgress: [UUID: (task: APIClientTaskType, action: Action)] = [:]
     var pending: [UUID: (task: APIClientTaskType, action: Action)] = [:]
     
-    typealias NetworkAction<T> = AppActions.Networking.Request<T>
+    typealias NetworkAction<T> = AppActions.RequestResult.Request<T>
     
     func request<T: APIRequest>(
         _ request: T,
@@ -115,14 +125,13 @@ class Networking {
             switch result {
             case .success(let response):
                 self?.solveTask(withId: task.id)
-                print(response!)
                 self?.dispatch(action(.success(response!)))
             case .failure(let error):
                 if request.requiresAuth,
                     let error = error as? URLSession.Error,
                     case .server(401, _) = error {
                     self?.markActionForRefresh(actionId: task.id)
-                    self?.dispatch(AppActions.UserSession.refreshSession)
+                    self?.dispatch(AppActions.Request.refreshSession)
                 } else {
                     self?.solveTask(withId: task.id)
                     self?.dispatch(action(.failure(error)))

@@ -13,8 +13,8 @@ public class Observable<T: Equatable> {
     typealias BindingAction = (T) -> Void
 
     private class Observer {
-        var bindingAction:  BindingAction
-        var bindingType:    BindingType
+        var bindingAction: BindingAction
+        var bindingType: BindingType
 
         init(withType type: BindingType = .initial,_ action: @escaping BindingAction) {
             self.bindingType = type
@@ -70,8 +70,9 @@ extension Observable where T: ExpressibleByNilLiteral {
 struct BindingType: OptionSet {
     let rawValue: Int
 
-    static let initial  = BindingType(rawValue: 1 << 0)
-    static let new      = BindingType(rawValue: 1 << 1)
-    static let update   = BindingType(rawValue: 1 << 2)
+    static let initial = BindingType(rawValue: 1 << 0)
+    static let new = BindingType(rawValue: 1 << 1)
+    static let update = BindingType(rawValue: 1 << 2)
+    static let skipRepeat: BindingType = [.initial, .update]
 }
 

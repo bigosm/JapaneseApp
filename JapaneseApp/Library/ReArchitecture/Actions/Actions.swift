@@ -14,6 +14,10 @@ enum UserActions {
         case login(username: String, password: String)
         case logout
     }
+    
+    enum PracticeOveriew: Action {
+        case selectPracticeGroup(PracticeGroup)
+    }
 }
 
 
@@ -22,15 +26,19 @@ enum UserActions {
 enum AppActions {
     
     enum UserSession: Action {
-        case refreshSession
         case sessionExpired
     }
-    
-    enum UserProfile: Action {
+
+    enum Request: Action {
+        case refreshSession
+        
         case getUserProfile
+        
+        case getPracticeGroups
+        case getKanaCharacters
     }
 
-    enum Networking {
+    enum RequestResult {
         class Request<T>: Action {
             enum State<T> {
                 case success(T)
@@ -49,8 +57,18 @@ enum AppActions {
         class RefreshSession: Request<RefreshSessionRequest.Response> { }
         
         class UserProfile: Request<UserProfileRequest.Response> { }
+        class PracticeGroups: Request<PracticeGroupRequest.Response> { }
+        class KanaCharacters: Request<KanaCharactersRequest.Response> { }
     }
 }
+
+protocol RepositoryAction { }
+extension UserActions.PracticeOveriew: RepositoryAction { }
+
+extension AppActions.RequestResult.KanaCharacters: RepositoryAction { }
+extension AppActions.RequestResult.PracticeGroups: RepositoryAction { }
+
+// MARK: - Deprecated functionality
 
 public struct SelectQuestionGroup: Action {
     let indexOf: Int
@@ -79,8 +97,4 @@ public enum CurrentPracticeAction: Action {
     case answerState(AnswerCheck)
     case nextQuestion
     case toggleReadingAid
-}
-
-public enum RepositoryAction: Action {
-    case selectPracticeGroupAtIndex(Int)
 }

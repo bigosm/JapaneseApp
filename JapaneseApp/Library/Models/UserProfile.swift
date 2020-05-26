@@ -9,9 +9,9 @@
 import Foundation
 
 public struct UserProfile: Codable, Equatable {
-    public let username: String
-    public let email: String
-    public let name: String?
-    public let surname: String?
-    public let preferredUsername: String?
+    let username: String
+    let email: String
+    let name: String?
+    let surname: String?
+    let preferredUsername: String?
 }

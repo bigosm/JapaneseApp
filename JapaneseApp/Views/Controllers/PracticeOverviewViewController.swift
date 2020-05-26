@@ -9,98 +9,97 @@
 import UIKit
 import ReSwift
 
-public final class PracticeOverviewViewController: UIViewController {
+final class PracticeOverviewViewController: TableViewController {
     
     // MARK: - Instance Properties
     
-    private let viewModel: PracticeOverviewViewModelType = PracticeOverviewViewModel()
-    private let basicCellIdentifier = "basicCellIdentifier"
-    private let practiceGroupCellIdentifier = "PracticeGroupCell"
-    
-    public var tableView = UITableView()
-    
+    private var disposeBag = DisposeBag()
+    private let viewModel: PracticeOverviewViewModelType
+
     // MARK: - View Lifecycle
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.title = "Practice"
-        self.tableView.separatorStyle = .none
-        self.tableView.backgroundColor = Theme.Background.primaryColor
-        self.tableView.isUserInteractionEnabled = true
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.estimatedRowHeight = UITableView.automaticDimension
-        self.tableView.rowHeight = UITableView.automaticDimension
-        
-        self.tableView.register(PracticeGroupCell.self, forCellReuseIdentifier: self.practiceGroupCellIdentifier)
-        
-        self.setupView()
-        self.bindViewModel()
-        self.viewModel.inputs.viewDidLoad()
+    init(practiceType: PracticeType) {
+        viewModel = PracticeOverviewViewModel(practiceType: practiceType)
+        super.init()
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupView()
+        bindViewModel()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.viewModel.inputs.viewWillAppear()
+        viewModel.inputs.viewWillAppear()
     }
     
-    public override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.viewModel.inputs.viewWillDisappear()
+        viewModel.inputs.viewWillDisappear()
     }
-    
-    // MARK: - Instance Methods
     
     // MARK: - Bindings
     
-    private func bindViewModel() { }
+    private func bindViewModel() {
+        viewModel.outputs.numberOfItems.bind(.update) { [weak self] _ in
+            if self?.view.window?.isKeyWindow ?? false {
+                self?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            }
+        }.disposed(by: disposeBag)
+        
+        viewModel.outputs.isLoading.bind(.update) { [weak self] isLoading in
+            isLoading
+                ? self?.loadingIndicator.startAnimating()
+                : self?.loadingIndicator.stopAnimating()
+        }.disposed(by: disposeBag)
+    }
     
-    // MARK: - View Position Layout
+    lazy var loadingIndicator: LoadingIndicatorView = {
+        let x = LoadingIndicatorView()
+        tableView.addSubview(x)
+        x.translatesAutoresizingMaskIntoConstraints = false
+        x.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        x.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        return x
+    }()
+    
+    // MARK: - Setup View
     
     private func setupView() {
-        self.view.addSubview(self.tableView)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = Theme.Background.primaryColor
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(PracticeGroupCell.self)
+    }
+}
+
+// MARK: - UITableViewDataSource & UITableViewDelegate
+
+extension PracticeOverviewViewController {
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.outputs.numberOfItems.value
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView
+            .dequeueReusableCell(withClass: PracticeGroupCell.self, for: indexPath)
+            .configure(
+                viewModel.outputs.practiceType,
+                withPracticeGroupAtIndex: indexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.inputs.practiceGroupTapped(atIndex: indexPath.row)
         
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
-    }
-    
-}
-
-// MARK: - UITableViewDataSource
-
-extension PracticeOverviewViewController: UITableViewDataSource {
-
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.outputs.numberOfItems
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: self.practiceGroupCellIdentifier, for: indexPath) as! PracticeGroupCell
-        cell.configureWith(practiceGroupAtIndex: indexPath.row)
-        return cell
-    }
-    
-}
-
-// MARK: - UITableViewDelegate
-
-extension PracticeOverviewViewController: UITableViewDelegate {
-    
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel.inputs.select(practiceGroupAtIndex: indexPath.row)
-
-        // Nice and smoth selecting cell animation.
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-    
 }
-

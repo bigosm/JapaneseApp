@@ -18,8 +18,10 @@ public final class AppStore {
         state: nil,
         middleware: [
             loggerMiddleware,
+            initMiddleware,
+            // storageMiddleware,
             networkingMiddleware,
-            authorizationMiddleware,
+            reloginMiddleware,
             prepareQuestionsMiddleware,
             checkAnswerMiddleware,
             nextQuestionMiddleware

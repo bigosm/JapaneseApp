@@ -18,7 +18,7 @@ internal struct QuestionFactory {
     
     public func prepare() -> [AnyQuestion] {
         let currentPracticeLevel = self.practiceGroup.levels.filter { $0.level <= level }
-        let charactersIds = currentPracticeLevel.map { $0.characters }.flatMap { $0 }
+        let charactersIds = currentPracticeLevel.map { $0.hiragana }.flatMap { $0 }
         let vocabularyIds = currentPracticeLevel.map { $0.vocabulary }.flatMap { $0 }
         //        let phrasesIds = currentPracticeLevel.map { $0.phrases }.flatMap { $0 }
         
@@ -119,12 +119,7 @@ internal struct QuestionFactory {
     }
     
     public func getCharacters(byIds charactersIds: [String]) -> [Subject] {
-        let characterTables = AppStore.shared.state.repositoryState.characterTables
-        return charactersIds.map { id in
-            id.contains("hiragana")
-                ? characterTables.first(where: { $0.type == .hiragana })?.characters.first(where: {$0.id == id})
-                : characterTables.first(where: { $0.type == .katakana })?.characters.first(where: {$0.id == id})
-        }.compactMap { $0 }
+        return []
     }
     
     public func getVocabulary(byIds vocabularyIds: [String]) -> [Subject] {
