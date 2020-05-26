@@ -14,6 +14,10 @@ enum UserActions {
         case login(username: String, password: String)
         case logout
     }
+    
+    enum PracticeOveriew: Action {
+        case selectPracticeGroup(PracticeGroup)
+    }
 }
 
 
@@ -58,6 +62,14 @@ enum AppActions {
     }
 }
 
+protocol RepositoryAction { }
+extension UserActions.PracticeOveriew: RepositoryAction { }
+
+extension AppActions.RequestResult.KanaCharacters: RepositoryAction { }
+extension AppActions.RequestResult.PracticeGroups: RepositoryAction { }
+
+// MARK: - Deprecated functionality
+
 public struct SelectQuestionGroup: Action {
     let indexOf: Int
 }
@@ -85,8 +97,4 @@ public enum CurrentPracticeAction: Action {
     case answerState(AnswerCheck)
     case nextQuestion
     case toggleReadingAid
-}
-
-public enum RepositoryAction: Action {
-    case selectPracticeGroupAtIndex(Int)
 }

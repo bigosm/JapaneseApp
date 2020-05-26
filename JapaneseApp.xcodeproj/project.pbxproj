@@ -118,6 +118,7 @@
 		1F95066624784C1900F64FCB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95066524784C1900F64FCB /* TableViewController.swift */; };
 		1F95066A247931DF00F64FCB /* KanaCharactersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F950669247931DF00F64FCB /* KanaCharactersRequest.swift */; };
 		1F95066C2479337D00F64FCB /* InitMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95066B2479337D00F64FCB /* InitMiddleware.swift */; };
+		1F95066E2479545100F64FCB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95066D2479545100F64FCB /* TableViewCell.swift */; };
 		1F9B4CB52465CD6500261EF8 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4CB42465CD6500261EF8 /* UIImage+AppImages.swift */; };
 		1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */; };
 		1FB6E440246EE13D00C975D5 /* FutureAndPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6E43F246EE13D00C975D5 /* FutureAndPromise.swift */; };
@@ -257,6 +258,7 @@
 		1F95066524784C1900F64FCB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1F950669247931DF00F64FCB /* KanaCharactersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanaCharactersRequest.swift; sourceTree = "<group>"; };
 		1F95066B2479337D00F64FCB /* InitMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitMiddleware.swift; sourceTree = "<group>"; };
+		1F95066D2479545100F64FCB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		1F9B4CB42465CD6500261EF8 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
 		1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		1FB6E43F246EE13D00C975D5 /* FutureAndPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureAndPromise.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 			children = (
 				1F9506632478490C00F64FCB /* UIView+Reusable.swift */,
 				1F95066524784C1900F64FCB /* TableViewController.swift */,
+				1F95066D2479545100F64FCB /* TableViewCell.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				1F9506582477FA1C00F64FCB /* PracticeGroupEnvelope.swift in Sources */,
 				1F48D48323FC23140069B2D4 /* AnswerCompletionViewController.swift in Sources */,
 				1F4DABFA23EB2031005C92BA /* AppStore.swift in Sources */,
+				1F95066E2479545100F64FCB /* TableViewCell.swift in Sources */,
 				1FC741D823BF6AE000244938 /* SceneDelegate.swift in Sources */,
 				1F809C59246F43A200526323 /* Date+Extension.swift in Sources */,
 				1FB6E444246EE58000C975D5 /* APIRequest.swift in Sources */,

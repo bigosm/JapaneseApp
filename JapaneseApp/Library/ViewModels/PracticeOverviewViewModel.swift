@@ -9,71 +9,77 @@
 import Foundation
 import ReSwift
 
-public protocol PracticeOverviewViewModelInputs {
-    func select(practiceGroupAtIndex index: Int)
+protocol PracticeOverviewViewModelInputs {
+    func practiceGroupTapped(atIndex index: Int)
+    
     func viewWillAppear()
     func viewWillDisappear()
 }
 
-public protocol PracticeOverviewViewModelOutputs {
+protocol PracticeOverviewViewModelOutputs {
+    var isLoading: Observable<Bool> { get }
     var numberOfItems: Observable<Int> { get }
+    var selectedPracticeGroup: Observable<PracticeGroup?> { get }
+    
+    var practiceType: PracticeType { get }
 }
 
-public protocol PracticeOverviewViewModelType {
+protocol PracticeOverviewViewModelType {
     var inputs: PracticeOverviewViewModelInputs { get }
     var outputs: PracticeOverviewViewModelOutputs { get }
 }
 
-public final class PracticeOverviewViewModel: PracticeOverviewViewModelType, PracticeOverviewViewModelInputs, PracticeOverviewViewModelOutputs, StoreSubscriber {
-    public typealias StoreSubscriberStateType = RepositoryState
+final class PracticeOverviewViewModel: PracticeOverviewViewModelType, PracticeOverviewViewModelInputs, PracticeOverviewViewModelOutputs, StoreSubscriber {
+    typealias StoreSubscriberStateType = RepositoryState
     
     // MARK: - Object Lifecycle
     
-    private let practiceType: PracticeType
+    private var practiceGroups: [PracticeGroup] = []
     
-    public init(practiceType: PracticeType) {
+    init(practiceType: PracticeType) {
         self.practiceType = practiceType
     }
     
-    public func newState(state: RepositoryState) {
+    func newState(state: RepositoryState) {
         switch practiceType {
-        case .hiragana:
-            numberOfItems.value = state.practiceHiragana.count
-        case .katakana:
-            numberOfItems.value = state.practiceKatakana.count
-        case .kanji:
-            numberOfItems.value = state.practiceKanji.count
-        case .vocabulary:
-            numberOfItems.value = state.practiceVocabulary.count
-        case .phrase:
-            numberOfItems.value = state.practicePhrase.count
+        case .hiragana: practiceGroups = state.practiceHiragana
+        case .katakana: practiceGroups = state.practiceKatakana
+        case .kanji: practiceGroups = state.practiceKanji
+        case .vocabulary: practiceGroups = state.practiceVocabulary
+        case .phrase: practiceGroups = state.practicePhrase
         }
+        
+        isLoading.value = state.isLoading
+        numberOfItems.value = practiceGroups.count
+        selectedPracticeGroup.value = state.selectedPracticeGroup
     }
     
     // MARK: - Inputs
     
-    public func select(practiceGroupAtIndex index: Int) {
+    func practiceGroupTapped(atIndex index: Int) {
         AppStore.shared.dispatch(
-            RepositoryAction.selectPracticeGroupAtIndex(index)
+            UserActions.PracticeOveriew.selectPracticeGroup(practiceGroups[index])
         )
     }
-    
-    public func viewWillAppear() {
+
+    func viewWillAppear() {
         AppStore.shared.subscribe(self) {
             $0.select { $0.repositoryState }
         }
     }
     
-    public func viewWillDisappear() {
+    func viewWillDisappear() {
         AppStore.shared.unsubscribe(self)
     }
     
     // MARK: - Outputs
     
-    public let numberOfItems = Observable(0)
-
-    public var inputs: PracticeOverviewViewModelInputs { self }
-    public var outputs: PracticeOverviewViewModelOutputs { self }
+    let isLoading = Observable(false)
+    let numberOfItems = Observable(0)
+    let selectedPracticeGroup = Observable<PracticeGroup?>()
     
-    // MARK: - Private
+    let practiceType: PracticeType
+
+    var inputs: PracticeOverviewViewModelInputs { self }
+    var outputs: PracticeOverviewViewModelOutputs { self }
 }

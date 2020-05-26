@@ -13,7 +13,7 @@ final class PracticeOverviewViewController: TableViewController {
     
     // MARK: - Instance Properties
     
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     private let viewModel: PracticeOverviewViewModelType
 
     // MARK: - View Lifecycle
@@ -26,73 +26,80 @@ final class PracticeOverviewViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupView()
-        self.bindViewModel()
+        setupView()
+        bindViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.viewModel.inputs.viewWillAppear()
+        viewModel.inputs.viewWillAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.viewModel.inputs.viewWillDisappear()
+        viewModel.inputs.viewWillDisappear()
     }
-    
-    // MARK: - Instance Methods
     
     // MARK: - Bindings
     
     private func bindViewModel() {
         viewModel.outputs.numberOfItems.bind(.update) { [weak self] _ in
-            self?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            if self?.view.window?.isKeyWindow ?? false {
+                self?.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+            }
+        }.disposed(by: disposeBag)
+        
+        viewModel.outputs.isLoading.bind(.update) { [weak self] isLoading in
+            isLoading
+                ? self?.loadingIndicator.startAnimating()
+                : self?.loadingIndicator.stopAnimating()
         }.disposed(by: disposeBag)
     }
     
-    // MARK: - View Position Layout
+    lazy var loadingIndicator: LoadingIndicatorView = {
+        let x = LoadingIndicatorView()
+        tableView.addSubview(x)
+        x.translatesAutoresizingMaskIntoConstraints = false
+        x.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        x.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        return x
+    }()
+    
+    // MARK: - Setup View
     
     private func setupView() {
-        self.tableView.separatorStyle = .none
-        self.tableView.backgroundColor = Theme.Background.primaryColor
-        self.tableView.isUserInteractionEnabled = true
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.estimatedRowHeight = UITableView.automaticDimension
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.register(PracticeGroupCell.self)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = Theme.Background.primaryColor
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(PracticeGroupCell.self)
     }
-    
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource & UITableViewDelegate
 
 extension PracticeOverviewViewController {
 
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.outputs.numberOfItems.value
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.outputs.numberOfItems.value
     }
     
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withClass: PracticeGroupCell.self, for: indexPath)
-        cell.configureWith(practiceGroupAtIndex: indexPath.row)
-        return cell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView
+            .dequeueReusableCell(withClass: PracticeGroupCell.self, for: indexPath)
+            .configure(
+                viewModel.outputs.practiceType,
+                withPracticeGroupAtIndex: indexPath.row)
     }
     
-}
-
-// MARK: - UITableViewDelegate
-
-extension PracticeOverviewViewController {
-    
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel.inputs.select(practiceGroupAtIndex: indexPath.row)
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.inputs.practiceGroupTapped(atIndex: indexPath.row)
+        
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-    
 }
-

@@ -38,7 +38,7 @@ class LoadingIndicatorView: UIView {
             $0.layer.removeAllAnimations()
             $0.alpha = 0
         }
-        if hidesWhenStopped { isHidden = true }
+        isHidden = hidesWhenStopped
     }
     
     lazy var indicatorLabel: UILabel = {
@@ -78,9 +78,7 @@ class LoadingIndicatorView: UIView {
             indicatorLabel.topAnchor.constraint(equalTo: topAnchor),
             indicatorLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             indicatorLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
-        
-        NSLayoutConstraint.activate([
+            
             container.topAnchor.constraint(equalTo: indicatorLabel.bottomAnchor, constant: 5),
             container.centerXAnchor.constraint(equalTo: centerXAnchor),
             container.bottomAnchor.constraint(equalTo: bottomAnchor),

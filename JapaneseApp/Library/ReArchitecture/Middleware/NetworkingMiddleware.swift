@@ -15,9 +15,6 @@ internal let networkingMiddleware: Middleware<AppState> = { dispatch, getState i
             
             guard !(action is ReSwiftInit) else {
                 next(action)
-                DispatchQueue.main.async {
-                    dispatch(UserActions.UserSession.login(username: "Michal@example.com", password: "123456"))
-                }
                 return
             }
 

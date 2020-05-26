@@ -28,7 +28,6 @@ public class ScrollableContainerViewController: UIViewController {
         setupView()
     }
     
-
     // MARK: - Instance Methods
     
     func addToStack(_ viewController: UIViewController) {
@@ -48,9 +47,7 @@ public class ScrollableContainerViewController: UIViewController {
         NSLayoutConstraint.deactivate(stackView.constraints)
         NSLayoutConstraint.activate(axis == .vertical ? vertialStackConstraints : horizontalStackConstraints)
     }
-    
-    // MARK: - Binding
-    
+
     // MARK: - Setup View
     
     lazy var scrollView: UIScrollView = {

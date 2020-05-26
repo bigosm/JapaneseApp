@@ -9,22 +9,50 @@
 import Foundation
 import ReSwift
 
+extension RepositoryState {
+    static let initial = RepositoryState(
+        kanaCharacters: KanaCharacters(hiragana: [], katakana: []),
+        kanji: [],
+        vocabulary: [],
+        phrase: [],
+        practiceHiragana: [],
+        practiceKatakana: [],
+        practiceKanji: [],
+        practiceVocabulary: [],
+        practicePhrase: [],
+        selectedPracticeGroup: nil,
+        errorMessage: nil,
+        isLoading: false
+    )
+}
+
 internal func repositoryReducer(action: Action, state: RepositoryState?) -> RepositoryState {
-    var kanaCharacters: KanaCharacters = state?.kanaCharacters ??
-        KanaCharacters(hiragana: [], katakana: [])
-    var kanji = state?.kanji ?? []
-    var vocabulary = state?.vocabulary ?? []
-    var phrase = state?.phrase ?? []
-    var practiceHiragana = state?.practiceHiragana ?? []
-    var practiceKatakana = state?.practiceKatakana ?? []
-    var practiceKanji = state?.practiceKanji ?? []
-    var practiceVocabulary = state?.practiceVocabulary ?? []
-    var practicePhrase = state?.practicePhrase ?? []
+    let state = state ?? .initial
     
-    var errorMessage: String? = nil
-    var isLoading: Bool = state?.isLoading ?? false
+    guard action is RepositoryAction else { return state }
+    
+    var kanaCharacters: KanaCharacters = state.kanaCharacters
+    
+    let kanji = state.kanji
+    let vocabulary = state.vocabulary
+    let phrase = state.phrase
+    
+    var practiceHiragana = state.practiceHiragana
+    var practiceKatakana = state.practiceKatakana
+    var practiceKanji = state.practiceKanji
+    var practiceVocabulary = state.practiceVocabulary
+    var practicePhrase = state.practicePhrase
+    
+    var selectedPracticeGroup = state.selectedPracticeGroup
+    
+    var errorMessage: String? = state.errorMessage
+    var isLoading: Bool = state.isLoading
     
     switch action {
+        // MARK: - 📬 AppActions.RequestResult
+        
+        // MARK: PracticeGroups
+        
     case let action as AppActions.RequestResult.PracticeGroups:
         switch action.state {
         case .success(let resource):
@@ -40,6 +68,9 @@ internal func repositoryReducer(action: Action, state: RepositoryState?) -> Repo
         case .inProgress:
             isLoading = true
         }
+        
+        // MARK: KanaCharacters
+        
     case let action as AppActions.RequestResult.KanaCharacters:
         switch action.state {
         case .success(let resource):
@@ -49,15 +80,18 @@ internal func repositoryReducer(action: Action, state: RepositoryState?) -> Repo
         case .inProgress:
             isLoading = true
         }
-    case RepositoryAction.selectPracticeGroupAtIndex: break
-//        return RepositoryState(
-//            characterTables: state.characterTables,
-//            vocabulary: state.vocabulary,
-//            practiceGroups: state.practiceGroups,
-//            selectedPracticeGroup: state.practiceGroups[index]
-//        )
-    case let startPractice as ViewHistory:
-        print("[RepositoryReducer] View history for question group: \(startPractice.practiceGroup.title)")
+        
+        // TODO: Kanji
+        // TODO: Vocabulary
+        // TODO: Phrase
+        
+        // MARK: - ❤️ UserActions.PracticeOveriew
+        
+        // MARK: selectPracticeGroup
+        
+    case UserActions.PracticeOveriew.selectPracticeGroup(let practiceGroup):
+        selectedPracticeGroup = selectedPracticeGroup == practiceGroup ? nil : practiceGroup
+        
     default: break
     }
     
@@ -71,6 +105,7 @@ internal func repositoryReducer(action: Action, state: RepositoryState?) -> Repo
         practiceKanji: practiceKanji,
         practiceVocabulary: practiceVocabulary,
         practicePhrase: practicePhrase,
+        selectedPracticeGroup: selectedPracticeGroup,
         errorMessage: errorMessage,
         isLoading: isLoading
     )

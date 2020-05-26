@@ -119,7 +119,6 @@ internal struct QuestionFactory {
     }
     
     public func getCharacters(byIds charactersIds: [String]) -> [Subject] {
-        let characterTables = AppStore.shared.state.repositoryState.characterTables
         return []
     }
     

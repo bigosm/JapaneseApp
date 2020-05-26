@@ -21,8 +21,7 @@ internal let reloginMiddleware: Middleware<AppState> = { dispatch, getState in
             case UserActions.UserSession.logout,
                  AppActions.UserSession.sessionExpired:
                 cleanStore(dispatch, getState)
-            default:
-                next(action)
+            default: break
             }
         }
     }
