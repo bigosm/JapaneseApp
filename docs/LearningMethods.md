@@ -32,3 +32,22 @@ It is about action at all to improve memorizing a theory.
 | Kanji      | 月      | Draw a moon. |
 | Vocabulary | 電話     | Pretend to making a call, or point to phone. |
 | Phrase     | 僕の名前はミハルです | Point on yourself. |
+
+## Crush test method
+
+- Check your knowlege with simple tests
+- Work that your brain have to make will help momorizing things.
+- Simple tests are the best tests.
+- Correct answers are not most important.
+- Make test before even starting learning, it might help aswell
+- Learn on your mistatkes, don't try to avoid them.
+
+**Example**
+
+| Type       | Subject | Example     |
+| ---------- | ------- | ----------- | 
+| Hiragana   | あ      | What is the sound of a character? What is the character that make a sound? Write as many character as you know already. |
+| Katakana   | ア      | What is the sound of a character? What is the character that make a sound? Write as many character as you know already. |
+| Kanji      | 月      | What does it mean? What kanji represent this meaning? Write as many kanji as you know already. |
+| Vocabulary | 電話     | ? |
+| Phrase     | 僕の名前はミハルです | ? |
