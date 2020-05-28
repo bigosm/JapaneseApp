@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F00FE8C247EDB8C004FD0F7 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F00FE8B247EDB8C004FD0F7 /* Canvas.swift */; };
+		1F00FE8E247EF4B8004FD0F7 /* DrawingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F00FE8D247EF4B8004FD0F7 /* DrawingViewController.swift */; };
 		1F0DD5A824095A2500F57924 /* SelectAnswerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DD5A724095A2500F57924 /* SelectAnswerCellViewModel.swift */; };
 		1F0DD5AA2409939D00F57924 /* PrepareQuestionsMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DD5A92409939D00F57924 /* PrepareQuestionsMiddleware.swift */; };
 		1F1082B92427B78100ED1682 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F1082B82427B78100ED1682 /* SplashScreen.storyboard */; };
@@ -149,6 +151,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F00FE8B247EDB8C004FD0F7 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		1F00FE8D247EF4B8004FD0F7 /* DrawingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewController.swift; sourceTree = "<group>"; };
 		1F0DD5A724095A2500F57924 /* SelectAnswerCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAnswerCellViewModel.swift; sourceTree = "<group>"; };
 		1F0DD5A92409939D00F57924 /* PrepareQuestionsMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareQuestionsMiddleware.swift; sourceTree = "<group>"; };
 		1F1082B82427B78100ED1682 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
@@ -367,6 +371,7 @@
 				1F809C682470A95C00526323 /* LoadingIndicatorView.swift */,
 				1F3013EA2465E34D00503B93 /* ScrollableContainerViewController.swift */,
 				1F73722C2468AE16008C95B9 /* TextField.swift */,
+				1F00FE8B247EDB8C004FD0F7 /* Canvas.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
 				1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */,
 				1F3013E02465DDB900503B93 /* UserProfileViewController.swift */,
+				1F00FE8D247EF4B8004FD0F7 /* DrawingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -864,6 +870,7 @@
 				1F48D47123F1C6450069B2D4 /* Question.swift in Sources */,
 				1F531D7823D9CD43004C25DC /* Theme.swift in Sources */,
 				1FC741D623BF6AE000244938 /* AppDelegate.swift in Sources */,
+				1F00FE8E247EF4B8004FD0F7 /* DrawingViewController.swift in Sources */,
 				1FB6E451246F0AC600C975D5 /* ContentType.swift in Sources */,
 				1F17691723E869D500912335 /* RepositoryReducer.swift in Sources */,
 				1F8F435D24055333008DA65E /* PracticeCompletionSummaryCell.swift in Sources */,
@@ -929,6 +936,7 @@
 				1F3013E92465DFBC00503B93 /* UserProfileReducer.swift in Sources */,
 				1F809C632470092500526323 /* APIClientTask.swift in Sources */,
 				1F2C44DC2471541500338894 /* UserProfileRequest.swift in Sources */,
+				1F00FE8C247EDB8C004FD0F7 /* Canvas.swift in Sources */,
 				1F48D46923F1C5810069B2D4 /* KanaCharacters.swift in Sources */,
 				1FB6E459246F115000C975D5 /* LoginRequest.swift in Sources */,
 				1FB6E442246EE2E700C975D5 /* URLSessionMock.swift in Sources */,
