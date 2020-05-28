@@ -119,13 +119,16 @@ internal struct QuestionFactory {
     }
     
     public func getCharacters(byIds charactersIds: [String]) -> [Subject] {
-        return []
+        let characters = AppStore.shared.state.repositoryState.kanaCharacters.hiragana
+        return charactersIds.map { id in
+            characters.first { $0.id == id }
+        }.compactMap { $0 }
     }
     
     public func getVocabulary(byIds vocabularyIds: [String]) -> [Subject] {
         let vocabulary = AppStore.shared.state.repositoryState.vocabulary
         return vocabularyIds.map { id in
-            vocabulary.first(where: {$0.id == id})
+            vocabulary.first { $0.id == id }
         }.compactMap { $0 }
     }
     
