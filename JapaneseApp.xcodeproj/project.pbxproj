@@ -82,6 +82,8 @@
 		1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493E23EDAC6800F17C13 /* PracticeState.swift */; };
 		1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */; };
 		1F679B1C2427BB0C005D6CF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F679B1B2427BB0C005D6CF1 /* LaunchScreen.storyboard */; };
+		1F68A0C524815799006FC469 /* FlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68A0C424815799006FC469 /* FlashcardViewController.swift */; };
+		1F68A0C72481753C006FC469 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68A0C62481753C006FC469 /* UIView+Constraints.swift */; };
 		1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */; };
 		1F73721A2468730A008C95B9 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7372192468730A008C95B9 /* KeychainService.swift */; };
 		1F73721C24687318008C95B9 /* KeychainServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73721B24687318008C95B9 /* KeychainServiceTests.swift */; };
@@ -225,6 +227,8 @@
 		1F5F493E23EDAC6800F17C13 /* PracticeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeState.swift; sourceTree = "<group>"; };
 		1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeReducer.swift; sourceTree = "<group>"; };
 		1F679B1B2427BB0C005D6CF1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F68A0C424815799006FC469 /* FlashcardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardViewController.swift; sourceTree = "<group>"; };
+		1F68A0C62481753C006FC469 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
 		1F7372192468730A008C95B9 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		1F73721B24687318008C95B9 /* KeychainServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceTests.swift; sourceTree = "<group>"; };
@@ -543,9 +547,10 @@
 		1F950662247848B800F64FCB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1F9506632478490C00F64FCB /* UIView+Reusable.swift */,
-				1F95066524784C1900F64FCB /* TableViewController.swift */,
 				1F95066D2479545100F64FCB /* TableViewCell.swift */,
+				1F95066524784C1900F64FCB /* TableViewController.swift */,
+				1F68A0C62481753C006FC469 /* UIView+Constraints.swift */,
+				1F9506632478490C00F64FCB /* UIView+Reusable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -687,6 +692,7 @@
 				1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */,
 				1F3013E02465DDB900503B93 /* UserProfileViewController.swift */,
 				1F00FE8D247EF4B8004FD0F7 /* DrawingViewController.swift */,
+				1F68A0C424815799006FC469 /* FlashcardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -863,6 +869,7 @@
 				1F809C53246F431D00526323 /* Formatter+Extension.swift in Sources */,
 				1F48D47723F2D2D40069B2D4 /* PracticeCharacterViewController.swift in Sources */,
 				1F809C55246F435200526323 /* JSONDecoder+Extension.swift in Sources */,
+				1F68A0C524815799006FC469 /* FlashcardViewController.swift in Sources */,
 				1FB6E453246F0B6F00C975D5 /* URLRequest+debugDescription.swift in Sources */,
 				1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */,
 				1F8F43632406CD29008DA65E /* SelectAnswerViewController.swift in Sources */,
@@ -955,6 +962,7 @@
 				1F809C59246F43A200526323 /* Date+Extension.swift in Sources */,
 				1FB6E444246EE58000C975D5 /* APIRequest.swift in Sources */,
 				1F48D47B23F301150069B2D4 /* AnswerCollectionViewController.swift in Sources */,
+				1F68A0C72481753C006FC469 /* UIView+Constraints.swift in Sources */,
 				1F9506562477CBE400F64FCB /* PracticeGroupRequest.swift in Sources */,
 				1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */,
 				1F95066624784C1900F64FCB /* TableViewController.swift in Sources */,
