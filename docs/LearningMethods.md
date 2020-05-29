@@ -51,3 +51,21 @@ It is about action at all to improve memorizing a theory.
 | Kanji      | 月      | What does it mean? What kanji represent this meaning? Write as many kanji as you know already. |
 | Vocabulary | 電話     | ? |
 | Phrase     | 僕の名前はミハルです | ? |
+
+## Flashcard method
+
+- Check you knowledge with flashcards - on one side question, on another answer.
+- It helps to make a box with 5 partitions. Start from first one, if an answer is correct, place it in second partition.
+If the answer is wrong, place it in the first partition at the and of stack.
+- Repeat until you answer correctly for all flashcards in 5th partition.
+- Do not rush all flashcards in one session. Make sure to make a break between session, so the learned conent will stay longer with you.
+
+**Example**
+
+| Type       | Subject | Example     |
+| ---------- | ------- | ----------- | 
+| Hiragana   | あ      | What is the sound of a character? What is the character that make a sound? |
+| Katakana   | ア      | What is the sound of a character? What is the character that make a sound? |
+| Kanji      | 月      | What does it mean? What kanji represent this meaning? |
+| Vocabulary | 電話     | Translate english to japanese or japanese to english |
+| Phrase     | 僕の名前はミハルです | Translate english to japanese or japanese to english |
