@@ -8,7 +8,11 @@
 
 import UIKit
 
-final class FlashcardViewController: UIViewController {
+protocol FlashcardViewType: UIViewController {
+    
+}
+
+final class FlashcardViewController: UIViewController, FlashcardViewType {
     
     // MARK: - View Lifecycle
     
@@ -23,16 +27,15 @@ final class FlashcardViewController: UIViewController {
     // MARK: - Instance Methods
     
     @objc func flipFlashcard() {
-        let toView = isFlipped ? awers : rewers
+        isFlipped.toggle()
         UIView.transition(
-            from: isFlipped ? rewers : awers,
-            to: toView,
+            with: view,
             duration: 1,
             options: [.transitionFlipFromRight],
-            completion: nil)
-        toView.translatesAutoresizingMaskIntoConstraints = false
-        toView.fillSuperview()
-        isFlipped.toggle()
+            animations: {
+                self.awers.isHidden = self.isFlipped
+                self.rewers.isHidden = !self.isFlipped
+        }, completion: nil)
     }
     
     // MARK: - View Properties
@@ -41,20 +44,24 @@ final class FlashcardViewController: UIViewController {
     lazy var awers: UIView = {
         let x = UIView()
         x.backgroundColor = Theme.Background.primaryColor
+        x.layer.cornerRadius = 20
+        x.layer.borderColor = Theme.Background.secondaryColor?.cgColor
+        x.layer.borderWidth = 5.0
+        x.clipsToBounds = true
         x.translatesAutoresizingMaskIntoConstraints = false
-        x.addSubview(awersContainer)
-        awersContainer.fillSuperview(padding: Theme.Size.Padding.standard)
+        x.addSubview(container)
+        container.fillSuperview(padding: Theme.Size.Padding.standard)
         return x
     }()
     
-    lazy var awersContainer: UIStackView = {
+    lazy var container: UIStackView = {
         let x = UIStackView(arrangedSubviews: [
             questionLabel,
             inputAnswerController.view,
             checkButton,
         ])
         x.axis = .vertical
-        x.spacing = Theme.Size.Spacing.section
+        x.spacing = Theme.Size.Spacing.base
         x.translatesAutoresizingMaskIntoConstraints = false
         return x
     }()
@@ -90,6 +97,10 @@ final class FlashcardViewController: UIViewController {
     lazy var rewers: UIView = {
         let x = UIView()
         x.backgroundColor = Theme.Background.primaryColor
+        x.layer.cornerRadius = 20
+        x.layer.borderColor = Theme.Background.secondaryColor?.cgColor
+        x.layer.borderWidth = 5.0
+        x.clipsToBounds = true
         x.translatesAutoresizingMaskIntoConstraints = false
         x.addSubview(rewersContainer)
         rewersContainer.fillSuperview(padding: Theme.Size.Padding.standard)
@@ -102,7 +113,7 @@ final class FlashcardViewController: UIViewController {
             continueButton,
         ])
         x.axis = .vertical
-        x.spacing = Theme.Size.Spacing.section
+        x.spacing = Theme.Size.Spacing.base
         x.translatesAutoresizingMaskIntoConstraints = false
         return x
     }()
@@ -129,11 +140,13 @@ final class FlashcardViewController: UIViewController {
     // MARK: - View Position Layout
     
     private func setupView() {
-        view.backgroundColor = Theme.Background.primaryColor
-        view.layer.cornerRadius = 20
-        view.clipsToBounds = true
+        view.backgroundColor = .clear
         
         view.addSubview(awers)
         awers.fillSuperview()
+        
+        view.addSubview(rewers)
+        rewers.fillSuperview()
+        rewers.isHidden = true
     }
 }

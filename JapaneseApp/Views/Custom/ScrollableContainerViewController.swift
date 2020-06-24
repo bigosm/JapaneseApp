@@ -88,5 +88,4 @@ public class ScrollableContainerViewController: UIViewController {
         scrollView.addSubview(stackView)
         setScrollableContainerTo(axis)
     }
-
 }

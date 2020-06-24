@@ -95,7 +95,7 @@ final class PracticeGroupCell: TableViewCell {
             groupImageContainer,
             groupContainer,
         ])
-        x.spacing = Theme.Size.Spacing.section
+        x.spacing = Theme.Size.Spacing.base
         x.alignment = .center
         x.translatesAutoresizingMaskIntoConstraints = false
         x.heightAnchor.constraint(equalTo: groupImageContainer.heightAnchor).isActive = true

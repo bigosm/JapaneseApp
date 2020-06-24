@@ -17,8 +17,10 @@ class Theme {
             static let ratio = UIScreen.main.bounds.height / 568.0
             static let scallable = { $0 * ratio }
             static func screen(
-                x568: CGFloat, x667: CGFloat? = nil,
-                x736: CGFloat? = nil, x812: CGFloat? = nil,
+                x568: CGFloat,
+                x667: CGFloat? = nil,
+                x736: CGFloat? = nil,
+                x812: CGFloat? = nil,
                 x896: CGFloat? = nil) -> CGFloat {
                 let height = UIScreen.main.bounds.height
                 switch height {
@@ -53,8 +55,13 @@ class Theme {
         }
         
         enum Spacing {
-            static let common: CGFloat = Theme.Size.Padding.standard / 2
-            static let section: CGFloat = Theme.Size.Padding.standard
+            static let zero: CGFloat = 0
+            static let commonExtraThin: CGFloat = 4
+            static let commonThin: CGFloat = 8
+            static let common: CGFloat = 12
+            static let baseThin: CGFloat = 16
+            static let base: CGFloat = 20
+            static let baseThic: CGFloat = 24
         }
     }
     
