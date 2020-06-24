@@ -39,7 +39,9 @@ final class DrawingViewController: UIViewController {
     lazy var toolContainer: UIStackView = {
         let x = UIStackView(arrangedSubviews: [
             undoButton,
+            UIView()
         ])
+        x.distribution = .equalSpacing
         x.translatesAutoresizingMaskIntoConstraints = false
         return x
     }()
@@ -61,15 +63,16 @@ final class DrawingViewController: UIViewController {
         view.addSubview(canvas)
         view.addSubview(toolContainer)
         
+        let padding = Theme.Size.Padding.thin
         NSLayoutConstraint.activate([
             canvas.topAnchor.constraint(equalTo: view.topAnchor),
             canvas.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             canvas.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            canvas.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            toolContainer.topAnchor.constraint(equalTo: canvas.bottomAnchor),
-            toolContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            toolContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            toolContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            toolContainer.bottomAnchor.constraint(equalTo: canvas.bottomAnchor, constant: -padding),
+            toolContainer.leadingAnchor.constraint(equalTo: canvas.leadingAnchor, constant: padding),
+            toolContainer.trailingAnchor.constraint(equalTo: canvas.trailingAnchor, constant: -padding),
             toolContainer.heightAnchor.constraint(equalToConstant: undoButton.buttonHeight),
         ])
     }

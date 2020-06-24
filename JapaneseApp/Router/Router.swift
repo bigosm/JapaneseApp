@@ -62,10 +62,11 @@ class Router: StoreSubscriber {
             tabBarMain.tabBar.isHidden = false
             tabBarMain.tabBar.isUserInteractionEnabled = true
         case .practice:
-            let vc = PracticeViewController()
+            let vc = PracticeFlashcardViewController()
+            vc.hidesBottomBarWhenPushed = true
             navigationPractice?.pushViewController(vc, animated: true)
-            tabBarMain.tabBar.isHidden = true
-            tabBarMain.tabBar.isUserInteractionEnabled = false
+//            tabBarMain.tabBar.isHidden = true
+//            tabBarMain.tabBar.isUserInteractionEnabled = false
         case .practiceCompletion:
             let vc = PracticeCompletionViewController()
             navigationPractice?.pushViewController(vc, animated: true)

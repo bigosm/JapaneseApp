@@ -123,7 +123,7 @@ final class UserProfileAboutViewController: UIViewController {
             
             preferredName.topAnchor.constraint(
                 equalTo: userPicture.bottomAnchor,
-                constant: Theme.Size.Spacing.section),
+                constant: Theme.Size.Spacing.base),
             preferredName.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
                 constant: Theme.Size.Padding.standard),

@@ -20,7 +20,7 @@ internal let initMiddleware: Middleware<AppState> = { dispatch, getState in
             DispatchQueue.main.async {
                 dispatch(AppActions.Request.getKanaCharacters)
                 dispatch(AppActions.Request.getVocabulary)
-//                dispatch(UserActions.UserSession.login(username: "Michal@example.com", password: "123456"))
+                dispatch(UserActions.UserSession.login(username: "Michal@example.com", password: "123456"))
             }
         }
     }

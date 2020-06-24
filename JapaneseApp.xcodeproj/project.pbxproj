@@ -82,6 +82,9 @@
 		1F5F493F23EDAC6800F17C13 /* PracticeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F493E23EDAC6800F17C13 /* PracticeState.swift */; };
 		1F5F494123EDAD3900F17C13 /* PracticeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */; };
 		1F679B1C2427BB0C005D6CF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F679B1B2427BB0C005D6CF1 /* LaunchScreen.storyboard */; };
+		1F68A0C524815799006FC469 /* FlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68A0C424815799006FC469 /* FlashcardViewController.swift */; };
+		1F68A0C72481753C006FC469 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68A0C62481753C006FC469 /* UIView+Constraints.swift */; };
+		1F68A0C924817AF1006FC469 /* PracticeFlashcardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68A0C824817AF1006FC469 /* PracticeFlashcardViewController.swift */; };
 		1F6D0B6A23CCAE420015B93D /* CharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */; };
 		1F73721A2468730A008C95B9 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7372192468730A008C95B9 /* KeychainService.swift */; };
 		1F73721C24687318008C95B9 /* KeychainServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F73721B24687318008C95B9 /* KeychainServiceTests.swift */; };
@@ -123,6 +126,8 @@
 		1F95066C2479337D00F64FCB /* InitMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95066B2479337D00F64FCB /* InitMiddleware.swift */; };
 		1F95066E2479545100F64FCB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F95066D2479545100F64FCB /* TableViewCell.swift */; };
 		1F9B4CB52465CD6500261EF8 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B4CB42465CD6500261EF8 /* UIImage+AppImages.swift */; };
+		1FA7C4BE248A9C2D008AD2EB /* PracticeFlashcardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7C4BD248A9C2D008AD2EB /* PracticeFlashcardViewModel.swift */; };
+		1FA7C4C0248AF8A7008AD2EB /* FlashcardPartitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7C4BF248AF8A7008AD2EB /* FlashcardPartitionViewController.swift */; };
 		1FAAC40123C605AE0015EDC0 /* DiskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */; };
 		1FB6E440246EE13D00C975D5 /* FutureAndPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6E43F246EE13D00C975D5 /* FutureAndPromise.swift */; };
 		1FB6E442246EE2E700C975D5 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB6E441246EE2E700C975D5 /* URLSessionMock.swift */; };
@@ -225,6 +230,9 @@
 		1F5F493E23EDAC6800F17C13 /* PracticeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeState.swift; sourceTree = "<group>"; };
 		1F5F494023EDAD3900F17C13 /* PracticeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeReducer.swift; sourceTree = "<group>"; };
 		1F679B1B2427BB0C005D6CF1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1F68A0C424815799006FC469 /* FlashcardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardViewController.swift; sourceTree = "<group>"; };
+		1F68A0C62481753C006FC469 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		1F68A0C824817AF1006FC469 /* PracticeFlashcardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeFlashcardViewController.swift; sourceTree = "<group>"; };
 		1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewController.swift; sourceTree = "<group>"; };
 		1F7372192468730A008C95B9 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		1F73721B24687318008C95B9 /* KeychainServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainServiceTests.swift; sourceTree = "<group>"; };
@@ -266,6 +274,8 @@
 		1F95066B2479337D00F64FCB /* InitMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitMiddleware.swift; sourceTree = "<group>"; };
 		1F95066D2479545100F64FCB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		1F9B4CB42465CD6500261EF8 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
+		1FA7C4BD248A9C2D008AD2EB /* PracticeFlashcardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeFlashcardViewModel.swift; sourceTree = "<group>"; };
+		1FA7C4BF248AF8A7008AD2EB /* FlashcardPartitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardPartitionViewController.swift; sourceTree = "<group>"; };
 		1FAAC40023C605AE0015EDC0 /* DiskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCaretaker.swift; sourceTree = "<group>"; };
 		1FB6E43F246EE13D00C975D5 /* FutureAndPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureAndPromise.swift; sourceTree = "<group>"; };
 		1FB6E441246EE2E700C975D5 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
@@ -450,6 +460,7 @@
 				1F48D48023F30C4B0069B2D4 /* TypeInAnswerViewModel.swift */,
 				1F3013EE2465EAB600503B93 /* UserProfileAboutViewModel.swift */,
 				1F3013E22465DDDB00503B93 /* UserProfileViewModel.swift */,
+				1FA7C4BD248A9C2D008AD2EB /* PracticeFlashcardViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -543,9 +554,10 @@
 		1F950662247848B800F64FCB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1F9506632478490C00F64FCB /* UIView+Reusable.swift */,
-				1F95066524784C1900F64FCB /* TableViewController.swift */,
 				1F95066D2479545100F64FCB /* TableViewCell.swift */,
+				1F95066524784C1900F64FCB /* TableViewController.swift */,
+				1F68A0C62481753C006FC469 /* UIView+Constraints.swift */,
+				1F9506632478490C00F64FCB /* UIView+Reusable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -675,9 +687,13 @@
 				1F48D48223FC23140069B2D4 /* AnswerCompletionViewController.swift */,
 				1F5F493323EC8E1600F17C13 /* CharacterCollectionViewController.swift */,
 				1F6D0B6923CCAE420015B93D /* CharacterTableViewController.swift */,
+				1F00FE8D247EF4B8004FD0F7 /* DrawingViewController.swift */,
+				1FA7C4BF248AF8A7008AD2EB /* FlashcardPartitionViewController.swift */,
+				1F68A0C424815799006FC469 /* FlashcardViewController.swift */,
 				1F73722A2468A68F008C95B9 /* LoginViewController.swift */,
 				1F48D47623F2D2D40069B2D4 /* PracticeCharacterViewController.swift */,
 				1F3E151D2400491500BFFC43 /* PracticeCompletionViewController.swift */,
+				1F68A0C824817AF1006FC469 /* PracticeFlashcardViewController.swift */,
 				1F8F10C523BF94350001981C /* PracticeOverviewViewController.swift */,
 				1F5F492F23EC7C0800F17C13 /* PracticeViewController.swift */,
 				1F8F43622406CD29008DA65E /* SelectAnswerViewController.swift */,
@@ -686,7 +702,6 @@
 				1F48D47E23F302F90069B2D4 /* TypeInAnswerViewController.swift */,
 				1F3013EC2465EA8600503B93 /* UserProfieAboutViewController.swift */,
 				1F3013E02465DDB900503B93 /* UserProfileViewController.swift */,
-				1F00FE8D247EF4B8004FD0F7 /* DrawingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -863,6 +878,7 @@
 				1F809C53246F431D00526323 /* Formatter+Extension.swift in Sources */,
 				1F48D47723F2D2D40069B2D4 /* PracticeCharacterViewController.swift in Sources */,
 				1F809C55246F435200526323 /* JSONDecoder+Extension.swift in Sources */,
+				1F68A0C524815799006FC469 /* FlashcardViewController.swift in Sources */,
 				1FB6E453246F0B6F00C975D5 /* URLRequest+debugDescription.swift in Sources */,
 				1F531D8223DA11C2004C25DC /* String+Extension.swift in Sources */,
 				1F8F43632406CD29008DA65E /* SelectAnswerViewController.swift in Sources */,
@@ -901,6 +917,7 @@
 				1F95065E247823A800F64FCB /* ProgressGroup.swift in Sources */,
 				1F809C61246F675000526323 /* APICoder.swift in Sources */,
 				1F8F10C923BF992B0001981C /* PracticeGroupCell.swift in Sources */,
+				1FA7C4C0248AF8A7008AD2EB /* FlashcardPartitionViewController.swift in Sources */,
 				1FB6E44F246F0AB500C975D5 /* HttpMethod.swift in Sources */,
 				1F43DA5723EB016700CED94A /* Button.swift in Sources */,
 				1F48D46A23F1C5810069B2D4 /* PracticeGroup.swift in Sources */,
@@ -929,6 +946,8 @@
 				1F48D48123F30C4B0069B2D4 /* TypeInAnswerViewModel.swift in Sources */,
 				1F5F493723EC8EFB00F17C13 /* CharacterCollectionLayout.swift in Sources */,
 				1F3E1522240423D000BFFC43 /* PracticeCompletionCell.swift in Sources */,
+				1FA7C4BE248A9C2D008AD2EB /* PracticeFlashcardViewModel.swift in Sources */,
+				1F68A0C924817AF1006FC469 /* PracticeFlashcardViewController.swift in Sources */,
 				1F3013E12465DDB900503B93 /* UserProfileViewController.swift in Sources */,
 				1F48D45423EDC8B00069B2D4 /* PracticeOverviewViewModel.swift in Sources */,
 				1F7372202468744C008C95B9 /* UserSessionState.swift in Sources */,
@@ -955,6 +974,7 @@
 				1F809C59246F43A200526323 /* Date+Extension.swift in Sources */,
 				1FB6E444246EE58000C975D5 /* APIRequest.swift in Sources */,
 				1F48D47B23F301150069B2D4 /* AnswerCollectionViewController.swift in Sources */,
+				1F68A0C72481753C006FC469 /* UIView+Constraints.swift in Sources */,
 				1F9506562477CBE400F64FCB /* PracticeGroupRequest.swift in Sources */,
 				1F48D47523F2C52B0069B2D4 /* CharacterView.swift in Sources */,
 				1F95066624784C1900F64FCB /* TableViewController.swift in Sources */,
